@@ -340,7 +340,7 @@
     <header class="header">
         <div class="container">
             <a href="#" class="logo">
-                <img class="logo-icon" id="headerLogo" alt="Serious Labs">
+                <img class="logo-icon" src="seriouslabs.png" alt="Serious Labs">
                 <span class="logo-text">SERIOUS LABS</span>
             </a>
         </div>
@@ -350,7 +350,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <img class="hero-logo" id="heroLogo" alt="Serious Labs">
+                <img class="hero-logo" src="seriouslabs.png" alt="Serious Labs">
                 
                 <h1 class="hero-tagline">We build meaningful games.</h1>
                 
@@ -389,7 +389,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img class="footer-logo-icon" id="footerLogo" alt="Serious Labs">
+                    <img class="footer-logo-icon" src="seriouslabs.png" alt="Serious Labs">
                 </div>
                 
                 <div class="footer-text">
@@ -408,29 +408,6 @@
     </footer>
 
     <script>
-        // Load the logo image
-        async function loadLogo() {
-            try {
-                const logoData = await window.fs.readFile('seriouslab.png');
-                const logoBlob = new Blob([logoData], { type: 'image/png' });
-                const logoUrl = URL.createObjectURL(logoBlob);
-                
-                // Set logo for all instances
-                document.getElementById('headerLogo').src = logoUrl;
-                document.getElementById('heroLogo').src = logoUrl;
-                document.getElementById('footerLogo').src = logoUrl;
-            } catch (error) {
-                console.error('Could not load logo:', error);
-                // Fallback: hide logos if image can't be loaded
-                document.getElementById('headerLogo').style.display = 'none';
-                document.getElementById('heroLogo').style.display = 'none';
-                document.getElementById('footerLogo').style.display = 'none';
-            }
-        }
-
-        // Load logo on page load
-        document.addEventListener('DOMContentLoaded', loadLogo);
-
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
