@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Architectes de l'Engagement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #1a1a1a;
+            background: #fff;
+        }
+        
+        .article-header {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px 40px;
+        }
+        
+        .category {
+            text-transform: uppercase;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #c41e3a;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+        
+        .subtitle {
+            font-size: 22px;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .meta {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 14px;
+            color: #777;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .meta time {
+            margin-right: 20px;
+        }
+        
+        .reading-time {
+            color: #999;
+        }
+        
+        .article-content {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+        
+        .article-content p {
+            font-size: 19px;
+            margin-bottom: 28px;
+            text-align: justify;
+        }
+        
+        .article-content ul {
+            font-size: 19px;
+            margin-bottom: 28px;
+            padding-left: 25px;
+        }
+        
+        .article-content li {
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .chapeau {
+            font-size: 21px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 35px;
+            line-height: 1.7;
+        }
+        
+        h2 {
+            font-size: 28px;
+            margin: 50px 0 25px;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+        
+        h3 {
+            font-size: 22px;
+            margin: 40px 0 20px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .reference {
+            font-size: 15px;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 2px solid #ddd;
+        }
+        
+        .info-card {
+            background: #f5f5f5;
+            color: #333;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border-left: 4px solid #888;
+        }
+        
+        .info-card h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .info-card p {
+            font-size: 15px;
+            margin-bottom: 12px;
+            text-align: left;
+            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .info-card p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .warning-card {
+            background: #fff8f0;
+            color: #333;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border-left: 4px solid #e67e00;
+        }
+        
+        .warning-card h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #c45500;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .warning-card p {
+            font-size: 17px;
+            margin-bottom: 12px;
+            text-align: left;
+            line-height: 1.6;
+        }
+        
+        .warning-card p:last-child {
+            margin-bottom: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 15px;
+        }
+        
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background: #333;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+        
+        tr:hover {
+            background: #fafafa;
+        }
+        
+        .risk-high {
+            color: #c41e3a;
+            font-weight: 700;
+        }
+        
+        .article-footer {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 30px;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tags span {
+            background: #f1f1f1;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #555;
+        }
+        
+        .sources {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+        
+        .sources h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .sources p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+            text-align: left;
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 32px; }
+            .subtitle { font-size: 18px; }
+            .article-content p { font-size: 17px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="article-header">
+    <div class="category">Enquête</div>
+    <h1>Les Architectes de l'Engagement</h1>
+    <p class="subtitle">Comment les mêmes mécanismes psychologiques font tourner l'industrie du jeu vidéo et celle des jeux d'argent</p>
+    <div class="meta">
+        <time datetime="2025-12">Décembre 2025</time>
+        <span class="reading-time">12 min de lecture</span>
+    </div>
+</header>
+
+<article class="article-content">
+    
+    <p class="chapeau">Quand un joueur ouvre une lootbox dans Overwatch et qu'un autre fait tourner une machine à sous, leurs cerveaux réagissent de façon similaire. Les industries du jeu vidéo et des jeux d'argent puisent aux mêmes sources psychologiques depuis des décennies, et s'enrichissent mutuellement.</p>
+    
+    <p>Cette convergence repose sur un corpus de recherches bien documenté. Cet article propose un catalogue des mécanismes partagés entre les deux industries, avec leurs fondements scientifiques et leurs applications concrètes. Il examine ensuite les limites du régulateur à comprendre et endiguer ces phénomènes : la plupart de ces techniques échappent au périmètre de l'ANJ, qui régule les résultats mesurables mais pas le design comportemental.</p>
+
+    <div class="info-card">
+        <h4>Lexique</h4>
+        <p><strong>Lootbox</strong> — Coffre virtuel au contenu aléatoire, achetable avec de l'argent réel.</p>
+        <p><strong>Gacha</strong> — Système de tirage aléatoire de personnages ou d'équipements, populaire dans les jeux mobiles japonais.</p>
+        <p><strong>Drop</strong> — Récompense aléatoire obtenue en jeu (ennemi vaincu, coffre ouvert).</p>
+        <p><strong>Skin</strong> — Apparence cosmétique pour un personnage ou une arme, sans impact sur le gameplay.</p>
+        <p><strong>Battle pass</strong> — Abonnement saisonnier débloquant des récompenses progressives.</p>
+        <p><strong>Expresso/Spin&Go</strong> — Tournoi de poker hyper-turbo à jackpot aléatoire déterminé au lancement.</p>
+    </div>
+
+    <h2>Le catalogue des mécanismes</h2>
+
+    <h3>1. Le renforcement à ratio variable</h3>
+    <p class="reference">B.F. Skinner, <em>The Behavior of Organisms</em>, 1938</p>
+    <p>Tout commence en 1938, dans le laboratoire de B.F. Skinner à Harvard. Le psychologue comportementaliste découvre un fait contre-intuitif : ses rats appuient davantage sur le levier quand ils ne savent pas quand la récompense va tomber. L'incertitude crée l'engagement.</p>
+    <p>Dans <em>FIFA Ultimate Team</em>, chaque pack ouvert pourrait contenir Mbappé ou un joueur anonyme de D2 brésilienne. Dans un <em>Expresso</em>, le multiplicateur pourrait être x2 ou x1000. Même incertitude, même ressort.</p>
+
+    <h3>2. L'effet near-miss</h3>
+    <p class="reference">Griffiths 1991 ; Clark et al. 2009 (neuroimagerie, University of British Columbia)</p>
+    <p>L'effet near-miss, quand le joueur « manque de peu » le jackpot, a été documenté par le Pr Mark Griffiths (Nottingham Trent University). Le Dr Luke Clark a montré par neuroimagerie que les résultats near-miss activent les régions cérébrales associées aux gains chez les joueurs pathologiques. Autrement dit : le cerveau du joueur problématique traite une défaite de justesse comme une victoire.</p>
+    <p>Dans <em>CS:GO</em>, le curseur défile sur les skins et s'arrête systématiquement juste à côté de l'objet rare. Dans un <em>Expresso</em>, l'image du jackpot x1000 précède toujours celle du x2 effectif lors de l'animation de révélation du multiplicateur.</p>
+
+    <h3>3. Le Loss Disguised as Win</h3>
+    <p class="reference">Dixon et al. 2010, University of Waterloo, publié dans <em>Addiction</em></p>
+    <p>Le LDW désigne les scénarios où le joueur obtient un paiement inférieur à sa mise initiale, mais où le résultat est célébré comme un gain. L'étude de Dixon a montré que les réponses de conductance cutanée (SCR) des joueurs étaient similaires pour les LDW et les vrais gains, les deux étant significativement plus élevées que pour les pertes. Le cerveau traite une perte déguisée comme une victoire.</p>
+    <p>Dans <em>Overwatch</em>, une lootbox affiche une animation dorée et des effets sonores pour un spray commun. Dans un <em>Spin&Go</em>, terminer 2e sur 3 déclenche un feedback positif alors que le joueur est perdant net.</p>
+
+    <h3>4. La « zone » : le flow state détourné</h3>
+    <p class="reference">Csikszentmihalyi 1975/1990 ; Schüll 2012 (<em>Addiction by Design</em>, MIT Press)</p>
+    <p>Le concept de flow, cet état d'immersion totale où le temps semble suspendu, a été théorisé par Mihaly Csikszentmihalyi (University of Chicago) dans les années 1970. À l'origine, c'est une expérience positive, associée aux athlètes et aux artistes au sommet de leur art.</p>
+    <p>L'anthropologue Natasha Dow Schüll (MIT) a documenté dans <em>Addiction by Design</em> (2012) comment les casinos de Las Vegas ont détourné ce concept. Elle décrit « the machine zone », cet état où le joueur ne cherche plus à gagner, mais à rester dans la zone.</p>
+    <p>Dans <em>League of Legends</em>, la file d'attente relance automatiquement une nouvelle partie. Sur les plateformes de poker, le bouton « Relancer un Expresso » apparaît sous le pouce dès la fin du tournoi, sans friction.</p>
+
+    <h3>5. Le Hook Model</h3>
+    <p class="reference">Nir Eyal, <em>Hooked: How to Build Habit-Forming Products</em>, 2014</p>
+    <p>Nir Eyal, passé par l'industrie du jeu vidéo et la publicité, a codifié le « Hook Model » en 2014 : Trigger → Action → Variable Reward → Investment. Son livre <em>Hooked</em> est devenu une référence pour les product managers des deux industries.</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Étape</th>
+                <th>Candy Crush</th>
+                <th>App de paris</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Trigger</strong></td>
+                <td>Notification push</td>
+                <td>Notification cotes boostées</td>
+            </tr>
+            <tr>
+                <td><strong>Action</strong></td>
+                <td>Ouvrir l'app</td>
+                <td>Ouvrir l'app</td>
+            </tr>
+            <tr>
+                <td><strong>Variable Reward</strong></td>
+                <td>Effets visuels du niveau complété</td>
+                <td>Résultat du pari</td>
+            </tr>
+            <tr>
+                <td><strong>Investment</strong></td>
+                <td>Inviter des amis pour des vies</td>
+                <td>Points de fidélité accumulés</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>6. Le Persuasive Design B=MAT</h3>
+    <p class="reference">Dr BJ Fogg, Stanford Persuasive Technology Lab, 1998 ; modèle publié en 2009</p>
+    <p>Le Dr BJ Fogg a formalisé le modèle B=MAT : Behavior = Motivation + Ability + Trigger simultanés. Un comportement ne se produit que lorsque ces trois éléments sont présents en même temps.</p>
+    <p>Dans <em>Fortnite</em>, le bouton « Acheter » apparaît directement sur l'écran du skin (ability maximisée), pendant que le compteur d'urgence tourne (motivation). Sur une app de paris, la notification arrive pendant le match (motivation haute) avec un pari en 1 clic (ability maximisée).</p>
+
+    <h3>7. Les missions quotidiennes</h3>
+    <p class="reference">Blizzard Entertainment, <em>World of Warcraft: The Burning Crusade</em>, patch 2.1.0, mai 2007</p>
+    <p>Les « daily quests » ont été inventées par Blizzard dans <em>World of Warcraft: The Burning Crusade</em> en mai 2007. L'obligation de connexion régulière, mécanisme éprouvé du jeu vidéo free-to-play, est devenue un standard de rétention.</p>
+    <p>Dans <em>Fortnite</em>, les défis quotidiens font progresser le Battle Pass. Sur les plateformes de paris, les missions « Pariez 3 fois aujourd'hui » ou « Jouez 5 Expressos » débloquent des bonus.</p>
+
+    <h3>8. Le sunk cost fallacy</h3>
+    <p class="reference">Kahneman & Tversky 1979 (Prospect Theory) ; King & Delfabbro 2018 (« predatory monetization »)</p>
+    <p>Documenté par le prix Nobel Daniel Kahneman, ce biais explique pourquoi les joueurs persistent malgré les pertes. Le Pr Daniel L. King (Flinders University) et le Pr Paul Delfabbro (University of Adelaide) ont forgé le terme « predatory monetization » pour décrire les systèmes qui l'exploitent.</p>
+    <p>Dans <em>World of Warcraft</em>, un joueur avec 2000 heures investies continue malgré l'ennui : arrêter serait « perdre » tout ce temps. Au poker, le « chasing losses » pousse à relancer pour récupérer les mises perdues.</p>
+
+    <h3>9. Le FOMO et la fausse urgence</h3>
+    <p class="reference">Dan Herman, stratège marketing, 1996-2000 (concept marketing, pas académique)</p>
+    <p>Le FOMO (Fear Of Missing Out) a été conceptualisé par Dan Herman, stratège marketing, entre 1996 et 2000. Ce n'est pas un concept de psychologie académique, mais une technique marketing systématisée.</p>
+    <p>Dans <em>Fortnite</em>, les skins en édition limitée affichent un compteur « Disponible encore 24h ». Sur les apps de paris, « Cotes boostées jusqu'à 21h ! » crée la même urgence artificielle.</p>
+
+    <h3>10. Les dark patterns</h3>
+    <p class="reference">Newall 2025, <em>Addiction</em> (taxonomie sludge/dark patterns/dark nudges)</p>
+    <p>Le Dr Philip Newall (University of Bristol) a récemment proposé une taxonomie des techniques de design trompeur. « Sludge » désigne les frictions délibérées (processus de retrait complexe). « Dark patterns » désigne le design d'interface trompeur. « Dark nudges » inclut la présentation du gambling comme une activité fun.</p>
+    <p>Les audits révèlent l'ampleur du phénomène : 70% des sites de gambling avaient des mises suggérées supérieures au minimum autorisé. Les reality checks étaient dans 60% des sites réglés par défaut sur le délai le plus long de 4 heures.</p>
+    <p>Dans les jeux vidéo, les dark patterns incluent les monnaies virtuelles intermédiaires (obscurcir le coût réel), les pop-ups d'achat après un échec, ou les interfaces où « Acheter » est plus visible que « Fermer ».</p>
+
+    <h3>11. La friction asymétrique</h3>
+    <p class="reference">Newall & Rockloff 2022, <em>Addiction</em> ; Behavioural Insights Team 2022</p>
+    <p>La friction asymétrique consiste à minimiser les obstacles à la dépense tout en maximisant ceux au retrait ou à l'arrêt. Les travaux de Newall et Rockloff ont documenté comment les sites de gambling britanniques traitaient les dépôts instantanément mais imposaient des délais de plusieurs jours sur les retraits, avec des boutons incitant à annuler le retrait pendant ce délai (« reverse withdrawals », depuis interdits au Royaume-Uni).</p>
+    <p>Dans les jeux free-to-play, quitter une session déclenche des pop-ups de confirmation, des alertes de récompenses manquées, ou des offres « dernière chance ».</p>
+
+    <h2>Ce que le régulateur doit voir</h2>
+
+    <h3>La convergence des troubles</h3>
+    <p>Avec le gambling disorder et le gaming disorder partageant des caractéristiques similaires dans la CIM-11, il a parfois été supposé que ces deux conditions pourraient être fondamentalement liées. Le Dr David Zendle (University of York) a documenté empiriquement le lien entre dépenses en lootboxes et gambling problématique.</p>
+    <p>Dans cette même étude (Zendle 2018), les données sur les mineurs sont particulièrement préoccupantes : 39% des enfants qui pariaient des skins au cours du mois précédent avaient aussi joué à d'autres formes de gambling. Parmi les joueurs, ceux qui pariaient des skins avaient des taux de gambling à risque et problématique de 23%.</p>
+
+    <h3>Décalage régulation/risques (France)</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Mécanisme</th>
+                <th>Régulé ?</th>
+                <th>Niveau de risque</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>RTP (taux de retour)</td>
+                <td>Oui</td>
+                <td>Faible</td>
+            </tr>
+            <tr>
+                <td>Near-miss artificiel</td>
+                <td>Non</td>
+                <td class="risk-high">ÉLEVÉ</td>
+            </tr>
+            <tr>
+                <td>Gamification (XP, niveaux)</td>
+                <td>Non</td>
+                <td>Modéré</td>
+            </tr>
+            <tr>
+                <td>Missions quotidiennes</td>
+                <td>Non</td>
+                <td>Modéré</td>
+            </tr>
+            <tr>
+                <td>Dark patterns UX</td>
+                <td>Partiellement</td>
+                <td class="risk-high">ÉLEVÉ</td>
+            </tr>
+            <tr>
+                <td>FOMO/urgence artificielle</td>
+                <td>Non</td>
+                <td>Modéré</td>
+            </tr>
+            <tr>
+                <td>Defaults défavorables</td>
+                <td>Non</td>
+                <td class="risk-high">ÉLEVÉ</td>
+            </tr>
+            <tr>
+                <td>Friction asymétrique dépôt/retrait</td>
+                <td>Non</td>
+                <td class="risk-high">ÉLEVÉ</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Ce que l'ANJ surveille, et ce qui lui échappe</h3>
+    <p>L'Autorité Nationale des Jeux développe un algorithme de détection des joueurs excessifs prévu pour 2026. Le régulateur a également proposé un ban publicitaire whistle-to-whistle et des limites de pertes pour les 18-25 ans.</p>
+    <p>Mais plusieurs mécanismes importés du jeu vidéo échappent encore au cadre réglementaire. Les systèmes de gamification (niveaux, XP, badges) ne sont pas considérés comme des mécanismes de jeu d'argent. Les missions quotidiennes ne sont pas encadrées. Le near-miss artificiel peut être calibré librement sans obligation de transparence.</p>
+
+    <div class="warning-card">
+        <h4>L'angle mort</h4>
+        <p>Les mécanismes à risque élevé ne sont pas supervisés en France. Le near-miss peut être calibré à 30%, le taux optimal de persistance identifié par la recherche : potentiellement légal. Les mises suggérées peuvent dépasser la moyenne des joueurs : potentiellement légal. Un retrait peut prendre significativement plus longtemps qu'un dépôt : potentiellement légal.</p>
+        <p>L'ANJ régule ce qui est mesurable (le RTP, les limites de mise) mais laisse un angle mort sur le design comportemental, qui représente précisément l'espace d'innovation product des opérateurs. La gamification importée du jeu vidéo échappe au périmètre du régulateur par définition. La recherche académique a 20 ans d'avance sur la régulation.</p>
+    </div>
+
+    <div class="sources">
+        <h3>Sources</h3>
+        <p>Skinner 1938 • Griffiths 1991 • Clark 2009 • Csikszentmihalyi 1990 • Schüll 2012 • Eyal 2014 • Fogg 2009 • Kahneman 1979 • King & Delfabbro 2018 • Dixon 2010 • Herman 2000 • Zendle 2018 • Newall 2022, 2025 • Behavioural Insights Team 2022 • ANJ 2025 • Blizzard 2007</p>
+    </div>
+
+</article>
+
+<footer class="article-footer">
+    <div class="tags">
+        <span>Psychologie</span>
+        <span>Game design</span>
+        <span>Régulation</span>
+        <span>Lootboxes</span>
+        <span>Gamification</span>
+    </div>
+</footer>
+
+</body>
+</html>
