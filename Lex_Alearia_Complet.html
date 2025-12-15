@@ -29,6 +29,106 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
         
+        /* RESPONSIVE MOBILE */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 20px 15px;
+                box-shadow: none;
+            }
+            
+            .title-page {
+                padding: 60px 10px;
+            }
+            
+            .title-page h1 {
+                font-size: 2em;
+                letter-spacing: 0.05em;
+            }
+            
+            .title-page .subtitle {
+                font-size: 1em;
+            }
+            
+            p {
+                text-align: left !important;
+                text-indent: 0 !important;
+                margin: 12px 0;
+            }
+            
+            p + p {
+                text-indent: 1em !important;
+            }
+            
+            .toc {
+                padding: 20px 0;
+            }
+            
+            .toc h2 {
+                font-size: 1.4em;
+            }
+            
+            .toc li.level-1 {
+                padding-left: 15px;
+            }
+            
+            .section-header, .partie-header, .chapitre-header {
+                margin: 40px 0 30px 0;
+                padding: 20px 0;
+            }
+            
+            .section-header h1, .partie-header h2 {
+                font-size: 1.4em;
+            }
+            
+            .chapitre-header h3 {
+                font-size: 1.2em;
+            }
+            
+            h4 {
+                font-size: 1.05em;
+                margin: 25px 0 15px 0;
+            }
+            
+            .encadre {
+                padding: 15px;
+                margin: 20px 0;
+            }
+            
+            .encadre table {
+                font-size: 0.8em;
+            }
+            
+            .encadre th, .encadre td {
+                padding: 5px 8px;
+            }
+            
+            .citation-legale {
+                padding: 15px;
+                margin: 20px 0;
+            }
+            
+            .chapitre-intro {
+                padding: 15px 20px;
+            }
+            
+            .graphique svg {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .article .alinea {
+                margin-left: 1em;
+            }
+            
+            .remerciements {
+                padding: 50px 20px;
+            }
+        }
+        
         /* Page de titre */
         .title-page {
             text-align: center;
