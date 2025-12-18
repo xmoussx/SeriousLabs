@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lex Alearia — Histoire et avenir de la régulation du jeu d'argent en France</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
+        
         @media print {
             .no-print { display: none; }
             .page-break { page-break-before: always; }
@@ -120,12 +122,20 @@
                 height: auto;
             }
             
-            .article .alinea {
+            .loi-article .alinea {
                 margin-left: 1em;
             }
             
             .remerciements {
                 padding: 50px 20px;
+            }
+            
+            .annexe-sommaire {
+                padding: 15px;
+            }
+            
+            .loi-article {
+                padding: 15px;
             }
         }
         
@@ -292,6 +302,13 @@
             border-radius: 3px;
         }
         
+        .encadre-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+        
         .encadre h4 {
             color: #2c3e50;
             margin: 0 0 15px 0;
@@ -339,37 +356,8 @@
             font-style: normal;
         }
         
-        /* Proposition de loi */
-        .titre-loi {
-            text-align: center;
-            font-weight: bold;
-            color: #1a3c6e;
-            margin: 40px 0 25px 0;
-            font-size: 1.1em;
-        }
-        
-        .article-header {
-            color: #8b0000;
-            font-weight: bold;
-            margin: 25px 0 10px 0;
-        }
-        
-        .article-header em {
-            font-weight: normal;
-        }
-        
-        .article p {
-            text-indent: 1.5em;
-            margin: 8px 0;
-        }
-        
-        .article .alinea {
-            margin-left: 2em;
-            text-indent: 0;
-        }
-        
         /* Séparateurs */
-        .separator {
+        .separateur {
             text-align: center;
             margin: 40px 0;
             color: #999;
@@ -384,6 +372,11 @@
             font-size: 0.85em;
         }
         
+        .footnotes h4 {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+        
         .footnotes ol {
             padding-left: 20px;
         }
@@ -391,6 +384,23 @@
         .footnotes li {
             margin: 8px 0;
             line-height: 1.5;
+        }
+        
+        .footnote {
+            margin: 10px 0;
+            line-height: 1.6;
+            text-indent: 0;
+        }
+        
+        .footnote-num {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .footnote-ref {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
         }
         
         sup {
@@ -453,6 +463,334 @@
             margin: 40px 0;
             color: #555;
         }
+        
+        /* ======================================== */
+        /* ANNEXE - STYLE JORF / LÉGIFRANCE */
+        /* ======================================== */
+        
+        .annexe-header {
+            text-align: center;
+            padding: 50px 0;
+            border-bottom: 3px solid #000091;
+            margin-bottom: 30px;
+            page-break-before: always;
+        }
+        
+        .annexe-header .republique {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #000091;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .annexe-header .devise {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            font-size: 0.75em;
+            color: #888;
+            margin-bottom: 35px;
+        }
+        
+        .annexe-header .type-acte {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #000091;
+            margin-bottom: 12px;
+        }
+        
+        .annexe-header h2 {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            font-size: 1.35em;
+            font-weight: 700;
+            color: #000091;
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+        
+        .annexe-header .mention {
+            font-size: 0.85em;
+            color: #888;
+            font-style: italic;
+        }
+        
+        /* Avertissement annexe */
+        .annexe-avertissement {
+            background: #fff8e1;
+            border-left: 4px solid #e65100;
+            padding: 18px 22px;
+            margin: 30px 0;
+            font-size: 0.9em;
+        }
+        
+        .annexe-avertissement strong {
+            color: #e65100;
+        }
+        
+        /* Sommaire de l'annexe */
+        .annexe-sommaire {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+        
+        .annexe-sommaire h3 {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #000091;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .annexe-sommaire p {
+            text-indent: 0;
+            margin: 6px 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .annexe-sommaire .niveau-titre {
+            font-weight: 600;
+            color: #000091;
+            margin-top: 12px;
+        }
+        
+        .annexe-sommaire .niveau-chapitre {
+            padding-left: 25px;
+            color: #444;
+        }
+        
+        /* Exposé des motifs */
+        .expose-motifs {
+            margin: 45px 0;
+            padding-top: 35px;
+            border-top: 2px solid #000091;
+        }
+        
+        .expose-motifs h3 {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #000091;
+            font-size: 1em;
+            margin-bottom: 30px;
+        }
+        
+        .expose-motifs p {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+        
+        .expose-motifs p:first-of-type {
+            font-style: italic;
+        }
+        
+        /* Titres de la loi */
+        .titre-loi {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            text-align: center;
+            margin: 50px 0 30px 0;
+            padding: 22px 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            background: #fafafa;
+        }
+        
+        .titre-loi .numero {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #000091;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .titre-loi .intitule {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        
+        /* Chapitres de la loi */
+        .chapitre-loi {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            font-size: 0.9em;
+            color: #000091;
+            margin: 35px 0 22px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px dotted #bbb;
+            font-weight: 600;
+        }
+        
+        /* Articles de loi */
+        .loi-article {
+            margin: 28px 0;
+            padding: 20px 25px;
+            background: #fcfcfc;
+            border: 1px solid #eee;
+            border-left: 3px solid #000091;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .loi-article-header {
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .loi-article-num {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            font-weight: 700;
+            color: #000091;
+            font-size: 0.95em;
+        }
+        
+        .loi-article-titre {
+            font-weight: 600;
+            color: #333;
+            margin-left: 8px;
+        }
+        
+        .loi-article-note {
+            font-size: 0.8em;
+            color: #c0392b;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+        
+        .loi-article-note:hover {
+            text-decoration: underline;
+        }
+        
+        .loi-article-contenu {
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+        
+        .loi-article-contenu p {
+            margin: 10px 0;
+            text-indent: 0;
+        }
+        
+        .loi-article-contenu .alinea {
+            margin-left: 25px;
+            text-indent: 0;
+        }
+        
+        .loi-article-contenu .modif {
+            margin: 12px 0 12px 20px;
+            padding: 12px 18px;
+            background: #fff;
+            border-left: 2px solid #ddd;
+            font-size: 0.95em;
+        }
+        
+        .loi-article-contenu .modif p {
+            margin: 8px 0;
+        }
+        
+        /* Notes explicatives */
+        .notes-explicatives {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 3px solid #000091;
+        }
+        
+        .notes-explicatives h3 {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #000091;
+            font-size: 1em;
+            margin-bottom: 35px;
+        }
+        
+        .note-explicative {
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .note-explicative:last-child {
+            border-bottom: none;
+        }
+        
+        .note-explicative-header {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            font-size: 0.9em;
+            color: #000091;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .note-explicative p {
+            font-size: 0.9em;
+            color: #444;
+            line-height: 1.7;
+            text-align: justify;
+            text-indent: 0;
+            margin: 8px 0;
+        }
+        
+        .note-explicative .reference {
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Tableau comparatif dans les notes */
+        .tableau-comparatif {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.85em;
+        }
+        
+        .tableau-comparatif th,
+        .tableau-comparatif td {
+            padding: 10px 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        .tableau-comparatif th {
+            background: #e8f0fe;
+            color: #000091;
+            font-weight: 600;
+        }
+        
+        .tableau-comparatif tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .tableau-comparatif tr:last-child {
+            font-weight: 600;
+            background: #fff8e1;
+        }
+        
+        /* Fin de l'annexe */
+        .annexe-fin {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -468,6 +806,8 @@
         <div class="toc">
             <h2>Table des matières</h2>
             <ul>
+                <li class="level-0"><a href="#note-edition">Note d'édition</a></li>
+                <li class="level-0"><a href="#glossaire">Glossaire</a></li>
                 <li class="level-0"><a href="#avant-propos">Avant-propos</a></li>
                 <li class="level-0"><a href="#introduction">Introduction</a></li>
                 <li class="level-0"><a href="#partie-1">Première partie — L'héritage : le verrou moral français</a></li>
@@ -486,7 +826,69 @@
                 <li class="level-1"><a href="#chap-10">Chapitre 10. Les conditions du déblocage</a></li>
                 <li class="level-1"><a href="#chap-11">Chapitre 11. Les configurations politiques</a></li>
                 <li class="level-1"><a href="#chap-12">Chapitre 12. Proposition de cadre réglementaire</a></li>
+                <li class="level-0"><a href="#annexe">Annexe — Proposition de loi</a></li>
+                <li class="level-0"><a href="#synthese">Synthèse</a></li>
+                <li class="level-0"><a href="#bibliographie">Bibliographie sélective</a></li>
             </ul>
+        </div>
+
+        <!-- NOTE D'ÉDITION -->
+        <div class="encadre" style="background: #fff8e1; border-left: 4px solid #ff8c00; margin: 40px 0;">
+            <div class="encadre-title">Note d'édition</div>
+            <p style="margin: 0;">Ce manuscrit a été achevé en décembre 2025. L'amendement gouvernemental sur les casinos en ligne, déposé en octobre 2024 puis retiré, n'a pas été redéposé à la date de bouclage. La concertation annoncée par le ministre du Budget a été interrompue par la chute du gouvernement Barnier (4 décembre 2024). Le dossier reste en suspens. Les développements ultérieurs ne sont pas couverts par le présent ouvrage.</p>
+        </div>
+
+        <!-- GLOSSAIRE -->
+        <div class="section-header" style="page-break-before: always;">
+            <h1>Glossaire</h1>
+        </div>
+
+        <div style="margin-bottom: 40px;">
+            <p><strong>ANJ</strong> — Autorité nationale des jeux. Autorité administrative indépendante créée en 2019, compétente pour la régulation de l'ensemble du secteur des jeux d'argent en France (succède à l'ARJEL pour le secteur en ligne).</p>
+
+            <p><strong>Canalisation (taux de)</strong> — Proportion des joueurs qui jouent sur le marché légal (régulé) plutôt que sur le marché illégal. Indicateur clé de l'efficacité d'une régulation. Un taux de 90 % signifie que 9 joueurs sur 10 jouent sur des sites agréés.</p>
+
+            <p><strong>GGR / GGY</strong> — <em>Gross Gaming Revenue</em> / <em>Gross Gambling Yield</em>. Termes anglo-saxons équivalents au PBJ français.</p>
+
+            <p><strong>FIJ</strong> — Fichier des interdits de jeu. Base de données nationale recensant les personnes exclues des jeux d'argent (auto-exclusion ou exclusion judiciaire). Environ 45 000 inscrits en 2024.</p>
+
+            <p><strong>Live casino / Casino en direct</strong> — Jeux de casino (roulette, blackjack, baccarat) diffusés en vidéo avec croupiers réels, accessibles en ligne. Segment en forte croissance en Europe.</p>
+
+            <p><strong>PBJ</strong> — Produit brut des jeux. Différence entre les mises engagées par les joueurs et les gains reversés. Équivalent de la marge brute de l'opérateur, et assiette fiscale la plus courante en Europe.</p>
+
+            <p><strong>RNG</strong> — <em>Random Number Generator</em>. Générateur de nombres aléatoires certifié, garantissant l'équité des jeux de casino en ligne.</p>
+
+            <p><strong>Slots / Machines à sous virtuelles</strong> — Jeux de casino reposant sur un générateur aléatoire, reproduisant le fonctionnement des machines à sous physiques. Segment le plus important du marché des casinos en ligne (environ 70 % du PBJ).</p>
+
+            <p><strong>TRJ</strong> — Taux de retour aux joueurs. Pourcentage des mises redistribué aux joueurs sous forme de gains. Un TRJ de 95 % signifie que l'opérateur conserve 5 % des mises en moyenne. Plus le TRJ est élevé, plus le joueur conserve longtemps son capital de jeu.</p>
+        </div>
+
+        <!-- ENCADRÉ CHIFFRES CLÉS (référence pour éviter les répétitions) -->
+        <div class="encadre" id="chiffres-cles" style="background: #e3f2fd; border-left: 4px solid #1565C0;">
+            <div class="encadre-title">Chiffres clés du marché français (2024-2025)</div>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Marché légal en ligne</strong></td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">2,6 Md€ PBJ, 3,9 M de joueurs (OFDT)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Marché illégal (casinos)</strong></td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">750 M€ – 1,5 Md€ PBJ, 3-4 M de joueurs (ANJ-PwC 2023)<br><em>Estimation haute</em> : 2 Md€ PBJ, 5,4 M de joueurs (AFJEL-PwC 2025)*</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Joueurs à risque (marché légal)</strong></td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">4,9 % des joueurs en ligne (OFDT)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Sites illégaux identifiés</strong></td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">~2 400 URL bloquées par l'ANJ</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px;"><strong>Dette publique (2025)</strong></td>
+                    <td style="padding: 8px;">115,8 % du PIB</td>
+                </tr>
+            </table>
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px; margin-bottom: 0;">* L'étude AFJEL-PwC 2025 a été commanditée par les opérateurs agréés, qui ont un intérêt économique à démontrer l'ampleur du marché illégal. Ces chiffres sont à prendre avec prudence (cf. chapitre 7 pour une analyse critique).</p>
         </div>
         
         <!-- CONTENU -->
@@ -878,7 +1280,16 @@
 
         <p>Ce système va être mis à l'épreuve par l'irruption d'Internet. Pour la première fois, une technologie permet d'offrir des jeux d'argent sans implantation physique en France, hors de portée de la prohibition nationale. Le marché illégal se développe massivement. L'Union européenne fait pression. Le triangle du desserrage se reconstitue. La loi de 2010 sera la prochaine dérogation majeure. Elle fera l'objet de la deuxième partie de cet ouvrage.</p>
 
-        <p>Le graphique ci-dessous offre une visualisation saisissante de cette corrélation. Sur deux siècles et demi, chaque ouverture majeure du marché des jeux coïncide avec un pic ou une période de dette publique élevée. Le rétablissement de la Loterie en 1797 survient juste après la banqueroute des deux tiers. La légalisation du pari mutuel en 1891 intervient alors que la dette atteint 100 % du PIB. Le PMU et la Loterie nationale de 1931-1933 naissent en pleine crise. Les machines à sous de 1987 arrivent quand la dette repart à la hausse. L'ouverture des paris en ligne de 2010 accompagne une dette qui franchit les 80 %. En 2025, avec une dette à 115,8 % du PIB, les conditions budgétaires d'une nouvelle ouverture sont à nouveau réunies. Le lecteur attentif notera également que les pics de dette coïncident souvent avec des guerres. Faut-il en déduire, par extrapolation malicieuse, qu'un conflit se prépare ? Espérons que la corrélation s'arrête là.</p>
+        <p>Le graphique ci-dessous offre une visualisation de cette corrélation. Sur deux siècles et demi, chaque ouverture majeure du marché des jeux coïncide avec un pic ou une période de dette publique élevée. Le rétablissement de la Loterie en 1797 survient juste après la banqueroute des deux tiers. La légalisation du pari mutuel en 1891 intervient alors que la dette atteint 100 % du PIB. Le PMU et la Loterie nationale de 1931-1933 naissent en pleine crise. Les machines à sous de 1987 arrivent quand la dette repart à la hausse. L'ouverture des paris en ligne de 2010 accompagne une dette qui franchit les 80 %. En 2025, avec une dette à 115,8 % du PIB, les conditions budgétaires d'une nouvelle ouverture sont à nouveau réunies.</p>
+
+        <div class="encadre" style="background: #fff3e0; font-size: 0.95em;">
+            <div class="encadre-title">Note méthodologique sur le graphique</div>
+            <p style="margin-bottom: 10px;">Ce graphique illustre une corrélation historique suggestive, non une causalité démontrée. Plusieurs précautions de lecture s'imposent :</p>
+            <p style="margin-bottom: 8px;">• <strong>Définition de la dette :</strong> les séries longues de dette publique (1770-2025) agrègent des sources hétérogènes. Avant 1870, les données sont des reconstructions historiques (Flandreau & Le Cacheux, Reinhart & Rogoff) avec des marges d'incertitude significatives. La définition même de « dette publique » a évolué.</p>
+            <p style="margin-bottom: 8px;">• <strong>Ruptures de séries :</strong> les guerres et changements de régime créent des discontinuités comptables (banqueroutes, conversions, effacements). Les pics de 1918 et 1944 reflètent autant l'effondrement du PIB que l'accumulation de dette.</p>
+            <p style="margin-bottom: 8px;">• <strong>Causalité :</strong> la corrélation dette/législation peut s'expliquer par un troisième facteur (les crises économiques créent à la fois du déficit et une recherche de recettes nouvelles) plutôt que par un lien direct.</p>
+            <p style="margin-bottom: 0;">• <strong>Sélection :</strong> le graphique ne montre pas les périodes de dette élevée <em>sans</em> réforme des jeux, ni les projets de réforme avortés en période de dette modérée.</p>
+        </div>
 
         <!-- GRAPHIQUE DETTE/PIB ET LÉGISLATION DES JEUX -->
         <div style="margin: 40px 0; padding: 30px 0; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
@@ -1044,7 +1455,7 @@
             </svg>
             
             <p style="font-size: 1em; color: #555; text-align: center; margin-top: 20px;">
-                Sources : Institut Avant-garde (2025), Flandreau &amp; Le Cacheux, INSEE, AEFR, Reinhart &amp; Rogoff.
+                Sources : Dette 1770-1913 : Flandreau M. & Le Cacheux J. (1996), AEFR ; Dette 1914-1949 : Reinhart C. & Rogoff K. (2010) ; Dette 1950-2025 : INSEE, comptabilité nationale. Compilation et mise en forme : Institut Avant-garde, note de travail, 2025 (think tank, données non auditées).
             </p>
         </div>
 
@@ -1762,7 +2173,7 @@
 
             <p>La troisième restriction est l'interdiction pure et simple des jeux de table en direct (live casino). Le blackjack, la roulette et le baccarat avec croupiers réels, produits très populaires sur le marché européen, sont tout simplement prohibés en Allemagne. Un joueur allemand souhaitant jouer à la roulette en direct n'a d'autre choix que de se tourner vers un site étranger non licencié.</p>
 
-            <p>Le résultat de ces choix réglementaires est un échec de la canalisation. Les estimations situent le taux de canalisation allemand autour de 60 %, soit le plus faible des grands marchés européens régulés<a href="#fn8-8" class="footnote-ref" id="ref8-8"><sup>8</sup></a>. Cela signifie que 40 % des joueurs allemands de casino en ligne fréquentent des sites illégaux, malgré l'ouverture officielle du marché. L'industrie du jeu a vivement critiqué ce bilan, arguant que la taxe sur les mises produirait un taux de canalisation de seulement 51 % selon certaines projections.</p>
+            <p>Le résultat de ces choix réglementaires est un échec de la canalisation. Les estimations situent le taux de canalisation allemand autour de 60 % tous segments confondus, soit le plus faible des grands marchés européens régulés<a href="#fn8-8" class="footnote-ref" id="ref8-8"><sup>8</sup></a>. Ce chiffre masque toutefois des disparités importantes selon les segments : si les paris sportifs affichent une canalisation plus élevée (autour de 70-75 %), les machines à sous en ligne, pénalisées par la limite à 1 euro et l'interdiction du live casino, atteindraient un taux de canalisation bien inférieur, certaines estimations sectorielles le situant entre 30 et 50 %. Cela signifie que la moitié des joueurs allemands de slots en ligne fréquenteraient des sites illégaux, malgré l'ouverture officielle du marché. L'industrie du jeu a vivement critiqué ce bilan, arguant que la taxe sur les mises produirait un taux de canalisation de seulement 51 % selon certaines projections.</p>
 
             <p>Les Pays-Bas, qui ont ouvert leur marché en octobre 2021 avec le Kansspelautoriteit (KSA) comme régulateur, connaissent des difficultés comparables. Une fiscalité élevée (29 % du GGR), des restrictions sur les bonus et des règles strictes sur la publicité ont freiné l'attractivité du marché légal. Le taux de canalisation néerlandais est estimé entre 70 et 75 %, en deçà des standards nordiques.</p>
 
@@ -1836,7 +2247,7 @@
                         <td>2021</td>
                         <td>5,3 % mises</td>
                         <td>Très restreinte</td>
-                        <td class="no">~60 % (EGBA, 2024)</td>
+                        <td class="no">~60 % global<br><span style="font-size: 0.85em; color: #666;">(30-50 % slots)</span></td>
                     </tr>
                     <tr class="highlight-france">
                         <td>🇫🇷 France</td>
@@ -1853,7 +2264,7 @@
                         <td class="no">0 %</td>
                     </tr>
                 </tbody></table>
-                <p><em>* Estimation sectorielle (EGBA, H2 Gambling Capital). Les taux de canalisation non publiés officiellement sont des ordres de grandeur issus de rapports de l'European Gaming and Betting Association et d'analystes de marché.<br>Sources principales : rapports annuels Spillemyndigheden (DK), Spelinspektionen (SE), KSA (NL), GGL (DE) ; EGBA, European Online Gambling Key Figures, 2024.</em></p>
+                <p><em>* Estimation sectorielle (EGBA, H2 Gambling Capital). Les taux de canalisation non publiés officiellement sont des ordres de grandeur issus de rapports de l'European Gaming and Betting Association et d'analystes de marché. Les taux varient significativement selon les segments (paris sportifs généralement plus élevés que slots).<br>Sources principales : rapports annuels Spillemyndigheden (DK), Spelinspektionen (SE), KSA (NL), GGL (DE) ; EGBA, European Online Gambling Key Figures, 2024.</em></p>
             </div>
 
             <p>Trois enseignements majeurs se dégagent de ce panorama européen.</p>
@@ -1991,7 +2402,38 @@
 
             <p class="separateur">* * *</p>
 
-            <p>L'immobilisme n'est pas un choix neutre. C'est le choix d'un marché noir massif plutôt que d'un marché régulé. C'est le choix de l'absence de protection plutôt que d'une protection imparfaite. C'est le choix de l'incohérence plutôt que d'un cadre normatif assumé. C'est, en définitive, un effet paradoxal : la prohibition produit le contraire de ce qu'elle prétend accomplir. Après avoir mesuré ce que coûte l'inaction, il est temps d'examiner ce que serait l'action. C'est l'objet de la quatrième et dernière partie de cet ouvrage.</p>
+            <p>L'immobilisme n'est pas un choix neutre. C'est le choix d'un marché noir massif plutôt que d'un marché régulé. C'est le choix de l'absence de protection plutôt que d'une protection imparfaite. C'est le choix de l'incohérence plutôt que d'un cadre normatif assumé. C'est, en définitive, un effet paradoxal : la prohibition produit le contraire de ce qu'elle prétend accomplir.</p>
+
+            <h4>V. Bilan prospectif : ce qu'une légalisation changerait</h4>
+
+            <p>Avant d'examiner les conditions et les modalités d'une éventuelle légalisation dans la quatrième partie, il convient de dresser un bilan équilibré des effets attendus. Toute réforme comporte des bénéfices et des risques. Les présenter séparément permet d'éviter l'écueil du plaidoyer unilatéral.</p>
+
+            <div class="encadre" style="background: #e8f5e9; border-left: 4px solid #2e7d32; margin-bottom: 20px;">
+                <div class="encadre-title" style="color: #2e7d32;">Ce qu'une légalisation améliorerait</div>
+                <p style="margin-bottom: 8px;"><strong>Protection effective des joueurs.</strong> Les joueurs qui jouent aujourd'hui sur des sites illégaux (estimation : 1 à 4 millions) n'ont accès à aucun dispositif de protection : pas de vérification d'identité, pas de limite de mise, pas d'auto-exclusion, pas de détection des comportements à risque. Une légalisation les ferait basculer vers des sites agréés soumis aux obligations de la réglementation française. C'est le principal argument sanitaire <em>en faveur</em> de la légalisation.</p>
+                <p style="margin-bottom: 8px;"><strong>Recettes fiscales.</strong> Entre 400 et 800 millions d'euros par an (estimation prudente), actuellement captés par des opérateurs offshore échappant à l'impôt français.</p>
+                <p style="margin-bottom: 8px;"><strong>Cohérence normative.</strong> Fin de la dissonance entre une interdiction officielle et une pratique massive tolérée. L'État pourrait tenir un discours crédible : « Nous encadrons ce qui existe » plutôt que « Nous interdisons ce que nous ne pouvons empêcher ».</p>
+                <p style="margin-bottom: 0;"><strong>Lutte contre la criminalité.</strong> Les sites illégaux sont des vecteurs potentiels de blanchiment (cf. rapports Tracfin). Une canalisation vers le marché légal assèche ces circuits.</p>
+            </div>
+
+            <div class="encadre" style="background: #ffebee; border-left: 4px solid #c62828; margin-bottom: 20px;">
+                <div class="encadre-title" style="color: #c62828;">Ce qu'une légalisation pourrait aggraver</div>
+                <p style="margin-bottom: 8px;"><strong>Effet d'expansion.</strong> La légalisation, accompagnée de marketing, pourrait attirer de nouveaux joueurs qui n'auraient pas franchi le pas vers l'illégal. L'expérience britannique suggère un effet d'expansion de 20 à 40 % dans les premières années. Une partie de ces nouveaux joueurs développera des pratiques problématiques.</p>
+                <p style="margin-bottom: 8px;"><strong>Normalisation sociale.</strong> L'existence d'une offre légale, visible et promue, peut contribuer à banaliser le jeu d'argent, particulièrement auprès des jeunes adultes. Le Royaume-Uni a connu ce phénomène avant de durcir sa régulation publicitaire.</p>
+                <p style="margin-bottom: 8px;"><strong>Impact sur les casinos terrestres.</strong> Une cannibalisation partielle est inévitable. Les estimations varient de 5 à 30 % de baisse de fréquentation selon les sources (lobby des casinos vs opérateurs en ligne). L'emploi local serait affecté, particulièrement dans les petites communes casinotières.</p>
+                <p style="margin-bottom: 0;"><strong>Pression à la dérégulation.</strong> Une fois le marché ouvert, les opérateurs exerceront une pression constante pour assouplir les règles (limites de mise, publicité, fiscalité). L'expérience britannique montre qu'il est plus facile de durcir <em>après</em> avoir été trop laxiste que de maintenir une régulation stricte dès l'origine.</p>
+            </div>
+
+            <div class="encadre" style="background: #fff8e1; border-left: 4px solid #f9a825;">
+                <div class="encadre-title" style="color: #f9a825;">Ce qui fait la différence : les garde-fous</div>
+                <p style="margin-bottom: 8px;">L'expérience européenne montre que le bilan d'une légalisation dépend moins du principe (ouvrir ou non) que des modalités (comment ouvrir). Les facteurs déterminants sont :</p>
+                <p style="margin-bottom: 8px;">• <strong>La fiscalité :</strong> trop haute (>50 % PBJ), elle pousse les joueurs vers l'illégal (échec de la canalisation) ; trop basse (<20 %), elle prive l'État de ressources et encourage l'expansion du marché.</p>
+                <p style="margin-bottom: 8px;">• <strong>Les limites de mise :</strong> trop basses (1 €/tour comme en Allemagne), elles poussent vers l'illégal ; absentes, elles laissent les joueurs s'endetter sans frein.</p>
+                <p style="margin-bottom: 8px;">• <strong>L'auto-exclusion centralisée :</strong> le système ROFUS danois (exclusion immédiate de tous les sites) est bien plus efficace que les systèmes fragmentés où chaque opérateur gère ses exclusions.</p>
+                <p style="margin-bottom: 0;">• <strong>La régulation de la publicité :</strong> le Royaume-Uni a dû durcir drastiquement après des années d'excès ; mieux vaut des règles strictes dès l'origine.</p>
+            </div>
+
+            <p>En définitive, la question n'est pas « légaliser ou interdire » mais « quelle régulation pour quels objectifs ». Une légalisation mal calibrée (modèle allemand) peut échouer à canaliser tout en créant de nouveaux joueurs. Une légalisation bien calibrée (modèle danois) peut protéger efficacement les joueurs existants tout en limitant l'expansion. C'est ce second modèle que la France devrait viser si elle décidait d'ouvrir. C'est l'objet de la quatrième et dernière partie de cet ouvrage.</p>
 
             <div class="footnotes">
                 <h4>Notes du chapitre 9</h4>
@@ -2025,7 +2467,7 @@
 
             <h4>I. Le triangle réuni</h4>
 
-            <p>Tout au long de cet ouvrage, nous avons montré que les grandes réformes du droit des jeux d'argent en France obéissent à une logique récurrente. Trois conditions doivent être simultanément réunies : une crise budgétaire qui crée le besoin de recettes, une pression externe qui rend le statu quo intenable, et une justification sectorielle qui permet de présenter la dérogation comme servant l'intérêt général. En cette fin d'année 2024, les trois branches du triangle sont réunies avec une netteté rarement atteinte dans l'histoire récente.</p>
+            <p>Nous avons identifié au chapitre 3 les trois conditions historiques des réformes du droit des jeux d'argent en France : crise budgétaire, pression externe, justification sectorielle. En cette fin d'année 2024, ces trois conditions sont réunies avec une netteté rarement atteinte dans l'histoire récente.</p>
 
             <h5>A. La crise budgétaire : le facteur décisif</h5>
 
@@ -2039,7 +2481,7 @@
 
             <h5>B. La pression externe</h5>
 
-            <p>Nous avons longuement analysé dans la partie précédente l'ampleur du marché illégal et ses conséquences (cf. chapitres 7 à 9). Rappelons simplement les ordres de grandeur : selon l'étude ANJ-PwC de 2023, entre 3 et 4 millions de Français jouent sur des sites de casinos en ligne non autorisés, générant un PBJ estimé entre 748 millions et 1,5 milliard d'euros<a href="#fn10-2" class="footnote-ref" id="ref10-2"><sup>2</sup></a>. Une étude plus récente de l'AFJEL avance des chiffres plus élevés encore : 5,4 millions de joueurs et 2 milliards d'euros de PBJ en 2025<a href="#fn10-3" class="footnote-ref" id="ref10-3"><sup>3</sup></a>.</p>
+            <p>Nous avons analysé dans la partie précédente l'ampleur du marché illégal et ses conséquences (cf. chapitres 7 à 9 et l'encadré « Chiffres clés » en début d'ouvrage). Sans répéter les ordres de grandeur déjà exposés, rappelons que ce marché représente plusieurs centaines de millions à plus d'un milliard d'euros de PBJ annuel, pour une population de joueurs estimée entre un et plusieurs millions selon les sources.</p>
 
             <p>Cette pression s'exerce également par l'isolement européen : la France est, avec Chypre, parmi les derniers États membres de l'Union européenne à interdire totalement les casinos en ligne (cf. chapitre 9, section III).</p>
 
@@ -2545,7 +2987,7 @@
                 <p class="footnote"><span class="footnote-num" id="fn12-1">1.</span> Les taux de canalisation sont des estimations issues des rapports annuels des régulateurs nationaux. Ces chiffres varient selon les méthodologies et les périmètres retenus. <a href="#ref12-1">↩</a></p>
                 <p class="footnote"><span class="footnote-num" id="fn12-2">2.</span> D. Lyutskanova, « Lower RTPs and Their Impact on Players and Operators in Germany », <em>iGaming.com</em> (presse sectorielle), 27 mars 2025. L'étude cite une canalisation des slots en ligne inférieure à 40 % en 2024, la taxe de 5,3 % sur les mises ayant contraint les opérateurs à réduire leurs TRJ sous le seuil de 94,7 % pour rester rentables. Chiffres à considérer avec prudence. <a href="#ref12-2">↩</a></p>
                 <p class="footnote"><span class="footnote-num" id="fn12-3">3.</span> Danish Gambling Authority, <em>Annual Report 2023</em> ; UK Gambling Commission, <em>Industry Statistics</em>, novembre 2024. Le Danemark maintient une canalisation d'environ 90 % depuis l'ouverture de son marché en 2012, avec une taxation de 28 % du GGR et aucun plafond de TRJ. Le Royaume-Uni affiche des résultats comparables avec une taxation de 21 %. <a href="#ref12-3">↩</a></p>
-                <p class="footnote"><span class="footnote-num" id="fn12-4">4.</span> Copenhagen Economics, <em>Gambling Tax Study</em>, 2016, fréquemment citée dans les débats européens. L'étude conclut qu'un taux de taxation entre 15 et 20 % du GGR optimise à la fois les recettes fiscales et la canalisation ; au-delà de 20 %, la canalisation tend à chuter sous 80 %. V. également V. Marionneau <em>et al.</em>, « Channelling and taxation in European online gambling markets », <em>Harm Reduction Journal</em>, 8 juill. 2025, qui nuance ces conclusions mais confirme l'importance de l'attractivité de l'offre légale. <a href="#ref12-4">↩</a></p>
+                <p class="footnote"><span class="footnote-num" id="fn12-4">4.</span> Copenhagen Economics, <em>Gambling Tax Study</em>, 2016, fréquemment citée dans les débats européens. L'étude conclut qu'un taux de taxation entre 15 et 20 % du GGR optimise à la fois les recettes fiscales et la canalisation ; au-delà de 20 %, la canalisation tend à chuter sous 80 %. V. également V. Marionneau <em>et al.</em>, « Channelling and taxation in European online gambling markets », <em>Harm Reduction Journal</em>, vol. 22, n° 56, 2025 (DOI: 10.1186/s12954-025-01154-1), qui nuance ces conclusions : l'étude ne trouve pas de corrélation négative claire entre taxation et canalisation, suggérant que d'autres facteurs (étendue de l'offre, efficacité de la répression) jouent également un rôle déterminant. <a href="#ref12-4">↩</a></p>
                 <p class="footnote"><span class="footnote-num" id="fn12-5">5.</span> Art. 13-II de la loi n° 2010-476 du 12 mai 2010 ; décret n° 2020-1349 du 4 novembre 2020, art. 27. L'ANJ a confirmé cette interprétation en sanctionnant plusieurs opérateurs pour dépassement du plafond de 85 % en 2023. <a href="#ref12-5">↩</a></p>
                 <p class="footnote"><span class="footnote-num" id="fn12-6">6.</span> M. Auer, M. D. Griffiths, « The relationship between structural characteristics and gambling behaviour: An online gambling player tracking study », <em>Journal of Behavioral Addictions</em>, 2023, PMC 9981537. L'étude, portant sur des données réelles d'un opérateur européen, montre que la fréquence des événements (event frequency) est le facteur structurel le plus corrélé au nombre de paris, non le TRJ. <a href="#ref12-6">↩</a></p>
                 <p class="footnote"><span class="footnote-num" id="fn12-7">7.</span> A. Hazarika <em>et al.</em>, « Risk Factors for Gambling Disorder: A Systematic Review », <em>International Journal of Environmental Research and Public Health</em>, 2023, PMC 9994414. La revue systématique de 33 études identifie comme facteurs de risque : sexe masculin, jeune âge, célibat, faible éducation, difficultés financières, comorbidités psychiatriques. Le TRJ n'apparaît dans aucune des études recensées. <a href="#ref12-7">↩</a></p>
@@ -2582,92 +3024,167 @@
         </article>
 
         <!-- ANNEXE : Proposition de loi -->
-        <article>
+        <article id="annexe">
+            
+            <!-- EN-TÊTE STYLE JORF -->
             <div class="annexe-header">
-                <h2>Annexe</h2>
-                <h3>Proposition de loi</h3>
-                <h4>relative à la régulation des jeux de casino en ligne</h4>
+                <p class="republique">République Française</p>
+                <p class="devise">Liberté · Égalité · Fraternité</p>
+                <p class="type-acte">Proposition de loi</p>
+                <h2>relative à la régulation des jeux de casino en ligne</h2>
+                <p class="mention">Texte présenté à titre académique</p>
             </div>
 
-            <div class="avertissement">
-                <strong>Avertissement.</strong> — Le texte qui suit est une proposition de loi fictive, rédigée à des fins académiques pour illustrer les analyses développées dans cet ouvrage. Il ne s'agit pas d'un texte officiel ni d'une initiative parlementaire réelle. Cette proposition vise à montrer comment les recommandations formulées au chapitre 12 pourraient se traduire en dispositions législatives concrètes.
+            <!-- AVERTISSEMENT -->
+            <div class="annexe-avertissement">
+                <strong>Avertissement.</strong> — Le texte qui suit est une proposition de loi fictive, rédigée à des fins académiques pour illustrer les analyses développées dans cet ouvrage. Il ne s'agit pas d'un texte officiel ni d'une initiative parlementaire réelle. Les notes explicatives en fin d'annexe précisent les sources et modèles étrangers ayant inspiré chaque disposition.
             </div>
 
+            <!-- SOMMAIRE -->
+            <div class="annexe-sommaire">
+                <h3>Sommaire de la proposition de loi</h3>
+                <p class="niveau-titre">Exposé des motifs</p>
+                <p class="niveau-titre">Titre Iᵉʳ — Ouverture à la concurrence des jeux de casino en ligne</p>
+                <p class="niveau-chapitre">Chapitre Iᵉʳ — Définitions et champ d'application (art. 1-2)</p>
+                <p class="niveau-chapitre">Chapitre II — Conditions d'agrément (art. 3-4)</p>
+                <p class="niveau-titre">Titre II — Régime fiscal (art. 5-6)</p>
+                <p class="niveau-titre">Titre III — Protection des joueurs</p>
+                <p class="niveau-chapitre">Chapitre Iᵉʳ — Le délégué à la protection des joueurs (art. 7-8)</p>
+                <p class="niveau-chapitre">Chapitre II — Dispositifs de protection (art. 9-13)</p>
+                <p class="niveau-chapitre">Chapitre III — Fonds de lutte contre les addictions (art. 14)</p>
+                <p class="niveau-titre">Titre IV — Lutte contre l'offre illégale (art. 15-16)</p>
+                <p class="niveau-titre">Titre V — Dispositions transitoires et finales (art. 17-20)</p>
+                <p class="niveau-titre">Notes explicatives article par article</p>
+            </div>
+
+            <!-- EXPOSÉ DES MOTIFS -->
             <div class="expose-motifs">
-                <h4>EXPOSÉ DES MOTIFS</h4>
+                <h3>Exposé des motifs</h3>
 
-                <p>Mesdames, Messieurs,</p>
+                <p><em>Mesdames, Messieurs,</em></p>
 
-                <p>La France est, avec Chypre, l'un des deux derniers États membres de l'Union européenne à interdire totalement les jeux de casino en ligne. Cette prohibition, héritée du régime général d'interdiction des jeux de hasard, n'a pas empêché le développement d'un marché illégal massif : selon l'Autorité nationale des jeux, entre trois et cinq millions de Français jouent régulièrement sur des sites de casinos en ligne non autorisés, générant un produit brut des jeux estimé entre 1,5 et 2 milliards d'euros par an.</p>
+                <p>La France est, avec Chypre, l'un des deux derniers États membres de l'Union européenne à interdire totalement les jeux de casino en ligne. Cette prohibition, héritée du régime général d'interdiction des jeux de hasard posé par la loi du 21 mai 1836, n'a pas empêché le développement d'un marché illégal massif : selon l'étude commandée par l'Autorité nationale des jeux au cabinet PwC (décembre 2023), entre trois et quatre millions de Français jouent sur des sites de casinos en ligne non autorisés, générant un produit brut des jeux estimé entre 750 millions et 1,5 milliard d'euros par an.</p>
 
-                <p>Cette situation est triplement dommageable. Elle est dommageable pour les joueurs, qui pratiquent leur activité sans aucune des protections qu'une régulation permettrait d'imposer : pas de fichier des interdits de jeu, pas de limites de dépôt, pas de détection des comportements à risque, pas de recours en cas de litige. Elle est dommageable pour les finances publiques, qui se privent de recettes fiscales substantielles au profit d'opérateurs établis dans des juridictions tierces. Elle est dommageable pour la cohérence de l'ordre juridique, qui prohibe en droit ce qu'il tolère en fait.</p>
+                <p>Cette situation est dommageable à trois égards.</p>
 
-                <p>L'expérience européenne offre des enseignements précieux. Les études disponibles, notamment celle de Copenhagen Economics, établissent qu'un taux de prélèvement compris entre 15 et 25 % du produit brut des jeux permet de concilier recettes fiscales et canalisation du marché illégal vers le marché légal. Le Danemark (28 % de prélèvement, 90 % de canalisation) et le Royaume-Uni (21 %, 90 %) confirment cette analyse. À l'inverse, l'Allemagne, qui a choisi une taxation sur les mises contraignant les opérateurs à réduire leurs taux de retour joueur, affiche une canalisation inférieure à 40 % pour les machines à sous en ligne.</p>
+                <p>Elle est d'abord dommageable pour les joueurs, qui pratiquent leur activité sans aucune des protections qu'une régulation permettrait d'imposer : pas de consultation du fichier des interdits de jeu, pas de limites de dépôt obligatoires, pas de détection des comportements à risque, pas de recours effectif en cas de litige. Les joueurs français qui fréquentent le marché illégal sont abandonnés à des opérateurs dont les pratiques échappent à tout contrôle.</p>
 
-                <p>La présente proposition de loi vise à mettre fin à cette situation en ouvrant le marché des jeux de casino en ligne à des opérateurs agréés par l'Autorité nationale des jeux. Elle retient un taux de prélèvement de 25 % du produit brut des jeux, dans la fourchette haute des recommandations académiques, et un plancher de taux de retour joueur de 88 % sans plafond, permettant à la concurrence de jouer et aux opérateurs légaux de proposer une offre compétitive face au marché illégal.</p>
+                <p>Elle est ensuite dommageable pour les finances publiques. Les recettes fiscales qui pourraient être perçues sur ce marché — estimées entre 400 et 800 millions d'euros par an selon les hypothèses de canalisation retenues — bénéficient aujourd'hui à des opérateurs établis dans des juridictions tierces (Malte, Gibraltar, Curaçao), dont certaines présentent des déficiences avérées en matière de lutte contre le blanchiment de capitaux.</p>
 
-                <p>Le titre I<sup>er</sup> définit le champ d'application de la loi et les conditions d'agrément des opérateurs. Le titre II établit le cadre fiscal applicable. Le titre III organise la protection des joueurs, en s'inspirant du modèle du règlement général sur la protection des données. Le titre IV renforce les moyens de lutte contre l'offre illégale. Le titre V fixe les dispositions transitoires et finales.</p>
+                <p>Elle est enfin dommageable pour la cohérence de l'ordre juridique. L'État français prohibe en droit ce qu'il tolère en fait. Cette dissonance érode la crédibilité de la parole publique et affaiblit la portée des politiques de prévention.</p>
+
+                <p>L'expérience européenne offre des enseignements précieux. L'étude de Copenhagen Economics (2016), régulièrement citée dans les débats européens, établit qu'un taux de prélèvement compris entre 15 et 25 % du produit brut des jeux permet de concilier recettes fiscales significatives et canalisation efficace du marché illégal vers le marché légal. Le Danemark (28 % de prélèvement sur le PBJ, 90 % de canalisation selon la Spillemyndigheden) et le Royaume-Uni (21 %, canalisation élevée) confirment cette analyse. À l'inverse, l'Allemagne, qui a choisi une taxation de 5,3 % sur les mises — soit une assiette économiquement pénalisante —, affiche une canalisation estimée à 60 % tous segments confondus, et bien inférieure pour les seules machines à sous en ligne.</p>
+
+                <p>La présente proposition de loi vise à mettre fin à cette situation en ouvrant le marché des jeux de casino en ligne à des opérateurs agréés par l'Autorité nationale des jeux. Elle retient un taux de prélèvement de <strong>25 % du produit brut des jeux</strong>, dans la fourchette haute des recommandations académiques, et un plancher de taux de retour joueur de <strong>88 %</strong> sans plafond, permettant aux opérateurs légaux de proposer une offre compétitive face au marché noir.</p>
+
+                <p>Le <strong>titre Iᵉʳ</strong> définit le champ d'application de la loi et les conditions d'agrément des opérateurs. Il s'inspire du cadre existant pour les paris sportifs et le poker en ligne (loi n° 2010-476 du 12 mai 2010), en l'adaptant aux spécificités des jeux de casino.</p>
+
+                <p>Le <strong>titre II</strong> établit le cadre fiscal applicable. L'assiette retenue est le produit brut des jeux (et non les mises), conformément aux pratiques des marchés européens les plus efficacement canalisés. Le produit du prélèvement est réparti entre le budget général de l'État, la sécurité sociale et un fonds dédié à la lutte contre les addictions.</p>
+
+                <p>Le <strong>titre III</strong> organise la protection des joueurs selon une architecture inspirée du règlement général sur la protection des données (RGPD). Il institue un « délégué à la protection des joueurs » au sein de chaque opérateur agréé, sur le modèle du délégué à la protection des données, et renforce les dispositifs existants : fichier des interdits de jeu, limites de dépôt et de mise, auto-exclusion centralisée, encadrement des machines à sous virtuelles, détection algorithmique des comportements à risque.</p>
+
+                <p>Le <strong>titre IV</strong> renforce les moyens de lutte contre l'offre illégale. Il alourdit les sanctions pénales applicables aux opérateurs non agréés et étend les pouvoirs de l'ANJ à l'égard des intermédiaires financiers et des promoteurs d'offres illicites.</p>
+
+                <p>Le <strong>titre V</strong> fixe les dispositions transitoires et finales, notamment un délai de dix-huit mois entre la promulgation et l'entrée en vigueur, permettant aux opérateurs de se conformer aux nouvelles exigences et à l'administration de préparer l'instruction des agréments. Une clause de revoyure à trois ans permettra d'évaluer l'efficacité du dispositif et d'ajuster, le cas échéant, les paramètres de régulation.</p>
+
+                <p>Telles sont les principales dispositions de la présente proposition de loi.</p>
             </div>
 
-            <p class="separateur-annexe">✦ ✦ ✦</p>
+            <p class="separateur">✦ ✦ ✦</p>
 
-            <h4 class="titre-loi">TITRE I<sup>er</sup><br>OUVERTURE À LA CONCURRENCE DES JEUX DE CASINO EN LIGNE</h4>
+            <!-- TITRE Iᵉʳ -->
+            <div class="titre-loi">
+                <span class="numero">Titre Iᵉʳ</span>
+                <span class="intitule">Ouverture à la concurrence des jeux de casino en ligne</span>
+            </div>
 
-            <h5 class="chapitre-loi">Chapitre I<sup>er</sup> — Définitions et champ d'application</h5>
+            <p class="chapitre-loi">Chapitre Iᵉʳ — Définitions et champ d'application</p>
 
-            <div class="article">
-                <p><span class="article-num">Article 1<sup>er</sup>.</span> <span class="article-titre">— Définition des jeux de casino en ligne.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art1">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 1ᵉʳ</span>
+                    <span class="loi-article-titre">— Définition des jeux de casino en ligne</span>
+                    <a href="#note-art1" class="loi-article-note">[1]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>Après l'article L. 320-1 du code de la sécurité intérieure, il est inséré un article L. 320-1-1 ainsi rédigé :</p>
-                    <p>« Art. L. 320-1-1. — Sont des jeux de casino en ligne les jeux de contrepartie et les jeux de cercle exploités par des opérateurs agréés au moyen d'un service de communication au public en ligne, à l'exclusion des jeux mentionnés aux articles L. 320-6 et L. 320-7.</p>
-                    <p>« Les jeux de casino en ligne comprennent notamment les machines à sous virtuelles, les jeux de table simulés ou avec croupiers en direct, et tout autre jeu de hasard dont l'exploitation en ligne est autorisée par décret en Conseil d'État. »</p>
+                    <div class="modif">
+                        <p>« <em>Art. L. 320-1-1.</em> — Sont des jeux de casino en ligne les jeux de contrepartie et les jeux de cercle exploités par des opérateurs agréés au moyen d'un service de communication au public en ligne, à l'exclusion des jeux mentionnés aux articles L. 320-6 et L. 320-7.</p>
+                        <p>« Les jeux de casino en ligne comprennent notamment les machines à sous virtuelles, les jeux de table simulés ou avec croupiers en direct, et tout autre jeu de hasard dont l'exploitation en ligne est autorisée par décret en Conseil d'État. »</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 2.</span> <span class="article-titre">— Principe de l'agrément.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art2">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 2</span>
+                    <span class="loi-article-titre">— Principe de l'agrément</span>
+                    <a href="#note-art2" class="loi-article-note">[2]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>L'article L. 320-3 du code de la sécurité intérieure est complété par un alinéa ainsi rédigé :</p>
-                    <p>« L'exploitation des jeux de casino en ligne est subordonnée à l'obtention d'un agrément délivré par l'Autorité nationale des jeux dans les conditions prévues au présent titre. »</p>
+                    <div class="modif">
+                        <p>« L'exploitation des jeux de casino en ligne est subordonnée à l'obtention d'un agrément délivré par l'Autorité nationale des jeux dans les conditions prévues au présent titre. »</p>
+                    </div>
                 </div>
             </div>
 
-            <h5 class="chapitre-loi">Chapitre II — Conditions d'agrément</h5>
+            <p class="chapitre-loi">Chapitre II — Conditions d'agrément</p>
 
-            <div class="article">
-                <p><span class="article-num">Article 3.</span> <span class="article-titre">— Demande d'agrément.</span></p>
-                <div class="article-contenu">
-                    <p>La section 2 du chapitre I<sup>er</sup> du titre II du livre III du code de la sécurité intérieure est complétée par une sous-section 4 ainsi rédigée :</p>
-                    <p>« Sous-section 4 — Agrément des opérateurs de jeux de casino en ligne</p>
-                    <p>« Art. L. 321-36. — L'agrément mentionné à l'article L. 320-3 est délivré par l'Autorité nationale des jeux pour une durée de cinq ans renouvelable.</p>
-                    <p>« Le demandeur doit justifier :</p>
-                    <p class="alinea">« 1° De la régularité de sa situation au regard de ses obligations fiscales et sociales ;</p>
-                    <p class="alinea">« 2° De garanties suffisantes en matière de gouvernance, de capacités techniques et financières ;</p>
-                    <p class="alinea">« 3° De l'honorabilité de ses dirigeants et actionnaires de référence ;</p>
-                    <p class="alinea">« 4° De la conformité de son offre de jeux aux exigences de protection des joueurs définies au titre III de la présente loi ;</p>
-                    <p class="alinea">« 5° De la désignation d'un responsable jeu responsable dans les conditions prévues à l'article 7 de la présente loi.</p>
-                    <p>« Un décret en Conseil d'État précise les conditions et la procédure de délivrance, de renouvellement, de suspension et de retrait de l'agrément. »</p>
+            <div class="loi-article" id="art3">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 3</span>
+                    <span class="loi-article-titre">— Demande d'agrément</span>
+                    <a href="#note-art3" class="loi-article-note">[3]</a>
+                </p>
+                <div class="loi-article-contenu">
+                    <p>La section 2 du chapitre Iᵉʳ du titre II du livre III du code de la sécurité intérieure est complétée par une sous-section 4 ainsi rédigée :</p>
+                    <div class="modif">
+                        <p>« <em>Sous-section 4 — Agrément des opérateurs de jeux de casino en ligne</em></p>
+                        <p>« <em>Art. L. 321-36.</em> — L'agrément mentionné à l'article L. 320-3 est délivré par l'Autorité nationale des jeux pour une durée de cinq ans renouvelable.</p>
+                        <p>« Le demandeur doit justifier :</p>
+                        <p class="alinea">« 1° De la régularité de sa situation au regard de ses obligations fiscales et sociales ;</p>
+                        <p class="alinea">« 2° De garanties suffisantes en matière de gouvernance, de capacités techniques et financières ;</p>
+                        <p class="alinea">« 3° De l'honorabilité de ses dirigeants et actionnaires de référence ;</p>
+                        <p class="alinea">« 4° De la conformité de son offre de jeux aux exigences de protection des joueurs définies au titre III de la présente loi ;</p>
+                        <p class="alinea">« 5° De la désignation d'un délégué à la protection des joueurs dans les conditions prévues à l'article 7 de la présente loi.</p>
+                        <p>« Un décret en Conseil d'État précise les conditions et la procédure de délivrance, de renouvellement, de suspension et de retrait de l'agrément. »</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 4.</span> <span class="article-titre">— Obligations des opérateurs agréés.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art4">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 4</span>
+                    <span class="loi-article-titre">— Obligations des opérateurs agréés</span>
+                    <a href="#note-art4" class="loi-article-note">[4]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>Après l'article L. 321-36, il est inséré un article L. 321-37 ainsi rédigé :</p>
-                    <p>« Art. L. 321-37. — Les opérateurs agréés pour l'exploitation de jeux de casino en ligne sont tenus :</p>
-                    <p class="alinea">« 1° D'héberger sur le territoire national les données relatives aux comptes joueurs et aux opérations de jeu ;</p>
-                    <p class="alinea">« 2° De mettre en œuvre les dispositifs de lutte contre le blanchiment de capitaux et le financement du terrorisme prévus au titre VI du livre V du code monétaire et financier ;</p>
-                    <p class="alinea">« 3° De respecter les obligations de protection des joueurs prévues au titre III de la présente loi ;</p>
-                    <p class="alinea">« 4° De transmettre à l'Autorité nationale des jeux les données et informations nécessaires à l'exercice de ses missions de régulation et de contrôle ;</p>
-                    <p class="alinea">« 5° D'acquitter les prélèvements fiscaux et sociaux prévus au titre II de la présente loi. »</p>
+                    <div class="modif">
+                        <p>« <em>Art. L. 321-37.</em> — Les opérateurs agréés pour l'exploitation de jeux de casino en ligne sont tenus :</p>
+                        <p class="alinea">« 1° D'héberger sur le territoire national les données relatives aux comptes joueurs et aux opérations de jeu ;</p>
+                        <p class="alinea">« 2° De mettre en œuvre les dispositifs de lutte contre le blanchiment de capitaux et le financement du terrorisme prévus au titre VI du livre V du code monétaire et financier ;</p>
+                        <p class="alinea">« 3° De respecter les obligations de protection des joueurs prévues au titre III de la présente loi ;</p>
+                        <p class="alinea">« 4° De transmettre à l'Autorité nationale des jeux les données et informations nécessaires à l'exercice de ses missions de régulation et de contrôle ;</p>
+                        <p class="alinea">« 5° D'acquitter les prélèvements fiscaux et sociaux prévus au titre II de la présente loi. »</p>
+                    </div>
                 </div>
             </div>
 
-            <h4 class="titre-loi">TITRE II<br>RÉGIME FISCAL</h4>
+            <!-- TITRE II -->
+            <div class="titre-loi">
+                <span class="numero">Titre II</span>
+                <span class="intitule">Régime fiscal</span>
+            </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 5.</span> <span class="article-titre">— Prélèvement sur le produit brut des jeux.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art5">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 5</span>
+                    <span class="loi-article-titre">— Prélèvement sur le produit brut des jeux</span>
+                    <a href="#note-art5" class="loi-article-note">[5]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>I. — Il est institué un prélèvement sur le produit brut des jeux de casino en ligne, au sens de l'article L. 320-1-1 du code de la sécurité intérieure, réalisé par les opérateurs titulaires de l'agrément mentionné à l'article L. 320-3 du même code.</p>
                     <p>II. — Le produit brut des jeux est égal à la différence entre les sommes engagées par les joueurs et les sommes qui leur sont reversées à l'issue des parties.</p>
                     <p>III. — Le taux du prélèvement est fixé à 25 % du produit brut des jeux.</p>
@@ -2678,54 +3195,80 @@
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 6.</span> <span class="article-titre">— Taux de retour aux joueurs.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art6">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 6</span>
+                    <span class="loi-article-titre">— Taux de retour aux joueurs</span>
+                    <a href="#note-art6" class="loi-article-note">[6]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>I. — Le taux de retour aux joueurs des jeux de casino en ligne ne peut être inférieur à 88 % des sommes engagées.</p>
                     <p>II. — Les opérateurs agréés sont tenus d'afficher, de manière claire et visible pour chaque jeu proposé, le taux de retour théorique aux joueurs, exprimé en pourcentage des sommes engagées.</p>
                     <p>III. — Un décret en Conseil d'État précise les modalités de calcul, d'affichage et de contrôle du taux de retour aux joueurs.</p>
                 </div>
             </div>
 
-            <h4 class="titre-loi">TITRE III<br>PROTECTION DES JOUEURS</h4>
+            <!-- TITRE III -->
+            <div class="titre-loi">
+                <span class="numero">Titre III</span>
+                <span class="intitule">Protection des joueurs</span>
+            </div>
 
-            <h5 class="chapitre-loi">Chapitre I<sup>er</sup> — Le responsable jeu responsable</h5>
+            <p class="chapitre-loi">Chapitre Iᵉʳ — Le délégué à la protection des joueurs</p>
 
-            <div class="article">
-                <p><span class="article-num">Article 7.</span> <span class="article-titre">— Désignation du responsable jeu responsable.</span></p>
-                <div class="article-contenu">
-                    <p>I. — Tout opérateur titulaire de l'agrément mentionné à l'article L. 320-3 du code de la sécurité intérieure désigne un responsable jeu responsable.</p>
-                    <p>II. — Le responsable jeu responsable est chargé :</p>
-                    <p class="alinea">« 1° De veiller au respect par l'opérateur de ses obligations en matière de protection des joueurs ;</p>
-                    <p class="alinea">« 2° D'informer et de conseiller l'opérateur sur ces obligations ;</p>
-                    <p class="alinea">« 3° De coopérer avec l'Autorité nationale des jeux et de servir de point de contact sur les questions relatives à la protection des joueurs ;</p>
-                    <p class="alinea">« 4° De tenir un registre des joueurs présentant des comportements à risque et des mesures prises à leur égard ;</p>
-                    <p class="alinea">« 5° De rendre compte annuellement à l'Autorité nationale des jeux de l'exécution de ses missions.</p>
-                    <p>III. — Le responsable jeu responsable exerce ses missions en toute indépendance et ne peut être relevé de ses fonctions ni pénalisé par l'opérateur pour l'exercice de celles-ci.</p>
-                    <p>IV. — Un décret en Conseil d'État précise les conditions de qualification, de désignation et d'exercice des fonctions du responsable jeu responsable.</p>
+            <div class="loi-article" id="art7">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 7</span>
+                    <span class="loi-article-titre">— Désignation du délégué à la protection des joueurs</span>
+                    <a href="#note-art7" class="loi-article-note">[7]</a>
+                </p>
+                <div class="loi-article-contenu">
+                    <p>I. — Tout opérateur titulaire de l'agrément mentionné à l'article L. 320-3 du code de la sécurité intérieure désigne un délégué à la protection des joueurs.</p>
+                    <p>II. — Le délégué à la protection des joueurs est chargé :</p>
+                    <p class="alinea">1° De veiller au respect par l'opérateur de ses obligations en matière de protection des joueurs ;</p>
+                    <p class="alinea">2° D'informer et de conseiller l'opérateur sur ces obligations ;</p>
+                    <p class="alinea">3° De coopérer avec l'Autorité nationale des jeux et de servir de point de contact sur les questions relatives à la protection des joueurs ;</p>
+                    <p class="alinea">4° De tenir un registre des joueurs présentant des comportements à risque et des mesures prises à leur égard ;</p>
+                    <p class="alinea">5° De rendre compte annuellement à l'Autorité nationale des jeux de l'exécution de ses missions.</p>
+                    <p>III. — Le délégué à la protection des joueurs exerce ses missions en toute indépendance et ne peut être relevé de ses fonctions ni pénalisé par l'opérateur pour l'exercice de celles-ci.</p>
+                    <p>IV. — Un décret en Conseil d'État précise les conditions de qualification, de désignation et d'exercice des fonctions du délégué à la protection des joueurs.</p>
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 8.</span> <span class="article-titre">— Responsabilité du responsable jeu responsable.</span></p>
-                <div class="article-contenu">
-                    <p>Le responsable jeu responsable peut voir sa responsabilité personnelle engagée en cas de manquement grave et délibéré à ses obligations, sans préjudice de la responsabilité de l'opérateur.</p>
+            <div class="loi-article" id="art8">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 8</span>
+                    <span class="loi-article-titre">— Responsabilité du délégué à la protection des joueurs</span>
+                    <a href="#note-art8" class="loi-article-note">[8]</a>
+                </p>
+                <div class="loi-article-contenu">
+                    <p>Le délégué à la protection des joueurs peut voir sa responsabilité personnelle engagée en cas de manquement grave et délibéré à ses obligations, sans préjudice de la responsabilité de l'opérateur.</p>
                 </div>
             </div>
 
-            <h5 class="chapitre-loi">Chapitre II — Dispositifs de protection</h5>
+            <p class="chapitre-loi">Chapitre II — Dispositifs de protection</p>
 
-            <div class="article">
-                <p><span class="article-num">Article 9.</span> <span class="article-titre">— Fichier des interdits de jeu.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art9">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 9</span>
+                    <span class="loi-article-titre">— Fichier des interdits de jeu</span>
+                    <a href="#note-art9" class="loi-article-note">[9]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>L'article L. 320-9 du code de la sécurité intérieure est complété par un alinéa ainsi rédigé :</p>
-                    <p>« Les opérateurs de jeux de casino en ligne consultent le fichier des interdits de jeu préalablement à l'ouverture de tout compte joueur et avant toute opération de jeu. »</p>
+                    <div class="modif">
+                        <p>« Les opérateurs de jeux de casino en ligne consultent le fichier des interdits de jeu préalablement à l'ouverture de tout compte joueur et avant toute opération de jeu. »</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 10.</span> <span class="article-titre">— Limites de jeu.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art10">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 10</span>
+                    <span class="loi-article-titre">— Limites de jeu</span>
+                    <a href="#note-art10" class="loi-article-note">[10]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>I. — Tout joueur définit, lors de l'ouverture de son compte, des limites hebdomadaires de dépôt, de mise et de perte. Ces limites peuvent être modifiées à tout moment :</p>
                     <p class="alinea">— à la baisse, avec effet immédiat ;</p>
                     <p class="alinea">— à la hausse, avec un délai de carence de soixante-douze heures.</p>
@@ -2733,9 +3276,13 @@
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 11.</span> <span class="article-titre">— Auto-exclusion.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art11">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 11</span>
+                    <span class="loi-article-titre">— Auto-exclusion</span>
+                    <a href="#note-art11" class="loi-article-note">[11]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>I. — Tout joueur peut demander son auto-exclusion temporaire ou définitive de l'ensemble des sites de jeux de casino en ligne agréés.</p>
                     <p>II. — L'auto-exclusion temporaire est d'une durée minimale de vingt-quatre heures et maximale de six mois. Elle prend effet immédiatement.</p>
                     <p>III. — L'auto-exclusion définitive prend effet immédiatement et ne peut être levée qu'après un délai de trois ans, sur demande motivée du joueur.</p>
@@ -2743,73 +3290,113 @@
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 12.</span> <span class="article-titre">— Encadrement des machines à sous virtuelles.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art12">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 12</span>
+                    <span class="loi-article-titre">— Encadrement des machines à sous virtuelles</span>
+                    <a href="#note-art12" class="loi-article-note">[12]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>I. — La durée minimale entre deux tours de jeu sur les machines à sous virtuelles est fixée à trois secondes.</p>
                     <p>II. — Les fonctionnalités permettant l'enchaînement automatique des tours de jeu sont limitées à cinquante tours consécutifs.</p>
                     <p>III. — Un message d'information sur le temps de jeu écoulé et les sommes engagées est affiché toutes les trente minutes.</p>
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 13.</span> <span class="article-titre">— Détection des comportements à risque.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art13">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 13</span>
+                    <span class="loi-article-titre">— Détection des comportements à risque</span>
+                    <a href="#note-art13" class="loi-article-note">[13]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>I. — Les opérateurs agréés mettent en œuvre des dispositifs automatisés de détection des comportements de jeu à risque.</p>
                     <p>II. — Lorsqu'un comportement à risque est détecté, l'opérateur est tenu d'entrer en contact avec le joueur concerné pour lui proposer un accompagnement adapté.</p>
                     <p>III. — Un décret en Conseil d'État définit les indicateurs de comportement à risque et les modalités d'intervention des opérateurs.</p>
                 </div>
             </div>
 
-            <h5 class="chapitre-loi">Chapitre III — Fonds de lutte contre les addictions</h5>
+            <p class="chapitre-loi">Chapitre III — Fonds de lutte contre les addictions</p>
 
-            <div class="article">
-                <p><span class="article-num">Article 14.</span> <span class="article-titre">— Création du fonds.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art14">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 14</span>
+                    <span class="loi-article-titre">— Création du fonds</span>
+                    <a href="#note-art14" class="loi-article-note">[14]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>Après l'article L. 320-14 du code de la sécurité intérieure, il est inséré un article L. 320-15 ainsi rédigé :</p>
-                    <p>« Art. L. 320-15. — Il est créé un fonds de lutte contre les addictions aux jeux d'argent, géré par l'Autorité nationale des jeux.</p>
-                    <p>« Ce fonds est alimenté par la fraction du prélèvement sur le produit brut des jeux de casino en ligne mentionnée à l'article 5 de la présente loi.</p>
-                    <p>« Les ressources du fonds sont affectées au financement :</p>
-                    <p class="alinea">« 1° De programmes de recherche sur le jeu pathologique ;</p>
-                    <p class="alinea">« 2° D'actions de prévention et de sensibilisation ;</p>
-                    <p class="alinea">« 3° De dispositifs d'accompagnement et de soins des joueurs en difficulté. »</p>
+                    <div class="modif">
+                        <p>« <em>Art. L. 320-15.</em> — Il est créé un fonds de lutte contre les addictions aux jeux d'argent, géré par l'Autorité nationale des jeux.</p>
+                        <p>« Ce fonds est alimenté par la fraction du prélèvement sur le produit brut des jeux de casino en ligne mentionnée à l'article 5 de la présente loi.</p>
+                        <p>« Les ressources du fonds sont affectées au financement :</p>
+                        <p class="alinea">« 1° De programmes de recherche sur le jeu pathologique ;</p>
+                        <p class="alinea">« 2° D'actions de prévention et de sensibilisation ;</p>
+                        <p class="alinea">« 3° De dispositifs d'accompagnement et de soins des joueurs en difficulté. »</p>
+                    </div>
                 </div>
             </div>
 
-            <h4 class="titre-loi">TITRE IV<br>LUTTE CONTRE L'OFFRE ILLÉGALE</h4>
+            <!-- TITRE IV -->
+            <div class="titre-loi">
+                <span class="numero">Titre IV</span>
+                <span class="intitule">Lutte contre l'offre illégale</span>
+            </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 15.</span> <span class="article-titre">— Renforcement des sanctions pénales.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art15">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 15</span>
+                    <span class="loi-article-titre">— Renforcement des sanctions pénales</span>
+                    <a href="#note-art15" class="loi-article-note">[15]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>L'article 56 de la loi n° 2010-476 du 12 mai 2010 relative à l'ouverture à la concurrence et à la régulation du secteur des jeux d'argent et de hasard en ligne est ainsi modifié :</p>
                     <p>1° Au premier alinéa, les mots : « trois ans d'emprisonnement et 90 000 euros d'amende » sont remplacés par les mots : « cinq ans d'emprisonnement et 500 000 euros d'amende » ;</p>
                     <p>2° Il est ajouté un alinéa ainsi rédigé :</p>
-                    <p>« L'amende peut être portée à 10 % du chiffre d'affaires mondial hors taxes réalisé au cours de l'exercice précédent lorsque ce montant est supérieur à 500 000 euros. »</p>
+                    <div class="modif">
+                        <p>« L'amende peut être portée à 10 % du chiffre d'affaires mondial hors taxes réalisé au cours de l'exercice précédent lorsque ce montant est supérieur à 500 000 euros. »</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 16.</span> <span class="article-titre">— Action contre les intermédiaires.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art16">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 16</span>
+                    <span class="loi-article-titre">— Action contre les intermédiaires</span>
+                    <a href="#note-art16" class="loi-article-note">[16]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>I. — L'Autorité nationale des jeux peut mettre en demeure tout prestataire de services de paiement de cesser de traiter les transactions financières avec un opérateur de jeux de casino en ligne non agréé dans un délai de quarante-huit heures.</p>
                     <p>II. — L'Autorité nationale des jeux peut, dans les conditions prévues par le code de la sécurité intérieure et sous le contrôle du juge, ordonner aux hébergeurs et aux fournisseurs d'accès à internet le blocage des sites faisant la promotion d'opérateurs non agréés.</p>
                     <p>III. — Le fait de promouvoir, directement ou par affiliation, une offre de jeux de casino en ligne non agréée est puni d'un an d'emprisonnement et de 100 000 euros d'amende.</p>
                 </div>
             </div>
 
-            <h4 class="titre-loi">TITRE V<br>DISPOSITIONS TRANSITOIRES ET FINALES</h4>
+            <!-- TITRE V -->
+            <div class="titre-loi">
+                <span class="numero">Titre V</span>
+                <span class="intitule">Dispositions transitoires et finales</span>
+            </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 17.</span> <span class="article-titre">— Entrée en vigueur.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art17">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 17</span>
+                    <span class="loi-article-titre">— Entrée en vigueur</span>
+                    <a href="#note-art17" class="loi-article-note">[17]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>I. — La présente loi entre en vigueur le premier jour du dix-neuvième mois suivant sa promulgation.</p>
                     <p>II. — Les demandes d'agrément peuvent être déposées à compter du premier jour du septième mois suivant la promulgation de la présente loi.</p>
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 18.</span> <span class="article-titre">— Clause de revoyure.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art18">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 18</span>
+                    <span class="loi-article-titre">— Clause de revoyure</span>
+                    <a href="#note-art18" class="loi-article-note">[18]</a>
+                </p>
+                <div class="loi-article-contenu">
                     <p>Dans un délai de trois ans à compter de l'entrée en vigueur de la présente loi, le Gouvernement remet au Parlement un rapport évaluant :</p>
                     <p class="alinea">1° Le taux de canalisation du marché illégal vers le marché légal ;</p>
                     <p class="alinea">2° L'évolution de la prévalence du jeu problématique ;</p>
@@ -2819,32 +3406,219 @@
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 19.</span> <span class="article-titre">— Application outre-mer.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art19">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 19</span>
+                    <span class="loi-article-titre">— Application outre-mer</span>
+                </p>
+                <div class="loi-article-contenu">
                     <p>La présente loi est applicable en Guadeloupe, en Guyane, en Martinique, à La Réunion, à Mayotte, à Saint-Barthélemy, à Saint-Martin et à Saint-Pierre-et-Miquelon.</p>
                 </div>
             </div>
 
-            <div class="article">
-                <p><span class="article-num">Article 20.</span> <span class="article-titre">— Décrets d'application.</span></p>
-                <div class="article-contenu">
+            <div class="loi-article" id="art20">
+                <p class="loi-article-header">
+                    <span class="loi-article-num">Article 20</span>
+                    <span class="loi-article-titre">— Décrets d'application</span>
+                </p>
+                <div class="loi-article-contenu">
                     <p>Les décrets en Conseil d'État nécessaires à l'application de la présente loi sont pris dans un délai de douze mois à compter de sa promulgation.</p>
                 </div>
             </div>
 
-            <p class="separateur-annexe">✦ ✦ ✦</p>
+            <p class="separateur">✦ ✦ ✦</p>
 
-            <p style="text-align: center; font-style: italic; margin-top: 40px; color: #666;">
-                — Fin de l'annexe —
-            </p>
+            <!-- NOTES EXPLICATIVES -->
+            <div class="notes-explicatives">
+                <h3>Notes explicatives article par article</h3>
+
+                <div class="note-explicative" id="note-art1">
+                    <p class="note-explicative-header">[1] Article 1ᵉʳ — Définition des jeux de casino en ligne</p>
+                    <p>Cet article insère dans le code de la sécurité intérieure une définition des jeux de casino en ligne, en les distinguant des jeux déjà régulés (paris sportifs, paris hippiques, poker). L'inclusion explicite des « croupiers en direct » (live casino) répond à l'évolution du marché européen, où ce segment représente une part croissante du PBJ.</p>
+                    <p class="reference">Réf. : Danish Gambling Act 2012, section 18 ; UK Gambling Act 2005, section 6.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art2">
+                    <p class="note-explicative-header">[2] Article 2 — Principe de l'agrément</p>
+                    <p>L'agrément constitue la clé d'entrée sur le marché français, conformément au modèle retenu par la loi du 12 mai 2010 pour les paris en ligne. Ce système permet à l'État de contrôler l'accès au marché tout en respectant le droit européen (arrêts <em>Gambelli</em>, <em>Liga Portuguesa</em>).</p>
+                    <p class="reference">Réf. : Art. L. 321-1 et s. du code de la sécurité intérieure ; CJCE, 6 nov. 2003, Gambelli, C-243/01.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art3">
+                    <p class="note-explicative-header">[3] Article 3 — Demande d'agrément</p>
+                    <p>Les conditions d'agrément reprennent largement celles applicables aux opérateurs de paris en ligne, en y ajoutant la désignation obligatoire d'un délégué à la protection des joueurs (cf. art. 7). La durée de cinq ans correspond au standard européen.</p>
+                    <p class="reference">Réf. : Art. L. 321-1 à L. 321-5 CSI ; Danish Gambling Act, section 26.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art4">
+                    <p class="note-explicative-header">[4] Article 4 — Obligations des opérateurs agréés</p>
+                    <p>L'obligation d'héberger les données sur le territoire national vise à garantir l'accès du régulateur aux informations nécessaires à ses contrôles. Cette exigence existe déjà pour les paris en ligne (art. 31 de la loi du 12 mai 2010).</p>
+                    <p class="reference">Réf. : Art. L. 561-2 et s. du code monétaire et financier ; 4ᵉ directive anti-blanchiment (UE) 2015/849.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art5">
+                    <p class="note-explicative-header">[5] Article 5 — Prélèvement sur le produit brut des jeux</p>
+                    <p>Le choix d'une assiette sur le PBJ (et non sur les mises) est déterminant pour la réussite de la canalisation. L'étude Copenhagen Economics (2016) établit qu'une taxation sur les mises contraint les opérateurs à réduire leur TRJ, rendant leur offre moins attractive. Le taux de 25 % se situe dans la fourchette haute des recommandations (15-25 %) mais reste inférieur au taux danois (28 %).</p>
+                    <table class="tableau-comparatif">
+                        <tr><th>Pays</th><th>Assiette</th><th>Taux</th><th>Canalisation</th></tr>
+                        <tr><td>Danemark</td><td>PBJ</td><td>28 %</td><td>90 %</td></tr>
+                        <tr><td>Royaume-Uni</td><td>PBJ</td><td>21 %</td><td>élevée</td></tr>
+                        <tr><td>Espagne</td><td>PBJ</td><td>25 %</td><td>~85 %</td></tr>
+                        <tr><td>Allemagne</td><td>Mises</td><td>5,3 %</td><td>~60 %</td></tr>
+                        <tr><td>Proposition</td><td>PBJ</td><td>25 %</td><td>obj. 85 %</td></tr>
+                    </table>
+                    <p class="reference">Réf. : Copenhagen Economics, Gambling Tax Study, 2016 ; Spillemyndigheden, rapport annuel 2023.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art6">
+                    <p class="note-explicative-header">[6] Article 6 — Taux de retour aux joueurs</p>
+                    <p>Le plancher de 88 % (sans plafond) permet aux opérateurs légaux de proposer des TRJ compétitifs face au marché noir (où les TRJ atteignent 95-97 %). À titre de comparaison, les paris sportifs français sont plafonnés à 85 %, ce qui contribue à la persistance du marché illégal sur ce segment.</p>
+                    <p class="reference">Réf. : Art. 4, décret n° 2010-605 du 12 mai 2010 ; EGBA, European Online Gambling Key Figures, 2024.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art7">
+                    <p class="note-explicative-header">[7] Article 7 — Désignation du délégué à la protection des joueurs</p>
+                    <p>Le « délégué à la protection des joueurs » (DPJ) s'inspire directement du délégué à la protection des données (DPO) institué par le RGPD. Comme le DPO, il est désigné en raison de ses qualifications professionnelles, exerce ses missions en toute indépendance, et constitue le point de contact avec l'autorité de contrôle.</p>
+                    <p class="reference">Réf. : RGPD (UE) 2016/679, art. 37 à 39 ; UK Gambling Commission, Licence Conditions and Codes of Practice, section 3.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art8">
+                    <p class="note-explicative-header">[8] Article 8 — Responsabilité du délégué à la protection des joueurs</p>
+                    <p>La possibilité d'engager la responsabilité personnelle du DPJ en cas de manquement grave vise à renforcer l'effectivité de ses missions. Ce régime s'inspire de celui applicable aux commissaires aux comptes.</p>
+                    <p class="reference">Réf. : Art. L. 822-17 du code de commerce (responsabilité des CAC).</p>
+                </div>
+
+                <div class="note-explicative" id="note-art9">
+                    <p class="note-explicative-header">[9] Article 9 — Fichier des interdits de jeu</p>
+                    <p>Le fichier des interdits de jeu (FIJ), géré par le ministère de l'Intérieur, recense environ 45 000 personnes (2024). Son extension aux casinos en ligne permet d'offrir aux joueurs vulnérables une protection effective.</p>
+                    <p class="reference">Réf. : Art. L. 320-9 CSI ; décret n° 2010-518 du 19 mai 2010.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art10">
+                    <p class="note-explicative-header">[10] Article 10 — Limites de jeu</p>
+                    <p>Les limites de dépôt, de mise et de perte existent déjà pour les paris en ligne. Le délai de carence de 72 heures pour les augmentations vise à prévenir les décisions impulsives.</p>
+                    <p class="reference">Réf. : Art. 26, loi n° 2010-476 du 12 mai 2010 ; Blaszczynski et al., « A science-based framework for responsible gambling », 2004.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art11">
+                    <p class="note-explicative-header">[11] Article 11 — Auto-exclusion</p>
+                    <p>Le système d'auto-exclusion centralisé s'inspire du modèle danois ROFUS (<em>Register Over Frivilligt Udelukkede Spillere</em>), qui permet au joueur de s'exclure de l'ensemble des sites agréés en une seule démarche.</p>
+                    <p class="reference">Réf. : Danish Gambling Act, section 41 ; Spillemyndigheden, ROFUS annual report, 2023.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art12">
+                    <p class="note-explicative-header">[12] Article 12 — Encadrement des machines à sous virtuelles</p>
+                    <p>Les machines à sous constituent le segment le plus addictogène des jeux de casino, en raison de la rapidité des cycles de jeu. Les modérateurs prévus s'inspirent des réformes britanniques (<em>High Stakes</em>, 2023).</p>
+                    <p class="reference">Réf. : DCMS, High Stakes: Gambling Reform for the Digital Age, avril 2023 ; Parke & Griffiths, « The role of structural characteristics in gambling », 2007.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art13">
+                    <p class="note-explicative-header">[13] Article 13 — Détection des comportements à risque</p>
+                    <p>La détection algorithmique des comportements à risque existe déjà pour les opérateurs de paris en ligne (art. 26 de la loi de 2010). Elle repose sur l'analyse des données de jeu pour identifier les signaux d'alerte.</p>
+                    <p class="reference">Réf. : ANJ, Lignes directrices sur la prévention du jeu excessif, 2021 ; UK Gambling Commission, Customer Interaction Guidance, 2022.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art14">
+                    <p class="note-explicative-header">[14] Article 14 — Création du fonds</p>
+                    <p>Le fonds de lutte contre les addictions, alimenté par 3 % du PBJ (soit environ 30 à 45 M€/an), permet de financer la recherche, la prévention et le soin. Ce mécanisme existe au Royaume-Uni (<em>gambling levy</em>).</p>
+                    <p class="reference">Réf. : DCMS, High Stakes, 2023, chapitre 5 ; OMS, Public health approach to gambling, 2017.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art15">
+                    <p class="note-explicative-header">[15] Article 15 — Renforcement des sanctions pénales</p>
+                    <p>Les sanctions actuelles (3 ans, 90 000 €) sont insuffisamment dissuasives. Le relèvement à 5 ans et 500 000 € (ou 10 % du CA mondial) aligne la France sur les standards européens.</p>
+                    <p class="reference">Réf. : Art. 56, loi n° 2010-476 ; D.lgs. italiano 231/2001, art. 25-bis.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art16">
+                    <p class="note-explicative-header">[16] Article 16 — Action contre les intermédiaires</p>
+                    <p>L'efficacité de la lutte contre le marché illégal dépend de la capacité à assécher les flux financiers. Le blocage des paiements s'est avéré très efficace aux États-Unis (UIGEA 2006).</p>
+                    <p class="reference">Réf. : Unlawful Internet Gambling Enforcement Act (US), 2006 ; art. 61, loi n° 2010-476.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art17">
+                    <p class="note-explicative-header">[17] Article 17 — Entrée en vigueur</p>
+                    <p>Le délai de 18 mois permet aux opérateurs de préparer leurs dossiers, à l'ANJ d'instruire les demandes, et à l'administration fiscale d'adapter ses systèmes.</p>
+                    <p class="reference">Réf. : Art. 69, loi n° 2010-476 du 12 mai 2010.</p>
+                </div>
+
+                <div class="note-explicative" id="note-art18">
+                    <p class="note-explicative-header">[18] Article 18 — Clause de revoyure</p>
+                    <p>La clause de revoyure à trois ans permet d'évaluer l'efficacité du dispositif et d'ajuster les paramètres si nécessaire. Ce mécanisme existe au Royaume-Uni (<em>triennial review</em>).</p>
+                    <p class="reference">Réf. : UK Gambling Commission, Triennial Review ; Commission européenne, recommandation 2014/478/UE.</p>
+                </div>
+            </div>
+
+            <p class="annexe-fin">— Fin de l'annexe —</p>
         </article>
+        <!-- SYNTHÈSE -->
+        <div class="section-header" style="page-break-before: always;">
+            <h1>Synthèse</h1>
+        </div>
+
+        <div class="encadre" style="background: #f5f5f5; border: none; padding: 30px;">
+            <p><strong>Thèse.</strong> La France a hérité de la scolastique médiévale un cadre conceptuel qui condamne le jeu d'argent dans son <em>essence</em> plutôt que dans ses <em>effets</em>. Cette matrice prohibitive, transposée en vocabulaire républicain après la laïcisation de l'État, constitue un « verrou idéologique » qui ne cède que par nécessité budgétaire, jamais par conviction. Chaque ouverture majeure du marché des jeux en France a coïncidé avec la réunion de trois conditions : une crise budgétaire, une pression externe, et une justification sectorielle permettant de sauver la face.</p>
+
+            <p><strong>Diagnostic.</strong> L'interdiction des casinos en ligne, maintenue depuis 2010, a créé un marché noir massif (estimation : 1 à 2 millions de joueurs réguliers, 750 millions à 1,5 milliard d'euros de PBJ selon l'étude ANJ-PwC 2023). Cette prohibition ne protège personne : elle abandonne les joueurs à des opérateurs sans licence, sans contrôle d'identité, sans limite de mise, sans dispositif de détection des comportements à risque. La France est, avec Chypre, le seul État membre de l'UE à interdire totalement les casinos en ligne.</p>
+
+            <p><strong>Options.</strong></p>
+            <p style="margin-left: 20px;"><em>1. Statu quo :</em> maintien de l'interdiction, acceptation du marché noir, absence de protection, absence de recettes fiscales. Coût estimé : 300-600 M€/an de recettes non perçues.</p>
+            <p style="margin-left: 20px;"><em>2. Ouverture restrictive (modèle allemand) :</em> fiscalité sur les mises, limites de mise basses, offre partielle. Risque : échec de la canalisation (60 % en Allemagne).</p>
+            <p style="margin-left: 20px;"><em>3. Ouverture régulée (modèle danois) :</em> fiscalité sur le PBJ (25-35 %), offre complète avec modérateurs, dispositifs de protection renforcés. Objectif réaliste : 85 % de canalisation à trois ans.</p>
+
+            <p><strong>Recommandation.</strong> Adopter une régulation inspirée du modèle danois, avec : (1) une fiscalité modérée sur le PBJ pour assurer la compétitivité du marché légal ; (2) une offre complète (machines à sous, casino en direct) pour ne pas pousser les joueurs vers l'illégal ; (3) des garde-fous stricts (extension du fichier des interdits de jeu, limites de mise, détection algorithmique, « délégué à la protection des joueurs » obligatoire) ; (4) une articulation avec les casinos terrestres (modèle belge de licence complémentaire envisageable). Une proposition de loi en 20 articles figure dans l'annexe ci-dessus.</p>
+        </div>
 
     
 
 <!-- ========== FIN DE FICHIER ========== -->
 
 
+        <!-- BIBLIOGRAPHIE SÉLECTIVE -->
+        <div class="section-header" style="page-break-before: always;">
+            <h1>Bibliographie sélective</h1>
+        </div>
+
+        <div style="margin-bottom: 40px;">
+            <h4 style="margin-top: 30px; margin-bottom: 15px; color: #2c3e50;">Ouvrages et thèses</h4>
+            <p style="margin-bottom: 10px;">ELIAS Norbert, <em>La Société de cour</em>, trad. fr., Paris, Flammarion, 1985 (1<sup>re</sup> éd. allemande 1969).</p>
+            <p style="margin-bottom: 10px;">FREUNDLICH Francis, <em>Le Monde du jeu à Paris, 1715-1800</em>, Paris, Albin Michel, 1995.</p>
+            <p style="margin-bottom: 10px;">LEGAY Marie-Laure (dir.), <em>Les Loteries royales dans l'Europe des Lumières, 1680-1815</em>, Villeneuve d'Ascq, Presses universitaires du Septentrion, 2016.</p>
+            <p style="margin-bottom: 10px;">MIERS David, <em>Regulating Commercial Gambling: Past, Present and Future</em>, Oxford University Press, 2004.</p>
+            <p style="margin-bottom: 10px;">THOMAS D'AQUIN, <em>Somme théologique</em>, II-II, q. 95, a. 8.</p>
+
+            <h4 style="margin-top: 30px; margin-bottom: 15px; color: #2c3e50;">Articles et contributions</h4>
+            <p style="margin-bottom: 10px;">GUERCHOUN Frédéric, « Jeux et paris », <em>Répertoire de droit civil</em>, Dalloz, 2022.</p>
+            <p style="margin-bottom: 10px;">HAROUEL Jean-Louis, « De François I<sup>er</sup> au pari en ligne, histoire du jeu en France », <em>Pouvoirs</em>, n° 139, 2011, p. 5-14.</p>
+            <p style="margin-bottom: 10px;">MARIONNEAU Virve <em>et al.</em>, « Channelling and taxation in European online gambling markets », <em>Harm Reduction Journal</em>, vol. 22, n° 56, 2025.</p>
+            <p style="margin-bottom: 10px;">MARTIGNONI-HUTIN Jean-Pierre, « Du « loto de la Cour » au loto sportif. Enjeux politiques, enjeux sociaux, enjeux moraux », <em>Éthique publique</em>, vol. 17, n° 1, 2015.</p>
+            <p style="margin-bottom: 10px;">PLANZER Simon et WARDLE Heather, « The Comparative Effectiveness of Regulatory Approaches and the Impact of Advertising on Propensity for Problem Gambling », <em>Responsible Gambling Trust</em>, 2011.</p>
+
+            <h4 style="margin-top: 30px; margin-bottom: 15px; color: #2c3e50;">Rapports institutionnels</h4>
+            <p style="margin-bottom: 10px;">ANJ (Autorité nationale des jeux), rapports annuels, 2020-2024.</p>
+            <p style="margin-bottom: 10px;">Copenhagen Economics, <em>Gambling Tax Study</em>, 2016.</p>
+            <p style="margin-bottom: 10px;">Department for Culture, Media and Sport (UK), <em>High Stakes: Gambling Reform for the Digital Age</em>, Cm 819, avril 2023.</p>
+            <p style="margin-bottom: 10px;">EGBA (European Gaming and Betting Association), <em>European Online Gambling Key Figures</em>, éditions annuelles.</p>
+            <p style="margin-bottom: 10px;">OFDT (Observatoire français des drogues et des tendances addictives), <em>Tendances</em>, n° 165, 2024.</p>
+            <p style="margin-bottom: 10px;">PwC / ANJ, <em>Étude sur le marché illégal des jeux d'argent en ligne</em>, décembre 2023.</p>
+            <p style="margin-bottom: 10px;">Spillemyndigheden (Danemark), <em>The Gambling Market in Numbers</em>, rapports annuels.</p>
+            <p style="margin-bottom: 10px;">UK Gambling Commission, <em>Industry Statistics</em>, rapports trimestriels.</p>
+
+            <h4 style="margin-top: 30px; margin-bottom: 15px; color: #2c3e50;">Jurisprudence européenne (sélection)</h4>
+            <p style="margin-bottom: 10px;">CJCE, 24 mars 1994, <em>Schindler</em>, C-275/92.</p>
+            <p style="margin-bottom: 10px;">CJCE, 21 sept. 1999, <em>Läärä</em>, C-124/97.</p>
+            <p style="margin-bottom: 10px;">CJCE, 6 nov. 2003, <em>Gambelli</em>, C-243/01.</p>
+            <p style="margin-bottom: 10px;">CJCE, 8 sept. 2009, <em>Liga Portuguesa</em>, C-42/07.</p>
+            <p style="margin-bottom: 10px;">CJUE, 8 sept. 2010, <em>Markus Stoß</em>, C-316/07.</p>
+
+            <h4 style="margin-top: 30px; margin-bottom: 15px; color: #2c3e50;">Textes législatifs français (principaux)</h4>
+            <p style="margin-bottom: 10px;">Loi du 21 mai 1836 portant prohibition des loteries.</p>
+            <p style="margin-bottom: 10px;">Loi du 2 juin 1891 réglementant le pari mutuel sur les hippodromes.</p>
+            <p style="margin-bottom: 10px;">Loi du 15 juin 1907 réglementant les jeux dans les cercles et les casinos.</p>
+            <p style="margin-bottom: 10px;">Loi n° 2010-476 du 12 mai 2010 relative à l'ouverture à la concurrence et à la régulation du secteur des jeux d'argent et de hasard en ligne.</p>
+            <p style="margin-bottom: 10px;">Ordonnance n° 2019-1015 du 2 octobre 2019 réformant la régulation des jeux d'argent et de hasard.</p>
+            <p style="margin-bottom: 10px;">Code de la sécurité intérieure, articles L. 320-1 et suivants.</p>
+        </div>
         
         <!-- REMERCIEMENTS -->
         <div class="remerciements">
