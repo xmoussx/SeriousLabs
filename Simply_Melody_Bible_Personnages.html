@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simply Melody — Bible des Personnages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Header / Titre */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: rgba(0,0,0,0.3);
+            margin-bottom: 60px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #e8d5b7, #f5e6d3, #e8d5b7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+        
+        .hero .doc-type {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 1px solid #e8d5b7;
+            color: #e8d5b7;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        
+        /* Sections */
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #e8d5b7;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(232,213,183,0.3);
+            letter-spacing: 0.1em;
+        }
+        
+        .section-title .icon {
+            margin-right: 15px;
+        }
+        
+        /* Personnages */
+        .character-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-left: 4px solid #e8d5b7;
+        }
+        
+        .character-card.antagonist {
+            border-left-color: #8b0000;
+            background: rgba(139,0,0,0.1);
+        }
+        
+        .character-name {
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .character-tagline {
+            font-style: italic;
+            color: #a0a0a0;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+        
+        .character-card.antagonist .character-tagline {
+            color: #cc6666;
+        }
+        
+        /* Info tables */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .info-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .info-table td:first-child {
+            width: 180px;
+            color: #e8d5b7;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Sous-sections */
+        h3 {
+            color: #e8d5b7;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 30px 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        h3.danger {
+            color: #cc6666;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #d0d0d0;
+        }
+        
+        .highlight {
+            background: rgba(232,213,183,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 3px solid #e8d5b7;
+        }
+        
+        .highlight.dark {
+            background: rgba(139,0,0,0.15);
+            border-left-color: #8b0000;
+        }
+        
+        .highlight p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #e8d5b7;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 30px;
+            margin: 30px 0;
+            border-top: 1px solid rgba(232,213,183,0.3);
+            border-bottom: 1px solid rgba(232,213,183,0.3);
+        }
+        
+        .quote.dark {
+            color: #cc6666;
+            border-color: rgba(139,0,0,0.3);
+        }
+        
+        /* Listes */
+        ul {
+            margin: 15px 0 15px 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #d0d0d0;
+        }
+        
+        /* Arc dramatique */
+        .arc {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .arc-item {
+            flex: 1;
+            background: rgba(232,213,183,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .arc-item .act {
+            color: #e8d5b7;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 5px;
+        }
+        
+        /* Table of contents */
+        .toc {
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .toc h2 {
+            color: #e8d5b7;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .toc ul {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 10px;
+        }
+        
+        .toc a {
+            color: #d0d0d0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .toc a:hover {
+            color: #e8d5b7;
+        }
+        
+        .toc .indent {
+            margin-left: 20px;
+        }
+        
+        /* Mise en scène spéciale */
+        .mise-en-scene {
+            background: linear-gradient(135deg, rgba(232,213,183,0.1) 0%, rgba(139,0,0,0.1) 100%);
+            border: 1px solid rgba(232,213,183,0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .mise-en-scene h4 {
+            color: #e8d5b7;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+        
+        .parallel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .parallel-item {
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .parallel-item.video {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .parallel-item.live {
+            background: rgba(232,213,183,0.15);
+            border: 1px solid rgba(232,213,183,0.3);
+        }
+        
+        .parallel-item h5 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+        
+        .parallel-item.video h5 {
+            color: #888;
+        }
+        
+        .parallel-item.live h5 {
+            color: #e8d5b7;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 0.1em;
+            }
+            
+            .section, .character-card {
+                padding: 25px;
+            }
+            
+            .arc {
+                flex-direction: column;
+            }
+            
+            .parallel {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- HERO -->
+        <header class="hero">
+            <h1>SIMPLY MELODY</h1>
+            <p class="subtitle">Comédie musicale en 2 actes</p>
+            <span class="doc-type">Bible des Personnages</span>
+        </header>
+        
+        <!-- TABLE DES MATIÈRES -->
+        <nav class="toc">
+            <h2>Sommaire</h2>
+            <ul>
+                <li><a href="#pitch">Pitch & Thèmes</a></li>
+                <li><a href="#twists">Twists narratifs</a></li>
+                <li><a href="#personnages">Personnages</a>
+                    <ul class="indent">
+                        <li><a href="#melodie">Mélodie Verdier-Kallas</a></li>
+                        <li><a href="#hugues">Hugues Verdier</a></li>
+                        <li><a href="#helena">Héléna Kallas</a></li>
+                        <li><a href="#fred">Fred Beaumont</a></li>
+                        <li><a href="#ines">Inès Darmon</a></li>
+                        <li><a href="#varga">Konstantin Varga</a></li>
+                    </ul>
+                </li>
+                <li><a href="#mise-en-scene">Mise en scène clé</a></li>
+                <li><a href="#next">Prochaines étapes</a></li>
+            </ul>
+        </nav>
+        
+        <!-- PITCH -->
+        <section class="section" id="pitch">
+            <h2 class="section-title"><span class="icon">✦</span>Pitch</h2>
+            
+            <p>Mélodie a 15 ans. Elle est brillante, sensible, douée pour la musique... et profondément seule.</p>
+            
+            <p>Elle a quitté une classe de musique d'élite, ne supportant plus la pression, et vit mal l'absence de sa mère, violoniste renommée toujours en tournée. Pour combler ce manque, Mélodie écrit une chanson intime et douloureuse qu'elle publie sur les réseaux sociaux. La chanson est si bouleversante que ses camarades croient que sa mère est morte. Mélodie ne corrige pas le malentendu.</p>
+            
+            <p>Très vite, elle devient virale. Soutenue, admirée, enfin regardée, elle existe.</p>
+            
+            <p>Mais la vérité finit par émerger : sa mère est bien vivante. La vague d'empathie se transforme en déferlante de haine. Mélodie est humiliée, harcelée à l'école comme en ligne, prisonnière d'un mensonge qui l'a dépassée.</p>
+            
+            <p>Face à l'effondrement de sa fille, son père tente de la protéger et de la reconstruire, malgré leur relation fragilisée par l'adolescence et ses propres désillusions. Ensemble, ils affrontent la chute, la honte, et la question la plus difficile : <em>comment se relever quand tout le monde vous a vu tomber ?</em></p>
+            
+            <h3>Thèmes</h3>
+            <p>L'identité • La solitude • La violence des réseaux sociaux • Le besoin vital d'un regard bienveillant pour grandir • Les projections parentales • La reconstruction après la honte publique • L'abus de pouvoir dans le monde de l'art • Le silence des victimes.</p>
+            
+            <h3>Ton musical</h3>
+            <ul>
+                <li><strong>Mélodie :</strong> Piano-voix doux et intimiste (style Pomme)</li>
+                <li><strong>Hugues & Fred :</strong> Numéros Broadway énergiques et nostalgiques (style Greatest Showman)</li>
+                <li><strong>Héléna :</strong> Musique classique, violon</li>
+                <li><strong>Varga :</strong> Pas de musique. Le silence est son arme.</li>
+            </ul>
+            
+            <h3>Public cible</h3>
+            <p>Adolescentes qui s'identifient à Mélodie. Parents qui reconnaissent leurs propres failles dans Hugues et Héléna.</p>
+        </section>
+        
+        <!-- TWISTS -->
+        <section class="section" id="twists">
+            <h2 class="section-title"><span class="icon">✦</span>Twists narratifs</h2>
+            
+            <h3>Le twist principal</h3>
+            <p>On imagine pendant tout l'Acte 1 que la mère de Mélodie est morte. Elle apparaît à la fin de l'acte sous forme d'apparition fantomatique dans un halo de lumière. Le public doute : vision schizophrène ou réalité ? L'Acte 2 révèle qu'elle est bien vivante.</p>
+            
+            <h3>Le mensonge passif</h3>
+            <p>Mélodie ne dit jamais « ma mère est morte ». Elle laisse les gens interpréter sa chanson. Quand elle réalise le malentendu, elle est déjà grisée par l'attention et ne corrige pas.</p>
+            
+            <h3>La révélation</h3>
+            <p>Inès, la « nouvelle amie » de Mélodie, découvre le compte Instagram d'Héléna avec une photo récente mère-fille. Blessée de ne pas avoir été mise dans la confidence, elle révèle la vérité publiquement.</p>
+            
+            <h3>Le même bourreau</h3>
+            <p>Konstantin Varga, le chef d'orchestre qui a brisé la carrière d'Héléna il y a 10 ans, est aussi le professeur remplaçant qui a détruit Mélodie dans sa classe d'élite. Ni Héléna ni Hugues ne le savent. Quand cette connexion émerge, c'est dévastateur.</p>
+            
+            <h3>La violence cachée</h3>
+            <p>Héléna a exercé des violences psychologiques sur Mélodie enfant, avec un débordement physique unique. Cet événement est évoqué discrètement, sans diaboliser la mère que Mélodie aime malgré tout.</p>
+            
+            <h3>La fin douce-amère</h3>
+            <p>Le rêve de Mélodie est de rapprocher ses parents. Dans la scène finale, elle réussit à leur faire se tenir la main. Mais dès qu'elle a le dos tourné, ils remettent les mains dans leurs poches. Les adultes restent prisonniers de leurs blessures.</p>
+        </section>
+        
+        <!-- PERSONNAGES -->
+        <section class="section" id="personnages">
+            <h2 class="section-title"><span class="icon">✦</span>Personnages</h2>
+            
+            <!-- MÉLODIE -->
+            <article class="character-card" id="melodie">
+                <h2 class="character-name">Mélodie Verdier-Kallas</h2>
+                <p class="character-tagline">« Louloudi » — Personnage principal</p>
+                
+                <table class="info-table">
+                    <tr><td>Âge</td><td>15 ans</td></tr>
+                    <tr><td>Classe</td><td>Seconde (entrée au lycée)</td></tr>
+                    <tr><td>Établissement</td><td>Lycée public parisien, 9ème arrondissement</td></tr>
+                    <tr><td>Surnom maternel</td><td>« Louloudi » (fleur en grec)</td></tr>
+                    <tr><td>Surnom au lycée</td><td>« La Kallas »</td></tr>
+                    <tr><td>Instrument</td><td>Piano et chant</td></tr>
+                    <tr><td>Style musical</td><td>Piano-voix intimiste, doux, avec du souffle (style Pomme)</td></tr>
+                </table>
+                
+                <h3>Apparence</h3>
+                <p>Belle sans le savoir. Tenues soignées mais jamais voyantes, comme si elle avait appris à être « présentable » sans jamais être elle-même — le formatage de la classe d'élite encore sur elle. Au fil de l'histoire, elle évolue vers un style plus personnel, légèrement vintage/artsy.</p>
+                
+                <h3>Parcours</h3>
+                <p>Pianote depuis l'âge de 3 ans. A passé tout son collège dans une classe de musique d'élite, sous la pression de sa mère — et sous la coupe de Konstantin Varga, professeur remplaçant qui l'a méthodiquement déconstruite.</p>
+                <p>A quitté ce cursus après avoir (inconsciemment ?) saboté son examen final. Arrive en seconde dans un lycée public ordinaire : fish out of water.</p>
+                <p>Elle crée des chansons depuis toujours. La chanson virale n'est pour elle qu'une création parmi d'autres — ce qui renforce le décalage avec la réaction du public.</p>
+                
+                <h3>Psychologie</h3>
+                <table class="info-table">
+                    <tr><td>Désir conscient</td><td>Être écoutée, être vue</td></tr>
+                    <tr><td>Désir inconscient</td><td>Un cocon familial moins déchiré</td></tr>
+                    <tr><td>Plus grande peur</td><td>Continuer à décevoir</td></tr>
+                    <tr><td>Mécanisme de défense</td><td>Se réfugier au piano, chanter dans sa chambre</td></tr>
+                </table>
+                
+                <h3>Le mensonge</h3>
+                <p>Elle ment passivement : elle ne dit jamais que sa mère est morte, mais ne corrige pas quand les gens l'interprètent ainsi. Elle est grisée par l'attention mais tente rapidement d'en parler à son père, qui ne comprend pas. La période de « gloire » dure environ un mois avant que la vérité n'éclate.</p>
+                
+                <h3>Relations</h3>
+                <p><strong>Père (Hugues) :</strong> Relation fusionnelle dans l'enfance, elle se réfugiait auprès de lui quand sa mère était trop stricte. Cassure à l'adolescence : elle lui reproche de ne pas l'avoir protégée, de ne pas avoir compris l'ampleur de son effondrement.</p>
+                <p><strong>Mère (Héléna) :</strong> Amour profond malgré la violence subie. Mélodie porte le poids des projections maternelles et de l'absence.</p>
+                <p><strong>Inès :</strong> Première vraie connexion au lycée. Trahison douloureuse.</p>
+                <p><strong>Varga :</strong> Son bourreau. Elle ne sait pas qu'il a aussi détruit sa mère.</p>
+                
+                <h3>Arc dramatique</h3>
+                <div class="arc">
+                    <div class="arc-item">
+                        <div class="act">Acte 1</div>
+                        Solitude → Chanson virale → Gloire éphémère → Révélation → Chute
+                    </div>
+                    <div class="arc-item">
+                        <div class="act">Acte 2</div>
+                        Humiliation → Confrontation avec la vérité → Reconstruction fragile
+                    </div>
+                </div>
+                
+                <p class="quote">« Être aimée pour ce qu'elle est vraiment, pas pour l'image qu'elle projette. »</p>
+            </article>
+            
+            <!-- HUGUES -->
+            <article class="character-card" id="hugues">
+                <h2 class="character-name">Hugues Verdier</h2>
+                <p class="character-tagline">Le père — « Un Hugh Jackman raté »</p>
+                
+                <table class="info-table">
+                    <tr><td>Âge</td><td>45 ans</td></tr>
+                    <tr><td>Métier actuel</td><td>Commercial en solutions d'impression à La Défense</td></tr>
+                    <tr><td>Ancien rêve</td><td>Chanteur-danseur de comédie musicale</td></tr>
+                    <tr><td>Situation</td><td>Séparé d'Héléna, élève Mélodie seul</td></tr>
+                </table>
+                
+                <h3>Apparence</h3>
+                <p>Costume mal ajusté, cravate jamais droite, mais quelque chose dans le regard qui dit qu'il a connu les projecteurs. Court tous les matins, reste mince mais sans définition — « fait du sport mais ne prend pas de muscle ». Attendrissant dans son élégance ratée.</p>
+                
+                <h3>Parcours</h3>
+                <p>A fait des castings pendant des années, obtenu des rôles de doublure, jamais la chance du premier rôle. Un rival lui a soufflé LE rôle de sa vie, déclenchant un burnout. Sa dépression a fait fuir Héléna, qui ne supportait pas son « manque de sérieux » et ses échecs répétés.</p>
+                <p>Aujourd'hui il vend des photocopieurs. Il chante encore parfois avec son meilleur ami Fred — Mélodie trouve ça gênant.</p>
+                
+                <h3>Psychologie</h3>
+                <table class="info-table">
+                    <tr><td>Désir conscient</td><td>Voir sa fille heureuse</td></tr>
+                    <tr><td>Désir inconscient</td><td>N'a pas abandonné l'idée de faire carrière</td></tr>
+                    <tr><td>Plus grande honte</td><td>Ses échecs aux auditions</td></tr>
+                    <tr><td>Gestion du conflit</td><td>Humour défensif, puis fuite</td></tr>
+                </table>
+                
+                <h3>Ce qu'il sait</h3>
+                <p>Il sait pour les violences psychologiques d'Héléna, et pour le débordement physique. Mais que faire ? Lui-même ne proposait pas de modèle plus structurant. Il a contenu sa colère et laissé Héléna partir. C'est sa faute silencieuse.</p>
+                <p>Il ne sait <strong>pas</strong> que Varga est l'homme qui a détruit Héléna. Pour lui, ce sont deux histoires séparées.</p>
+                
+                <h3>Relations</h3>
+                <p><strong>Mélodie :</strong> Relation fusionnelle dans l'enfance, fragilisée par l'adolescence. Il pense que le milieu artistique rend malheureux et a minimisé l'échec de la classe d'élite — erreur qu'il paiera.</p>
+                <p><strong>Héléna :</strong> Ne l'aime plus. S'est rendu compte qu'ils n'avaient pas la même vision des choses. Pas de regret sur la rupture, mais de la culpabilité sur ses propres échecs.</p>
+                <p><strong>Fred :</strong> Son ancre. Leur amitié a survécu à tout. Fred est le seul devant qui il peut encore chanter.</p>
+                
+                <h3>Son schéma répétitif</h3>
+                <div class="highlight">
+                    <p>Quand Héléna lui a parlé de Varga il y a 10 ans, Hugues a réagi par la rage — il voulait « lui casser la gueule », faire du bruit, se battre. Héléna avait besoin d'écoute, de présence. Elle a eu un homme en colère.</p>
+                    <p>Des années plus tard, quand il découvre ce que Varga a fait à Mélodie, il réagit <strong>exactement pareil</strong>. Et Mélodie, comme sa mère avant elle, avait besoin de soutien — pas d'agressivité.</p>
+                    <p><strong>Il n'apprend pas de ses erreurs.</strong></p>
+                </div>
+                
+                <h3>Arc dramatique</h3>
+                <p>Passer de « protéger en minimisant » et « défendre en agressant » à vraiment <em>être là</em>. Cesser de fuir. Cesser de faire du bruit.</p>
+                
+                <p class="quote">« Devenir le père dont Mélodie a besoin, pas celui qu'il aurait voulu être. »</p>
+            </article>
+            
+            <!-- HÉLÉNA -->
+            <article class="character-card" id="helena">
+                <h2 class="character-name">Héléna Kallas</h2>
+                <p class="character-tagline">La mère — La virtuose déchue</p>
+                
+                <table class="info-table">
+                    <tr><td>Âge</td><td>38 ans (a eu Mélodie à 23 ans)</td></tr>
+                    <tr><td>Métier</td><td>Violoniste professionnelle</td></tr>
+                    <tr><td>Ancien orchestre</td><td>Orchestre de Paris (premier violon)</td></tr>
+                    <tr><td>Orchestre actuel</td><td>Ensemble spécialisé musiques de film/jeux vidéo</td></tr>
+                    <tr><td>Résidence</td><td>Appartement dans le 9ème, souvent en tournée</td></tr>
+                </table>
+                
+                <h3>Parcours</h3>
+                <p>Grecque, élevée dans le culte de l'excellence. A eu Mélodie trop jeune, pas prête. Carrière brillante à l'Orchestre de Paris, interrompue suite au harcèlement de Konstantin Varga — un traumatisme qu'elle ne mentionne jamais.</p>
+                <p>Aujourd'hui reléguée aux musiques de film et de jeux vidéo. Pour elle, c'est une déchéance. Pour le grand public, c'est prestigieux. Ce décalage la ronge. Elle maquille sa chute sur Instagram.</p>
+                
+                <h3>Psychologie</h3>
+                <table class="info-table">
+                    <tr><td>Ce qu'elle voulait pour Mélodie</td><td>La meilleure. Un génie du piano. Une soliste.</td></tr>
+                    <tr><td>Pourquoi elle poussait</td><td>Projection complète de ses propres échecs</td></tr>
+                    <tr><td>Conscience de sa violence</td><td>Oui, elle le sait et s'en veut terriblement</td></tr>
+                    <tr><td>Pourquoi la distance</td><td>Soulagement coupable — elle s'éloigne aussi de sa propre toxicité</td></tr>
+                </table>
+                
+                <h3>La violence qu'elle a subie</h3>
+                <div class="highlight dark">
+                    <p>Il y a 10 ans, Varga l'a prise sous son aile. L'a élevée, fait briller. Puis les frontières se sont brouillées. Remarques sur son physique. Invitations en privé. Main qui s'attarde. Quand elle a refusé d'aller plus loin, le vent a tourné.</p>
+                    <p>Soudain elle jouait « sans âme ». Ses solos redistribués. Les critiques qu'il soufflait aux journalistes la décrivaient comme « techniquement correcte mais froide ». En deux saisons, elle était poussée vers la sortie.</p>
+                    <p>Elle n'a jamais parlé. Qui l'aurait crue face à Konstantin Varga ?</p>
+                </div>
+                
+                <h3>La violence qu'elle a exercée</h3>
+                <p>Violences psychologiques majoritairement : pression constante, exigences impossibles, humiliations. Un débordement physique unique, dont Mélodie se souvient à peine.</p>
+                <p>Son logiciel est « programmé comme ça » — elle ne sait pas aimer autrement qu'en exigeant. C'est sa tragédie : victime devenue bourreau.</p>
+                
+                <h3>Image publique</h3>
+                <p>Instagram strictement professionnel, mais avec juste assez de photos mère-fille pour paraître présente. C'est cette vitrine qui causera sa perte quand Inès découvrira la vérité.</p>
+                
+                <h3>Présence dans le spectacle</h3>
+                <p><strong>Acte 1 :</strong> Absente physiquement, évoquée. Apparition finale dans un halo de lumière — le public doute de sa réalité.</p>
+                <p><strong>Acte 2 :</strong> Présente, personnage principal. Chanson solo probable (sa version des faits ? ses regrets ?).</p>
+                
+                <h3>Arc dramatique</h3>
+                <p>Affronter ce qu'elle a fait. Affronter ce qu'on lui a fait. Pas forcément être pardonnée — mais être vue telle qu'elle est. Et peut-être, enfin, parler.</p>
+                
+                <p class="quote">« Être une bonne mère. Prendre enfin les bonnes décisions pour sa fille. »</p>
+            </article>
+            
+            <!-- FRED -->
+            <article class="character-card" id="fred">
+                <h2 class="character-name">Fred Beaumont</h2>
+                <p class="character-tagline">Le meilleur ami — « Tonton Fred »</p>
+                
+                <table class="info-table">
+                    <tr><td>Âge</td><td>47 ans</td></tr>
+                    <tr><td>Métier</td><td>Animateur périscolaire (école primaire du 18ème)</td></tr>
+                    <tr><td>Situation</td><td>Célibataire chronique</td></tr>
+                    <tr><td>Domicile</td><td>Petit appartement à Barbès, affiches de comédies musicales aux murs</td></tr>
+                    <tr><td>Lien avec Hugues</td><td>Meilleurs amis depuis 25 ans</td></tr>
+                    <tr><td>Énergie</td><td>Style Josh Gad — l'optimiste blessé</td></tr>
+                </table>
+                
+                <h3>Apparence & présence</h3>
+                <p>Légèrement enrobé, toujours en mouvement, parle avec les mains, rit fort. Le genre de type qui entre dans une pièce et qui <em>remplit</em> l'espace.</p>
+                <p>L'optimiste blessé — celui qui fait des blagues pour éviter qu'on voie qu'il a mal. Quand il arrête de sourire, le silence est assourdissant.</p>
+                
+                <h3>Parcours</h3>
+                <p>Rencontre Hugues à 22 ans lors d'une audition catastrophique pour Les Misérables — recalés tous les deux au premier tour. Début d'une amitié indéfectible.</p>
+                <p>A fait le deuil de sa carrière... ou croit l'avoir fait. Chaque fois qu'il voit une comédie musicale, il pleure dans le noir. Il n'en parle jamais.</p>
+                <p>Aujourd'hui il fait chanter des enfants de 6 ans, monte des spectacles de fin d'année en carton. C'est « temporaire » depuis 15 ans — et c'est le moment le plus heureux de sa semaine.</p>
+                
+                <h3>Psychologie</h3>
+                <p>Pousse Hugues à « vivre le rêve » parce que si Hugues abandonne complètement, ça veut dire que lui aussi doit accepter que c'est fini. Hugues qui réussit, même un peu, c'est une victoire par procuration.</p>
+                <p>Généreux jusqu'à l'oubli de soi. Quelques histoires d'amour, jamais rien de durable — il a peur de décevoir quelqu'un sur la durée.</p>
+                
+                <h3>Moments clés</h3>
+                <div class="highlight">
+                    <p><strong>Scène avec Mélodie (Acte 2) :</strong> Quand tout le monde lui tourne le dos, Fred est celui qui reste. Il lui raconte Hugues jeune — le feu qu'il avait, les espoirs qu'il portait. Il lui dit : « Ton père a jamais su se battre pour lui. Mais pour toi, il le fera. »</p>
+                    <p><strong>Moment de vérité :</strong> Hugues lui dit « T'es pas obligé de toujours faire ça, Fred. » Le masque tombe.</p>
+                </div>
+                
+                <h3>Moments musicaux</h3>
+                <p><strong>Duo avec Hugues (Acte 1) :</strong> Numéro comique — deux quadras qui refont une chorégraphie de Grease dans le salon, Mélodie consternée mais attendrie.</p>
+                <p><strong>Solo (Acte 2) :</strong> Ballade douce-amère — « Les rêves des autres » — sur le fait de vivre à travers les espoirs de son meilleur ami.</p>
+                
+                <p class="quote">« Fred Beaumont, c'est le type qui fait rire tout le monde sauf lui-même. »</p>
+            </article>
+            
+            <!-- INÈS -->
+            <article class="character-card" id="ines">
+                <h2 class="character-name">Inès Darmon</h2>
+                <p class="character-tagline">L'amie / La traîtresse</p>
+                
+                <table class="info-table">
+                    <tr><td>Âge</td><td>15 ans</td></tr>
+                    <tr><td>Classe</td><td>Seconde (camarade de Mélodie)</td></tr>
+                    <tr><td>Situation familiale</td><td>Parents divorcés, vit avec sa mère dans le 10ème</td></tr>
+                    <tr><td>Réseaux sociaux</td><td>~2000 followers Instagram sans effort</td></tr>
+                </table>
+                
+                <h3>Apparence & énergie</h3>
+                <p>Jolie, sociable, <em>normale</em> — tout ce que Mélodie n'arrive pas à être. Le genre de fille qui connaît les codes, qui sait quoi dire et quand. Aucun talent artistique particulier — et ça la complexe secrètement.</p>
+                
+                <h3>Pourquoi elle s'approche de Mélodie</h3>
+                <p>D'abord la curiosité : Mélodie débarque de nulle part, ne parle à personne, a ce truc mystérieux. Puis la chanson devient virale et Inès est fascinée. Elle veut être proche de cette lumière.</p>
+                <p>Elle devient « l'amie » stratégique : aide Mélodie à naviguer les codes sociaux, lui dit quoi poster, quand répondre. Elle se sent utile, importante — le cerveau derrière l'artiste.</p>
+                
+                <h3>Le ver dans le fruit</h3>
+                <p>Inès ressent une jalousie croissante. Mélodie a le talent, l'attention, les articles. Inès a quoi ? Le rôle de l'assistante ? Elle voulait briller <em>avec</em> Mélodie, pas <em>derrière</em> elle.</p>
+                
+                <h3>La trahison</h3>
+                <p>Elle découvre le compte Instagram d'Héléna avec une photo récente mère-fille. Elle confronte d'abord Mélodie, lui donne une chance de s'expliquer. Mélodie, paniquée, ment encore ou minimise.</p>
+                <p>Inès, blessée de ne pas être traitée en vraie amie (« tu me fais pas confiance »), décide de révéler la vérité publiquement — se convainquant que c'est juste.</p>
+                
+                <h3>Ce qu'elle représente</h3>
+                <p>Pas une méchante — une ado ordinaire qui fait un choix cruel dans un moment de blessure. Elle regrette ensuite, mais c'est trop tard. Elle incarne la violence « banale » des réseaux : pas de haine, juste de l'indifférence aux conséquences.</p>
+                
+                <h3>Arc dramatique</h3>
+                <div class="arc">
+                    <div class="arc-item">
+                        <div class="act">Acte 1</div>
+                        L'amie providentielle, solaire, rassurante
+                    </div>
+                    <div class="arc-item">
+                        <div class="act">Transition</div>
+                        La découverte, la confrontation, la trahison
+                    </div>
+                    <div class="arc-item">
+                        <div class="act">Acte 2</div>
+                        Regrets, tentative de réconciliation, possible happy ending
+                    </div>
+                </div>
+                
+                <h3>Moments musicaux</h3>
+                <p><strong>Duo avec Mélodie (Acte 1) :</strong> Pop légère, complice — « On va tout casser » — deux ados qui planifient la conquête des réseaux.</p>
+                <p><strong>Solo (Acte 2, optionnel) :</strong> Confession/justification — sur la jalousie et le besoin d'exister.</p>
+                
+                <p class="quote">« Inès Darmon, c'est l'amie que tout le monde a eue ou a été : celle qui t'aime jusqu'à ce que ta lumière lui fasse de l'ombre. »</p>
+            </article>
+            
+            <!-- VARGA -->
+            <article class="character-card antagonist" id="varga">
+                <h2 class="character-name">Konstantin Varga</h2>
+                <p class="character-tagline">L'antagoniste — Le génie intouchable</p>
+                
+                <table class="info-table">
+                    <tr><td>Âge</td><td>58 ans</td></tr>
+                    <tr><td>Origine</td><td>Hongrois, naturalisé français</td></tr>
+                    <tr><td>Fonction principale</td><td>Chef d'orchestre de renommée internationale</td></tr>
+                    <tr><td>Fonction secondaire</td><td>Professeur invité au Conservatoire / Examinateur</td></tr>
+                    <tr><td>Présence musicale</td><td>Aucune. Le silence est son arme.</td></tr>
+                </table>
+                
+                <h3>Apparence & présence</h3>
+                <p>Grand, mince, cheveux gris coiffés en arrière, toujours impeccablement habillé. Col roulé noir sous veste de costume. Mains de pianiste qu'il utilise comme des outils de précision — ou des armes.</p>
+                <p>Il entre dans une pièce et l'air change. Voix grave, posée, jamais élevée. Il n'a pas besoin de crier pour terrifier. Chaque mot est choisi, chaque silence est une menace.</p>
+                
+                <h3>Le génie reconnu</h3>
+                <p>Varga est <em>objectivement</em> brillant. Ses interprétations de Mahler font pleurer. Il a dirigé Berlin, Vienne, Chicago. Les critiques l'adorent. Les musiciens le craignent.</p>
+                <p>Il incarne l'idée que <strong>le génie excuse tout</strong> — une philosophie qu'il a transformée en système.</p>
+                
+                <h3 class="danger">Sa méthode</h3>
+                <p>Varga ne hurle pas, ne frappe pas. Il <strong>déconstruit</strong>.</p>
+                <ul>
+                    <li>Il repère les failles de chacun et appuie dessus méthodiquement</li>
+                    <li>Il alterne entre éloge excessif et démolition totale — le cycle classique du manipulateur</li>
+                    <li>Il isole ses victimes (« les autres ne te comprennent pas comme moi »)</li>
+                    <li>Il transforme l'exigence artistique en justification morale</li>
+                    <li>Il utilise le gaslighting : « Tu as mal compris », « Tu es trop sensible »</li>
+                </ul>
+                <p>Ses victimes finissent par croire qu'elles sont le problème.</p>
+                
+                <h3 class="danger">Ce qu'il a fait à Héléna (il y a 10 ans)</h3>
+                <div class="highlight dark">
+                    <p>Héléna, 28 ans, premier violon prometteur. Varga, nouveau directeur musical, la remarque. La prend sous son aile. La pousse, l'élève, la fait briller.</p>
+                    <p>Puis les frontières se brouillent. Remarques sur son physique. Invitations en privé. Main sur l'épaule qui s'attarde. Quand elle refuse d'aller plus loin, le vent tourne.</p>
+                    <p>Soudain elle joue « sans âme ». Ses solos sont redistribués. En deux saisons, elle est poussée vers la sortie. Elle n'a jamais parlé. Qui l'aurait crue ?</p>
+                </div>
+                
+                <h3 class="danger">Ce qu'il fait à Mélodie (le présent)</h3>
+                <div class="highlight dark">
+                    <p>Le professeur titulaire de la classe d'élite tombe malade. Varga propose de le remplacer. Il reconnaît le nom : Kallas. La fille d'Héléna ? Intéressant.</p>
+                    <p>Il ne dit rien. Mais il sait. Et il applique la même méthode :</p>
+                    <ul>
+                        <li>D'abord l'éloge : « Tu as quelque chose de rare, Mélodie. »</li>
+                        <li>Puis la pression : « Mais tu gâches tout. »</li>
+                        <li>Puis la comparaison : « Ta mère avait du feu. Toi, tu es... tiède. »</li>
+                        <li>Puis l'isolement : « Les autres progressent. Pas toi. »</li>
+                    </ul>
+                    <p>Mélodie, déjà fragilisée, s'effondre. Elle sabote son examen pour <em>échapper</em>.</p>
+                </div>
+                
+                <h3>Fonction dramatique</h3>
+                <table class="info-table">
+                    <tr><td>Antagoniste</td><td>Le seul vrai « méchant » — mais pas caricatural</td></tr>
+                    <tr><td>Lien tragique</td><td>Connecte Héléna et Mélodie par leur trauma commun</td></tr>
+                    <tr><td>Thème</td><td>L'abus de pouvoir dans l'art, le silence des victimes</td></tr>
+                    <tr><td>Catalyseur</td><td>Sa violence déclenche la fuite de Mélodie</td></tr>
+                    <tr><td>Révélation</td><td>Quand Héléna apprend son rôle, ça ouvre sa propre guérison</td></tr>
+                </table>
+                
+                <h3>Présence scénique</h3>
+                <p><strong>Pas de chanson.</strong> Quand il est sur scène, la musique s'arrête. Le silence est son arme. Ça le distingue des autres personnages et le rend plus glaçant.</p>
+                <p>Il apparaît peu mais chaque apparition est marquante : une masterclass où il détruit Mélodie, peut-être une confrontation avec Héléna à l'Acte 2.</p>
+                
+                <h3>Sa fin</h3>
+                <p>Pas de punition spectaculaire. Peut-être même qu'il continue, intouché. C'est réaliste et glaçant.</p>
+                <p>Ou alors : Héléna décide de parler. Enfin. La fin reste ouverte sur ce courage tardif.</p>
+                
+                <p class="quote dark">« Konstantin Varga, c'est l'homme qui a appris à transformer la cruauté en art — et que personne n'a jamais arrêté. »</p>
+            </article>
+        </section>
+        
+        <!-- MISE EN SCÈNE CLÉ -->
+        <section class="section" id="mise-en-scene">
+            <h2 class="section-title"><span class="icon">✦</span>Mise en scène clé</h2>
+            
+            <p>Une scène de mise en abîme qui révèle le schéma répétitif d'Hugues.</p>
+            
+            <div class="mise-en-scene">
+                <h4>La scène du parallèle</h4>
+                
+                <div class="parallel">
+                    <div class="parallel-item video">
+                        <h5>📹 Sur l'écran (vidéo)</h5>
+                        <p>Vidéo filmée par Mélodie sur son téléphone. Plan amateur, tremblant.</p>
+                        <p><strong>Hugues</strong> rage contre Varga pour ce qu'il a fait à sa fille. Il crie, il menace, il veut « lui casser la gueule ». Il fait du bruit. Il se bat.</p>
+                        <p>Mélodie, derrière la caméra, ne dit rien.</p>
+                    </div>
+                    <div class="parallel-item live">
+                        <h5>🎭 Sur scène (live, flashback)</h5>
+                        <p>10 ans plus tôt. Même appartement ? Même disposition.</p>
+                        <p><strong>Héléna</strong> raconte à Hugues ce que Varga lui a fait. Sa voix tremble. Elle a besoin d'être entendue.</p>
+                        <p>Et Hugues réagit exactement comme dans la vidéo : il rage, il crie, il veut « lui casser la gueule ». Il fait du bruit. Il se bat.</p>
+                        <p>Héléna se ferme.</p>
+                    </div>
+                </div>
+                
+                <h4 style="margin-top: 30px;">Ce que le public comprend</h4>
+                <ul>
+                    <li><strong>Hugues ne sait pas</strong> que c'est le même homme. Pour lui, ce sont deux histoires séparées.</li>
+                    <li><strong>Héléna et Mélodie</strong> attendaient du soutien, de l'écoute — pas de l'agressivité envers Varga.</li>
+                    <li><strong>Hugues n'apprend pas</strong> de ses erreurs. Il répète le même schéma, à 10 ans d'intervalle.</li>
+                    <li>Sa rage part d'un bon sentiment — mais elle écrase les femmes qu'il veut protéger.</li>
+                </ul>
+                
+                <h4 style="margin-top: 30px;">Impact dramatique</h4>
+                <p>Cette scène est le cœur de l'arc d'Hugues. C'est le moment où le public (et peut-être Hugues lui-même) voit le pattern. La question devient : va-t-il enfin changer ? Ou va-t-il continuer à faire du bruit pendant que les femmes de sa vie se taisent ?</p>
+            </div>
+        </section>
+        
+        <!-- RÔLES SECONDAIRES -->
+        <section class="section">
+            <h2 class="section-title"><span class="icon">✦</span>Rôles secondaires</h2>
+            
+            <p>Les rôles secondaires seront principalement des <strong>danseurs et des chœurs</strong>, définis en fonction des besoins des numéros musicaux.</p>
+            
+            <h3>Rôles identifiés</h3>
+            <ul>
+                <li><strong>Élèves du lycée :</strong> Camarades de classe, participants aux numéros d'ensemble (viralité, harcèlement)</li>
+                <li><strong>Élèves de la classe d'élite :</strong> Témoins silencieux de la destruction de Mélodie par Varga</li>
+                <li><strong>Chœur « Internet » :</strong> Voix des réseaux sociaux — admirateurs puis harceleurs</li>
+                <li><strong>Enfants de l'école de Fred :</strong> Pour son numéro de spectacle de fin d'année ?</li>
+            </ul>
+            
+            <p>À définir plus précisément lors du placement des chansons.</p>
+        </section>
+        
+        <!-- PROCHAINES ÉTAPES -->
+        <section class="section" id="next">
+            <h2 class="section-title"><span class="icon">✦</span>Prochaines étapes</h2>
+            
+            <table class="info-table">
+                <tr><td>1</td><td><strong>Structure des deux actes</strong> — Grandes séquences, climax, transitions</td></tr>
+                <tr><td>2</td><td><strong>Placement des chansons</strong> — Moments d'émotion qui demandent une chanson</td></tr>
+                <tr><td>3</td><td><strong>Séquencier détaillé</strong> — Scène par scène : qui, où, quoi, enjeu</td></tr>
+                <tr><td>4</td><td><strong>Rôles secondaires</strong> — Définir selon les besoins des numéros</td></tr>
+                <tr><td>5</td><td><strong>Livret (book)</strong> — Dialogues et transitions parlées</td></tr>
+                <tr><td>6</td><td><strong>Lyrics</strong> — Paroles des chansons</td></tr>
+                <tr><td>7</td><td><strong>Musique</strong> — Composition</td></tr>
+            </table>
+        </section>
+        
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>Simply Melody — Bible des Personnages — Version 1.0</p>
+            <p>Document de travail — Janvier 2026</p>
+        </footer>
+        
+    </div>
+</body>
+</html>
