@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simply Melody — Kumpletong Bibliya v2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: rgba(0,0,0,0.3);
+            margin-bottom: 60px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #e8d5b7, #f5e6d3, #e8d5b7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+        
+        .hero .doc-type {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 1px solid #e8d5b7;
+            color: #e8d5b7;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        
+        /* Navigation */
+        .toc {
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .toc h2 {
+            color: #e8d5b7;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .toc-section {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .toc-section h3 {
+            color: #e8d5b7;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .toc ul {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 5px;
+        }
+        
+        .toc a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .toc a:hover {
+            color: #e8d5b7;
+        }
+        
+        /* Sections */
+        .section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #e8d5b7;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(232,213,183,0.3);
+            letter-spacing: 0.1em;
+        }
+        
+        /* Actes */
+        .acte-header {
+            background: linear-gradient(135deg, rgba(232,213,183,0.2) 0%, rgba(232,213,183,0.05) 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid rgba(232,213,183,0.3);
+        }
+        
+        .acte-header h2 {
+            font-size: 2.5rem;
+            color: #e8d5b7;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+        }
+        
+        .acte-header .acte-subtitle {
+            font-size: 1.3rem;
+            color: #a0a0a0;
+            font-style: italic;
+        }
+        
+        .acte-header .acte-theme {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(232,213,183,0.2);
+            color: #d0d0d0;
+        }
+        
+        /* Séquences */
+        .sequence {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 4px solid #4a5568;
+        }
+        
+        .sequence.has-song {
+            border-left-color: #e8d5b7;
+        }
+        
+        .sequence.climax {
+            border-left-color: #c53030;
+            background: rgba(197,48,48,0.1);
+        }
+        
+        .sequence-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .sequence-number {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .sequence-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin: 5px 0;
+        }
+        
+        .sequence-location {
+            font-style: italic;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+        
+        .sequence-content p {
+            color: #c0c0c0;
+            margin-bottom: 12px;
+        }
+        
+        /* Indices */
+        .indices {
+            background: rgba(232,213,183,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .indices-title {
+            font-size: 0.8rem;
+            color: #e8d5b7;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+        
+        .indices ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .indices li {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Chansons */
+        .song {
+            background: linear-gradient(135deg, rgba(232,213,183,0.15) 0%, rgba(232,213,183,0.05) 100%);
+            border: 1px solid rgba(232,213,183,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .song-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .song-icon {
+            font-size: 1.5rem;
+        }
+        
+        .song-title {
+            font-size: 1.2rem;
+            color: #e8d5b7;
+            font-weight: 500;
+        }
+        
+        .song-meta {
+            font-size: 0.85rem;
+            color: #a0a0a0;
+        }
+        
+        .song-description {
+            color: #c0c0c0;
+            font-size: 0.95rem;
+            margin-top: 10px;
+        }
+        
+        .song-lyrics {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-style: italic;
+            color: #d0d0d0;
+            white-space: pre-line;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        /* No song */
+        .no-song {
+            background: rgba(100,100,100,0.1);
+            border: 1px dashed rgba(150,150,150,0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            color: #888;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        /* Personnages */
+        .character-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-left: 4px solid #e8d5b7;
+        }
+        
+        .character-card.antagonist {
+            border-left-color: #8b0000;
+            background: rgba(139,0,0,0.1);
+        }
+        
+        .character-name {
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .character-tagline {
+            font-style: italic;
+            color: #a0a0a0;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+        
+        .character-card.antagonist .character-tagline {
+            color: #cc6666;
+        }
+        
+        /* Tables */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .info-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .info-table td:first-child {
+            width: 200px;
+            color: #e8d5b7;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Headings */
+        h3 {
+            color: #e8d5b7;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 30px 0 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        h3.danger {
+            color: #cc6666;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #d0d0d0;
+        }
+        
+        /* Highlights */
+        .highlight {
+            background: rgba(232,213,183,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 3px solid #e8d5b7;
+        }
+        
+        .highlight.dark {
+            background: rgba(139,0,0,0.15);
+            border-left-color: #8b0000;
+        }
+        
+        .highlight p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: #e8d5b7;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 30px;
+            margin: 30px 0;
+            border-top: 1px solid rgba(232,213,183,0.3);
+            border-bottom: 1px solid rgba(232,213,183,0.3);
+        }
+        
+        .quote.dark {
+            color: #cc6666;
+            border-color: rgba(139,0,0,0.3);
+        }
+        
+        /* Lists */
+        ul {
+            margin: 15px 0 15px 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #d0d0d0;
+        }
+        
+        /* Mise en scène */
+        .mise-en-scene {
+            background: linear-gradient(135deg, rgba(232,213,183,0.1) 0%, rgba(139,0,0,0.1) 100%);
+            border: 1px solid rgba(232,213,183,0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .mise-en-scene h4 {
+            color: #e8d5b7;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+        
+        .parallel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .parallel-item {
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .parallel-item.video {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .parallel-item.live {
+            background: rgba(232,213,183,0.15);
+            border: 1px solid rgba(232,213,183,0.3);
+        }
+        
+        .parallel-item h5 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+        
+        .parallel-item.video h5 {
+            color: #888;
+        }
+        
+        .parallel-item.live h5 {
+            color: #e8d5b7;
+        }
+        
+        /* Recap tables */
+        .recap-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .recap-table th {
+            background: rgba(232,213,183,0.2);
+            color: #e8d5b7;
+            padding: 12px;
+            text-align: left;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .recap-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: #d0d0d0;
+        }
+        
+        .recap-table tr:hover td {
+            background: rgba(255,255,255,0.05);
+        }
+        
+        /* Lyrics Full */
+        .lyrics-full {
+            background: rgba(0,0,0,0.4);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            border: 1px solid rgba(232,213,183,0.2);
+        }
+        
+        .lyrics-full h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .lyrics-full .song-meta {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .lyrics-section {
+            margin-bottom: 25px;
+        }
+        
+        .lyrics-section-title {
+            color: #e8d5b7;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            opacity: 0.7;
+        }
+        
+        .lyrics-text {
+            color: #e0e0e0;
+            line-height: 1.9;
+            font-size: 1rem;
+        }
+        
+        /* Method section */
+        .method-box {
+            background: rgba(100,200,150,0.1);
+            border: 1px solid rgba(100,200,150,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .method-box h4 {
+            color: #7dcea0;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .check-good {
+            color: #7dcea0;
+        }
+        
+        .check-warn {
+            color: #f4d03f;
+        }
+        
+        /* Code blocks for Suno */
+        .suno-prompt {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #b0e0b0;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 0.1em;
+            }
+            
+            .section, .character-card {
+                padding: 25px;
+            }
+            
+            .parallel {
+                grid-template-columns: 1fr;
+            }
+            
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- HERO -->
+        <header class="hero">
+            <h1>SIMPLY MELODY</h1>
+            <p class="subtitle">Musikal na komedya sa 2 yugto</p>
+            <span class="doc-type">Kumpletong Bibliya — Dokumento ng Trabaho</span>
+        </header>
+        
+        <!-- TALAAN NG NILALAMAN -->
+        <nav class="toc">
+            <h2>Talaan ng Nilalaman</h2>
+            <div class="toc-grid">
+                <div class="toc-section">
+                    <h3>Mga Pundasyon</h3>
+                    <ul>
+                        <li><a href="#pitch">Pitch at Mga Tema</a></li>
+                        <li><a href="#twists">Mga Narrative Twist</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>Mga Tauhan</h3>
+                    <ul>
+                        <li><a href="#melodie">Mélodie</a></li>
+                        <li><a href="#hugues">Hugues</a></li>
+                        <li><a href="#helena">Héléna</a></li>
+                        <li><a href="#fred">Fred</a></li>
+                        <li><a href="#ines">Inès</a></li>
+                        <li><a href="#varga">Varga</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>Istraktura</h3>
+                    <ul>
+                        <li><a href="#acte1">Yugto 1 — Ang Pagluluksa</a></li>
+                        <li><a href="#acte2">Yugto 2 — Ang Katotohanan</a></li>
+                        <li><a href="#recap">Buod ng mga Kanta</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>Mga Liriko</h3>
+                    <ul>
+                        <li><a href="#ptit-demon">Isang Maliit na Demonyo</a></li>
+                        <li><a href="#suno">Prompt para sa Suno</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>Pamamaraan</h3>
+                    <ul>
+                        <li><a href="#methode">Pagsulat ng Kanta</a></li>
+                        <li><a href="#types-chansons">Mga Uri ng Kanta</a></li>
+                        <li><a href="#next">Mga Susunod na Hakbang</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ============================================ -->
+        <!-- BAHAGI 1: MGA PUNDASYON -->
+        <!-- ============================================ -->
+        
+        <!-- PITCH -->
+        <section class="section" id="pitch">
+            <h2 class="section-title">✦ Pitch</h2>
+            
+            <p>Si Mélodie ay 15 taong gulang. Siya ay matalino, sensitibo, mahusay sa musika... at lubhang nag-iisa.</p>
+            
+            <p>Umalis siya sa isang elite na klase ng musika, hindi na makayanan ang presyon, at hirap sa paglayo ng kanyang ina, isang kilalang biyolinista na palaging nasa tour. Para punan ang kakulangan, nagsulat si Mélodie ng isang malalim at masakit na kanta na kanyang ipinost sa social media. Napakahimig ng kanta kaya naisip ng kanyang mga kaklase na namatay ang kanyang ina. Hindi itinuwid ni Mélodie ang maling akala.</p>
+            
+            <p>Napakabilis, naging viral siya. Sinusuportahan, hinahangaan, sa wakas ay pinapansin, umiral na siya.</p>
+            
+            <p>Ngunit lumabas ang katotohanan: buhay ang kanyang ina. Ang alon ng simpatiya ay naging malakas na daluyong ng galit. Napahiya si Mélodie, hinihampas sa paaralan at online, bilanggo ng isang kasinungalingan na lumampas sa kanya.</p>
+            
+            <p>Sa harap ng pagbagsak ng kanyang anak, sinusubukan ng kanyang ama na protektahan at itaguyod siya, sa kabila ng kanilang marupok na relasyon dahil sa pagiging teenager at sa kanyang sariling mga kabiguan. Magkasama, hinaharap nila ang pagbagsak, ang kahihiyan, at ang pinakamahirap na tanong: <em>paano ka babangon kapag nakita ka ng lahat na nahulog?</em></p>
+            
+            <h3>Mga Tema</h3>
+            <p>Pagkakakilanlan • Kalungkutan • Karahasan ng social media • Ang mahalagang pangangailangan ng mabait na tingin para lumaki • Mga inaasahan ng magulang • Pagbangon matapos ang pampublikong kahihiyan • Pang-aabuso ng kapangyarihan sa mundo ng sining • Ang katahimikan ng mga biktima.</p>
+            
+            <h3>Musical na Tono</h3>
+            <ul>
+                <li><strong>Mélodie:</strong> Malambing at malalim na piano-boses (estilo ng Pomme)</li>
+                <li><strong>Hugues at Fred:</strong> Masiglang at nostalgic na mga Broadway number (estilo ng Greatest Showman)</li>
+                <li><strong>Héléna:</strong> Klasikong musika, biyolin</li>
+                <li><strong>Varga:</strong> Walang musika. Ang katahimikan ang kanyang sandata.</li>
+            </ul>
+            
+            <h3>Target na Audience</h3>
+            <p>Mga teenager na babae na nakakakita ng sarili kay Mélodie. Mga magulang na nakikilala ang kanilang sariling mga kahinaan kay Hugues at Héléna.</p>
+        </section>
+        
+        <!-- TWISTS -->
+        <section class="section" id="twists">
+            <h2 class="section-title">✦ Mga Narrative Twist</h2>
+            
+            <h3>Ang Pangunahing Twist — Ang Baligtad na Sixth Sense</h3>
+            <p>Sa buong Yugto 1, inaakala ng audience na patay ang ina ni Mélodie. Sa dulo ng yugto, nagpakita si Héléna sa apartment, dumaan sa harap ni Hugues na hindi tumugon, parang isang multo na binabalewala. May susi pa rin siya. Talagang nandoon siya — ngunit inaakala ng manonood na nakakakita ng isang aparisyon. Ibubunyag ng Yugto 2 ang katotohanan.</p>
+            
+            <h3>Ang Passive na Kasinungalingan</h3>
+            <p>Hindi kailanman sinabi ni Mélodie na "patay ang ina ko." Hinayaan niyang bigyang-kahulugan ng mga tao ang kanyang kanta. Nang napagtanto niya ang maling akala, lasing na siya sa atensyon at hindi nagtuwid.</p>
+            
+            <h3>Ang Kaduwagan ni Hugues</h3>
+            <p>Alam ni Hugues na dumating si Héléna noong gabing iyon. Nakita niyang pumasok. Hindi siya tumugon. Kinabukasan, nagkunwari siyang walang nangyari. Ito ang kanyang kahinaan: tumatakbo siya, binabalewala, hindi kailanman humaharap.</p>
+            
+            <h3>Ang Parehong Mang-aapi</h3>
+            <p>Si Konstantin Varga, ang konduktor ng orkestra na sumira sa karera ni Héléna 10 taon na ang nakalipas sa pamamagitan ng kanyang harassment, ay ang parehong substitute teacher na sumira kay Mélodie sa kanyang elite na klase. Hindi ito alam ni Héléna o Hugues hanggang sa Yugto 2.</p>
+            
+            <h3>Ang Nakatagong Karahasan</h3>
+            <p>Nagkaroon si Héléna ng psychological violence kay Mélodie noong bata pa ito, na may isang pisikal na paglabas. Banayad na binanggit, nang hindi demonizing ang ina na mahal pa rin ni Mélodie sa kabila ng lahat.</p>
+            
+            <h3>Ang Mapait-matamis na Wakas</h3>
+            <p>Nagawa ni Mélodie na magkahawak-kamay ang kanyang mga magulang. Pagkatalikod niya, binitawan nila. Ang mga adulto ay nananatiling bilanggo ng kanilang mga sugat.</p>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- BAHAGI 2: MGA TAUHAN -->
+        <!-- ============================================ -->
+        
+        <section class="section" id="personnages">
+            <h2 class="section-title">✦ Mga Tauhan</h2>
+            
+            <!-- MÉLODIE -->
+            <article class="character-card" id="melodie">
+                <h2 class="character-name">Mélodie Verdier-Kallas</h2>
+                <p class="character-tagline">« Louloudi » — Pangunahing Tauhan</p>
+                
+                <table class="info-table">
+                    <tr><td>Edad</td><td>15 taong gulang</td></tr>
+                    <tr><td>Baitang</td><td>Ikalawang Taon (pasukan sa hayskul)</td></tr>
+                    <tr><td>Paaralan</td><td>Pampublikong hayskul sa Paris, ika-9 na distrito</td></tr>
+                    <tr><td>Palayaw ng Ina</td><td>« Louloudi » (bulaklak sa Griyego)</td></tr>
+                    <tr><td>Palayaw sa Paaralan</td><td>« La Kallas »</td></tr>
+                    <tr><td>Instrumento</td><td>Piano at pag-awit</td></tr>
+                    <tr><td>Musical na Estilo</td><td>Malalim na piano-boses (estilo ng Pomme)</td></tr>
+                </table>
+                
+                <h3>Itsura</h3>
+                <p>Maganda nang hindi alam. Maayos na mga damit ngunit hindi kailanman kapansin-pansin — nananatili pa rin ang formatting ng elite na klase sa kanya. Umuunlad patungo sa mas personal na estilo habang umuusad ang kwento.</p>
+                
+                <h3>Sikolohiya</h3>
+                <p>Nagdurusa si Mélodie sa anxiety, sa isang panloob na boses na palaging humahatol sa kanya. Nagsusuot siya ng maskara ng normalidad ngunit sa loob, « nagkakabasag ang lahat ». Ang musika ang kanyang tanging labasan, ang kanyang paraan ng paghinga.</p>
+                
+                <table class="info-table">
+                    <tr><td>Malay na Hangarin</td><td>Marinig, makita</td></tr>
+                    <tr><td>Hindi Malay na Hangarin</td><td>Isang mas hindi sira na pamilya</td></tr>
+                    <tr><td>Pinakamalaking Takot</td><td>Patuloy na mabigo</td></tr>
+                    <tr><td>Mekanismo ng Depensa</td><td>Magkubli sa piano, kumanta</td></tr>
+                </table>
+                
+                <h3>Kasaysayan</h3>
+                <p>Nagpi-piano mula noong 3 taong gulang. Ginugol ang kanyang junior high sa isang elite na klase sa ilalim ng presyon ng kanyang ina — at ang talim ni Varga. Sinabotahe ang kanyang eksam para makatakas. Dumating sa hayskul na parang isda sa labas ng tubig.</p>
+                
+                <p class="quote">« Mahalin para sa kung sino talaga siya, hindi para sa imahe na ipinapakita niya. »</p>
+            </article>
+            
+            <!-- HUGUES -->
+            <article class="character-card" id="hugues">
+                <h2 class="character-name">Hugues Verdier</h2>
+                <p class="character-tagline">Ang Ama — « Isang bigo na Hugh Jackman »</p>
+                
+                <table class="info-table">
+                    <tr><td>Edad</td><td>45 taong gulang</td></tr>
+                    <tr><td>Kasalukuyang Trabaho</td><td>Sales representative sa printing solutions sa La Défense</td></tr>
+                    <tr><td>Dating Pangarap</td><td>Mang-aawit-mananayaw sa musikal</td></tr>
+                    <tr><td>Sitwasyon</td><td>Hiwalay kay Héléna, mag-isang nagpapalaki kay Mélodie</td></tr>
+                </table>
+                
+                <h3>Itsura</h3>
+                <p>Hindi kasyang terno, hindi kailanman tuwid na kurbata. Tumatakbo tuwing umaga, nananatiling payat ngunit walang definition — « nag-eehersisyo ngunit walang pumapasok na muscles ». Nakakatuwa sa kanyang bigo na elegansya.</p>
+                
+                <h3>Ang Kanyang Pangunahing Kahinaan</h3>
+                <div class="highlight">
+                    <p><strong>Tumatakbo si Hugues.</strong> Binabalewala niya ang mga bagay na nakakaabala sa kanya. Nakita niya si Héléna na pumasok noong gabing iyon gamit ang kanyang susi — hindi siya tumugon. Kinabukasan, nagkunwari siyang walang nangyari.</p>
+                    <p>Kapag humaharap sa problema, tumutugon siya sa pamamagitan ng pag-iwas o ng impotent na galit na hindi nakakatulong sa sinuman.</p>
+                </div>
+                
+                <h3>Ang Kanyang Paulit-ulit na Pattern</h3>
+                <p>Sampung taon na ang nakalipas, nang sinabi sa kanya ni Héléna tungkol kay Varga, sumabog siya sa galit sa halip na makinig. Mga taon pagkatapos, sa harap ng ginawa ni Varga kay Mélodie, tumugon siya nang eksakto pareho. Hindi siya natututo.</p>
+                
+                <p class="quote">« Maging ang amang kailangan ni Mélodie, hindi ang gusto niyang maging. »</p>
+            </article>
+            
+            <!-- HÉLÉNA -->
+            <article class="character-card" id="helena">
+                <h2 class="character-name">Héléna Kallas</h2>
+                <p class="character-tagline">Ang Ina — Ang Nawalan ng Kaluwalhatian na Virtuoso</p>
+                
+                <table class="info-table">
+                    <tr><td>Edad</td><td>38 taong gulang (nagkaanak kay Mélodie noong 23)</td></tr>
+                    <tr><td>Trabaho</td><td>Propesyonal na biyolinista</td></tr>
+                    <tr><td>Dating Orkestra</td><td>Orkestra ng Paris (unang biyolin)</td></tr>
+                    <tr><td>Kasalukuyang Orkestra</td><td>Ensemble ng musika para sa pelikula/video games</td></tr>
+                    <tr><td>Tirahan</td><td>Ika-9 na distrito, madalas nasa tour</td></tr>
+                </table>
+                
+                <h3>Ang Kanyang Pinagdaanan</h3>
+                <div class="highlight dark">
+                    <p>Kinuha siya ni Varga sa ilalim ng kanyang pakpak, itinaas, pinasikat. Pagkatapos lumabo ang mga hangganan. Nang tumanggi siyang magpatuloy, sinira niya ito propesyonal. Hindi siya kailanman nagsalita.</p>
+                </div>
+                
+                <h3>Ang Kanyang Ginawa</h3>
+                <p>Psychological violence kay Mélodie: presyon, imposibleng mga demands. Isang pisikal na paglabas. Alam niya, pinagsisisihan niya. Ngunit sira ang kanyang programa — hindi niya alam kung paano mahalin nang hindi nangangailangan.</p>
+                
+                <h3>Ang Susi</h3>
+                <p>May susi pa rin siya sa family apartment. Hindi siya talaga « umalis ». Ganito siya pumasok sa dulo ng Yugto 1, nang tahimik, parang isang multo.</p>
+                
+                <p class="quote">« Maging isang mabuting ina. Sa wakas gumawa ng tamang mga desisyon para sa kanyang anak. »</p>
+            </article>
+            
+            <!-- FRED -->
+            <article class="character-card" id="fred">
+                <h2 class="character-name">Fred Beaumont</h2>
+                <p class="character-tagline">Ang Pinakamatalik na Kaibigan — « Tito Fred »</p>
+                
+                <table class="info-table">
+                    <tr><td>Edad</td><td>47 taong gulang</td></tr>
+                    <tr><td>Trabaho</td><td>After-school animator (ika-18 distrito)</td></tr>
+                    <tr><td>Sitwasyon</td><td>Talagagang single</td></tr>
+                    <tr><td>Enerhiya</td><td>Estilo ng Josh Gad — ang optimistang nasaktan</td></tr>
+                </table>
+                
+                <h3>Ang Kanyang Papel</h3>
+                <p>Ang comic relief na nagtatago ng tunay na lalim. Itinutulak niya si Hugues na mangarap pa dahil kung susuko si Hugues, ibig sabihin kailangan din niyang tanggapin na tapos na.</p>
+                <p>Kapag tinalikuran ng lahat si Mélodie, si Fred ang nananatili.</p>
+                
+                <p class="quote">« Si Fred Beaumont, siya ang taong nagpapatawa sa lahat maliban sa kanyang sarili. »</p>
+            </article>
+            
+            <!-- INÈS -->
+            <article class="character-card" id="ines">
+                <h2 class="character-name">Inès Darmon</h2>
+                <p class="character-tagline">Ang Kaibigan / Ang Traydor</p>
+                
+                <table class="info-table">
+                    <tr><td>Edad</td><td>15 taong gulang</td></tr>
+                    <tr><td>Baitang</td><td>Ikalawang Taon (kaklase ni Mélodie)</td></tr>
+                    <tr><td>Sitwasyon</td><td>Mga magulang ay divorced, nakatira kasama ang ina (ika-10 distrito)</td></tr>
+                </table>
+                
+                <h3>Ang Kanyang Kwento</h3>
+                <p>Lumapit kay Mélodie dahil sa kuryosidad, pagkatapos ay dahil sa pagkabighani sa kanyang liwanag. Naging kanyang "estratehikong kaibigan." Ngunit lumaki ang inggit — gusto niyang magningning <em>kasama</em> si Mélodie, hindi <em>sa likod</em> niya.</p>
+                <p>Natuklasan niya ang katotohanan, hinamon si Mélodie, at nang tumanggi ito, ibinunyag niya ang lahat sa publiko.</p>
+                
+                <h3>Ang Kanyang Representasyon</h3>
+                <p>Hindi isang villain — isang ordinaryong teenager na gumawa ng malupit na desisyon. Kinakatawan niya ang "pangkaraniwang" karahasan ng social media. Posibleng happy ending: kahit ang mga nakakasakit sa atin ay maaaring lumaki.</p>
+                
+                <p class="quote">« Ang kaibigan na lahat ay nagkaroon o naging: ang nagmamahal sa iyo hanggang sa ang iyong liwanag ay nagbibigay ng anino sa kanya. »</p>
+            </article>
+            
+            <!-- VARGA -->
+            <article class="character-card antagonist" id="varga">
+                <h2 class="character-name">Konstantin Varga</h2>
+                <p class="character-tagline">Ang Antagonista — Ang Hindi Mahihipoong Henyo</p>
+                
+                <table class="info-table">
+                    <tr><td>Edad</td><td>58 taong gulang</td></tr>
+                    <tr><td>Pinagmulan</td><td>Hungarian, naturalized French</td></tr>
+                    <tr><td>Posisyon</td><td>Konduktor ng orkestra / Bisitang propesor</td></tr>
+                    <tr><td>Musical na Presensya</td><td><strong>Wala.</strong> Ang katahimikan ang kanyang sandata.</td></tr>
+                </table>
+                
+                <h3>Ang Henyo</h3>
+                <p>Objectively brilliant. Ang kanyang mga interpretasyon ng Mahler ay nagpapaiyak. Kinakatawan niya ang ideya na <strong>pinapatawad ng henyo ang lahat</strong>.</p>
+                
+                <h3 class="danger">Ang Kanyang Pamamaraan</h3>
+                <p>Hindi siya sumisigaw. <strong>Sinisira</strong> niya. Nakikita ang mga kahinaan, pinipisil. Pinagsasalitan ang papuri at pagsira. Iniisolate ang kanyang mga biktima. Ang kanyang mga biktima ay nagtatapos sa paniniwala na sila ang problema.</p>
+                
+                <h3>Ang Kanyang Papel sa Kwento</h3>
+                <p>Sinira niya si Héléna 10 taon na ang nakalipas. Nang walang kaalam-alam, sinira din niya si Mélodie nang maging substitute teacher niya. Ang parehong mang-aapi, dalawang henerasyon ng mga biktima.</p>
+                
+                <h3>Ang Kanyang Presensya</h3>
+                <p>Kapag nasa entablado siya, humihinto ang musika. Bihira siyang lumabas ngunit ang bawat pagpakita ay nakakapukaw. Walang magarang parusa — marahil ay nagpapatuloy pa rin siya, hindi nahihipo. Ito ay realistiko at nakakatakot.</p>
+                
+                <p class="quote dark">« Ang taong natutunan ang paggawa ng kalupitan bilang sining — at walang huminto sa kanya. »</p>
+            </article>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- BAHAGI 3: ISTRAKTURA -->
+        <!-- ============================================ -->
+        
+        <!-- YUGTO 1 -->
+        <section class="section" id="acte1">
+            <div class="acte-header">
+                <h2>YUGTO 1</h2>
+                <p class="acte-subtitle">« Ang Pagluluksa »</p>
+                <p class="acte-theme">Ang audience, tulad ng mga kaklase ni Mélodie, ay naniniwala na patay ang ina.<br>Lahat ay binuo para panatilihin ang ilusyon na ito.</p>
+            </div>
+            
+            <!-- Sekwensya 1 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 1</span>
+                        <h3 class="sequence-title">Ang Maliit na Demonyo</h3>
+                        <span class="sequence-location">Silid ni Mélodie / Apartment ng Verdier</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Si Mélodie na mag-isa sa kanyang silid, sa piano. May nakikitang naka-frame na larawan ni Héléna na may mga tuyong bulaklak sa harap — parang isang maliit na altar. Hinahaplos niya ang larawan.</p>
+                    <p>Mga flash ng kanyang buhay: ang hayskul kung saan siya ay hindi nakikita, ang amang nagkukunwari na okay ang lahat. Natuklasan ang kanyang panloob na mundo: ang anxiety, ang boses na humahatol, ang maskara na suot niya.</p>
+                    
+                    <div class="indices">
+                        <div class="indices-title">🔍 Mga Pahiwatig ng "Kamatayan"</div>
+                        <ul>
+                            <li>Ang larawan na may mga bulaklak (parang isang tributo)</li>
+                            <li>Ang atmospera ng tahimik na pagluluksa</li>
+                            <li>Walang pagbanggit ng ina sa kasalukuyang panahon</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">🎹</span>
+                        <div>
+                            <div class="song-title">« ISANG MALIIT NA DEMONYO »</div>
+                            <div class="song-meta">Solo ni Mélodie — Pambungad (~3 min)</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Malalim na piano-boses. Ipinapakita ang mga psychological issues ni Mélodie: anxiety, negatibong panloob na boses, ang maskara. Ang wakas ("ako ang gagawa ng show") ay nag-aanunsyo ng buong palabas. <a href="#ptit-demon">→ Tingnan ang kumpletong liriko</a></p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 2 -->
+            <div class="sequence">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 2</span>
+                        <h3 class="sequence-title">Ang Amang Umiiwas</h3>
+                        <span class="sequence-location">Apartment ng Verdier — kusina</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Tahimik na almusal sa pagitan ni Hugues at Mélodie. Sinusubukan niyang pag-usapan ang kanyang ina. Pinabago niya ang usapan.</p>
+                    <p><em>"Papa, sa tingin mo ba siya..." — "Kumain ka, male-late ka."</em></p>
+                    <p>Nadarama ang isang bawal na paksa, isang sakit na hindi inaabangan. Isang bahay na walang presensya ng babae, naka-freeze.</p>
+                    
+                    <div class="indices">
+                        <div class="indices-title">🔍 Mga Pahiwatig ng "Kamatayan"</div>
+                        <ul>
+                            <li>Ang pag-iwas ng ama (consistent sa hindi pa nalulutas na pagluluksa)</li>
+                            <li>Walang "tumawag ang mama mo" o "uuwi na siya"</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="no-song">Walang kanta — maikling eksena, tahimik na tensyon</div>
+            </div>
+            
+            <!-- Sekwensya 3 -->
+            <div class="sequence">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 3</span>
+                        <h3 class="sequence-title">Ang Multo ng Kahusayan</h3>
+                        <span class="sequence-location">Elite na silid-aralan (flashback)</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p><strong>Flashback:</strong> Si Mélodie sa piano, 13-14 taong gulang. Pumasok si Varga, nagmamasid, lumalapit.</p>
+                    <p>Una ang matamis na mga salita: <em>"May kakaiba kang taglay."</em></p>
+                    <p>Pagkatapos ay ang pagsira: <em>"Ang iyong ina <strong>ay may</strong> apoy. Ikaw, ikaw ay... malamlam."</em></p>
+                    <p>Nakikita nating nangungupupos si Mélodie. Wakas ng flashback: sinabotahe niya ang kanyang eksam, umalis sa silid.</p>
+                    
+                    <div class="indices">
+                        <div class="indices-title">🔍 Mga Pahiwatig ng "Kamatayan"</div>
+                        <ul>
+                            <li>"Ang iyong ina <strong>ay may</strong>" — nakaraan, parang wala na siya</li>
+                            <li>Pinag-uusapan ni Varga si Héléna bilang isang nawala na alamat</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="no-song">Walang kanta — Si Varga ay nagpapataw ng katahimikan. Klasikong piano na nawawala sa tono.</div>
+            </div>
+            
+            <!-- Sekwensya 4 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 4</span>
+                        <h3 class="sequence-title">Ang Ama at ang Kanyang Pangarap</h3>
+                        <span class="sequence-location">Apartment ng Verdier — gabi</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Dumating si Fred na may dala-dalang bote at lumang DVD ng Starmania. <em>"May revival na ginagawa..."</em></p>
+                    <p>Tumanggi si Hugues. Pinilit ni Fred. Nagtapos silang ginagawa ang isang katawa-tawang koreograpiya sa sala.</p>
+                    <p>Pinanood sila ni Mélodie mula sa hallway, nagagalit ngunit lumitaw ang isang micro-ngiti.</p>
+                    <p><strong>Layunin:</strong> Paghinga ng komedya, pagpapakilala kay Fred, pagpapakita ng nakabaong pangarap ni Hugues.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">🎭</span>
+                        <div>
+                            <div class="song-title">« ISANG HULING BESES »</div>
+                            <div class="song-meta">Duo ni Hugues + Fred — Comic number</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Nostalgic na Broadway. Dalawang quadragenarians na nag-aakalang mga bituin. Halos-halos na koreograpiya sa sala. Pagmamahal sa likod ng katatawanan.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 5 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 5</span>
+                        <h3 class="sequence-title">Ang Bagong Kaibigan</h3>
+                        <span class="sequence-location">Hayskul — korte, pasilyo</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Si Mélodie na mag-isa, tulad ng dati. Lumapit si Inès: <em>"Bago ka? Ako si Inès."</em></p>
+                    <p>Simula ng koneksyon. Masayahin si Inès, madaling lapitan. Hinayaan ni Mélodie na lapitan siya.</p>
+                    <p><em>"Sino ang kasama mo sa bahay?" — "Ang papa ko."</em> (katahimikan) — Naintindihan ni Inès na hindi dapat palalimin.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">🎤</span>
+                        <div>
+                            <div class="song-title">« SISIRAIN NATIN ANG LAHAT »</div>
+                            <div class="song-meta">Duo ni Mélodie + Inès + Chorus — Masigla na pop</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Dalawang teenager na nagpaplano ng kanilang pagkakaibigan, social media, buhay. Unang sandali ng liwanag para kay Mélodie. Koreograpiya na may mga cellphone, lumalabas na mga likes.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 6 -->
+            <div class="sequence has-song climax">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 6</span>
+                        <h3 class="sequence-title">Ang Kanta</h3>
+                        <span class="sequence-location">Silid ni Mélodie — gabi</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Si Mélodie na mag-isa, hindi makatulog. Tinitingnan niya ang larawan ng kanyang ina. Nagsusulat siya, kusang lumabas ang mga salita.</p>
+                    <p>Kumakanta siya, nagre-record sa kanyang telepono. Nag-aatubili siya... pagkatapos ay nag-post.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">💔</span>
+                        <div>
+                            <div class="song-title">« KUNG NARIRINIG MO AKO »</div>
+                            <div class="song-meta">Solo ni Mélodie — ANG VIRAL NA KANTA</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Raw na piano-boses, walang produksyon. Sinasadyang malabo ang mga liriko: "Kung naririnig mo ako, kung nasaan ka man...", "Hinahanap ko ang boses mo sa katahimikan...", "Umalis ka nang hindi ko alam...". Pwedeng maintindihan: patay. Pwedeng maintindihan: wala. Ang emosyon ay totoo. Ito ang puso ng palabas.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 7 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 7</span>
+                        <h3 class="sequence-title">Ang Pagiging Viral</h3>
+                        <span class="sequence-location">Social media (projection/mga screen)</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Sumabog ang kanta. Notifications, shares, comments:</p>
+                    <p><em>"Nalulungkot ako para sa mama mo 💔" — "RIP 🕊️" — "Ang kantang ito ay nagpaiyak sa akin"</em></p>
+                    <p>Nakita ni Mélodie ang mga mensahe. Naiintindihan niya kung ano ang iniisip nila. Close-up sa kanyang mukha: nag-aatubili siya... hindi niya itinuwid.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">✨</span>
+                        <div>
+                            <div class="song-title">« TINGNAN MO AKO »</div>
+                            <div class="song-meta">Mélodie + Chorus na "Internet" — Pag-akyat</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Euphoric na pagtaas. Si Mélodie na dala-dala ng alon ng pagmamahal. Napapaligiran siya ng chorus, hinihimok. Umiiral na siya sa wakas — ngunit sa isang kasinungalingan.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 8 -->
+            <div class="sequence">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 8</span>
+                        <h3 class="sequence-title">Ang Karangalan</h3>
+                        <span class="sequence-location">Hayskul / Apartment / Mga Plateau?</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Si Mélodie ay ngayon "isang tao." Iba na ang tingin ng mga estudyante sa kanya. Inaasikaso ni Inès ang kanyang "komunikasyon."</p>
+                    <p>Marahil isang interview kung saan sumasagot si Mélodie nang malabo: <em>"Nami-miss ko ang mama ko araw-araw."</em></p>
+                </div>
+                
+                <div class="no-song">Walang kanta — montage ng karangalan, pagtaas ng tensyon</div>
+            </div>
+            
+            <!-- Sekwensya 9 -->
+            <div class="sequence">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 9</span>
+                        <h3 class="sequence-title">Ang Tahimik na Kahihiyan</h3>
+                        <span class="sequence-location">Apartment ng Verdier</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>May nakita si Hugues — ang kanta? Ang mga komento? Ipinakita niya ang kanyang telepono kay Mélodie.</p>
+                    <p><em>"Ano ito?"</em></p>
+                    <p>Close-up kay Mélodie. Kumakalat ang kahihiyan sa kanyang mukha. Hindi siya sumagot. Umakyat siya sa kanyang silid.</p>
+                    <p>Naiwan si Hugues na mag-isa. Hindi niya lubos na naiintindihan. Ngunit nararamdaman niyang may mali. At tulad ng dati: wala siyang ginawa.</p>
+                </div>
+                
+                <div class="no-song">Walang kanta — ang katahimikan ni Hugues ang kanyang kahinaan</div>
+            </div>
+            
+            <!-- Sekwensya 10 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 10</span>
+                        <h3 class="sequence-title">Ang Pag-aalinlangan ni Inès</h3>
+                        <span class="sequence-location">Hayskul / Bahay ni Inès</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Nagsisimula nang maramdaman ni Inès na may mali. Maliliit na inconsistencies. Ayaw niyang magtanong nang direkta. Ngunit lumalaki ang pag-aalinlangan.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">❓</span>
+                        <div>
+                            <div class="song-title">« MAY MALI »</div>
+                            <div class="song-meta">Solo ni Inès — Maikli, introspective</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Nararamdaman niya ang kasinungalingan ngunit ayaw niyang makita. Bukas na wakas — itinutulak niya ang pag-aalinlangan. Sa ngayon.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 11 -->
+            <div class="sequence has-song climax">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 11</span>
+                        <h3 class="sequence-title">Ang Pagpapakita</h3>
+                        <span class="sequence-location">Apartment ng Verdier — gabi</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Si Mélodie sa tugatog ng kanyang karangalan ngunit lalong lumalalang pakiramdam. Hindi na siya natutulog. Kinakausap niya ang larawan: <em>"Bakit mo ako iniwan?"</em></p>
+                    <p>Mahinang ingay. Isang susi sa lock. Bumukas ang pinto.</p>
+                    <p><strong>Pumasok si Héléna.</strong> Tumawid siya sa sala. Dumaan siya sa harap ni Hugues, na nakaupo sa sofa. Tiningnan niya ito. Hindi ito tumugon. Parang hindi niya nakikita. Parang isang multo siya.</p>
+                    <p>Nagpatuloy siya patungo sa silid ni Mélodie. Isang halo ng liwanag. Lumitaw siya sa frame ng pinto.</p>
+                    <p>Tumingin si Mélodie. <em>"Mama...?"</em></p>
+                    <p><strong>Iniisip ng audience:</strong> ito ay isang multo, isang pangitain, nawawalan ng kontrol si Mélodie.</p>
+                    <p><strong>Ang katotohanan:</strong> Talagang nandoon si Héléna. May susi pa rin siya. At nakita siya ni Hugues — ngunit pinili niyang huwag tumugon.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">👻</span>
+                        <div>
+                            <div class="song-title">« LOULOUDI »</div>
+                            <div class="song-meta">Héléna — Mapamultong boses + biyolin</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Oyayi, marahil sa Griyego. Ilang matamis na salita: "Aking maliit na bulaklak... nandito ako...". Marupok, mapamulto. Lumalamlam ang liwanag. Itim.</p>
+                </div>
+                
+                <div class="highlight" style="margin-top: 20px; text-align: center;">
+                    <strong>WAKAS NG YUGTO 1</strong>
+                </div>
+            </div>
+        </section>
+        
+        <!-- YUGTO 2 -->
+        <section class="section" id="acte2">
+            <div class="acte-header">
+                <h2>YUGTO 2</h2>
+                <p class="acte-subtitle">« Ang Katotohanan »</p>
+                <p class="acte-theme">Gumuguho ang lahat. Sumabog ang katotohanan. Nahulog si Mélodie.<br>Pagkatapos, dahan-dahan, ang pagbangon.</p>
+            </div>
+            
+            <!-- Sekwensya 1 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 1</span>
+                        <h3 class="sequence-title">Kinabukasan</h3>
+                        <span class="sequence-location">Apartment ng Verdier — umaga</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Bumaba si Mélodie, hilo. Nakita niya ang kanyang ina kagabi. O inaakala niyang nakita niya.</p>
+                    <p>Gumagawa ng kape si Hugues. Normal. Parang walang nangyari.</p>
+                    <p><strong>Alam niya.</strong> Nakita niyang pumasok si Héléna. Pinili niyang balewalain. Ito ang kanyang ganap na kaduwagan.</p>
+                    <p>Hindi na alam ni Mélodie kung ano ang totoo.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">🧱</span>
+                        <div>
+                            <div class="song-title">« ANG MGA PADER »</div>
+                            <div class="song-meta">Trio ni Hugues + Fred + Mélodie — Fragmentado</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Bawat isa ay nakahiwalay sa kanilang espasyo. Tatlong kalungkutan na hindi nagtatagpo. Mabigat na atmospera. May mababasag.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 2 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 2</span>
+                        <h3 class="sequence-title">Ang Pagtuklas</h3>
+                        <span class="sequence-location">Silid ni Inès</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Si Inès, kinakain ng pag-aalinlangan, naghahanap ng impormasyon. Nag-type siya ng "Héléna Kallas".</p>
+                    <p>Propesyonal na Instagram account. Biyolinista. Nasa tour. <strong>Buhay.</strong></p>
+                    <p>Kamakailan na larawan: Si Héléna at Mélodie. "Aking Louloudi ❤️"</p>
+                    <p><em>"Diyos ko..."</em></p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">💢</span>
+                        <div>
+                            <div class="song-title">« GUSTO KO LANG MALAMAN »</div>
+                            <div class="song-meta">Solo ni Inès — Maikli, mapait</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Pagtataksil, galit, pangangailangan ng katarungan. Nagdesisyon siyang kumilos.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 3 -->
+            <div class="sequence">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 3</span>
+                        <h3 class="sequence-title">Ang Komprontasyon</h3>
+                        <span class="sequence-location">Hayskul — liblib na pasilyo</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Kinulong ni Inès si Mélodie. <em>"Kailangan nating mag-usap. Ang mama mo. Buhay siya."</em></p>
+                    <p>Namutla si Mélodie, tumanggi, nautal.</p>
+                    <p><em>"Bakit mo ako niloko? Akala ko magkaibigan tayo."</em></p>
+                    <p>Hindi makahanaap ng mga salita si Mélodie. <em>"Kung hindi mo ipaliwanag, ako..."</em></p>
+                </div>
+                
+                <div class="no-song">Walang kanta — purong tensyon, ang katahimikan bago ang bagyo</div>
+            </div>
+            
+            <!-- Sekwensya 4 -->
+            <div class="sequence has-song climax">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 4</span>
+                        <h3 class="sequence-title">Ang Pagbagsak</h3>
+                        <span class="sequence-location">Social media / Hayskul / Apartment</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Nag-post si Inès. Ang mga screenshot. Ang ebidensya.</p>
+                    <p><em>"Niloko kayo ng La Kallas. Buhay ang mama niya."</em></p>
+                    <p>Instant at brutal na pagbaligtad. Ang mga parehong boses na humahanga ay ngayon sumisira. Harassment, insulto, banta. Bumagsak si Mélodie, hindi na lumalabas.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">🗡️</span>
+                        <div>
+                            <div class="song-title">« SINUNGALING »</div>
+                            <div class="song-meta">Chorus na "Internet" — Brutal na ensemble</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Nightmare na reprise ng "Tingnan Mo Ako". Ang parehong mga melodiya ay naging mga talim. Si Mélodie sa gitna, durog, mag-isa. Climax ng tunog, pagkatapos ay katahimikan.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 5 -->
+            <div class="sequence">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 5</span>
+                        <h3 class="sequence-title">Bumalik si Héléna (Para Talaga)</h3>
+                        <span class="sequence-location">Apartment ng Verdier</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Doorbell. Sa pagkakataong ito, kumatok si Héléna. Hindi na siya nagtatago.</p>
+                    <p>Binuksan ni Hugues. <em>"Nakita ko ang nangyayari sa internet. Pumunta ako."</em></p>
+                    <p><em>"Ngayon ka pumupunta?"</em></p>
+                    <p>Narinig ni Mélodie, lumabas sa kanyang silid. Nakita niya ang kanyang ina. Buhay. Totoo. Sa tanghaling tapat.</p>
+                    <p><em>"...Mama?"</em></p>
+                    <p>Ang multo ng Yugto 1 ay nagkaroon ng kahulugan: hindi iyon multo.</p>
+                </div>
+                
+                <div class="no-song">Walang kanta — ang tahimik na pagkabigla, ang rebelasyon</div>
+            </div>
+            
+            <!-- Sekwensya 6 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 6</span>
+                        <h3 class="sequence-title">Ang Imposibleng Pagkikita</h3>
+                        <span class="sequence-location">Apartment ng Verdier</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Si Mélodie at Héléna na magkaharap. Umakyat ang lahat: ang paglayo, ang presyon, ang karahasan.</p>
+                    <p><em>"Ngayon ka pumupunta? Kapag galit na galit na sa akin ang lahat?"</em></p>
+                    <p><em>"Sinusubukan kong nandito—" — "HINDI KA KAILANMAN NANDITO."</em></p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">⚔️</span>
+                        <div>
+                            <div class="song-title">« NASAAN KA? »</div>
+                            <div class="song-meta">Duo ni Mélodie + Héléna — Komprontasyon</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Marahas na musical na komprontasyon. Mga akusasyon, mga depensa, mga pagbagsak. Walang resolusyon — naghihiwalay silang sira.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 7 -->
+            <div class="sequence">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 7</span>
+                        <h3 class="sequence-title">Ang Rebelasyon ng Koneksyon</h3>
+                        <span class="sequence-location">Apartment — Si Hugues at Héléna na mag-isa</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p><em>"Bumagsak siya dahil sa elite na klase na iyon. May substitute teacher..."</em></p>
+                    <p><em>"Sino?"</em></p>
+                    <p>Nagpakita ng dokumento si Hugues. Namutla si Héléna.</p>
+                    <p><em>"Konstantin Varga."</em></p>
+                    <p>Katahimikan. <em>"Siya ang... sampung taon na ang nakalipas..."</em></p>
+                    <p>Sa wakas naiintindihan ni Hugues: ang parehong lalaki ang sumira sa dalawang babaeng mahalaga sa kanyang buhay.</p>
+                </div>
+                
+                <div class="no-song">Walang kanta — ang katahimikan ni Héléna ay nagsasabi ng lahat</div>
+            </div>
+            
+            <!-- Sekwensya 8 - PANGUNAHING MISE EN SCÈNE -->
+            <div class="sequence has-song climax" id="mise-en-scene">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 8</span>
+                        <h3 class="sequence-title">Ang Eksena ng Paralelo</h3>
+                        <span class="sequence-location">Dobleng espasyo — screen + entablado</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <div class="mise-en-scene">
+                        <h4>Mise en Abîme</h4>
+                        <div class="parallel">
+                            <div class="parallel-item video">
+                                <h5>📹 Sa Screen (video)</h5>
+                                <p>Video na kinunan ni Mélodie. Amateur na plano.</p>
+                                <p><strong>Si Hugues</strong> na natutuklasan kung ano ang ginawa ni Varga sa kanyang anak. Sumabog siya. Galit, banta, "papatayin ko siya".</p>
+                                <p>Kinukuha ni Mélodie, tahimik.</p>
+                            </div>
+                            <div class="parallel-item live">
+                                <h5>🎭 Sa Entablado (live flashback)</h5>
+                                <p>Sampung taon na ang nakalipas. Parehong setup.</p>
+                                <p><strong>Si Héléna</strong> na nagsasabi kay Hugues kung ano ang ginawa ni Varga sa kanya.</p>
+                                <p>At tumugon si Hugues <strong>nang eksakto pareho</strong>. Galit, banta, "papatayin ko siya".</p>
+                                <p>Nagsara si Héléna.</p>
+                            </div>
+                        </div>
+                        <h4 style="margin-top: 25px;">Ang Naiintindihan ng Audience</h4>
+                        <ul>
+                            <li><strong>Hindi alam ni Hugues</strong> na pareho lang ang lalaki</li>
+                            <li><strong>Ang dalawang babae</strong> ay nangangailangan ng suporta — hindi ng agresyon</li>
+                            <li><strong>Hindi natututo si Hugues</strong> sa kanyang mga pagkakamali. Inuulit niya ang parehong pattern.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">🔥</span>
+                        <div>
+                            <div class="song-title">« PAPATAYIN KO SIYA »</div>
+                            <div class="song-meta">Hugues (dalawang sabay na bersyon)</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Magkasabay ang nakaraan at kasalukuyan. Ang parehong impotent na galit. Wakas: ang katahimikan ng mga babaeng nangangailangan ng ibang bagay.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 9 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 9</span>
+                        <h3 class="sequence-title">Fred at Mélodie</h3>
+                        <span class="sequence-location">Silid ni Mélodie</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Paralysado ang lahat. Pinuntahan ni Fred si Mélodie.</p>
+                    <p>Umupo siya, walang sinabi muna. Pagkatapos ay nagkwento siya: ang batang Hugues, ang apoy na mayroon siya.</p>
+                    <p><em>"Ang tatay mo ay hindi kailanman marunong lumaban para sa sarili. Pero para sa iyo, gagawin niya."</em></p>
+                    <p>Unang sandali ng lambing matapos ang mahabang panahon.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">🌙</span>
+                        <div>
+                            <div class="song-title">« ANG MGA PANGARAP NG IBA »</div>
+                            <div class="song-meta">Solo ni Fred — Mapait-matamis na balada</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Tungkol sa pamumuhay sa pamamagitan ng mga pag-asa ng kanyang pinakamatalik na kaibigan. Sa wakas bumagsak ang kanyang maskara. Ang comic relief ay naging tao.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 10 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 10</span>
+                        <h3 class="sequence-title">Héléna na Mag-isa</h3>
+                        <span class="sequence-location">Walang laman na rehearsal studio</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Si Héléna kasama ang kanyang biyolin. Tumutugtog siya para sa kanyang sarili, hindi para sa audience.</p>
+                    <p>Iniisip niya ang lahat: si Varga, ang kanyang sirang karera, ang kanyang karahasan kay Mélodie, ang kanyang pagtakas.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">🎻</span>
+                        <div>
+                            <div class="song-title">« ANG HALAGA »</div>
+                            <div class="song-meta">Solo ni Héléna — Dakilang balada</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Ang dakilang kanta ng Yugto 2. Pagtatapat tungkol sa halaga ng kahusayan: kung ano ang kinuha sa kanya, kung ano ang ipinamana niya. Hindi isang justification — isang pagtatapat. Nakakasindak na solo ng biyolin sa gitna.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 11 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 11</span>
+                        <h3 class="sequence-title">Mélodie at Hugues</h3>
+                        <span class="sequence-location">Apartment ng Verdier</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Sa unang pagkakataon, umupo si Hugues at nakinig. Talagang nakinig.</p>
+                    <p>Sinabi sa kanya ni Mélodie ang lahat: si Varga, ang presyon, kung bakit siya bumagsak.</p>
+                    <p><em>"Alam mo tungkol kay mama. At wala kang ginawa."</em></p>
+                    <p><em>"...Alam ko."</em></p>
+                    <p>Walang dahilan. Walang justification. Nananatili siya.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">🤝</span>
+                        <div>
+                            <div class="song-title">« MANATILI »</div>
+                            <div class="song-meta">Duo ni Mélodie + Hugues — Pakikipagkasundo</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Hindi isang ganap na pakikipagkasundo. Manatili ka lang dito, kahit walang mga salita. Kumakanta na si Hugues para sa kanya, hindi para sa sarili.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 12 -->
+            <div class="sequence">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 12</span>
+                        <h3 class="sequence-title">Ang Pakikipagkasundo kay Inès</h3>
+                        <span class="sequence-location">Isang café / Isang parke</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Hiniling ni Inès na makita si Mélodie. Humingi siya ng tawad: <em>"Hindi ko dapat ginawa iyon nang ganoon."</em></p>
+                    <p><em>"Gusto mo ring umiral. Naiintindihan ko."</em></p>
+                    <p>Hindi naibalik na pagkakaibigan — ngunit isang pagpapatawad na nagpapalaya sa dalawa. Marahil may pag-asa.</p>
+                </div>
+                
+                <div class="no-song">Banayad na reprise ng "Sisirain Natin ang Lahat"? O katahimikan.</div>
+            </div>
+            
+            <!-- Sekwensya 13 -->
+            <div class="sequence has-song">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 13</span>
+                        <h3 class="sequence-title">Ang Pagbabalik</h3>
+                        <span class="sequence-location">Hayskul / Pampublikong lugar</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Bumalik si Mélodie sa mundo. Nandoon pa rin ang mga tingin. Ngunit hinaharap niya sila, taas-noo.</p>
+                    <p>Hindi na siya "Ang viral na La Kallas" — siya lang si Mélodie.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">🌅</span>
+                        <div>
+                            <div class="song-title">« SIMPLY MELODY »</div>
+                            <div class="song-meta">Mélodie pagkatapos Lahat — Finale</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Ang title song. Tungkol sa pagiging simpleng sarili mo. Dahan-dahang sumali ang iba pang mga tauhan. Hindi triumphant — payapa.</p>
+                </div>
+            </div>
+            
+            <!-- Sekwensya 14 -->
+            <div class="sequence climax">
+                <div class="sequence-header">
+                    <div>
+                        <span class="sequence-number">Sekwensya 14</span>
+                        <h3 class="sequence-title">Ang Wakas</h3>
+                        <span class="sequence-location">Ang Apartment</span>
+                    </div>
+                </div>
+                <div class="sequence-content">
+                    <p>Pangwakas na eksena. Si Mélodie sa pagitan ng kanyang dalawang magulang.</p>
+                    <p>Kinuha niya sila sa kamay, dahan-dahang pinagsama.</p>
+                    <p>Nagtinginan si Hugues at Héléna. Saglit, naghawak sila ng kamay.</p>
+                    <p>Ngumiti si Mélodie. Lumingon siya.</p>
+                    <p><strong>Pagkatalikod niya: binitawan nila.</strong> Bumalik sa mga bulsa ang mga kamay.</p>
+                    <p>Humakbang si Mélodie. Huminto. Lilingon ba siya? Hindi natin alam kung ano ang nakikita niya.</p>
+                    <p>Humihina ang liwanag.</p>
+                </div>
+                
+                <div class="song">
+                    <div class="song-header">
+                        <span class="song-icon">🎹🎻</span>
+                        <div>
+                            <div class="song-title">Instrumental na Reprise — « KUNG NARIRINIG MO AKO »</div>
+                            <div class="song-meta">Piano lang, pagkatapos biyolin</div>
+                        </div>
+                    </div>
+                    <p class="song-description">Ang dalawang instrumento ng dalawang babae, magkasama. Walang mga salita. Wakas.</p>
+                </div>
+                
+                <div class="highlight" style="margin-top: 20px; text-align: center;">
+                    <strong>WAKAS</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUOD -->
+        <section class="section" id="recap">
+            <h2 class="section-title">✦ Buod ng mga Kanta</h2>
+            
+            <h3>Yugto 1 — « Ang Pagluluksa » (7 numero)</h3>
+            <table class="recap-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Pamagat</th>
+                        <th>Mga Tauhan</th>
+                        <th>Uri</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Isang Maliit na Demonyo</strong></td>
+                        <td>Mélodie</td>
+                        <td>Solo — Pambungad</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Isang Huling Beses</strong></td>
+                        <td>Hugues + Fred</td>
+                        <td>Comic duo</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Sisirain Natin ang Lahat</strong></td>
+                        <td>Mélodie + Inès + Chorus</td>
+                        <td>Pop duo + ensemble</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Kung Naririnig Mo Ako</strong></td>
+                        <td>Mélodie</td>
+                        <td>Solo — ANG viral na kanta</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Tingnan Mo Ako</strong></td>
+                        <td>Mélodie + Chorus</td>
+                        <td>Solo + ensemble — Pag-akyat</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>May Mali</strong></td>
+                        <td>Inès</td>
+                        <td>Maikling solo</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><strong>Louloudi</strong></td>
+                        <td>Héléna</td>
+                        <td>Mapamultong solo — Wakas ng yugto</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Yugto 2 — « Ang Katotohanan » (9 numero)</h3>
+            <table class="recap-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Pamagat</th>
+                        <th>Mga Tauhan</th>
+                        <th>Uri</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>8</td>
+                        <td><strong>Ang mga Pader</strong></td>
+                        <td>Hugues + Fred + Mélodie</td>
+                        <td>Fragmentadong trio</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><strong>Gusto Ko Lang Malaman</strong></td>
+                        <td>Inès</td>
+                        <td>Solo — Pagtuklas</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><strong>Sinungaling</strong></td>
+                        <td>Chorus</td>
+                        <td>Ensemble — Pagbagsak</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td><strong>Nasaan Ka?</strong></td>
+                        <td>Mélodie + Héléna</td>
+                        <td>Duo ng komprontasyon</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td><strong>Papatayin Ko Siya</strong></td>
+                        <td>Hugues (x2)</td>
+                        <td>Paralelang solo</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td><strong>Ang mga Pangarap ng Iba</strong></td>
+                        <td>Fred</td>
+                        <td>Solo balada</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td><strong>Ang Halaga</strong></td>
+                        <td>Héléna</td>
+                        <td>Dakilang balada + biyolin</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td><strong>Manatili</strong></td>
+                        <td>Mélodie + Hugues</td>
+                        <td>Duo ng pakikipagkasundo</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td><strong>Simply Melody</strong></td>
+                        <td>Lahat</td>
+                        <td>Finale</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p style="text-align: center; margin-top: 30px; color: #a0a0a0;"><strong>Kabuuan: 16 musical number</strong> + 1 instrumental na reprise</p>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- BAHAGI 4: MGA LIRIKO -->
+        <!-- ============================================ -->
+        
+        <section class="section" id="ptit-demon">
+            <h2 class="section-title">✦ Mga Liriko — Isang Maliit na Demonyo</h2>
+            
+            <div class="lyrics-full">
+                <h3>ISANG MALIIT NA DEMONYO</h3>
+                <p class="song-meta">Solo ni Mélodie — Pambungad (~3 min)</p>
+                
+                <div class="lyrics-section">
+                    <div class="lyrics-section-title">[Unang Saknong]</div>
+                    <div class="lyrics-text">
+May problema ako
+Isang maliit na demonyo sa aking ulo
+Isang melodiya na hindi tama ang ikot
+Bumabalik siya kapag mag-isa ako, kapag napatay ang lahat
+Nakadikit siya sa aking balat, hinahawakan ang aking kamay
+
+Sinasabi ko nang banayad "okay lang ako", na may magandang ngiti
+Pero sa loob nagkakabasag ang lahat, at mahirap kong sabihin
+Gusto ko lang matulog nang walang ingay sa aking ulo
+Nang walang maliit na boses na humahatol at pumipigil sa akin
+                    </div>
+                </div>
+                
+                <div class="lyrics-section">
+                    <div class="lyrics-section-title">[Pre-Chorus]</div>
+                    <div class="lyrics-text">
+At habang itinatago ko ito, lalong lumalaki
+Habang tuwid ang tayo ko, lalong binabaluktot ako
+                    </div>
+                </div>
+                
+                <div class="lyrics-section">
+                    <div class="lyrics-section-title">[Unang Koro]</div>
+                    <div class="lyrics-text">
+Isang maliit na demonyo, na hindi tama ang ikot
+Na naglalagay ng kulay abo sa lahat ng maganda
+Isang maliit na demonyo, sa kaibuturan ng aking pangalan
+Na kumukuha ng aking lugar kapag natatakot ako, kapag wala na akong masabi
+                    </div>
+                </div>
+                
+                <div class="lyrics-section">
+                    <div class="lyrics-section-title">[Ikalawang Saknong]</div>
+                    <div class="lyrics-text">
+Naririnig ko siya sa bus, sa gitna ng mga tao
+Sinasabi niya "hindi ka sapat", nang napaka-kalmado
+Kaya nagsusulat ako ng mga pangungusap para hindi umiyak
+At kung kumakanta ako ng kaunti, ito ay para huminga
+                    </div>
+                </div>
+                
+                <div class="lyrics-section">
+                    <div class="lyrics-section-title">[Ikalawang Koro]</div>
+                    <div class="lyrics-text">
+Isang maliit na demonyo, na hindi tama ang ikot
+Kinamumuhian ko siya, pero sobra ko siyang kilala
+Isang maliit na demonyo, sa kaibuturan ng aking pangalan
+Na kumukuha ng aking boses kapag gusto kong magsalita
+                    </div>
+                </div>
+                
+                <div class="lyrics-section">
+                    <div class="lyrics-section-title">[Bridge]</div>
+                    <div class="lyrics-text">
+May mga umaga na nananatili ako sa kama
+Na tinitingnan ako ng kisame at ngumingiti ako sa kanya
+May mga gabi na natatakot akong ipikit ang mga mata ko
+Dahil sa katahimikan, doon siya pinakamasama
+
+Pero mayroon akong mga puting tuts
+Mayroon akong mga itim na tuts
+Mayroon akong silid na ito kung saan walang makakita sa akin
+
+At kapag lumapag ang mga daliri ko
+Kapag tumaas ang boses ko
+Umaatras ang demonyo
+At ako ay bumabangon
+                    </div>
+                </div>
+                
+                <div class="lyrics-section">
+                    <div class="lyrics-section-title">[Pangwakas na Koro]</div>
+                    <div class="lyrics-text">
+Isang maliit na demonyo, na hindi tama ang ikot
+Pero ngayon nakikita mo, ako ang pumipili ng tempo
+Isang maliit na demonyo, sa kaibuturan ng aking pangalan
+Pero ngayong gabi ito ang kanta ko, ito ang piano ko
+
+Isang maliit na demonyo...
+Na hindi tama ang ikot...
+
+Pero ngayong gabi, isinusumpa ko sa iyo...
+
+<strong>Ako ang gagawa ng show.</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 id="suno">Prompt para sa Suno — Handang Kopyahin</h3>
+            
+            <p><strong>Istilo:</strong></p>
+            <div class="suno-prompt">French indie pop piano ballad, emotional female vocal, soft breathy voice, intimate bedroom recording feel, Pomme style, builds to powerful climax, dramatic ending</div>
+            
+            <p><strong>Mga Liriko:</strong></p>
+            <div class="suno-prompt">[Verse 1] [Energy: Low, Soft Piano, Fragile Voice]
+J'ai un problème
+Un p'tit démon dans ma tête
+Une mélodie qui tourne pas rond
+Il revient quand je suis seule, quand tout s'éteint
+Il me colle à la peau, il me serre la main
+
+Je dis doucement "ça va", avec un joli sourire
+Mais dedans tout se casse, et j'ai du mal à le dire
+Je voudrais juste dormir sans le bruit dans ma tête
+Sans cette petite voix qui me juge et m'arrête
+
+[Pre-Chorus]
+Et plus je le cache, plus il devient fort
+Plus je me tiens droite, plus il me tord
+
+[Chorus] [Energy: Medium]
+Un p'tit démon, qui tourne pas rond
+Qui met du gris sur tout ce qui est beau
+Un p'tit démon, au fond de mon nom
+Qui prend ma place quand j'ai peur, quand j'trouve plus les mots
+
+[Verse 2] [Energy: Low]
+Je l'entends dans le bus, au milieu des gens
+Il me dit "tu n'es pas assez", très calmement
+Alors j'écris des phrases pour ne pas pleurer
+Et si je chante un peu, c'est pour respirer
+
+[Chorus]
+Un p'tit démon, qui tourne pas rond
+Je le déteste, mais je le connais trop
+Un p'tit démon, au fond de mon nom
+Qui prend ma voix quand je veux dire un mot
+
+[Bridge] [Energy: Low, Slowing Down, Vulnerable]
+Y'a des matins où je reste au fond de mon lit
+Où le plafond me regarde et moi je lui souris
+Y'a des soirs où j'ai peur de fermer les yeux
+Parce que le silence, c'est là qu'il est le pire
+
+Mais j'ai mes touches blanches
+J'ai mes touches noires
+J'ai cette chambre où personne peut me voir
+
+[Building, Crescendo]
+Et quand mes doigts se posent
+Quand ma voix se lève
+Le démon recule
+Et moi je me relève
+
+[Final Chorus] [Energy: High, Powerful, Climax]
+Un p'tit démon, qui tourne pas rond
+Mais là tu vois, c'est moi qui choisis le tempo
+Un p'tit démon, au fond de mon nom
+Mais ce soir c'est ma chanson, c'est mon piano
+
+[Outro] [Slowing Down]
+Un p'tit démon...
+Qui tourne pas rond...
+
+[Spoken, Whispered]
+Mais ce soir, je te jure...
+
+[Powerful, Final Chord]
+C'est moi qui vais faire le show
+
+[End]</div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- BAHAGI 5: PAMAMARAAN -->
+        <!-- ============================================ -->
+        
+        <section class="section" id="methode">
+            <h2 class="section-title">✦ Pamamaraan — Pagsulat ng Kanta para sa Musikal</h2>
+            
+            <h3>Klasikong Istraktura: AABA (32 sukat)</h3>
+            <p>Tradisyonal na format ng musikal na teatro. Ang hook ay lumalabas sa simula o dulo ng bawat seksyon A. Ang B (bridge) ay nagdadala ng kontraste. Halimbawa: "Over the Rainbow".</p>
+            
+            <h3>Modernong Istraktura: Verse-Chorus</h3>
+            <p>Mas "pop" na format. Nagpapahintulot ng mga chorus na may mga lyrics na umuunlad habang pinapanatili ang hook sa parehong lugar. Mas akma sa estilo ni Mélodie (Pomme, Clara Luciani).</p>
+            
+            <div class="method-box">
+                <h4>✅ Mga Gintong Patakaran</h4>
+                <ul>
+                    <li><strong>Dayalogo, hindi tula</strong> — Ang mga liriko ay dapat tumunog na parang sinasalitang wika na nilagyan ng musika</li>
+                    <li><strong>Natural na prosodiya</strong> — Huwag pahirapan ang wika para mapwersa ang mga tugma</li>
+                    <li><strong>Nakakatandaang hook</strong> — Ang pamagat = ang hook, inuulit sa parehong lugar</li>
+                    <li><strong>Espesipikasyon</strong> — Ang kanta ay maaari lamang kantahin ng ITONG tauhan</li>
+                    <li><strong>Emosyonal na arko</strong> — Ang kanta ay dapat pumunta sa isang lugar (hindi lang inuulit ang parehong emosyon)</li>
+                </ul>
+            </div>
+            
+            <h3 id="types-chansons">Mga Uri ng Kanta</h3>
+            
+            <table class="recap-table">
+                <thead>
+                    <tr>
+                        <th>Uri</th>
+                        <th>Layunin</th>
+                        <th>Sa Simply Melody</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pambungad</strong></td>
+                        <td>Itinatag ang status quo bago ang aksyon</td>
+                        <td>Isang Maliit na Demonyo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>I Want Song</strong></td>
+                        <td>Pinangalanan ng protagonista ang kanyang hangarin</td>
+                        <td>Isang Maliit na Demonyo (+ Kung Naririnig Mo Ako?)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comic Relief</strong></td>
+                        <td>Paghinga, relax</td>
+                        <td>Isang Huling Beses</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Friendship Song</strong></td>
+                        <td>Itinatag ang isang relasyon</td>
+                        <td>Sisirain Natin ang Lahat</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Montage/Pag-akyat</strong></td>
+                        <td>Nagpapakita ng progreso</td>
+                        <td>Tingnan Mo Ako</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Villain Song</strong></td>
+                        <td>Pananaw ng antagonista</td>
+                        <td>❌ Si Varga ay WALANG kanta (katahimikan)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Komprontasyon</strong></td>
+                        <td>Salungatan ng mga tauhan</td>
+                        <td>Nasaan Ka? / Papatayin Ko Siya</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reckoning Song</strong></td>
+                        <td>Isang tauhan na humaharap sa katotohanan</td>
+                        <td>Ang Halaga (Héléna)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pakikipagkasundo</strong></td>
+                        <td>Pagkukumpuni ng relasyon</td>
+                        <td>Manatili</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Finale</strong></td>
+                        <td>Resolusyon, pangwakas na impresyon</td>
+                        <td>Simply Melody</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Checklist para sa Bawat Kanta</h3>
+            
+            <div class="method-box">
+                <h4>Bago magsulat, sagutin ang:</h4>
+                <ul>
+                    <li>Ano ang <strong>dramatikong layunin</strong> ng kantang ito?</li>
+                    <li>Ano ang gusto ng tauhan <strong>sa simula</strong> ng kanta?</li>
+                    <li>Ano ang alam/nararamdaman niya <strong>sa dulo</strong> na hindi niya alam sa simula?</li>
+                    <li>Bakit <strong>hindi</strong> maipahayag ang emosyong ito sa dayalogo?</li>
+                    <li>Ang kantang ito ba ay <strong>nagpapasulong</strong> ng kwento o nagpapahinto dito?</li>
+                </ul>
+            </div>
+            
+            <h3>Pagkakaiba-iba</h3>
+            <p>Magpalit-palit ng:</p>
+            <ul>
+                <li>Solos at ensembles</li>
+                <li>Ballads at rhythmic numbers</li>
+                <li>Malalim na sandali at magarang sandali</li>
+                <li>Mahaba at maikling kanta</li>
+            </ul>
+        </section>
+        
+        <!-- MGA SUSUNOD NA HAKBANG -->
+        <section class="section" id="next">
+            <h2 class="section-title">✦ Mga Susunod na Hakbang</h2>
+            
+            <table class="info-table">
+                <tr><td>1</td><td><strong>Isulat ang mga lyrics</strong> — Mga prayoridad na kanta: "Kung Naririnig Mo Ako" (ang viral na kanta), "Simply Melody" (finale)</td></tr>
+                <tr><td>2</td><td><strong>Gumawa sa Suno</strong> — Subukan ang mga melodiya, mag-adjust</td></tr>
+                <tr><td>3</td><td><strong>Libretto (book)</strong> — Mga sinasalitang dayalogo sa pagitan ng mga kanta</td></tr>
+                <tr><td>4</td><td><strong>Tukuyin ang mga secondary roles</strong> — Chorus, mga estudyante, batay sa pangangailangan ng mga numero</td></tr>
+                <tr><td>5</td><td><strong>Mga pagbasa / workshops</strong> — Subukan nang malakas</td></tr>
+            </table>
+            
+            <h3>Mga Kantang Isusulat (ayon sa prayoridad)</h3>
+            <table class="recap-table">
+                <thead>
+                    <tr>
+                        <th>Prayoridad</th>
+                        <th>Kanta</th>
+                        <th>Dahilan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🔴</td>
+                        <td>Kung Naririnig Mo Ako</td>
+                        <td>Puso ng palabas, dapat perpekto</td>
+                    </tr>
+                    <tr>
+                        <td>🔴</td>
+                        <td>Simply Melody</td>
+                        <td>Finale, nagbibigay ng pamagat</td>
+                    </tr>
+                    <tr>
+                        <td>🟠</td>
+                        <td>Nasaan Ka?</td>
+                        <td>Pangunahing komprontasyon ng ina-anak</td>
+                    </tr>
+                    <tr>
+                        <td>🟠</td>
+                        <td>Ang Halaga</td>
+                        <td>Dakilang kanta ni Héléna</td>
+                    </tr>
+                    <tr>
+                        <td>🟡</td>
+                        <td>Isang Huling Beses</td>
+                        <td>Comic number ni Hugues/Fred</td>
+                    </tr>
+                    <tr>
+                        <td>🟡</td>
+                        <td>Manatili</td>
+                        <td>Pakikipagkasundo ng ama-anak</td>
+                    </tr>
+                    <tr>
+                        <td>🟢</td>
+                        <td>Ang iba pa...</td>
+                        <td>Batay sa pangangailangan</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>Simply Melody — Kumpletong Bibliya — Bersyon 2.0</p>
+            <p>Dokumento ng Trabaho — Enero 2026</p>
+        </footer>
+        
+    </div>
+</body>
+</html>
