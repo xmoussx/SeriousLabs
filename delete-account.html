@@ -29,14 +29,18 @@
         <p><strong>Délai :</strong> Votre compte sera supprimé sous 7 jours ouvrés.</p>
     </div>
     
-    <form id="deleteForm">
+    <form action="https://formsubmit.co/contact@seriouslabs.tech" method="POST">
+        <input type="hidden" name="_subject" value="Demande suppression compte AlphaDash">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://seriouslabs.tech/delete-account-confirm.html">
+        
         <div class="form-group">
             <label>Nom d'utilisateur ou email Google :</label>
-            <input type="text" id="username" required>
+            <input type="text" name="username" required>
         </div>
         <div class="form-group">
             <label>Raison (optionnel) :</label>
-            <textarea id="reason" rows="3"></textarea>
+            <textarea name="reason" rows="3"></textarea>
         </div>
         <button type="submit">Demander la suppression</button>
     </form>
@@ -44,12 +48,5 @@
     <p style="margin-top: 30px; color: #888;">
         Contact : contact@seriouslabs.tech
     </p>
-    
-    <script>
-        document.getElementById('deleteForm').onsubmit = async (e) => {
-            e.preventDefault();
-            alert('Votre demande de suppression a été envoyée. Votre compte sera supprimé sous 7 jours.');
-        };
-    </script>
 </body>
 </html>
