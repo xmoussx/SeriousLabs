@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeux d'argent en ligne en Afrique : Le continent parie sur son avenir</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-accent: #e94560;
+            --color-secondary: #16213e;
+            --color-gold: #d4a574;
+            --color-light: #f8f9fa;
+            --color-text: #2d2d2d;
+            --color-muted: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--color-light);
+            color: var(--color-text);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            padding: 80px 20px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--color-accent);
+            color: white;
+            padding: 6px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 700px;
+        }
+
+        .hero-meta {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Key figures banner */
+        .key-figures {
+            background: white;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            margin: -50px auto 60px;
+            max-width: 1000px;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            position: relative;
+            z-index: 10;
+        }
+
+        .key-figure {
+            padding: 32px 24px;
+            text-align: center;
+            border-right: 1px solid #eee;
+        }
+
+        .key-figure:last-child {
+            border-right: none;
+        }
+
+        .key-figure-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            line-height: 1;
+        }
+
+        .key-figure-label {
+            font-size: 13px;
+            color: var(--color-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        /* Article Content */
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .article-intro {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--color-text);
+            margin-bottom: 48px;
+            padding-bottom: 48px;
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        .article-intro::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            float: left;
+            line-height: 0.8;
+            margin-right: 12px;
+            color: var(--color-accent);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 64px 0 24px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--color-accent);
+        }
+
+        h3 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin: 40px 0 16px;
+        }
+
+        p {
+            margin-bottom: 24px;
+        }
+
+        /* Charts and visualizations */
+        .chart-container {
+            background: white;
+            border-radius: 8px;
+            padding: 32px;
+            margin: 40px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+
+        .chart-container-wide {
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .chart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+
+        .chart-subtitle {
+            font-size: 14px;
+            color: var(--color-muted);
+            margin-bottom: 24px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+        }
+
+        .chart-wrapper-small {
+            height: 280px;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin: 40px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+
+        thead {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        th {
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 14px 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .table-highlight {
+            background: rgba(233, 69, 96, 0.08);
+        }
+
+        /* Callout boxes */
+        .callout {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 8px;
+            margin: 48px 0;
+        }
+
+        .callout-stat {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--color-gold);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .callout-text {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Quote */
+        blockquote {
+            border-left: 4px solid var(--color-accent);
+            padding: 24px 32px;
+            margin: 40px 0;
+            background: #f8f9fa;
+            font-style: italic;
+            font-size: 1.15rem;
+        }
+
+        blockquote cite {
+            display: block;
+            margin-top: 12px;
+            font-style: normal;
+            font-size: 14px;
+            color: var(--color-muted);
+        }
+
+        /* Info cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 28px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            border-top: 4px solid var(--color-accent);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+        }
+
+        .card-text {
+            font-size: 15px;
+            color: var(--color-muted);
+            line-height: 1.6;
+        }
+
+        /* Source note */
+        .source-note {
+            font-size: 13px;
+            color: var(--color-muted);
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Comparison bar */
+        .comparison-bar {
+            display: flex;
+            height: 40px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .comparison-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .article-footer {
+            background: var(--color-primary);
+            color: white;
+            padding: 60px 24px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        .sources-list {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 2;
+        }
+
+        .sources-list a {
+            color: var(--color-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 80px;
+            }
+
+            .key-figures {
+                margin: -30px 16px 40px;
+            }
+
+            .key-figure {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+
+            .key-figure:last-child {
+                border-bottom: none;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .chart-wrapper {
+                height: 300px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <span class="hero-tag">Enquête</span>
+        <h1>Jeux d'argent en ligne en Afrique : le continent parie sur son avenir</h1>
+        <p class="hero-subtitle">Entre boom technologique, fragmentation réglementaire et enjeux de santé publique, le marché africain du gambling en ligne connaît une croissance sans précédent. Analyse d'un phénomène continental.</p>
+        <div class="hero-meta">
+            <span>📍 Analyse continentale</span>
+            <span>📊 Données 2024-2025</span>
+            <span>⏱️ Lecture : 15 min</span>
+        </div>
+    </div>
+</header>
+
+<section class="key-figures">
+    <div class="key-figure">
+        <div class="key-figure-value">6,1 Md$</div>
+        <div class="key-figure-label">Marché total 2024</div>
+    </div>
+    <div class="key-figure">
+        <div class="key-figure-value">11,3 Md$</div>
+        <div class="key-figure-label">Projection 2032</div>
+    </div>
+    <div class="key-figure">
+        <div class="key-figure-value">94%</div>
+        <div class="key-figure-label">Paris via mobile</div>
+    </div>
+    <div class="key-figure">
+        <div class="key-figure-value">41</div>
+        <div class="key-figure-label">Pays régulant le jeu</div>
+    </div>
+</section>
+
+<article class="article-container">
+    <div class="article-intro">
+        En 2025, l'Afrique du Sud a détrôné le Kenya comme première nation de parieurs du continent, avec 90% de ses jeunes adultes déclarant avoir déjà placé un pari. Ce basculement, révélé par l'enquête annuelle GeoPoll, illustre la mutation profonde d'un secteur qui pèse désormais plus de 6 milliards de dollars et pourrait doubler d'ici 2032. Mais derrière les courbes de croissance se dessine une réalité plus complexe : celle d'un marché fragmenté entre 54 juridictions, d'une jeunesse en quête d'alternatives économiques, et d'un vide béant en matière de prévention.
+    </div>
+
+    <h2>I. Un marché en pleine explosion</h2>
+
+    <p>Le marché africain du jeu d'argent a connu une transformation radicale en moins d'une décennie. De 2019 à 2024, les revenus du gambling en ligne ont pratiquement doublé, passant d'environ 950 millions à 1,85 milliard de dollars pour le seul segment digital. La trajectoire ascendante devrait se poursuivre avec une projection à 2,36 milliards de dollars d'ici 2028, soit une croissance annuelle de 6,3%.</p>
+
+    <div class="chart-container chart-container-wide">
+        <div class="chart-title">Évolution du marché africain du gambling</div>
+        <div class="chart-subtitle">En milliards de dollars USD - Gambling total (online + offline)</div>
+        <div class="chart-wrapper">
+            <canvas id="marketGrowthChart"></canvas>
+        </div>
+        <div class="source-note">Sources : Astute Analytica, Statista, SCCG Management (2024-2025)</div>
+    </div>
+
+    <p>Cette croissance repose sur un socle démographique unique : avec un âge médian de 20 ans, l'Afrique dispose de la population la plus jeune au monde. D'ici 2050, un jeune sur trois à l'échelle mondiale sera africain. Cette jeunesse, digital native et passionnée de football, constitue le cœur de cible des opérateurs de paris sportifs.</p>
+
+    <h3>Paris sportifs : le segment roi</h3>
+
+    <p>Les paris sportifs dominent sans partage le marché africain. En Afrique du Sud, ils représentent 60,5% des revenus du gambling en 2023-24, dont 80% générés en ligne. À l'échelle du continent, le segment sports betting capte environ 55% des revenus du gambling online. Le casino (incluant les crash games) représente environ 27% et connaît une croissance rapide. Les loteries, souvent des monopoles d'État, conservent une base stable (~15%), notamment en Afrique du Sud et au Maroc. Le poker online reste embryonnaire (~3%), légal uniquement dans quelques juridictions.</p>
+
+    <div class="chart-container chart-container-wide">
+        <div class="chart-title">Répartition des revenus du gambling online en Afrique</div>
+        <div class="chart-subtitle">Par type de jeu - Estimations 2024</div>
+        <div class="chart-wrapper chart-wrapper-small">
+            <canvas id="gameTypeChart"></canvas>
+        </div>
+        <div class="source-note">Sources : Grand View Research, Statista, National Gambling Board (Afrique du Sud)</div>
+    </div>
+
+    <div class="callout">
+        <div class="callout-stat">Aviator</div>
+        <div class="callout-text"><strong>Le phénomène culturel qui redéfinit le gambling africain.</strong> Développé par Spribe en 2019, ce crash game est devenu incontournable : 19% des parieurs africains y jouent selon GeoPoll. Le principe est simple : un avion décolle, le multiplicateur grimpe (2x, 5x, 10x...), le joueur doit encaisser avant le crash. Mises à partir de quelques centimes, parties de 30 secondes, design "TikTok-like" : Aviator coche toutes les cases de l'addiction mobile. Intégré à toutes les apps de paris (Betika, SportPesa, 22Bet), il brouille la frontière entre betting et casino. Au Kenya, des témoignages font état de pertes atteignant 800 000 KES (~6 000€) sur ce seul jeu.</div>
+    </div>
+
+    <h3>Afrique, France, Europe : des marchés aux profils distincts</h3>
+
+    <p>La comparaison avec les marchés matures révèle des écarts structurels significatifs. En Europe, le casino online domine avec 45% des revenus du gambling en ligne, suivi des paris sportifs (29%) et des loteries (15%). En France, si l'on intègre la loterie FDJ online (~14% des mises loterie se font désormais en ligne), les paris sportifs représentent 52% du marché online total, devant les loteries (23%), le poker (14%) et l'hippisme (10%). L'Afrique présente un profil hybride : les paris sportifs dominent (55%), le casino/crash games émerge (27%), mais le poker reste quasi-inexistant (3%).</p>
+
+    <div class="chart-container chart-container-wide">
+        <div class="chart-title">Comparaison des marchés du gambling online</div>
+        <div class="chart-subtitle">Répartition des revenus par type de jeu - 2024</div>
+        <div class="chart-wrapper">
+            <canvas id="marketComparisonChart"></canvas>
+        </div>
+        <div class="source-note">Sources : EGBA/H2 Gambling Capital (Europe), ANJ + FDJ United (France - incluant loterie FDJ online), estimations consolidées (Afrique)</div>
+    </div>
+
+    <p>Le poker illustre une spécificité française qui ne s'est pas exportée. Avec 14% du marché online (493 millions d'euros en 2024), la France fait figure d'exception mondiale, fruit d'une culture poker développée depuis l'ouverture du marché en 2010 et d'une expertise que des opérateurs comme Winamax ont su construire. En Afrique comme dans la moyenne européenne, le poker ne dépasse pas 3% des revenus. Cette faiblesse s'explique par l'absence de régulation spécifique dans la plupart des juridictions africaines, la complexité du jeu comparée à la simplicité des paris sportifs ou des crash games, et surtout l'inadéquation avec les micropaiements mobiles, une partie de poker nécessitant un bankroll minimum. Le poker africain reste cantonné aux casinos terrestres sud-africains, kenyans et marocains, sans écosystème online structuré. Une opportunité de diffusion de l'expertise française ?</p>
+
+    <h3>Les champions du continent</h3>
+
+    <p>L'enquête GeoPoll 2025, menée auprès de plus de 4 000 jeunes dans six pays, révèle des taux de participation au jeu spectaculaires. L'Afrique du Sud domine désormais le classement avec 90% de participation déclarée, suivie par l'Ouganda (87%) et le Kenya (79%). Le Nigeria, malgré sa population massive, affiche un taux plus modéré de 71%.</p>
+
+    <div class="chart-container chart-container-wide">
+        <div class="chart-title">Taux de participation au gambling par pays (2025)</div>
+        <div class="chart-subtitle">Pourcentage de répondants ayant déclaré avoir déjà parié - Enquête GeoPoll 2025</div>
+        <div class="chart-wrapper chart-wrapper-small">
+            <canvas id="participationChart"></canvas>
+        </div>
+        <div class="source-note">Source : GeoPoll, Betting in Africa 2025 (n=4 191)</div>
+    </div>
+
+    <p>En volume absolu, trois marchés concentrent l'essentiel des revenus. L'Afrique du Sud génère à elle seule plus de 2,5 milliards de dollars de revenus gambling (toutes formes confondues), portée par un cadre légal mature et une classe moyenne établie. Le Nigeria, avec ses 220 millions d'habitants et un marché estimé à 730 milliards de nairas (environ 1,8 milliard de dollars), représente le second pôle. Le Kenya complète le trio avec des revenus attendus de 1,21 milliard de dollars en 2025.</p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pays</th>
+                    <th>Population</th>
+                    <th>Taille du marché (2024-2025)</th>
+                    <th>Participation</th>
+                    <th>Régulateur principal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-highlight">
+                    <td><strong>🇿🇦 Afrique du Sud</strong></td>
+                    <td>60 M</td>
+                    <td>~2,5 Md$ (total)</td>
+                    <td>90%</td>
+                    <td>National Gambling Board</td>
+                </tr>
+                <tr>
+                    <td><strong>🇳🇬 Nigeria</strong></td>
+                    <td>220 M</td>
+                    <td>~1,8 Md$</td>
+                    <td>71%</td>
+                    <td>NLRC + États fédérés</td>
+                </tr>
+                <tr>
+                    <td><strong>🇰🇪 Kenya</strong></td>
+                    <td>55 M</td>
+                    <td>~1,2 Md$</td>
+                    <td>79%</td>
+                    <td>Gambling Regulatory Authority</td>
+                </tr>
+                <tr>
+                    <td><strong>🇬🇭 Ghana</strong></td>
+                    <td>33 M</td>
+                    <td>~915 M$</td>
+                    <td>56%</td>
+                    <td>Gaming Commission of Ghana</td>
+                </tr>
+                <tr>
+                    <td><strong>🇲🇦 Maroc</strong></td>
+                    <td>37 M</td>
+                    <td>~400 M$ (est.)</td>
+                    <td>n.d.</td>
+                    <td>MDJS / Min. Intérieur</td>
+                </tr>
+                <tr>
+                    <td><strong>🇹🇿 Tanzanie</strong></td>
+                    <td>65 M</td>
+                    <td>~350 M$</td>
+                    <td>56%</td>
+                    <td>Gaming Board of Tanzania</td>
+                </tr>
+                <tr>
+                    <td><strong>🇺🇬 Ouganda</strong></td>
+                    <td>48 M</td>
+                    <td>~200 M$</td>
+                    <td>87%</td>
+                    <td>NLGRB</td>
+                </tr>
+                <tr>
+                    <td><strong>🇩🇿 Algérie</strong></td>
+                    <td>45 M</td>
+                    <td>n.d. (monopole État)</td>
+                    <td>n.d.</td>
+                    <td>PSA (monopole)</td>
+                </tr>
+                <tr>
+                    <td><strong>🇨🇲 Cameroun</strong></td>
+                    <td>28 M</td>
+                    <td>~135 M$ (online)</td>
+                    <td>n.d.</td>
+                    <td>Cabinet PM / NLRC</td>
+                </tr>
+                <tr>
+                    <td><strong>🇨🇮 Côte d'Ivoire</strong></td>
+                    <td>28 M</td>
+                    <td>~100 M$ (est.)</td>
+                    <td>n.d.</td>
+                    <td>LONACI</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="source-note">Sources : GeoPoll 2025, Statista, SCCG Management, rapports nationaux - n.d. = non disponible</div>
+    </div>
+
+    <h2>II. Le mobile comme infrastructure</h2>
+
+    <p>La révolution du gambling africain est indissociable d'une autre révolution : celle du mobile money. Lancé en 2007 au Kenya par Safaricom, M-Pesa a créé un écosystème financier parallèle qui touche aujourd'hui plus de 60 millions d'utilisateurs à travers huit pays africains. Cette infrastructure est devenue le nerf de la guerre pour les opérateurs de paris.</p>
+
+    <div class="callout">
+        <div class="callout-stat">90%+</div>
+        <div class="callout-text">des paris en ligne au Kenya transitent par M-Pesa. L'intégration est si profonde que les bookmakers disposent de « paybill numbers » dédiés permettant des dépôts et retraits instantanés.</div>
+    </div>
+
+    <p>Les chiffres sont éloquents : selon l'enquête GeoPoll 2025, 94% des parieurs africains utilisent leur téléphone mobile pour placer leurs paris. Cette domination du mobile s'explique par plusieurs facteurs convergents : une pénétration smartphone en hausse constante (51% en 2023, 88% projetés en 2030), la démocratisation de la data mobile, et la généralisation du mobile money.</p>
+
+    <div class="chart-container">
+        <div class="chart-title">Moyens de paiement utilisés pour les paris en ligne</div>
+        <div class="chart-subtitle">Par pays - Données 2024-2025</div>
+        <div class="chart-wrapper chart-wrapper-small">
+            <canvas id="paymentChart"></canvas>
+        </div>
+        <div class="source-note">Source : SCCG Management, Gambling Insider (2025)</div>
+    </div>
+
+    <h3>Un écosystème sur mesure</h3>
+
+    <p>Contrairement à l'Europe ou l'Amérique du Nord où les cartes bancaires dominent, l'Afrique a développé un modèle hybride adapté à ses réalités. Au Kenya, en Tanzanie et en Ouganda, le mobile money (M-Pesa, MTN Mobile Money, Airtel Money) règne en maître absolu. Au Nigeria, où le mobile money reste marginal (environ 4% de pénétration), les fintechs locales comme Paga et OPay ont pris le relais. L'Afrique du Sud, avec son système bancaire plus développé, combine cartes bancaires, virements EFT et solutions locales comme Ozow.</p>
+
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-icon">🇰🇪</div>
+            <div class="card-title">Kenya - Le modèle M-Pesa</div>
+            <div class="card-text">Plus de 90% des transactions de paris passent par M-Pesa. Les bookmakers comme Betika et SportPesa disposent de codes paybill dédiés pour des dépôts instantanés. Le KYC est simplifié via les données opérateur.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🇳🇬</div>
+            <div class="card-title">Nigeria - Les fintechs en relais</div>
+            <div class="card-text">Faible pénétration du mobile money traditionnel. Les parieurs utilisent les cartes bancaires, les virements, et les wallets fintech (Paga, OPay, Paystack). Bet9ja et Betway dominent le marché.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🇿🇦</div>
+            <div class="card-title">Afrique du Sud - Mix bancaire</div>
+            <div class="card-text">Système financier plus mature : cartes Visa/Mastercard, virements EFT instantanés (Ozow, SID). Les e-wallets internationaux comme Skrill sont aussi utilisés pour contourner certaines restrictions.</div>
+        </div>
+    </div>
+
+    <p>Cette intégration profonde entre paiements mobiles et paris a créé un cercle vertueux : la simplicité des transactions (quelques secondes pour déposer ou retirer) a démocratisé l'accès au gambling, tandis que l'afflux de volumes a renforcé les infrastructures de paiement. Mais cette facilité d'accès pose aussi des questions de jeu responsable.</p>
+
+    <h2>III. La fragmentation réglementaire</h2>
+
+    <p>Derrière l'apparente homogénéité d'un « marché africain » se cache une mosaïque réglementaire d'une complexité redoutable. Une étude publiée dans Public Health en 2023 a cartographié l'environnement juridique des 49 pays d'Afrique subsaharienne : si 83,6% des pays (41 sur 49) régulent le gambling sous une forme ou une autre, les approches divergent radicalement.</p>
+
+    <div class="chart-container chart-container-wide">
+        <div class="chart-title">État de la régulation du gambling en Afrique subsaharienne</div>
+        <div class="chart-subtitle">Sur 49 pays analysés - Étude Sichali et al., 2023</div>
+        <div class="chart-wrapper chart-wrapper-small">
+            <canvas id="regulationChart"></canvas>
+        </div>
+        <div class="source-note">Source : Sichali et al., Public Health, 2023</div>
+    </div>
+
+    <h3>Le vide de la transparence</h3>
+
+    <p>Le chiffre le plus préoccupant de cette étude concerne la transparence : sur les 41 pays qui régulent le gambling, seuls 2 (4,9%) ont publié des rapports annuels de manière continue depuis la création de leur régulateur. Trois pays supplémentaires (7,3%) ont publié des rapports de façon intermittente. Dans les 36 pays restants (87,8%), aucun rapport n'a jamais été rendu public.</p>
+
+    <blockquote>
+        « La revue a révélé un manque de cohérence dans les mesures réglementaires et un besoin urgent de reporting public plus transparent à travers les territoires d'Afrique subsaharienne. »
+        <cite>- Sichali et al., Public Health, 2023</cite>
+    </blockquote>
+
+    <p>Cette opacité crée un terreau fertile pour les opérateurs illégaux. Sans données fiables sur les volumes de jeu, les revenus générés ou les indicateurs de jeu problématique, les régulateurs naviguent à l'aveugle. Les opérateurs offshore, souvent basés à Curaçao ou à Malte, exploitent ces failles pour cibler les joueurs africains sans licence locale.</p>
+
+    <h3>Des approches divergentes</h3>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Statut</th>
+                    <th>Nb</th>
+                    <th>Pays</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Régulateur dédié</td>
+                    <td>25</td>
+                    <td>Afrique du Sud, Botswana, Eswatini, Lesotho, Malawi, Mozambique, Namibie, Zambie, Zimbabwe, Kenya, Ouganda, Rwanda, Tanzanie, Ghana, Nigeria, Sierra Leone, Liberia, Cap-Vert, Gambie, Guinée-Bissau, Sao Tomé-et-Principe, Maurice, Seychelles, Égypte, Maroc</td>
+                </tr>
+                <tr>
+                    <td>Régulation ministérielle</td>
+                    <td>16</td>
+                    <td>Cameroun, Côte d'Ivoire, Sénégal, Mali, Burkina Faso, Bénin, Togo, Niger, Guinée, RD Congo, République du Congo, Gabon, Guinée équatoriale, Centrafrique, Tchad, Angola</td>
+                </tr>
+                <tr>
+                    <td>Gambling interdit</td>
+                    <td>7</td>
+                    <td>Mauritanie, Somalie, Comores, Soudan, Soudan du Sud, Libye, Djibouti</td>
+                </tr>
+                <tr>
+                    <td>Pas de législation</td>
+                    <td>1</td>
+                    <td>Érythrée</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="source-note">Source : Étude comparative Sichali et al., 2023</div>
+    </div>
+
+    <h3>Vers une harmonisation panafricaine ?</h3>
+
+    <p>Face à cette fragmentation, des initiatives d'harmonisation émergent. L'Association of Gaming Regulators in Africa (AGRA), qui regroupe les régulateurs du continent, œuvre pour établir des standards communs en matière de certification, de jeu responsable et de lutte contre le gambling illégal.</p>
+
+    <p>Côté opérateurs, l'African iGaming Alliance (AIA), créée en 2025 par Betway, BetPawa, 888Africa et Sportybet, ambitionne de peser dans le dialogue avec les régulateurs. Présidée par Peter Kesitilwe, ancien dirigeant du régulateur botswanais, l'alliance poursuit trois priorités : promouvoir une régulation harmonisée, encourager des fiscalités stables et prévisibles, et développer des cadres communs de jeu responsable. Selon ses estimations, jusqu'à deux tiers des opérateurs présents sur le continent évoluent dans l'illégalité, faisant perdre aux États entre 2 et 5 milliards de dollars par an en recettes fiscales.</p>
+
+    <blockquote>
+        « Nous ne devrions pas nous considérer comme des concurrents alors que nous nous complétons. C'est pourquoi nous disons : harmonisons les questions de fiscalité et celles du jeu responsable à travers notre alliance. Parlons d'une seule voix. »
+        <cite>- Peter Kesitilwe, Président de l'AIA</cite>
+    </blockquote>
+
+    <p>Le Kenya a franchi un cap symbolique en 2025 avec l'adoption du Gambling Act, qui dissout l'ancien Betting Control and Licensing Board (BCLB) pour créer une Gambling Regulatory Authority (GRA) aux pouvoirs élargis. La nouvelle loi impose notamment 30% d'actionnariat local pour les opérateurs, un monitoring en temps réel des transactions lié à l'administration fiscale, et des restrictions renforcées sur la publicité.</p>
+
+    <h2>IV. Focus : les marchés francophones</h2>
+
+    <p>Pour les opérateurs européens, et particulièrement français, les marchés francophones africains présentent un intérêt stratégique évident : une langue commune, des affinités culturelles (notamment la passion pour la Ligue 1), et des cadres juridiques souvent hérités du droit français. Mais ces marchés présentent des profils très contrastés, entre monopoles d'État nord-africains et ouverture progressive en Afrique de l'Ouest.</p>
+
+    <h3>Le Maghreb : des monopoles étatiques sous pression</h3>
+
+    <p>Les trois pays du Maghreb partagent une caractéristique commune : des marchés officiellement verrouillés par des monopoles d'État, mais massivement pénétrés par les opérateurs offshore. Au Maroc, la MDJS (Marocaine des Jeux et des Sports) détient le monopole des paris sportifs, opéré depuis 2020 par Sisal (groupe Flutter). En Tunisie, Promosport, créé en 1984, règne sur les loteries et paris sportifs avec une licence exclusive confiée également à Sisal jusqu'en 2032. L'Algérie reste le marché le plus fermé avec Paris Sportif Algérien (PSA) comme unique opérateur légal.</p>
+
+    <div class="callout">
+        <div class="callout-stat">12 janvier 2026</div>
+        <div class="callout-text"><strong>Maroc : carton rouge judiciaire aux sites illégaux.</strong> La justice marocaine a ordonné aux opérateurs télécoms de bloquer l'accès à 1xBet, Betway, Melbet, Stake et plusieurs autres plateformes offshore. Blocage DNS/IP, astreinte de 10 000 dirhams/jour. Une première au Maghreb, alors même que 1xBet s'affiche comme sponsor officiel de la CAN 2025 dans les stades marocains. <a href="https://les-enjeux.com/2026/01/14/blocage-paris-illegaux-maroc/" target="_blank">Lire l'article complet</a></div>
+    </div>
+
+    <p>Cette décision historique illustre le paradoxe marocain : un marché offshore estimé à plus d'un million d'utilisateurs réguliers, longtemps toléré de fait, qui se retrouve soudainement dans le viseur. La requête de la MDJS s'appuie sur un constat d'huissier du 15 décembre 2025 attestant l'accessibilité des plateformes depuis le territoire. Au-delà des sites eux-mêmes, la décision cible les relais locaux (Herofoot, X1Mel, Melfoot, Orange Depo) qui facilitaient dépôts et retraits via des comptes bancaires marocains.</p>
+
+    <p>L'Algérie a tenté de resserrer l'étau en 2025 avec la loi 25-10 interdisant les cryptomonnaies, visant à fermer une voie de contournement populaire. Mais l'absence de blocage technique des sites et la rareté des poursuites contre les joueurs individuels maintiennent un marché gris florissant. La Tunisie, plus pragmatique, a légalisé le gambling online en 2022 via Promosport/Sisal, mais la concurrence offshore reste intense.</p>
+
+    <div class="chart-container chart-container-wide">
+        <div class="chart-title">Panorama des marchés francophones africains</div>
+        <div class="chart-subtitle">Statut réglementaire et opérateurs dominants - 2024-2025</div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pays</th>
+                        <th>Population</th>
+                        <th>Statut légal</th>
+                        <th>Monopole/Régulateur</th>
+                        <th>Opérateurs dominants</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🇲🇦 Maroc</strong></td>
+                        <td>37 M</td>
+                        <td>Casinos légaux (touristes), paris sportifs monopole</td>
+                        <td>MDJS / Min. Intérieur</td>
+                        <td>Sisal (Flutter), 1xBet*, Bet365*</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🇹🇳 Tunisie</strong></td>
+                        <td>12 M</td>
+                        <td>Casinos (touristes), paris sportifs monopole, online légalisé 2022</td>
+                        <td>Promosport / Min. Jeunesse & Sports</td>
+                        <td>Sisal (Flutter), 1xBet*, Melbet*</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🇩🇿 Algérie</strong></td>
+                        <td>45 M</td>
+                        <td>Interdit (sauf loterie/PMU d'État)</td>
+                        <td>PSA / Min. Jeunesse & Sports</td>
+                        <td>PSA uniquement (offshore massif)</td>
+                    </tr>
+                    <tr style="background: rgba(212,165,116,0.1);">
+                        <td><strong>🇨🇮 Côte d'Ivoire</strong></td>
+                        <td>28 M</td>
+                        <td>Légal et régulé (licences depuis 2021)</td>
+                        <td>LONACI</td>
+                        <td>1xBet, Betclic, Premier Bet</td>
+                    </tr>
+                    <tr style="background: rgba(212,165,116,0.1);">
+                        <td><strong>🇸🇳 Sénégal</strong></td>
+                        <td>18 M</td>
+                        <td>Monopole LONASE + licences privées</td>
+                        <td>LONASE / Min. Intérieur</td>
+                        <td>LONASE, 1xBet*, 22Bet*</td>
+                    </tr>
+                    <tr style="background: rgba(212,165,116,0.1);">
+                        <td><strong>🇨🇲 Cameroun</strong></td>
+                        <td>28 M</td>
+                        <td>Légal et régulé (décret 2019)</td>
+                        <td>NLRC / Cabinet PM</td>
+                        <td>Premier Bet, 1xBet, PMUC</td>
+                    </tr>
+                    <tr style="background: rgba(212,165,116,0.1);">
+                        <td><strong>🇲🇱 Mali</strong></td>
+                        <td>22 M</td>
+                        <td>Zone grise (pas de cadre clair)</td>
+                        <td>-</td>
+                        <td>Bet223, 1xBet, Premier Bet</td>
+                    </tr>
+                    <tr style="background: rgba(212,165,116,0.1);">
+                        <td><strong>🇧🇯 Bénin</strong></td>
+                        <td>13 M</td>
+                        <td>Légal (loi 2004)</td>
+                        <td>Agrément gouvernemental</td>
+                        <td>1xBet, Melbet, 1Win</td>
+                    </tr>
+                    <tr style="background: rgba(212,165,116,0.1);">
+                        <td><strong>🇧🇫 Burkina Faso</strong></td>
+                        <td>22 M</td>
+                        <td>Zone grise</td>
+                        <td>-</td>
+                        <td>1xBet, 1Win, Melbet</td>
+                    </tr>
+                    <tr style="background: rgba(212,165,116,0.1);">
+                        <td><strong>🇨🇩 RD Congo</strong></td>
+                        <td>100 M</td>
+                        <td>Monopole SONAL + licences</td>
+                        <td>SONAL</td>
+                        <td>1xBet, Betika, Premier Bet</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="source-note">* Opérateurs offshore sans licence locale - Sources : CMS Expert Guide, iGaming Afrika, rapports nationaux</div>
+    </div>
+
+    <h3>L'Afrique de l'Ouest francophone : le nouvel eldorado</h3>
+
+    <p>Contrairement au Maghreb, plusieurs pays d'Afrique de l'Ouest francophone ont opté pour une ouverture encadrée du marché. La Côte d'Ivoire fait figure de pionnière : depuis 2021, la LONACI (Loterie Nationale de Côte d'Ivoire) délivre des agréments aux opérateurs privés. 1xBet, Betclic et Premier Bet ont été parmi les premiers bénéficiaires. Le Cameroun a suivi avec le décret de 2019 établissant un cadre pour les licences online, même si son application reste inégale.</p>
+
+    <p>Le marché ivoirien illustre la dynamique francophone : une population jeune (âge médian 19 ans), une pénétration mobile élevée, et une passion pour le football européen, notamment la Ligue 1 où évoluent de nombreux internationaux ivoiriens. Les paiements s'effectuent principalement via Orange Money, MTN Mobile Money et Wave, cette dernière fintech ayant conquis une part significative du marché en zone UEMOA.</p>
+
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-icon">🇨🇮</div>
+            <div class="card-title">Côte d'Ivoire - Le modèle LONACI</div>
+            <div class="card-text">Marché ouvert depuis 2021 avec licences délivrées par la LONACI. Betclic, 1xBet et Premier Bet agréés. Paiements dominés par Orange Money et Wave. Marché estimé à ~100 M$ en croissance.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🇨🇲</div>
+            <div class="card-title">Cameroun - Potentiel sous-exploité</div>
+            <div class="card-text">Cadre légal depuis 2019 mais régulateur peu actif. 18 opérateurs licenciés (casinos, paris, loteries). Marché online estimé à 99 M$ en 2024. Taxe de 25% sur le GGR.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🇸🇳</div>
+            <div class="card-title">Sénégal - Le monopole LONASE</div>
+            <div class="card-text">LONASE détient le monopole théorique mais partenariats possibles. Licences non délivrées aux privés. Marché offshore très actif. Paiements via Orange Money dominant.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🇨🇩</div>
+            <div class="card-title">RD Congo - Le géant dormant</div>
+            <div class="card-text">100 millions d'habitants, monopole SONAL mais licences accordées. Betika et 1xBet très présents. Paiements via M-Pesa, Airtel Money, Orange Money. Fort potentiel inexploité.</div>
+        </div>
+    </div>
+
+    <h3>Les spécificités des marchés francophones</h3>
+
+    <p>Plusieurs traits distinguent les marchés francophones des marchés anglophones dominants (Kenya, Nigeria, Afrique du Sud). D'abord, une prépondérance des monopoles ou semi-monopoles étatiques, héritée des traditions de loteries nationales. Ensuite, une présence plus marquée d'opérateurs européens francophones : Betclic (Française des Jeux) est particulièrement actif en Côte d'Ivoire et au Sénégal, tandis que Sisal (Flutter) a verrouillé le Maghreb. Enfin, le franc CFA, avec sa parité fixe avec l'euro, facilite les opérations pour les groupes européens.</p>
+
+    <p>Le paysage des paiements diffère également. Si M-Pesa domine en Afrique de l'Est anglophone, la zone UEMOA (Union Économique et Monétaire Ouest-Africaine) voit s'affronter Orange Money, MTN Mobile Money et le challenger Wave, qui a conquis des parts significatives au Sénégal, en Côte d'Ivoire et au Mali grâce à des frais réduits.</p>
+
+    <blockquote>
+        « La Côte d'Ivoire a trouvé un accord avec la LONACI pour permettre à cette dernière de délivrer des agréments aux nouveaux opérateurs. 1xBet, BetClic et PremierBet ont été les premiers sites de paris sportifs ayant bénéficié d'une telle licence. »
+        <cite>- Foot-Africa.com, 2024</cite>
+    </blockquote>
+
+    <h3>Les stratégies marketing des opérateurs offshore</h3>
+
+    <p>Le paradoxe du marché africain tient dans cette image : des opérateurs comme 1xBet, officiellement illégaux dans de nombreuses juridictions, s'affichent pourtant comme sponsors de la Coupe d'Afrique des Nations 2025 organisée au Maroc, le même pays qui vient d'ordonner leur blocage. Cette stratégie de légitimation par le sport est systématique : 1xBet a prolongé en octobre 2025 son partenariat mondial avec le Paris Saint-Germain jusqu'en 2028 (environ 3 millions d'euros annuels), le FC Barcelone arbore également son logo, et l'opérateur multiplie les contrats avec des influenceurs locaux.</p>
+
+    <p>Pour les clubs européens, ces partenariats « hors France » ou « hors Espagne » permettent de monétiser leur marque sur des marchés à forte croissance tout en respectant formellement les régulations nationales. Mais le modèle soulève des questions éthiques : peut-on promouvoir un opérateur évoluant dans les zones grises du marché tout en prônant le fair-play ? La décision marocaine du 12 janvier 2026 rappelle que l'exposition médiatique internationale ne remplace pas une autorisation locale.</p>
+
+    <h2>V. La jeunesse comme marché cible</h2>
+
+    <p>Les opérateurs de paris africains ne ciblent pas la jeunesse par hasard. Le continent cumule deux facteurs explosifs : une démographie jeune (60% de moins de 25 ans) et un chômage endémique qui touche particulièrement cette tranche d'âge. Selon la Banque Africaine de Développement, un tiers des 420 millions de jeunes Africains (15-35 ans) sont au chômage, un autre tiers occupe des emplois précaires, et seul un sur six dispose d'un emploi salarié stable.</p>
+
+    <div class="chart-container chart-container-wide">
+        <div class="chart-title">Situation professionnelle des parieurs africains</div>
+        <div class="chart-subtitle">Enquête GeoPoll 2025 - 6 pays (Ghana, Kenya, Nigeria, Afrique du Sud, Tanzanie, Ouganda)</div>
+        <div class="chart-wrapper chart-wrapper-small">
+            <canvas id="employmentChart"></canvas>
+        </div>
+        <div class="source-note">Source : GeoPoll, Betting in Africa 2025</div>
+    </div>
+
+    <p>Cette corrélation entre précarité économique et gambling n'est pas fortuite. Les études académiques sur le sujet sont unanimes : dans un contexte de chômage de masse et de faibles perspectives d'ascension sociale, le pari sportif est perçu comme une voie alternative vers la réussite financière. Les opérateurs l'ont bien compris : leurs campagnes marketing promettent une « libération économique » et vendent l'espoir d'un « meilleur avenir ».</p>
+
+    <blockquote>
+        « Les opérateurs de gambling ont su pénétrer profondément le continent africain en exploitant les attentes non satisfaites d'une énorme population de jeunes sous-employés en quête de libération économique, qui disposent d'une culture locale du jeu préexistante, ont accès aux smartphones, sont digitalement alphabétisés, évoluent dans un environnement réglementaire faible et sont passionnés de sport. »
+        <cite>- Bunn et al., Current Addiction Reports, 2022</cite>
+    </blockquote>
+
+    <h3>Le football comme vecteur</h3>
+
+    <p>Le football constitue le fil rouge du gambling africain. Selon GeoPoll, parmi les parieurs sportifs, le football capte environ trois quarts des mises, loin devant le basketball, le tennis et le rugby. Cette passion pour le ballon rond, alimentée par les ligues européennes (Premier League, Liga, Serie A, Ligue 1) diffusées massivement sur le continent, crée un terreau idéal pour les paris sportifs. Les joueurs africains évoluant en Europe (Salah, Osimhen, Hakimi) renforcent encore cet engouement.</p>
+
+    <div class="chart-container">
+        <div class="chart-title">Paris sportifs : les sports les plus pariés</div>
+        <div class="chart-subtitle">Enquête GeoPoll 2025 - Pourcentage des parieurs</div>
+        <div class="chart-wrapper chart-wrapper-small">
+            <canvas id="sportsChart"></canvas>
+        </div>
+        <div class="source-note">Source : GeoPoll African Betting Survey 2025</div>
+    </div>
+        </div>
+        <div class="source-note">Source : GeoPoll, Betting in Africa 2025</div>
+    </div>
+
+    <p>Les montants en jeu restent majoritairement modestes : 57% des parieurs kényans déclarent miser moins de 10 dollars par mois. Mais cette apparente modération masque des comportements à risque. Au Kenya, entre 2019 et 2023, les joueurs ont misé un total de 620 milliards de shillings kényans (environ 4,8 milliards de dollars) selon certaines estimations. Et une minorité significative (environ 3% au Kenya, 7% au Nigeria) déclare miser plus de 500 dollars mensuels.</p>
+
+    <h2>VI. Le fossé santé publique</h2>
+
+    <p>L'expansion fulgurante du gambling africain s'est faite dans un quasi-désert en matière de prévention et de prise en charge. Les études publiées dans des revues à comité de lecture (Frontiers in Public Health, Journal of Gambling Studies, Current Addiction Reports) convergent vers un constat alarmant : le jeu problématique est en train de devenir une préoccupation de santé publique majeure, particulièrement chez les jeunes.</p>
+
+    <div class="callout">
+        <div class="callout-stat">1</div>
+        <div class="callout-text">Une seule intervention clinique contre le jeu problématique a été évaluée scientifiquement en Afrique : un programme d'entretien motivationnel testé auprès d'étudiants kényans. Les résultats sont prometteurs, mais c'est la seule étude du genre publiée à ce jour.</div>
+    </div>
+
+    <h3>Les signaux d'alerte</h3>
+
+    <p>Les données disponibles, bien que parcellaires, dessinent un tableau préoccupant. Une étude menée en zone rurale au Ghana a révélé des taux de jeu problématique parmi les adolescents scolarisés supérieurs à ceux observés en milieu urbain dans d'autres pays africains. Au Malawi, un cas de suicide lié au gambling a été documenté et publié dans Wellcome Open Research. En Tanzanie, une étude a établi un lien entre paris sportifs et violence conjugale chez les jeunes hommes.</p>
+
+    <p>Le gambling des mineurs constitue une préoccupation récurrente. Malgré l'interdiction légale dans la plupart des juridictions, de nombreuses études rapportent que le jeu des moins de 18 ans est répandu, pointant une régulation et une application des lois défaillantes. La facilité d'accès via mobile, combinée à l'absence de vérification d'âge rigoureuse, facilite le contournement des restrictions.</p>
+
+    <h3>Un désert thérapeutique</h3>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Dimension</th>
+                    <th>Situation en Afrique</th>
+                    <th>Comparaison internationale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Études de prévalence nationales</td>
+                    <td>Quasi-inexistantes (hors Afrique du Sud)</td>
+                    <td>Systématiques en Europe/Amérique du Nord</td>
+                </tr>
+                <tr>
+                    <td>Lignes d'aide téléphonique</td>
+                    <td>Rares et sous-financées</td>
+                    <td>Généralisées et accessibles 24/7</td>
+                </tr>
+                <tr>
+                    <td>Programmes de formation des soignants</td>
+                    <td>Quasi-absents</td>
+                    <td>Intégrés aux cursus médicaux</td>
+                </tr>
+                <tr>
+                    <td>Recherche sur les interventions</td>
+                    <td>1 seule étude publiée (Kenya)</td>
+                    <td>Littérature abondante</td>
+                </tr>
+                <tr>
+                    <td>Financement par l'industrie</td>
+                    <td>Marginal</td>
+                    <td>Programmes de « jeu responsable » répandus</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="source-note">Source : Synthèse de la littérature académique (PMC/PubMed)</div>
+    </div>
+
+    <p>Les chercheurs appellent de leurs vœux une approche de santé publique du gambling, distincte de l'approche « jeu responsable » promue par l'industrie. Cette dernière, qui met l'accent sur la responsabilité individuelle du joueur, est critiquée pour son efficacité limitée et son rôle de caution morale pour les opérateurs. Une approche santé publique impliquerait des restrictions sur la publicité, des limites de mise obligatoires, et un financement public de la prévention et du traitement.</p>
+
+    <h2>Conclusion : Un tournant critique</h2>
+
+    <p>L'Afrique se trouve à un carrefour. D'un côté, le gambling représente une opportunité économique réelle : revenus fiscaux, emplois, innovation technologique. Les opérateurs locaux comme Betika (Kenya), Bet9ja (Nigeria) ou Hollywoodbets (Afrique du Sud) démontrent qu'il est possible de créer de la valeur sur le continent. Les géants internationaux (Betway, 1xBet, 22Bet) investissent massivement, signe de la maturité perçue du marché.</p>
+
+    <p>De l'autre côté, les risques s'accumulent. L'absence de données fiables empêche toute politique fondée sur les preuves. La faiblesse réglementaire expose les consommateurs aux opérateurs prédateurs. Le ciblage d'une jeunesse économiquement vulnérable soulève des questions éthiques fondamentales. Et l'inexistence quasi-totale de dispositifs de prévention et de soin laisse présager une épidémie silencieuse de jeu problématique.</p>
+
+    <p>Les prochaines années seront déterminantes. Les initiatives d'harmonisation panafricaine (AGRA, AIA, Gaming Alliance Africa) offrent un espoir de coordination. La nouvelle loi kényane pourrait servir de modèle pour d'autres juridictions. Mais sans un rééquilibrage entre développement économique et protection des consommateurs, le boom du gambling africain risque de laisser derrière lui plus de perdants que de gagnants.</p>
+
+</article>
+
+<footer class="article-footer">
+    <div class="footer-content">
+        <h3 class="footer-title">Sources principales</h3>
+        <div class="sources-list">
+            <p><strong>Données de marché :</strong> Astute Analytica (Africa Gambling Market 2024), Statista (Online Gambling Africa, Cameroon, Morocco), SCCG Management (Comprehensive Research Report 2025), Expert Market Research</p>
+            <p><strong>Enquêtes terrain :</strong> GeoPoll - Betting in Africa (2022, 2024, 2025)</p>
+            <p><strong>Littérature académique :</strong></p>
+            <p>• Ssewanyana D., Bitanihirwe B. - Problem Gambling among Young People in Sub-Saharan Africa (Frontiers in Public Health, 2018)</p>
+            <p>• Bunn C. et al. - Gambling in Sub-Saharan Africa: Traditional Forms and Emerging Technologies (Current Addiction Reports, 2022)</p>
+            <p>• Sichali J.M. et al. - Regulation of gambling in Sub-Saharan Africa: findings from a comparative policy analysis (Public Health, 2023)</p>
+            <p><strong>Sources réglementaires :</strong> National Gambling Board (Afrique du Sud), AGRA, CMS Expert Guide to Gambling Laws in Africa, LONACI (Côte d'Ivoire), MDJS (Maroc), Promosport (Tunisie), PSA (Algérie), LONASE (Sénégal)</p>
+            <p><strong>Médias spécialisés :</strong> iGaming Afrika, Gambling Insider, iGaming Business, iGamingToday, Afrik-Foot, Sportytrader</p>
+            <p><strong>Paiements :</strong> M-Pesa Africa, Tola Mobile, Wave</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Color palette
+    const colors = {
+        primary: '#1a1a2e',
+        accent: '#e94560',
+        secondary: '#16213e',
+        gold: '#d4a574',
+        blue: '#4361ee',
+        green: '#2ec4b6',
+        purple: '#7209b7',
+        orange: '#f77f00'
+    };
+
+    // Chart 1: Market Growth
+    const marketCtx = document.getElementById('marketGrowthChart').getContext('2d');
+    new Chart(marketCtx, {
+        type: 'bar',
+        data: {
+            labels: ['2019', '2020', '2021', '2022', '2023', '2024', '2028 (proj.)', '2032 (proj.)'],
+            datasets: [{
+                label: 'Online Gambling',
+                data: [0.95, 1.05, 1.2, 1.4, 1.63, 1.85, 2.36, 3.5],
+                backgroundColor: colors.accent,
+                borderRadius: 4
+            }, {
+                label: 'Total Gambling (online + offline)',
+                data: [4.2, 4.5, 4.9, 5.4, 5.8, 6.1, 8.0, 11.27],
+                backgroundColor: colors.primary,
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { padding: 20, usePointStyle: true }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Milliards USD' }
+                }
+            }
+        }
+    });
+
+    // Chart 2: Game type breakdown
+    const gameTypeCtx = document.getElementById('gameTypeChart').getContext('2d');
+    new Chart(gameTypeCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Paris sportifs', 'Casino (dont crash games)', 'Loteries', 'Poker'],
+            datasets: [{
+                data: [55, 27, 15, 3],
+                backgroundColor: [colors.accent, colors.gold, colors.primary, colors.blue],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { padding: 20, usePointStyle: true }
+                }
+            }
+        }
+    });
+
+    // Chart 2b: Market comparison Africa vs France vs Europe
+    const marketCompCtx = document.getElementById('marketComparisonChart').getContext('2d');
+    new Chart(marketCompCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Paris sportifs', 'Casino', 'Loteries', 'Poker', 'Hippisme'],
+            datasets: [
+                {
+                    label: 'Afrique',
+                    data: [55, 27, 15, 3, 0],
+                    backgroundColor: colors.accent,
+                    borderRadius: 4
+                },
+                {
+                    label: 'France (online total)',
+                    data: [52, 0, 23, 14, 10],
+                    backgroundColor: colors.blue,
+                    borderRadius: 4
+                },
+                {
+                    label: 'Europe',
+                    data: [29, 45, 15, 3, 5],
+                    backgroundColor: colors.gold,
+                    borderRadius: 4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { padding: 20, usePointStyle: true }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': ' + context.raw + '%';
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 60,
+                    ticks: { callback: value => value + '%' }
+                }
+            }
+        }
+    });
+
+    // Chart 3: Participation by country
+    const participationCtx = document.getElementById('participationChart').getContext('2d');
+    new Chart(participationCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Afrique du Sud', 'Ouganda', 'Kenya', 'Nigeria', 'Ghana', 'Tanzanie'],
+            datasets: [{
+                label: 'Taux de participation (%)',
+                data: [90, 87, 79, 71, 56, 56],
+                backgroundColor: [colors.accent, colors.gold, colors.blue, colors.green, colors.purple, colors.orange],
+                borderRadius: 4
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: { display: true, text: '% de répondants' }
+                }
+            }
+        }
+    });
+
+    // Chart 3: Payment methods
+    const paymentCtx = document.getElementById('paymentChart').getContext('2d');
+    new Chart(paymentCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Kenya', 'Tanzanie', 'Ouganda', 'Ghana', 'Afrique du Sud', 'Nigeria'],
+            datasets: [{
+                label: 'Mobile Money',
+                data: [92, 85, 88, 75, 25, 15],
+                backgroundColor: colors.accent
+            }, {
+                label: 'Cartes/Virements',
+                data: [5, 10, 8, 20, 65, 70],
+                backgroundColor: colors.primary
+            }, {
+                label: 'Fintechs/E-wallets',
+                data: [3, 5, 4, 5, 10, 15],
+                backgroundColor: colors.gold
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { padding: 20, usePointStyle: true }
+                }
+            },
+            scales: {
+                x: { stacked: true },
+                y: { 
+                    stacked: true,
+                    max: 100,
+                    title: { display: true, text: '% des transactions' }
+                }
+            }
+        }
+    });
+
+    // Chart 4: Regulation status
+    const regulationCtx = document.getElementById('regulationChart').getContext('2d');
+    new Chart(regulationCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Régulateur dédié', 'Régulation ministérielle', 'Gambling interdit', 'Pas de législation'],
+            datasets: [{
+                data: [25, 16, 7, 1],
+                backgroundColor: [colors.accent, colors.gold, colors.primary, colors.secondary],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { padding: 20, usePointStyle: true }
+                }
+            }
+        }
+    });
+
+    // Chart 5: Employment status
+    const employmentCtx = document.getElementById('employmentChart').getContext('2d');
+    new Chart(employmentCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Employés', 'Chômeurs', 'Indépendants/Entrepreneurs', 'Étudiants', 'Sans activité'],
+            datasets: [{
+                data: [38, 21.4, 20.2, 19, 2],
+                backgroundColor: [colors.accent, colors.primary, colors.gold, colors.blue, colors.secondary],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { padding: 15, usePointStyle: true, font: { size: 12 } }
+                }
+            }
+        }
+    });
+
+    // Chart 6: Sports
+    const sportsCtx = document.getElementById('sportsChart').getContext('2d');
+    new Chart(sportsCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Football', 'Basketball', 'Tennis', 'Rugby', 'Autres sports'],
+            datasets: [{
+                label: '% des parieurs sportifs',
+                data: [75, 8, 5, 3, 9],
+                backgroundColor: [colors.accent, colors.gold, colors.blue, colors.green, colors.secondary],
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 80,
+                    title: { display: true, text: '% des parieurs sportifs' }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
