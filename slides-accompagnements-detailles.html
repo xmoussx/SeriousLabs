@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AF Technologies - Accompagnements Détaillés</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e94560;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e94560;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .slide {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            page-break-inside: avoid;
+        }
+
+        .slide-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .slide-title h2 {
+            font-size: 32px;
+            color: #fff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .slide-title .accent {
+            color: #e94560;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .column {
+            background: linear-gradient(180deg, rgba(233, 69, 96, 0.15) 0%, rgba(233, 69, 96, 0.05) 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .column h3 {
+            color: #e94560;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .column ul {
+            list-style: none;
+        }
+
+        .column ul li {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            color: #ddd;
+        }
+
+        .column ul li::before {
+            content: "•";
+            color: #e94560;
+            position: absolute;
+            left: 0;
+            font-size: 16px;
+        }
+
+        .experience-box {
+            background: linear-gradient(90deg, rgba(0, 150, 136, 0.2) 0%, rgba(0, 150, 136, 0.05) 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 4px solid #00bfa5;
+        }
+
+        .experience-box h4 {
+            color: #00bfa5;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .experience-box ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 10px;
+        }
+
+        .experience-box ul li {
+            font-size: 13px;
+            line-height: 1.5;
+            padding-left: 20px;
+            position: relative;
+            color: #bbb;
+        }
+
+        .experience-box ul li::before {
+            content: "•";
+            color: #00bfa5;
+            position: absolute;
+            left: 0;
+        }
+
+        .duration-bar {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .duration-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .duration-item span {
+            color: #e94560;
+            font-weight: bold;
+        }
+
+        .duration-total {
+            background: #e94560;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        @media print {
+            body {
+                background: #1a1a2e;
+            }
+            .slide {
+                break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .columns {
+                grid-template-columns: 1fr;
+            }
+            .experience-box ul {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <div class="logo">AF TECHNOLOGIES</div>
+            <div class="subtitle">Proposition d'Accompagnement — Projet Poker Afrique</div>
+        </div>
+        <div class="subtitle">Expert PokerStars France • Betclic • Conformité iGaming</div>
+    </div>
+
+    <div class="container">
+        
+        <!-- SLIDE 1: CONFORMITÉ AFRIQUE -->
+        <div class="slide">
+            <div class="slide-title">
+                <h2>Conformité <span class="accent">Afrique</span></h2>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <h3>Cartographie Réglementaire</h3>
+                    <ul>
+                        <li>Analyse cadre légal Maroc : MDJS, SOREC, Loterie Nationale</li>
+                        <li>Étude monopoles d'État vs opportunités opérateurs privés</li>
+                        <li>Mapping des juridictions africaines (Kenya BCLB, Nigeria, Ghana, Afrique du Sud)</li>
+                        <li>Veille réglementaire : taxe 30% gains offshore Maroc 2025</li>
+                        <li>Identification zones grises et risques opérationnels</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Architecture KYC/AML</h3>
+                    <ul>
+                        <li>Conformité FATF/GAFI : approche basée sur les risques</li>
+                        <li>Vérification identité (POI) et adresse (POA) multi-pays</li>
+                        <li>Enhanced Due Diligence (EDD) pour VIP et PEPs</li>
+                        <li>Screening sanctions et listes de surveillance</li>
+                        <li>Source of Funds (SoF) et Source of Wealth (SoW)</li>
+                        <li>Intégration prestataires : Sumsub, iDenfy, Persona</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Jeu Responsable</h3>
+                    <ul>
+                        <li>Limites dépôts, pertes, sessions et temps de jeu</li>
+                        <li>Programmes auto-exclusion (24h → permanent)</li>
+                        <li>Time-out et cooling-off periods</li>
+                        <li>Détection comportements à risque (IA/ML)</li>
+                        <li>Partenariats associations (équivalent Gamblers Anonymous)</li>
+                        <li>Formation équipes aux signaux d'alerte</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-box">
+                <h4>Expérience Opérateur</h4>
+                <ul>
+                    <li><strong>PokerStars:</strong> Préparation candidatures licensing Brésil, Inde, Allemagne — Navigation réglementations multi-juridictionnelles complexes</li>
+                    <li><strong>Betclic:</strong> Mise en conformité KYC/AML plateforme poker internalisée — Standards MGA et ARJEL/ANJ France</li>
+                    <li><strong>Connaissance Maroc:</strong> Compréhension écosystème local MDJS/SOREC et spécificités culturelles du marché maghrébin</li>
+                </ul>
+            </div>
+
+            <div class="duration-bar">
+                <div class="duration-item">Cartographie réglementaire <span>(4j)</span></div>
+                <div class="duration-item">Architecture KYC/AML <span>(4j)</span></div>
+                <div class="duration-item">Politiques jeu responsable <span>(3j)</span></div>
+                <div class="duration-item">Stratégie licensing <span>(5j)</span></div>
+                <div class="duration-item">Audit conformité pré-lancement <span>(3j)</span></div>
+                <div class="duration-total">19 jours</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: STRATÉGIE PRODUIT & ROADMAP -->
+        <div class="slide">
+            <div class="slide-title">
+                <h2>Stratégie Produit & <span class="accent">Roadmap</span></h2>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <h3>Audit Produit & UX</h3>
+                    <ul>
+                        <li>Analyse ergonomie interface mobile-first</li>
+                        <li>Évaluation parcours utilisateur : inscription → premier dépôt</li>
+                        <li>Review fonctionnalités lobby, tables, cashier</li>
+                        <li>Benchmark UX concurrents : GGPoker, 888, WPT Global</li>
+                        <li>Identification friction points et quick wins</li>
+                        <li>Tests utilisabilité marché cible africain</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Roadmap MVP → Scale</h3>
+                    <ul>
+                        <li>Définition MVP : features essentielles pour go-live</li>
+                        <li>Phasing développement : P0 (critique) → P3 (nice-to-have)</li>
+                        <li>Architecture scalable : croissance x10 anticipée</li>
+                        <li>Plan migration F2P → Real Money progressif</li>
+                        <li>Jalons mesurables : DAU, rétention D1/D7/D30</li>
+                        <li>Buffers risques techniques et réglementaires</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Benchmark & Priorisation</h3>
+                    <ul>
+                        <li>Analyse apps poker Afrique : performances, features</li>
+                        <li>Étude modèles asiatiques (PPPoker, ClubGG)</li>
+                        <li>Identification différenciateurs marché</li>
+                        <li>Matrice effort/impact pour arbitrages</li>
+                        <li>Définition métriques succès par feature</li>
+                        <li>Roadmap trimestre par trimestre</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-box">
+                <h4>Expérience Opérateur</h4>
+                <ul>
+                    <li><strong>PokerStars:</strong> Participation au lancement PokerStars.fr (2010) et PokerStars.es (2013) — Définition roadmap produit marchés régulés</li>
+                    <li><strong>Betclic:</strong> Lancement plateforme poker internalisée 2024 — Résultat : +50% revenus vs solution iPoker externe</li>
+                    <li><strong>Multi-marchés:</strong> Expérience adaptation produit aux spécificités locales (France, Espagne, marchés émergents)</li>
+                </ul>
+            </div>
+
+            <div class="duration-bar">
+                <div class="duration-item">Audit produit & UX <span>(3j)</span></div>
+                <div class="duration-item">Roadmap MVP → scale <span>(4j)</span></div>
+                <div class="duration-item">Priorisation features <span>(2j)</span></div>
+                <div class="duration-item">Benchmark apps poker Afrique <span>(3j)</span></div>
+                <div class="duration-total">12 jours</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: MONÉTISATION & ÉCONOMIE -->
+        <div class="slide">
+            <div class="slide-title">
+                <h2>Monétisation & <span class="accent">Économie</span></h2>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <h3>Modèle Économique Rake</h3>
+                    <ul>
+                        <li>Structure rake cash games : % pot + cap adapté</li>
+                        <li>Politique "No Flop No Drop" pour engagement</li>
+                        <li>Rake tournois : ratio buy-in/fee optimisé (8-15%)</li>
+                        <li>Modèle contributed vs dealt rake</li>
+                        <li>Comparatif structures PokerStars, GGPoker, 888</li>
+                        <li>Ajustement selon pouvoir d'achat local</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Stratégie F2P → Real Money</h3>
+                    <ul>
+                        <li>Parcours conversion play money → real money</li>
+                        <li>Mécaniques engagement social (clubs, ligues)</li>
+                        <li>Freerolls comme outil d'acquisition/conversion</li>
+                        <li>Satellites vers tournois à buy-in élevés</li>
+                        <li>Monnaie virtuelle et économie in-app</li>
+                        <li>Triggers de conversion optimisés</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Structures de Jeu</h3>
+                    <ul>
+                        <li>Grille stakes cash games (micro → high stakes)</li>
+                        <li>Mix tournois : MTT, Sit&Go, Spin&Go</li>
+                        <li>Structures blindes adaptées temps de jeu</li>
+                        <li>Starting stacks et niveaux progression</li>
+                        <li>Garanties prizepool vs overlay risk</li>
+                        <li>Horaires tournois optimisés timezone Afrique</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-box">
+                <h4>Expérience Opérateur</h4>
+                <ul>
+                    <li><strong>PokerStars:</strong> Connaissance approfondie structures rake et évolution modèle économique sur 15 ans — Best practices mondial</li>
+                    <li><strong>Betclic:</strong> Calibrage modèle économique nouvelle plateforme — Équilibre rentabilité et compétitivité joueurs</li>
+                    <li><strong>Expertise tournois:</strong> Création schedules tournois attractifs avec garanties adaptées au pool de joueurs</li>
+                </ul>
+            </div>
+
+            <div class="duration-bar">
+                <div class="duration-item">Modèle économique (rake, buy-ins) <span>(3j)</span></div>
+                <div class="duration-item">Stratégie F2P → Real Money <span>(3j)</span></div>
+                <div class="duration-item">Structures tournois & cash games <span>(2j)</span></div>
+                <div class="duration-item">Pricing pouvoir d'achat local <span>(2j)</span></div>
+                <div class="duration-total">10 jours</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: ACQUISITION & RÉTENTION -->
+        <div class="slide">
+            <div class="slide-title">
+                <h2>Acquisition & <span class="accent">Rétention</span></h2>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <h3>Stratégie Acquisition</h3>
+                    <ul>
+                        <li>Canaux d'acquisition adaptés Maroc/Afrique</li>
+                        <li>Marketing d'influence : ambassadeurs poker locaux</li>
+                        <li>Programmes affiliés et CPA optimization</li>
+                        <li>Welcome bonuses : structure et wagering</li>
+                        <li>Campagnes social media ciblées</li>
+                        <li>Partenariats clubs poker live locaux</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Programme Fidélité / VIP</h3>
+                    <ul>
+                        <li>Structure tiers : Bronze → Diamond</li>
+                        <li>Système points/rakeback progressif (20-50%)</li>
+                        <li>Récompenses personnalisées par segment</li>
+                        <li>VIP Manager dédié hauts joueurs</li>
+                        <li>Tournois exclusifs et freerolls VIP</li>
+                        <li>Expériences premium (voyages, events live)</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Mécaniques Rétention</h3>
+                    <ul>
+                        <li>Gamification : missions, challenges, badges</li>
+                        <li>Bonus reload et promotions récurrentes</li>
+                        <li>Push notifications personnalisées (timing optimal)</li>
+                        <li>Win-back campaigns joueurs inactifs</li>
+                        <li>Leaderboards et compétitions communautaires</li>
+                        <li>Programme parrainage avec incentives</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-box">
+                <h4>Expérience Opérateur</h4>
+                <ul>
+                    <li><strong>PokerStars:</strong> Maîtrise du programme VIP Supernova/Elite — Référence industrie en fidélisation joueurs high volume</li>
+                    <li><strong>Betclic:</strong> Conception stratégie bonus et promotions plateforme poker — Optimisation LTV et réduction churn</li>
+                    <li><strong>Données secteur:</strong> Acquisition coûte 5-25x plus que rétention — ROI stratégies fidélité jusqu'à 5x supérieur</li>
+                </ul>
+            </div>
+
+            <div class="duration-bar">
+                <div class="duration-item">Stratégie acquisition Maroc/Afrique <span>(3j)</span></div>
+                <div class="duration-item">Programme fidélité / VIP <span>(3j)</span></div>
+                <div class="duration-item">Stratégie bonus & promotions <span>(2j)</span></div>
+                <div class="duration-item">Mécaniques de rétention <span>(3j)</span></div>
+                <div class="duration-total">11 jours</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: GAME INTEGRITY (existante mais enrichie) -->
+        <div class="slide">
+            <div class="slide-title">
+                <h2>Game Integrity — <span class="accent">Lutte Anti-Triche</span></h2>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <h3>Détection Bots & RTA</h3>
+                    <ul>
+                        <li>Analyse comportementale IA/ML temps réel</li>
+                        <li>Timing patterns : temps de décision suspects</li>
+                        <li>Win rates et écarts statistiques anormaux</li>
+                        <li>Détection Real-Time Assistance (solvers)</li>
+                        <li>Profiling GTO : jeu trop optimal = red flag</li>
+                        <li>Captcha et vérification humaine adaptative</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Collusion & Stables</h3>
+                    <ul>
+                        <li>Détection cartels et réseaux organisés</li>
+                        <li>Analyse chip dumping (transferts déguisés)</li>
+                        <li>Patterns multi-comptes : IP, device, comportement</li>
+                        <li>Ghosting et soft play entre "alliés"</li>
+                        <li>Surveillance tables privées et clubs</li>
+                        <li>Graph analysis réseaux de joueurs</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Outils & Process</h3>
+                    <ul>
+                        <li>Mise en place équipe Game Integrity dédiée</li>
+                        <li>Définition KPIs détection et faux positifs</li>
+                        <li>Process investigation : escalade, preuves, décision</li>
+                        <li>Politique compensation victimes de triche</li>
+                        <li>Communication transparente communauté</li>
+                        <li>Veille menaces émergentes (RTA nouvelle gen)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-box">
+                <h4>Expérience Opérateur</h4>
+                <ul>
+                    <li><strong>PokerStars:</strong> Collaboration équipe Game Integrity (50+ experts) — Taux détection proactive 95% des cas de triche</li>
+                    <li><strong>Betclic:</strong> Accompagnement intégration outils anti-triche plateforme poker internalisée — Standards industrie</li>
+                    <li><strong>Menaces émergentes:</strong> Connaissance grind houses, stables malveillants, RTA nouvelle génération (IA-assisted)</li>
+                </ul>
+            </div>
+
+            <div class="duration-bar">
+                <div class="duration-item">Audit systèmes existants <span>(3j)</span></div>
+                <div class="duration-item">Stratégie détection <span>(4j)</span></div>
+                <div class="duration-item">Process & outils <span>(4j)</span></div>
+                <div class="duration-item">Formation équipe <span>(3j)</span></div>
+                <div class="duration-total">14 jours</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: OPÉRATIONS & LANCEMENT -->
+        <div class="slide">
+            <div class="slide-title">
+                <h2>Opérations & <span class="accent">Lancement</span></h2>
+            </div>
+
+            <div class="columns">
+                <div class="column">
+                    <h3>Go-to-Market Maroc</h3>
+                    <ul>
+                        <li>Plan de lancement phasé : soft launch → full launch</li>
+                        <li>Stratégie communication pré-lancement (teasing)</li>
+                        <li>Partenariats médias et influenceurs locaux</li>
+                        <li>Events launch : tournois inauguraux, promotions</li>
+                        <li>PR et relations presse gaming Afrique</li>
+                        <li>Calendrier marketing 90 jours post-launch</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Support Client & Équipes</h3>
+                    <ul>
+                        <li>Process support client 24/7 multilingue</li>
+                        <li>Scripts et FAQ pour cas courants</li>
+                        <li>Escalade niveau 1 → niveau 3</li>
+                        <li>Formation équipes : produit, conformité, fraude</li>
+                        <li>Playbooks opérationnels par département</li>
+                        <li>Outils ticketing et CRM adaptés</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>KPIs & Dashboards</h3>
+                    <ul>
+                        <li>Métriques clés : DAU, MAU, rétention, ARPU</li>
+                        <li>KPIs acquisition : CPA, conversion, LTV</li>
+                        <li>Indicateurs jeu : hands/hour, rake, liquidity</li>
+                        <li>Dashboards temps réel pour pilotage</li>
+                        <li>Alertes automatiques anomalies</li>
+                        <li>Reporting hebdo/mensuel direction</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-box">
+                <h4>Expérience Opérateur</h4>
+                <ul>
+                    <li><strong>PokerStars:</strong> Lancement marchés régulés multiples (FR 2010, ES 2013) — Maîtrise opérations go-live complexes</li>
+                    <li><strong>Betclic:</strong> Mise en production plateforme poker 2024 — Coordination équipes tech, marketing, support</li>
+                    <li><strong>Best practices:</strong> Templates et frameworks éprouvés pour déploiements rapides et sécurisés</li>
+                </ul>
+            </div>
+
+            <div class="duration-bar">
+                <div class="duration-item">Plan go-to-market Maroc <span>(4j)</span></div>
+                <div class="duration-item">Process support client <span>(3j)</span></div>
+                <div class="duration-item">Formation équipes <span>(3j)</span></div>
+                <div class="duration-item">KPIs & dashboards <span>(2j)</span></div>
+                <div class="duration-total">12 jours</div>
+            </div>
+        </div>
+
+        <!-- RÉCAPITULATIF -->
+        <div class="slide" style="background: linear-gradient(135deg, rgba(233, 69, 96, 0.1) 0%, rgba(0, 191, 165, 0.1) 100%);">
+            <div class="slide-title">
+                <h2>Récapitulatif <span class="accent">Accompagnement</span></h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px;">
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 25px; text-align: center; border-left: 4px solid #e94560;">
+                    <div style="font-size: 36px; color: #e94560; font-weight: bold;">19j</div>
+                    <div style="font-size: 14px; color: #aaa; margin-top: 10px;">Conformité Afrique</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 25px; text-align: center; border-left: 4px solid #00bfa5;">
+                    <div style="font-size: 36px; color: #00bfa5; font-weight: bold;">12j</div>
+                    <div style="font-size: 14px; color: #aaa; margin-top: 10px;">Stratégie Produit</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 25px; text-align: center; border-left: 4px solid #ff9800;">
+                    <div style="font-size: 36px; color: #ff9800; font-weight: bold;">10j</div>
+                    <div style="font-size: 14px; color: #aaa; margin-top: 10px;">Monétisation</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 25px; text-align: center; border-left: 4px solid #9c27b0;">
+                    <div style="font-size: 36px; color: #9c27b0; font-weight: bold;">11j</div>
+                    <div style="font-size: 14px; color: #aaa; margin-top: 10px;">Acquisition & Rétention</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 25px; text-align: center; border-left: 4px solid #2196f3;">
+                    <div style="font-size: 36px; color: #2196f3; font-weight: bold;">14j</div>
+                    <div style="font-size: 14px; color: #aaa; margin-top: 10px;">Game Integrity</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 25px; text-align: center; border-left: 4px solid #4caf50;">
+                    <div style="font-size: 36px; color: #4caf50; font-weight: bold;">12j</div>
+                    <div style="font-size: 14px; color: #aaa; margin-top: 10px;">Opérations & Lancement</div>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(90deg, #e94560, #ff6b6b); border-radius: 15px; padding: 30px; text-align: center; margin-bottom: 30px;">
+                <div style="font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 10px;">TOTAL ACCOMPAGNEMENT</div>
+                <div style="font-size: 48px; font-weight: bold; color: #fff;">78 JOURS</div>
+                <div style="font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 10px;">Taux journalier : 1 200 € HT</div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 25px;">
+                    <h4 style="color: #00bfa5; margin-bottom: 15px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">Advisory Continu</h4>
+                    <ul style="list-style: none; color: #bbb; font-size: 13px;">
+                        <li style="margin-bottom: 10px;">• Calls mensuels stratégiques : <strong style="color: #00bfa5;">0.5 j/mois</strong></li>
+                        <li>• Revue trimestrielle approfondie : <strong style="color: #00bfa5;">1.5 j/trimestre</strong></li>
+                    </ul>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 25px;">
+                    <h4 style="color: #e94560; margin-bottom: 15px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px;">Contact</h4>
+                    <div style="color: #fff; font-size: 16px; margin-bottom: 5px;">Antoine Dugast</div>
+                    <div style="color: #aaa; font-size: 13px;">antoinedugast75@gmail.com</div>
+                    <div style="color: #aaa; font-size: 12px; margin-top: 10px;">Expert PokerStars France • Betclic • Conformité iGaming</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer style="background: rgba(0,0,0,0.3); padding: 20px; text-align: center; color: #666; font-size: 12px;">
+        AF Technologies — Proposition d'Accompagnement Projet Poker Afrique — Janvier 2025
+    </footer>
+
+</body>
+</html>
