@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposition Commerciale — AF Technologies — Serious Labs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --dark-blue: #1a365d;
+            --accent-red: #e53e3e;
+            --accent-red-light: #feb2b2;
+            --light-bg: #f7fafc;
+            --mid-gray: #e2e8f0;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --white: #ffffff;
+            --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--gradient-dark);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+        
+        .logo span {
+            color: var(--accent-red);
+        }
+        
+        .tagline {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+        
+        .header-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--accent-red);
+            margin: 0 auto 40px;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        
+        .header .subtitle {
+            font-size: 20px;
+            color: var(--accent-red-light);
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+        
+        .header-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .header-meta-item {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
+        
+        .header-meta-item strong {
+            display: block;
+            color: var(--white);
+            font-size: 16px;
+            margin-top: 4px;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        /* Sections */
+        section {
+            margin-bottom: 60px;
+        }
+        
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--accent-red);
+            display: inline-block;
+        }
+        
+        h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin: 32px 0 16px;
+        }
+        
+        h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 24px 0 12px;
+        }
+        
+        p {
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--mid-gray);
+        }
+        
+        .card.highlight {
+            border-left: 4px solid var(--accent-red);
+        }
+        
+        .card.dark {
+            background: var(--gradient-dark);
+            color: var(--white);
+            border: none;
+        }
+        
+        .card.dark h3,
+        .card.dark h4 {
+            color: var(--white);
+        }
+        
+        .card.dark p {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 14px;
+        }
+        
+        th {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+        
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--mid-gray);
+            vertical-align: top;
+        }
+        
+        tr:nth-child(even) {
+            background: var(--light-bg);
+        }
+        
+        tr.highlight-row {
+            background: #fff5f5 !important;
+        }
+        
+        tr.highlight-row td {
+            font-weight: 500;
+        }
+        
+        .price {
+            color: var(--accent-red);
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        /* Lists */
+        ul {
+            margin: 16px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        ul li {
+            padding: 8px 0 8px 28px;
+            position: relative;
+        }
+        
+        ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+            font-weight: 600;
+        }
+        
+        /* Price box */
+        .price-box {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #2d4a7c 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: var(--white);
+            margin: 32px 0;
+        }
+        
+        .price-box .price-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+        
+        .price-box .price-amount {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .price-box .price-detail {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        
+        .price-box .price-note {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 24px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--mid-gray);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 24px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-red);
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--accent-red);
+        }
+        
+        .timeline-item strong {
+            color: var(--dark-blue);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .footer .contact-name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .footer .contact-role {
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 16px;
+        }
+        
+        .footer .contact-email {
+            color: var(--accent-red-light);
+            font-size: 18px;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .header {
+                background: var(--dark-blue) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .card {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">SERIOUS<span>LABS</span></div>
+            <div class="tagline">Consulting iGaming & Poker</div>
+            
+            <div class="header-divider"></div>
+            
+            <h1>PROPOSITION COMMERCIALE</h1>
+            <p class="subtitle">« Pourquoi le Maroc a intérêt à réguler le poker en ligne »</p>
+            
+            <div class="header-meta">
+                <div class="header-meta-item">
+                    Destinataire
+                    <strong>AF Technologies</strong>
+                </div>
+                <div class="header-meta-item">
+                    Date
+                    <strong>Janvier 2026</strong>
+                </div>
+                <div class="header-meta-item">
+                    Référence
+                    <strong>PROP-AFT-2026-01</strong>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Section 1: Note d'analyse -->
+        <section>
+            <h2>1. Note d'analyse stratégique</h2>
+            
+            <div class="card highlight">
+                <h3 style="margin-top:0;">Objectif du livrable</h3>
+                <p>Produire un <strong>position paper</strong> (document d'argumentation économique et politique) destiné à :</p>
+                <ul>
+                    <li>Convaincre les autorités marocaines de l'intérêt de réguler le poker en ligne</li>
+                    <li>Documenter les pertes liées au statu quo et à l'offshore</li>
+                    <li>Présenter des modèles internationaux qui fonctionnent et sont transposables</li>
+                    <li>Proposer une feuille de route réaliste avec gouvernance et garde-fous</li>
+                </ul>
+            </div>
+            
+            <h3>Format et livrables</h3>
+            <table>
+                <tr>
+                    <td><strong>Format</strong></td>
+                    <td>Document Word / PDF professionnel</td>
+                </tr>
+                <tr>
+                    <td><strong>Langue</strong></td>
+                    <td>Français et/ou anglais</td>
+                </tr>
+                <tr>
+                    <td><strong>Annexes</strong></td>
+                    <td>Tableaux comparatifs, glossaire, sources référencées</td>
+                </tr>
+                <tr>
+                    <td><strong>Usage</strong></td>
+                    <td>Interne / échanges institutionnels cadrés</td>
+                </tr>
+            </table>
+            
+            <h3>Structure du document</h3>
+            <p>Le document couvrira les 8 points demandés, organisés comme suit :</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Partie</th>
+                        <th>Contenu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Synthèse exécutive</strong></td>
+                        <td>Messages clés, chiffres phares, recommandations prioritaires</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Partie 1 — Le coût du statu quo</strong></td>
+                        <td>État de l'offshore au Maroc, pertes économiques et fiscales, risques systémiques (blanchiment, protection joueurs)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Partie 2 — Les modèles qui fonctionnent</strong></td>
+                        <td>Benchmark France / Portugal / Espagne, recettes fiscales, éléments transférables au Maroc</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Partie 3 — Cadre possible pour le Maroc</strong></td>
+                        <td>Options réglementaires (monopole vs licences), gouvernance, feuille de route, garde-fous</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Partie 4 — Bénéfices attendus</strong></td>
+                        <td>Emplois & écosystème local, protection joueurs, professionnalisation (statut joueur, fiscalité gains), tourisme poker live et retombées économiques</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Annexes</strong></td>
+                        <td>Comparatif fiscal détaillé, glossaire, sources et références</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Tarification</h3>
+            
+            <div class="price-box">
+                <div class="price-label">Note d'analyse complète</div>
+                <div class="price-amount">8 400 € HT</div>
+                <div class="price-detail">7 jours × 1 200 €/jour • Délai : 3-4 semaines</div>
+                <div class="price-note">
+                    Inclut : recherche & benchmarking, modélisation économique, rédaction complète, mise en forme professionnelle
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 2: Options d'accompagnement -->
+        <section>
+            <h2>2. Options d'accompagnement</h2>
+            
+            <p>Au-delà de cette note, vous avez exprimé le souhait de structurer un accompagnement long terme combinant <strong>honoraires et participation au capital</strong>. Voici les options envisageables :</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th style="text-align:center">Option A<br><small>Advisory pur</small></th>
+                        <th style="text-align:center">Option B<br><small>Hybride léger</small></th>
+                        <th style="text-align:center">Option C<br><small>Partenariat</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>TJM missions</strong></td>
+                        <td style="text-align:center">1 200 €</td>
+                        <td style="text-align:center">900 - 1 000 €</td>
+                        <td style="text-align:center">600 - 800 €</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Participation capital</strong></td>
+                        <td style="text-align:center">—</td>
+                        <td style="text-align:center">0.5 - 1%</td>
+                        <td style="text-align:center">1.5 - 3%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Engagement minimum</strong></td>
+                        <td style="text-align:center">Aucun</td>
+                        <td style="text-align:center">2 ans</td>
+                        <td style="text-align:center">3-5 ans</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Advisory board</strong></td>
+                        <td style="text-align:center">Non</td>
+                        <td style="text-align:center">Optionnel</td>
+                        <td style="text-align:center">Oui</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Retainer annuel</strong></td>
+                        <td style="text-align:center">~9 600 €<br><small>(8j/an)</small></td>
+                        <td style="text-align:center">~7 200 €<br><small>(8j/an)</small></td>
+                        <td style="text-align:center">Inclus<br><small>(jusqu'à 10j/an)</small></td>
+                    </tr>
+                    <tr style="background: #fff5f5;">
+                        <td><strong>Exemple : Note 7 jours</strong></td>
+                        <td style="text-align:center; color: #e53e3e; font-weight: 700; font-size: 16px;">8 400 €</td>
+                        <td style="text-align:center; color: #e53e3e; font-weight: 700; font-size: 16px;">~6 650 €</td>
+                        <td style="text-align:center; color: #e53e3e; font-weight: 700; font-size: 16px;">~4 900 €</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="card" style="margin-top: 24px;">
+                <h4 style="margin-top:0;">Modalités de la participation au capital</h4>
+                <ul>
+                    <li><strong>Véhicule :</strong> actions ordinaires ou BSPCE selon structure juridique</li>
+                    <li><strong>Vesting :</strong> linéaire sur la durée d'engagement (cliff 12 mois)</li>
+                    <li><strong>Valorisation :</strong> à définir ensemble sur base du plan d'affaires</li>
+                    <li><strong>Documentation :</strong> pacte d'associés précisant droits et obligations</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Section 3: Prochaines étapes -->
+        <section>
+            <h2>3. Prochaines étapes</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <strong>Étape 1 — Validation</strong><br>
+                    Confirmation du périmètre exact lors de notre échange
+                </div>
+                <div class="timeline-item">
+                    <strong>Étape 2 — Commande</strong><br>
+                    Signature d'un bon de commande / lettre de mission
+                </div>
+                <div class="timeline-item">
+                    <strong>Étape 3 — Acompte</strong><br>
+                    Règlement de 50% à la commande, avant démarrage des travaux
+                </div>
+                <div class="timeline-item">
+                    <strong>Étape 4 — Livraison V1</strong><br>
+                    Première version pour relecture et commentaires
+                </div>
+                <div class="timeline-item">
+                    <strong>Étape 5 — Livraison finale</strong><br>
+                    Version définitive et solde de 50%
+                </div>
+            </div>
+            
+            <p style="margin-top: 32px;">Dans l'attente de notre échange, je reste à votre disposition pour toute question.</p>
+            <p><strong>Bien cordialement,</strong></p>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="contact-name">Antoine Dugast</div>
+        <div class="contact-role">Serious Labs — Consulting iGaming & Poker</div>
+        <div class="contact-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" dat
