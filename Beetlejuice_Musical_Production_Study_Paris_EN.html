@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beetlejuice the Musical – Paris Production Study</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+        
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #5b21b6;
+            --secondary: #10b981;
+            --accent: #7cfc00;
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --border: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            color: #334155;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        
+        /* Header / Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 50%, #2d1f4e 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237c3aed' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.3);
+            border: 1px solid var(--primary);
+            color: #c4b5fd;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a78bfa 0%, var(--accent) 50%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 80px rgba(124, 252, 0, 0.3);
+        }
+        
+        .hero h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #c4b5fd;
+            margin-bottom: 30px;
+            letter-spacing: 8px;
+        }
+        
+        .hero-quote {
+            background: linear-gradient(90deg, var(--dark), rgba(124, 252, 0, 0.2), var(--dark));
+            padding: 20px 40px;
+            border-radius: 10px;
+            margin: 40px auto;
+            max-width: 400px;
+        }
+        
+        .hero-quote span {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-shadow: 0 0 20px rgba(124, 252, 0, 0.5);
+        }
+        
+        .hero-meta {
+            margin-top: 50px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        
+        .hero-meta strong {
+            color: white;
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        /* Navigation */
+        .toc {
+            background: white;
+            max-width: 1100px;
+            margin: -40px auto 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .toc h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .toc h3::before {
+            content: '📋';
+        }
+        
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        
+        .toc a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 18px;
+            background: var(--light);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .toc a:hover {
+            background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
+            color: var(--primary-dark);
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .toc a .num {
+            background: var(--primary);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px 60px;
+        }
+        
+        section {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            padding: 50px;
+            margin-bottom: 40px;
+        }
+        
+        section h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        section h2 .icon {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        
+        section h3 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin: 35px 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        section h3::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        p {
+            margin-bottom: 18px;
+            color: #475569;
+        }
+        
+        .lead {
+            font-size: 1.15rem;
+            color: #334155;
+            line-height: 1.8;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        ul li, ol li {
+            padding: 12px 20px 12px 50px;
+            margin-bottom: 10px;
+            background: var(--light);
+            border-radius: 10px;
+            position: relative;
+            border-left: 3px solid var(--primary);
+        }
+        
+        ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 18px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        ol {
+            counter-reset: item;
+        }
+        
+        ol li::before {
+            counter-increment: item;
+            content: counter(item);
+            position: absolute;
+            left: 15px;
+            background: var(--primary);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+        }
+        
+        th {
+            background: linear-gradient(135deg, var(--dark) 0%, #2d1f4e 100%);
+            color: white;
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+        
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            background: white;
+        }
+        
+        tr:hover td {
+            background: #f8fafc;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .table-highlight td {
+            background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%) !important;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .text-right {
+            text-align: right;
+        }
+        
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.15);
+            border-color: var(--primary);
+        }
+        
+        .card h4 {
+            color: var(--primary-dark);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .card p {
+            font-size: 14px;
+            color: var(--gray);
+            margin: 0;
+        }
+        
+        /* Highlight boxes */
+        .highlight-box {
+            background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
+            border-left: 5px solid var(--primary);
+            padding: 25px 30px;
+            border-radius: 0 15px 15px 0;
+            margin: 25px 0;
+        }
+        
+        .highlight-box.success {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-color: var(--secondary);
+        }
+        
+        .highlight-box.warning {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-color: #f59e0b;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            font-style: italic;
+        }
+        
+        /* Quote */
+        .big-quote {
+            text-align: center;
+            padding: 50px 40px;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .big-quote p {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--accent);
+            margin: 0;
+            text-shadow: 0 0 30px rgba(124, 252, 0, 0.4);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 20px 25px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 25px;
+            width: 14px;
+            height: 14px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+        
+        .timeline-item.highlight {
+            background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
+            border-color: var(--primary);
+        }
+        
+        .timeline-item.highlight::before {
+            background: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent);
+        }
+        
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .timeline-content {
+            color: #475569;
+            margin-top: 8px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--dark);
+            color: #94a3b8;
+        }
+        
+        .footer-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 30px;
+            text-shadow: 0 0 40px rgba(124, 252, 0, 0.3);
+        }
+        
+        .footer p {
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+                letter-spacing: 4px;
+            }
+            
+            section {
+                padding: 30px 25px;
+            }
+            
+            .container {
+                padding: 0 20px 40px;
+            }
+            
+            .toc {
+                margin: -30px 20px 30px;
+                padding: 25px;
+            }
+            
+            .big-quote p {
+                font-size: 1.4rem;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .hero {
+                background: #1a1a2e !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            section {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Production Study Document</span>
+            <h1>BEETLEJUICE</h1>
+            <h2>THE MUSICAL</h2>
+            <p style="font-size: 1.2rem; color: #a5b4fc;">Proposed French Adaptation</p>
+            
+            <div class="hero-quote">
+                <span>"IT'S SHOWTIME!"</span>
+            </div>
+            
+            <div class="hero-meta">
+                <strong>For the attention of the Director of Théâtre de la Madeleine</strong>
+                19, rue de Surène – 75008 Paris<br>
+                <em style="color: #64748b;">Confidential Document – January 2026</em>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Table of Contents -->
+    <nav class="toc">
+        <h3>Table of Contents</h3>
+        <div class="toc-grid">
+            <a href="#section1"><span class="num">1</span> Executive Summary</a>
+            <a href="#section2"><span class="num">2</span> Show Presentation</a>
+            <a href="#section3"><span class="num">3</span> History and Success</a>
+            <a href="#section4"><span class="num">4</span> French Market Analysis</a>
+            <a href="#section5"><span class="num">5</span> Technical Feasibility</a>
+            <a href="#section6"><span class="num">6</span> Projected Budget</a>
+            <a href="#section6bis"><span class="num">📈</span> Break-even Analysis</a>
+            <a href="#section7"><span class="num">7</span> Proposed Timeline</a>
+            <a href="#section8"><span class="num">8</span> French Creative Team</a>
+            <a href="#section9"><span class="num">9</span> Marketing Strategy</a>
+            <a href="#section10"><span class="num">10</span> Contacts and Procedures</a>
+            <a href="#section11"><span class="num">11</span> Conclusion</a>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Section 1: Executive Summary -->
+        <section id="section1">
+            <h2><span class="icon">📊</span> 1. Executive Summary</h2>
+            
+            <p class="lead">This document proposes a French adaptation of <strong>Beetlejuice the Musical</strong> at the Théâtre de la Madeleine in Paris, following the successful model of "Dear Evan Hansen" which opened on October 3, 2025 at this same theater.</p>
+            
+            <p>Beetlejuice, a musical created on Broadway in 2019, adapted from Tim Burton's cult film (1988), represents an exceptional opportunity for the French market. With its <strong>8 Tony Award nominations</strong>, successful international productions (Japan, South Korea, Brazil, Australia, soon West End), and unique gothic-comic aesthetic, this show appeals to a broad multi-generational audience.</p>
+            
+            <h3>Key Project Points</h3>
+            <ul>
+                <li><strong>Award-winning show:</strong> 8 Tony Award nominations in 2019, worldwide commercial success</li>
+                <li><strong>Recognized franchise:</strong> Tim Burton's film has been cult in France for 35 years</li>
+                <li><strong>Ideal timing:</strong> West End production scheduled for May 2026, window of opportunity for Paris</li>
+                <li><strong>Proven synergy:</strong> Théâtre de la Madeleine has demonstrated its capability with Dear Evan Hansen</li>
+                <li><strong>Expanded target audience:</strong> families, Tim Burton fans, musical theater enthusiasts (ages 12+)</li>
+            </ul>
+        </section>
+        
+        <!-- Section 2: Presentation -->
+        <section id="section2">
+            <h2><span class="icon">🎭</span> 2. Show Presentation</h2>
+            
+            <h3>Synopsis</h3>
+            <p>Lydia Deetz is a "strange and unusual" teenager obsessed with death since her mother passed away. When her father Charles, remarried to the eccentric Delia, moves into a house haunted by a recently deceased young couple (Barbara and Adam Maitland), Lydia's life takes a turn.</p>
+            
+            <p>Enter <strong>Beetlejuice</strong>, a millennia-old demon with questionable humor and an iconic striped suit, invisible to the living unless someone says his name three times. He offers Lydia a deal: he will help her communicate with her late mother if she agrees to summon him. But can you trust a "bio-exorcist" with dubious intentions?</p>
+            
+            <div class="highlight-box">
+                <p>The musical explores universal themes with humor and sensitivity: grief, blended families, self-acceptance, and the need to be seen and heard.</p>
+            </div>
+            
+            <h3>Original Creative Team</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Music and Lyrics</td>
+                            <td><strong>Eddie Perfect</strong> (Tony Award nominee)</td>
+                        </tr>
+                        <tr>
+                            <td>Book</td>
+                            <td><strong>Scott Brown & Anthony King</strong> (Tony Award nominees)</td>
+                        </tr>
+                        <tr>
+                            <td>Direction</td>
+                            <td><strong>Alex Timbers</strong> (Tony Award – Moulin Rouge!)</td>
+                        </tr>
+                        <tr>
+                            <td>Choreography</td>
+                            <td><strong>Connor Gallagher</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Scenic Design</td>
+                            <td><strong>David Korins</strong> (Hamilton)</td>
+                        </tr>
+                        <tr>
+                            <td>Costumes</td>
+                            <td><strong>William Ivey Long</strong> (6 Tony Awards)</td>
+                        </tr>
+                        <tr>
+                            <td>Producer</td>
+                            <td><strong>Warner Bros. Theatre Ventures</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Major Musical Numbers</h3>
+            <p>The show includes 23 musical numbers, including the must-hears:</p>
+            <ul>
+                <li><strong>"The Whole Being Dead Thing"</strong> – Beetlejuice's explosive introduction</li>
+                <li><strong>"Dead Mom"</strong> – Lydia's moving ballad</li>
+                <li><strong>"Say My Name"</strong> – Beetlejuice/Lydia duet, the heart of the show</li>
+                <li><strong>"Day-O (The Banana Boat Song)"</strong> – Tribute to the original film</li>
+                <li><strong>"Jump in the Line"</strong> – Festive finale</li>
+            </ul>
+        </section>
+        
+        <!-- Section 3: History -->
+        <section id="section3">
+            <h2><span class="icon">🏆</span> 3. History and Commercial Success</h2>
+            
+            <h3>Production Timeline</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct-Nov 2018</div>
+                    <div class="timeline-content">Try-out at the National Theatre, Washington D.C.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">April 2019</div>
+                    <div class="timeline-content">Broadway premiere – Winter Garden Theatre</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">June 2019</div>
+                    <div class="timeline-content"><strong>8 Tony Award nominations</strong></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">March 2020</div>
+                    <div class="timeline-content">COVID-19 closure (after 366 performances)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">April 2022</div>
+                    <div class="timeline-content">Broadway reopening – Marquis Theatre</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Dec 2022</div>
+                    <div class="timeline-content">US national tour launch (88 cities)</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021-2025</div>
+                    <div class="timeline-content">International productions: South Korea, Japan, Brazil, Australia, Czech Republic, Poland, UAE, Singapore</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct 2025</div>
+                    <div class="timeline-content">Return to Broadway – Palace Theatre (13 weeks)</div>
+                </div>
+                <div class="timeline-item highlight">
+                    <div class="timeline-date">May 2026</div>
+                    <div class="timeline-content"><strong>West End opening – Prince Edward Theatre, London</strong></div>
+                </div>
+            </div>
+            
+            <h3>Awards and Recognition</h3>
+            <ul>
+                <li>8 Tony Award nominations in 2019 including Best Musical, Best Book, Best Original Score</li>
+                <li>Original album: major commercial success (Ghostlight Records)</li>
+                <li>Viral phenomenon on social media (TikTok, Instagram)</li>
+                <li>Critical acclaim: <em>"SCREAMINGLY GOOD FUN!"</em> (Variety)</li>
+            </ul>
+        </section>
+        
+        <!-- Section 4: French Market -->
+        <section id="section4">
+            <h2><span class="icon">🇫🇷</span> 4. French Market Analysis</h2>
+            
+            <h3>The Dear Evan Hansen Model</h3>
+            <p>The French adaptation of "Dear Evan Hansen" at the Théâtre de la Madeleine (October 2025 – January 2026) has demonstrated the viability of Broadway musical adaptations in Paris.</p>
+            
+            <ul>
+                <li><strong>Lyrics adaptation by recognized artists (Hoshi):</strong> essential for emotional connection</li>
+                <li><strong>Direction by an award-winning French director</strong> (Olivier Solivérès, Molière Award 2024)</li>
+                <li><strong>Live orchestra of 4 musicians:</strong> professional quality adapted to the venue capacity</li>
+                <li><strong>Cast of emerging French talents:</strong> authenticity and freshness</li>
+                <li><strong>Schedule:</strong> Wednesdays and Thursdays 8 PM, Fridays and Saturdays 9 PM, weekends matinees 3 PM</li>
+            </ul>
+            
+            <h3>Target Audience for Beetlejuice</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>👨‍👩‍👧 Film Fans (ages 35-55)</h4>
+                    <p>Generation that discovered the film in 1988, strong nostalgia, high purchasing power</p>
+                </div>
+                <div class="card">
+                    <h4>👨‍👩‍👧‍👦 Families (ages 12+)</h4>
+                    <p>Parents wanting to share a beloved universe with their children, school holiday outings</p>
+                </div>
+                <div class="card">
+                    <h4>🎸 Young Adults (ages 18-30)</h4>
+                    <p>Gothic-pop aesthetic, TikTok culture, Broadway musical fans</p>
+                </div>
+                <div class="card">
+                    <h4>🎬 Tim Burton Enthusiasts</h4>
+                    <p>Fans of the Burton universe (Edward Scissorhands, The Nightmare Before Christmas), loyal audience</p>
+                </div>
+            </div>
+            
+            <h3>Positioning and Differentiation</h3>
+            <p>Unlike Dear Evan Hansen (an intimate drama about mental health), Beetlejuice offers a complementary positioning:</p>
+            <ul>
+                <li><strong>Spectacular</strong> musical comedy with impressive visual effects</li>
+                <li><strong>Dark and irreverent humor</strong>, unique tone on the Parisian stage</li>
+                <li><strong>Globally recognized franchise</strong> (vs. original work for DEH)</li>
+                <li>Ideal for <strong>Halloween and festive season</strong> (October-December)</li>
+            </ul>
+        </section>
+        
+        <!-- Section 5: Technical Feasibility -->
+        <section id="section5">
+            <h2><span class="icon">🔧</span> 5. Technical Feasibility Study</h2>
+            
+            <h3>Théâtre de la Madeleine</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Address</td>
+                            <td>19, rue de Surène – 75008 Paris</td>
+                        </tr>
+                        <tr>
+                            <td>Total Capacity</td>
+                            <td><strong>732 seats</strong> (320 orchestra, 265 dress circle, 124 balcony)</td>
+                        </tr>
+                        <tr>
+                            <td>Stage Surface</td>
+                            <td>70 m² (scenic adaptation required)</td>
+                        </tr>
+                        <tr>
+                            <td>Year of Construction</td>
+                            <td>1924 (architect Charles Imandt)</td>
+                        </tr>
+                        <tr>
+                            <td>Current Management</td>
+                            <td>Dominique Bergin & Michel Lumbroso, Artistic Dir.: Philippe Lellouche</td>
+                        </tr>
+                        <tr>
+                            <td>Network</td>
+                            <td>Fimalac Entertainment / Théâtres et Producteurs Associés</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Beetlejuice Technical Requirements</h3>
+            <p>The original show has significant technical requirements that will need adaptation:</p>
+            <ul>
+                <li><strong>Scenic Design:</strong> transformable house set (David Korins), adaptation to stage dimensions</li>
+                <li><strong>Video Projections:</strong> design by Peter Nigrini (Dear Evan Hansen), already adapted for Madeleine</li>
+                <li><strong>Puppetry:</strong> design by Michael Curry (The Lion King), transportable elements</li>
+                <li><strong>Special Effects:</strong> Jeremy Chernick (Harry Potter and the Cursed Child), fog, lights, illusions</li>
+                <li><strong>Costumes:</strong> William Ivey Long, local production possible under supervision</li>
+                <li><strong>Orchestra:</strong> 12-15 musicians on Broadway, adaptation possible to 6-8 musicians</li>
+            </ul>
+            
+            <div class="highlight-box success">
+                <p><strong>Note:</strong> The US tour and international productions have demonstrated the feasibility of adapting the show to different venue configurations.</p>
+            </div>
+        </section>
+        
+        <!-- Section 6: Budget -->
+        <section id="section6">
+            <h2><span class="icon">💰</span> 6. Estimated Projected Budget</h2>
+            
+            <div class="highlight-box warning">
+                <p>The following estimates are indicative and based on costs observed for similar productions. A detailed budget will need to be established in consultation with rights holders and technical partners.</p>
+            </div>
+            
+            <h3>Initial Investment</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th class="text-right">Estimate (€)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rights and licenses (Warner Bros. Theatre Ventures)</td>
+                            <td class="text-right">150,000 – 300,000</td>
+                        </tr>
+                        <tr>
+                            <td>French adaptation (book, lyrics)</td>
+                            <td class="text-right">80,000 – 120,000</td>
+                        </tr>
+                        <tr>
+                            <td>Scenic design and sets (construction/adaptation)</td>
+                            <td class="text-right">400,000 – 600,000</td>
+                        </tr>
+                        <tr>
+                            <td>Costumes and wigs</td>
+                            <td class="text-right">150,000 – 250,000</td>
+                        </tr>
+                        <tr>
+                            <td>Technical equipment (sound, lighting, video)</td>
+                            <td class="text-right">200,000 – 350,000</td>
+                        </tr>
+                        <tr>
+                            <td>Puppetry and special effects</td>
+                            <td class="text-right">100,000 – 180,000</td>
+                        </tr>
+                        <tr>
+                            <td>Rehearsals and preparation (6-8 weeks)</td>
+                            <td class="text-right">180,000 – 250,000</td>
+                        </tr>
+                        <tr>
+                            <td>Launch marketing and communications</td>
+                            <td class="text-right">150,000 – 250,000</td>
+                        </tr>
+                        <tr class="table-highlight">
+                            <td><strong>TOTAL ESTIMATED INVESTMENT</strong></td>
+                            <td class="text-right"><strong>1,400,000 – 2,300,000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Weekly Operating Costs</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th class="text-right">Estimate (€/week)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Artist salaries (8-10 principals + ensemble)</td>
+                            <td class="text-right">35,000 – 50,000</td>
+                        </tr>
+                        <tr>
+                            <td>Orchestra (6-8 musicians)</td>
+                            <td class="text-right">10,000 – 15,000</td>
+                        </tr>
+                        <tr>
+                            <td>Technical team and stage management</td>
+                            <td class="text-right">12,000 – 18,000</td>
+                        </tr>
+                        <tr>
+                            <td>Royalties (authors, composer, rights holders)</td>
+                            <td class="text-right">8-12% gross receipts</td>
+                        </tr>
+                        <tr>
+                            <td>Venue rental / charges</td>
+                            <td class="text-right">To be negotiated</td>
+                        </tr>
+                        <tr class="table-highlight">
+                            <td><strong>TOTAL WEEKLY ESTIMATE</strong></td>
+                            <td class="text-right"><strong>70,000 – 100,000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Revenue Projections</h3>
+            <p><strong>Calculation basis:</strong> 6 performances/week, 732-seat capacity, average ticket price €65</p>
+            <ul>
+                <li><strong>Maximum potential weekly revenue:</strong> €285,000 (100% capacity)</li>
+                <li><strong>Realistic projection (70% capacity):</strong> €200,000/week</li>
+                <li><strong>Estimated break-even point:</strong> 60-65% capacity</li>
+            </ul>
+        </section>
+        
+        <!-- Section 6bis: Break-even Analysis -->
+        <section id="section6bis">
+            <h2><span class="icon">📈</span> 6bis. Break-even Analysis</h2>
+            
+            <p class="lead">This analysis aims to determine the number of weeks of operation needed to reach financial break-even under different capacity scenarios.</p>
+            
+            <h3>Calculation Assumptions</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Value Used</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Capacity</td>
+                            <td><strong>732 seats</strong></td>
+                            <td>Total capacity of Théâtre de la Madeleine</td>
+                        </tr>
+                        <tr>
+                            <td>Performances / week</td>
+                            <td><strong>6</strong></td>
+                            <td>Wed-Thu 8 PM, Fri-Sat 9 PM, Sat-Sun 3 PM</td>
+                        </tr>
+                        <tr>
+                            <td>Average ticket price</td>
+                            <td><strong>€65</strong></td>
+                            <td>Range €25 - €95 depending on seating</td>
+                        </tr>
+                        <tr>
+                            <td>Maximum weekly capacity</td>
+                            <td><strong>4,392 spectators</strong></td>
+                            <td>732 × 6 performances</td>
+                        </tr>
+                        <tr>
+                            <td>Maximum gross revenue / week</td>
+                            <td><strong>€285,480</strong></td>
+                            <td>4,392 × €65</td>
+                        </tr>
+                        <tr>
+                            <td>Initial investment (median)</td>
+                            <td><strong>€1,850,000</strong></td>
+                            <td>Average of €1.4M - €2.3M range</td>
+                        </tr>
+                        <tr>
+                            <td>Weekly fixed costs (median)</td>
+                            <td><strong>€85,000</strong></td>
+                            <td>Salaries, technical, rental (excluding royalties)</td>
+                        </tr>
+                        <tr>
+                            <td>Royalties</td>
+                            <td><strong>10%</strong></td>
+                            <td>% of gross receipts (authors + rights holders)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Break-even Formula</h3>
+            <div class="highlight-box" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-color: #0ea5e9;">
+                <p style="font-family: monospace; font-size: 1.1rem; text-align: center; font-style: normal;">
+                    <strong>Weekly net margin</strong> = Gross revenue × (1 - Royalties) - Weekly fixed costs<br><br>
+                    <strong>Weeks to break-even</strong> = Initial investment ÷ Weekly net margin
+                </p>
+            </div>
+            
+            <h3>Profitability Scenarios</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Occupancy Rate</th>
+                            <th>Gross Revenue / week</th>
+                            <th>Net Revenue (after royalties)</th>
+                            <th>Net Margin / week</th>
+                            <th>Weeks to Break-even</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #fef2f2;">
+                            <td><strong>🔴 Pessimistic</strong></td>
+                            <td>50%</td>
+                            <td>€142,740</td>
+                            <td>€128,466</td>
+                            <td>€43,466</td>
+                            <td><strong>43 weeks</strong></td>
+                        </tr>
+                        <tr style="background: #fefce8;">
+                            <td><strong>🟡 Cautious</strong></td>
+                            <td>60%</td>
+                            <td>€171,288</td>
+                            <td>€154,159</td>
+                            <td>€69,159</td>
+                            <td><strong>27 weeks</strong></td>
+                        </tr>
+                        <tr style="background: #f0fdf4;">
+                            <td><strong>🟢 Realistic</strong></td>
+                            <td>70%</td>
+                            <td>€199,836</td>
+                            <td>€179,852</td>
+                            <td>€94,852</td>
+                            <td><strong>20 weeks</strong></td>
+                        </tr>
+                        <tr style="background: #ecfdf5;">
+                            <td><strong>🟢 Optimistic</strong></td>
+                            <td>80%</td>
+                            <td>€228,384</td>
+                            <td>€205,546</td>
+                            <td>€120,546</td>
+                            <td><strong>15 weeks</strong></td>
+                        </tr>
+                        <tr style="background: #d1fae5;">
+                            <td><strong>🌟 Success</strong></td>
+                            <td>90%</td>
+                            <td>€256,932</td>
+                            <td>€231,239</td>
+                            <td>€146,239</td>
+                            <td><strong>13 weeks</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Graphical Break-even Analysis</h3>
+            <div style="background: #f8fafc; border-radius: 15px; padding: 30px; margin: 25px 0;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; height: 250px; border-bottom: 2px solid #334155; border-left: 2px solid #334155; padding: 20px 10px 0; position: relative;">
+                    <!-- Y-axis label -->
+                    <div style="position: absolute; left: -60px; top: 50%; transform: rotate(-90deg) translateX(50%); font-size: 12px; color: #64748b; white-space: nowrap;">Financial Cumulative (M€)</div>
+                    
+                    <!-- Bars -->
+                    <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                        <div style="width: 50px; background: linear-gradient(to top, #ef4444, #fca5a5); height: 180px; border-radius: 5px 5px 0 0; position: relative;">
+                            <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 600; color: #dc2626;">-1.85M</span>
+                        </div>
+                        <span style="font-size: 11px; margin-top: 8px; color: #64748b;">Week 0</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                        <div style="width: 50px; background: linear-gradient(to top, #f97316, #fdba74); height: 130px; border-radius: 5px 5px 0 0; position: relative;">
+                            <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 600; color: #ea580c;">-0.9M</span>
+                        </div>
+                        <span style="font-size: 11px; margin-top: 8px; color: #64748b;">Week 10</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                        <div style="width: 50px; background: linear-gradient(to top, #eab308, #fde047); height: 40px; border-radius: 5px 5px 0 0; position: relative;">
+                            <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 600; color: #ca8a04;">-0.05M</span>
+                        </div>
+                        <span style="font-size: 11px; margin-top: 8px; color: #64748b;">Week 19</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                        <div style="width: 50px; background: linear-gradient(to top, #22c55e, #86efac); height: 10px; border-radius: 5px 5px 0 0; position: relative; border: 3px solid #16a34a;">
+                            <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 700; color: #16a34a;">≈ 0</span>
+                            <span style="position: absolute; top: -45px; left: 50%; transform: translateX(-50%); font-size: 10px; background: #16a34a; color: white; padding: 2px 6px; border-radius: 4px; white-space: nowrap;">BREAK-EVEN</span>
+                        </div>
+                        <span style="font-size: 11px; margin-top: 8px; color: #16a34a; font-weight: 700;">Week 20</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                        <div style="width: 50px; background: linear-gradient(to top, #10b981, #6ee7b7); height: 60px; border-radius: 5px 5px 0 0; position: relative;">
+                            <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 600; color: #059669;">+0.47M</span>
+                        </div>
+                        <span style="font-size: 11px; margin-top: 8px; color: #64748b;">Week 25</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center; flex: 1;">
+                        <div style="width: 50px; background: linear-gradient(to top, #8b5cf6, #c4b5fd); height: 130px; border-radius: 5px 5px 0 0; position: relative;">
+                            <span style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 600; color: #7c3aed;">+1.42M</span>
+                        </div>
+                        <span style="font-size: 11px; margin-top: 8px; color: #64748b;">Week 35</span>
+                    </div>
+                </div>
+                <p style="text-align: center; font-size: 13px; color: #64748b; margin-top: 15px;">
+                    <strong>Cumulative Financial Position</strong> – Realistic scenario (70% occupancy)
+                </p>
+            </div>
+            
+            <h3>Break-even Point: Number of Spectators</h3>
+            <div class="card-grid">
+                <div class="card" style="text-align: center; background: linear-gradient(135deg, #fef3c7, #fde68a);">
+                    <h4 style="font-size: 2.5rem; margin-bottom: 5px; color: #b45309;">60%</h4>
+                    <p style="font-weight: 600; color: #92400e;">Minimum Occupancy Rate</p>
+                    <p style="font-size: 13px;">To cover weekly costs</p>
+                </div>
+                <div class="card" style="text-align: center; background: linear-gradient(135deg, #d1fae5, #a7f3d0);">
+                    <h4 style="font-size: 2.5rem; margin-bottom: 5px; color: #047857;">2,635</h4>
+                    <p style="font-weight: 600; color: #065f46;">Minimum Spectators / Week</p>
+                    <p style="font-size: 13px;">Approximately 439 per performance</p>
+                </div>
+                <div class="card" style="text-align: center; background: linear-gradient(135deg, #ede9fe, #ddd6fe);">
+                    <h4 style="font-size: 2.5rem; margin-bottom: 5px; color: #6d28d9;">87,780</h4>
+                    <p style="font-weight: 600; color: #5b21b6;">Total Spectators</p>
+                    <p style="font-size: 13px;">To recoup investment (realistic scenario)</p>
+                </div>
+            </div>
+            
+            <h3>Profit Projections by Run Length</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Duration</th>
+                            <th>Performances</th>
+                            <th>Spectators (70%)</th>
+                            <th>Cumulative Gross Revenue</th>
+                            <th>Net Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>3 months (13 weeks)</td>
+                            <td>78</td>
+                            <td>40,075</td>
+                            <td>€2,597,868</td>
+                            <td style="color: #dc2626;"><strong>-€617,924</strong></td>
+                        </tr>
+                        <tr>
+                            <td>5 months (20 weeks)</td>
+                            <td>120</td>
+                            <td>61,654</td>
+                            <td>€3,996,720</td>
+                            <td style="color: #ca8a04;"><strong>≈ €0 (break-even)</strong></td>
+                        </tr>
+                        <tr>
+                            <td>6 months (26 weeks)</td>
+                            <td>156</td>
+                            <td>80,150</td>
+                            <td>€5,195,736</td>
+                            <td style="color: #16a34a;"><strong>+€569,112</strong></td>
+                        </tr>
+                        <tr>
+                            <td>9 months (39 weeks)</td>
+                            <td>234</td>
+                            <td>120,226</td>
+                            <td>€7,793,604</td>
+                            <td style="color: #059669;"><strong>+€1,802,594</strong></td>
+                        </tr>
+                        <tr class="table-highlight">
+                            <td><strong>12 months (52 weeks)</strong></td>
+                            <td><strong>312</strong></td>
+                            <td><strong>160,301</strong></td>
+                            <td><strong>€10,391,472</strong></td>
+                            <td style="color: #047857;"><strong>+€3,036,075</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Sensitivity Analysis</h3>
+            <p>Impact of key parameter variations on the break-even point:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Modified Variable</th>
+                            <th>Variation</th>
+                            <th>New Weeks to Break-even</th>
+                            <th>Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Average ticket price</td>
+                            <td>+€10 (€75)</td>
+                            <td>17 weeks</td>
+                            <td style="color: #16a34a;">-3 weeks ✓</td>
+                        </tr>
+                        <tr>
+                            <td>Average ticket price</td>
+                            <td>-€10 (€55)</td>
+                            <td>25 weeks</td>
+                            <td style="color: #dc2626;">+5 weeks ✗</td>
+                        </tr>
+                        <tr>
+                            <td>Initial investment</td>
+                            <td>-€300,000 (€1.55M)</td>
+                            <td>16 weeks</td>
+                            <td style="color: #16a34a;">-4 weeks ✓</td>
+                        </tr>
+                        <tr>
+                            <td>Initial investment</td>
+                            <td>+€300,000 (€2.15M)</td>
+                            <td>23 weeks</td>
+                            <td style="color: #dc2626;">+3 weeks ✗</td>
+                        </tr>
+                        <tr>
+                            <td>Weekly costs</td>
+                            <td>-€15,000 (€70K)</td>
+                            <td>17 weeks</td>
+                            <td style="color: #16a34a;">-3 weeks ✓</td>
+                        </tr>
+                        <tr>
+                            <td>Royalties</td>
+                            <td>+2% (12%)</td>
+                            <td>22 weeks</td>
+                            <td style="color: #dc2626;">+2 weeks ✗</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <h3>Summary and Financial Recommendations</h3>
+            <div class="highlight-box success">
+                <p><strong>Conclusion:</strong> With a realistic occupancy rate of 70%, the project reaches break-even in <strong>20 weeks</strong> (approximately 5 months). A 6-month run would generate a profit of approximately <strong>€570,000</strong>, and a full year could reach <strong>€3 million</strong> in profit.</p>
+            </div>
+            
+            <ul>
+                <li><strong>Recommended minimum run length:</strong> 6 months to ensure profitability with a safety margin</li>
+                <li><strong>Occupancy target:</strong> maintain a minimum of 60% to cover weekly expenses</li>
+                <li><strong>Strategic period:</strong> capitalize on Halloween, All Saints' Day, Christmas, and winter holidays to maximize occupancy</li>
+                <li><strong>Extension option:</strong> if success is confirmed, extend to 12 months to optimize ROI</li>
+            </ul>
+        </section>
+        
+        <!-- Section 7: Timeline -->
+        <section id="section7">
+            <h2><span class="icon">📅</span> 7. Proposed Production Timeline</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Q1 2026</div>
+                    <div class="timeline-content">Rights negotiation with Warner Bros. Theatre Ventures, assembly of French creative team</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Q2 2026</div>
+                    <div class="timeline-content">French adaptation (book, lyrics), detailed technical studies, casting auditions</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Q3 2026</div>
+                    <div class="timeline-content">Set and costume construction, technical team recruitment, casting finalization</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Sept-Oct 2026</div>
+                    <div class="timeline-content">Rehearsals (6-8 weeks), technical load-in, run-throughs</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Mid-Oct 2026</div>
+                    <div class="timeline-content">Previews (2 weeks), adjustments</div>
+                </div>
+                <div class="timeline-item highlight">
+                    <div class="timeline-date">🎃 Oct 31, 2026</div>
+                    <div class="timeline-content"><strong>OFFICIAL OPENING NIGHT (Halloween)</strong> – Maximum media impact</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Nov-Dec 2026</div>
+                    <div class="timeline-content">Peak operation (All Saints' holiday, Christmas), capitalizing on festive season</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2027</div>
+                    <div class="timeline-content">Extended run based on success, potential France/French-speaking tour</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <p><strong>Strategic note:</strong> A premiere on Halloween night (October 31) would offer exceptional media visibility and ideal thematic positioning.</p>
+            </div>
+        </section>
+        
+        <!-- Section 8: Creative Team -->
+        <section id="section8">
+            <h2><span class="icon">🎬</span> 8. French Creative Team (Proposals)</h2>
+            
+            <p>Following the "Dear Evan Hansen" model, the French creative team should combine musical expertise, artistic sensitivity, and public profile to ensure the quality of the adaptation and its media visibility.</p>
+            
+            <h3>Direction</h3>
+            <p>Suggested profiles (subject to availability):</p>
+            <ul>
+                <li><strong>Olivier Solivérès</strong> – Building on his success with Dear Evan Hansen, artistic continuity with the theater</li>
+                <li><strong>Ladislas Chollat</strong> – Director recognized for his spectacular musicals</li>
+                <li><strong>Ned Grujic</strong> – Musical expertise and ability to manage ambitious productions</li>
+            </ul>
+            
+            <h3>Lyrics Adaptation</h3>
+            <p>Lyrics adaptation is crucial to preserve the dark humor and wordplay:</p>
+            <ul>
+                <li><strong>Orelsan</strong> – Master of flow and offbeat humor, massive recognition among target audience</li>
+                <li><strong>Julien Doré</strong> – Poetic sensitivity and humor, adaptation experience</li>
+                <li><strong>Frédéric Strouck & David Sauvage</strong> – Proven team from Dear Evan Hansen</li>
+                <li>French gothic/rock artist for the unique tone (Indochine, Christine and the Queens...)</li>
+            </ul>
+            
+            <h3>Casting – Principal Roles</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Profile Sought</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Beetlejuice</strong></td>
+                            <td>Charismatic performer with strong stage presence, rock/pop voice, exceptional comic timing. Extremely physically demanding role.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lydia Deetz</strong></td>
+                            <td>Young actress (ages 16-22), powerful belting voice, ability to embody both fragility and strength, credible gothic aesthetic.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Barbara & Adam</strong></td>
+                            <td>Believable comic couple, solid vocal and physical skills, vaudeville timing.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Delia</strong></td>
+                            <td>Actress with strong comic potential, confident eccentricity, solid voice.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Charles</strong></td>
+                            <td>Mature performer, ability to play the disconnected father with humanity.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Section 9: Marketing -->
+        <section id="section9">
+            <h2><span class="icon">📣</span> 9. Marketing and Communications Strategy</h2>
+            
+            <h3>Positioning</h3>
+            <div class="big-quote">
+                <p>"The event musical that brings all generations together around Tim Burton's cult universe"</p>
+            </div>
+            
+            <h3>Communication Themes</h3>
+            <ul>
+                <li><strong>80s-90s Nostalgia:</strong> target fans of the original film with a "35 years later, he's back" campaign</li>
+                <li><strong>Halloween:</strong> strong positioning during October-November period, special events</li>
+                <li><strong>Social Media:</strong> TikTok (#SayMyName challenge), Instagram (gothic aesthetic)</li>
+                <li><strong>Partnerships:</strong> Warner Bros. France, cultural media, gothic fashion/lifestyle influencers</li>
+                <li><strong>Merchandising:</strong> strong potential (costumes, accessories, licensed products)</li>
+            </ul>
+            
+            <h3>Suggested Media Calendar</h3>
+            <ol>
+                <li><strong>6 months out:</strong> Official announcement with video teaser, early bird ticket sales opening</li>
+                <li><strong>3 months out:</strong> Cast reveal with press and social media campaign</li>
+                <li><strong>1 month out:</strong> Behind the scenes, rehearsals, creative team interviews</li>
+                <li><strong>Opening Night (Halloween):</strong> Red carpet, VIP guests, national media coverage</li>
+                <li><strong>Post-premiere:</strong> Reviews, word of mouth, Christmas holiday campaign</li>
+            </ol>
+        </section>
+        
+        <!-- Section 10: Contacts -->
+        <section id="section10">
+            <h2><span class="icon">📞</span> 10. Contacts and Rights Acquisition Process</h2>
+            
+            <h3>Principal Rights Holders</h3>
+            
+            <div class="card">
+                <h4>🎬 Principal Producer and Rights Holder</h4>
+                <p><strong>Warner Bros. Theatre Ventures</strong><br>
+                Develops and produces first-class musicals and theatrical productions from the company's catalog.</p>
+            </div>
+            
+            <h3 style="margin-top: 30px;">Broadway Co-producers (Potential Contacts)</h3>
+            <ul>
+                <li>Langley Park Productions</li>
+                <li>Jeffrey Richards</li>
+                <li>Jam Theatricals</li>
+                <li>NETworks Presentations (tours)</li>
+                <li><strong>Crossroads Live</strong> (West End producer and international productions)</li>
+            </ul>
+            
+            <h3>Licensing Agent for France</h3>
+            <p>For Dear Evan Hansen, rights were negotiated through:</p>
+            <div class="card">
+                <h4>🎭 Music Theatre International Europe / Agence Drama – Paris</h4>
+                <p>
+                    Website: <strong>www.dramaparis.com</strong><br>
+                    Contact: <strong>info@dramaparis.com</strong>
+                </p>
+            </div>
+            
+            <div class="highlight-box warning">
+                <p><strong>Note:</strong> Beetlejuice is not currently in the standard MTI catalog, so direct negotiation with Warner Bros. Theatre Ventures will likely be necessary for a major professional production.</p>
+            </div>
+            
+            <h3>Recommended Steps</h3>
+            <ol>
+                <li>Establish initial contact with Warner Bros. Theatre Ventures to express interest</li>
+                <li>Prepare a presentation package for the producer/theater (track record, financial capacity)</li>
+                <li>Negotiate license terms (duration, territory, exclusivity)</li>
+                <li>Define the level of involvement of the original creative team in the adaptation</li>
+                <li>Obtain approval for the French adaptation and local creative team</li>
+            </ol>
+        </section>
+        
+        <!-- Section 11: Conclusion -->
+        <section id="section11">
+            <h2><span class="icon">✅</span> 11. Conclusion and Recommendations</h2>
+            
+            <p class="lead">Beetlejuice the Musical represents an exceptional opportunity for the Théâtre de la Madeleine to capitalize on the success of Dear Evan Hansen while offering a complementary and distinctive programming choice.</p>
+            
+            <h3>Project Strengths</h3>
+            <ul>
+                <li>Globally recognized franchise with immediate brand awareness potential</li>
+                <li>Unique positioning in the Parisian market (spectacular musical comedy, dark humor)</li>
+                <li>Multi-generational audience (families, film fans, musical theater enthusiasts)</li>
+                <li>Ideal timing with West End opening in 2026 creating international buzz</li>
+                <li>Proven synergy with Théâtre de la Madeleine (DEH success)</li>
+                <li>Potential for extension and French-speaking tour</li>
+            </ul>
+            
+            <h3>Points of Caution</h3>
+            <ul>
+                <li>Substantial initial investment (€1.4 to €2.3M)</li>
+                <li>Significant technical requirements necessitating scenic adaptation</li>
+                <li>Rights negotiation with a major studio (Warner Bros.)</li>
+                <li>Demanding casting for the title role (exceptional physical and vocal performance required)</li>
+            </ul>
+            
+            <div class="highlight-box success">
+                <p><strong>Recommendation:</strong> Quickly initiate discussions with Warner Bros. Theatre Ventures to secure rights before another French producer takes the position. The growing international success of the show and the upcoming West End opening make this project increasingly attractive and competitive.</p>
+            </div>
+            
+            <div class="big-quote">
+                <p>"IT'S SHOWTIME!"</p>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-quote">"IT'S SHOWTIME!"</div>
+        <p>Document prepared for presentation to the management of Théâtre de la Madeleine</p>
+        <p style="margin-top: 10px; font-size: 12px;">Confidential – January 2026</p>
+    </footer>
+</body>
+</html>
