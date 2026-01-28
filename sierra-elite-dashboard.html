@@ -1,0 +1,2698 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sierra Elite - Dashboard Trader</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0B1426 0%, #0F172A 50%, #1E293B 100%);
+      color: #E2E8F0;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+    ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.3); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 0.5); }
+
+    /* Animations */
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(212, 175, 55, 0); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .delay-3 { animation-delay: 0.3s; opacity: 0; }
+    .delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.98) 0%, rgba(11, 20, 38, 0.98) 100%);
+      border-right: 1px solid rgba(212, 175, 55, 0.15);
+      padding: 24px 0;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100vh;
+      z-index: 100;
+    }
+
+    .logo {
+      padding: 0 24px 32px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .logo-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: #0F172A;
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    .logo-text h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #D4AF37 0%, #F4E4BC 50%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text p {
+      font-size: 11px;
+      color: #D4AF37;
+      letter-spacing: 3px;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* Navigation */
+    nav {
+      padding: 24px 12px;
+      flex: 1;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      margin-bottom: 6px;
+      color: #94A3B8;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      background: none;
+      width: 100%;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+    }
+
+    .nav-item:hover {
+      background: rgba(212, 175, 55, 0.1);
+      transform: translateX(4px);
+    }
+
+    .nav-item.active {
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.2) 0%, transparent 100%);
+      border-left: 3px solid #D4AF37;
+      color: #D4AF37;
+    }
+
+    .nav-item svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* User Section */
+    .user-section {
+      padding: 20px 16px;
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      margin: 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #0F172A;
+    }
+
+    .user-info p:first-child {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .user-info p:last-child {
+      color: #D4AF37;
+      font-size: 12px;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      margin-left: 260px;
+      overflow-y: auto;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    .mountain-bg {
+      position: fixed;
+      bottom: 0;
+      left: 260px;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.03) 100%);
+      clip-path: polygon(0 100%, 15% 60%, 30% 80%, 45% 40%, 60% 70%, 75% 30%, 90% 60%, 100% 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header */
+    header {
+      padding: 20px 32px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    header .date {
+      color: #64748B;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .market-status {
+      padding: 10px 20px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #10B981;
+      border-radius: 50%;
+      animation: pulse-gold 2s infinite;
+    }
+
+    .market-status span {
+      color: #10B981;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .header-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      color: #94A3B8;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .header-btn.gold {
+      background: rgba(212, 175, 55, 0.1);
+      border-color: rgba(212, 175, 55, 0.2);
+      color: #D4AF37;
+    }
+
+    .header-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .notification-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 8px;
+      height: 8px;
+      background: #EF4444;
+      border-radius: 50%;
+    }
+
+    /* Page Content */
+    .page-content {
+      padding: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* Cards */
+    .card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 20px;
+      padding: 24px;
+    }
+
+    .card-gold {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* Challenge Banner */
+    .challenge-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .challenge-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .challenge-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    }
+
+    .challenge-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: #0F172A;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .challenge-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .challenge-title h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .phase-badge {
+      padding: 4px 12px;
+      background: rgba(16, 185, 129, 0.2);
+      color: #10B981;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .challenge-meta {
+      color: #94A3B8;
+    }
+
+    .challenge-balance p:first-child {
+      color: #94A3B8;
+      font-size: 13px;
+      margin-bottom: 4px;
+      text-align: right;
+    }
+
+    .challenge-balance .amount {
+      font-family: 'Outfit', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .stat-icon.green { background: rgba(16, 185, 129, 0.15); }
+    .stat-icon.green svg { stroke: #10B981; }
+    .stat-icon.blue { background: rgba(59, 130, 246, 0.15); }
+    .stat-icon.blue svg { stroke: #3B82F6; }
+    .stat-icon.gold { background: rgba(212, 175, 55, 0.15); }
+    .stat-icon.gold svg { stroke: #D4AF37; }
+    .stat-icon.purple { background: rgba(168, 85, 247, 0.15); }
+    .stat-icon.purple svg { stroke: #A855F7; }
+
+    .stat-trend {
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stat-trend svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .stat-trend.up { color: #10B981; }
+    .stat-trend.up svg { stroke: #10B981; }
+
+    .stat-label {
+      color: #64748B;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .stat-value span {
+      color: #64748B;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .stat-value.green { color: #10B981; }
+
+    .progress-bar {
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .progress-fill.green { background: linear-gradient(90deg, #10B981 0%, #34D399 100%); }
+    .progress-fill.blue { background: linear-gradient(90deg, #3B82F6 0%, #60A5FA 100%); }
+    .progress-fill.purple { background: linear-gradient(90deg, #A855F7 0%, #C084FC 100%); }
+
+    .stat-footer {
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .stat-footer.green { color: #10B981; font-weight: 500; }
+    .stat-footer.muted { color: #64748B; }
+
+    .day-indicators {
+      display: flex;
+      gap: 4px;
+    }
+
+    .day-indicator {
+      flex: 1;
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px;
+    }
+
+    .day-indicator.filled {
+      background: linear-gradient(90deg, #A855F7 0%, #C084FC 100%);
+    }
+
+    /* Charts Row */
+    .charts-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .chart-header h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .chart-filters {
+      display: flex;
+      gap: 8px;
+    }
+
+    .chart-filter-btn {
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: #64748B;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+    }
+
+    .chart-filter-btn.active {
+      background: rgba(212, 175, 55, 0.2);
+      color: #D4AF37;
+    }
+
+    .chart-container {
+      height: 280px;
+    }
+
+    /* Trades List */
+    .trades-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .trades-header h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .view-all-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #D4AF37;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+    }
+
+    .view-all-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .trades-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .trade-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.2s ease;
+    }
+
+    .trade-row:hover {
+      background: rgba(212, 175, 55, 0.05);
+      transform: scale(1.01);
+    }
+
+    .trade-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .trade-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .trade-icon.long { background: rgba(16, 185, 129, 0.15); }
+    .trade-icon.long svg { stroke: #10B981; }
+    .trade-icon.short { background: rgba(239, 68, 68, 0.15); }
+    .trade-icon.short svg { stroke: #EF4444; }
+
+    .trade-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .trade-symbol {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .trade-time {
+      color: #64748B;
+      font-size: 12px;
+    }
+
+    .trade-pnl {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .trade-pnl.positive { color: #10B981; }
+    .trade-pnl.negative { color: #EF4444; }
+
+    /* CTA Banner */
+    .cta-banner {
+      margin-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cta-banner h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .cta-banner p {
+      color: #94A3B8;
+    }
+
+    .btn-primary {
+      padding: 16px 32px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+      color: #0F172A;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+    }
+
+    .btn-primary svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* History Page */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .page-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .page-subtitle {
+      color: #94A3B8;
+      margin-top: 4px;
+    }
+
+    .page-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-secondary {
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #94A3B8;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .btn-secondary svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Mini Stats */
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .mini-stat {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .mini-stat-label {
+      color: #64748B;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .mini-stat-value {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .mini-stat-value.green { color: #10B981; }
+    .mini-stat-value.red { color: #EF4444; }
+
+    /* Table */
+    .data-table {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .table-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.5fr 1.5fr 1fr 1fr 1fr;
+      padding: 16px 24px;
+      background: rgba(0,0,0,0.2);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: #64748B;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.5fr 1.5fr 1fr 1fr 1fr;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      align-items: center;
+      transition: background 0.2s ease;
+    }
+
+    .table-row:hover {
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .table-row .date { color: #94A3B8; font-size: 14px; }
+    .table-row .symbol { font-weight: 600; }
+    .table-row .prices { color: #94A3B8; font-size: 14px; }
+    .table-row .direction { display: flex; align-items: center; gap: 6px; }
+    .table-row .direction.long { color: #10B981; }
+    .table-row .direction.short { color: #EF4444; }
+    .table-row .direction svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
+    .table-row .duration { color: #94A3B8; }
+    .table-row .pnl { text-align: right; font-weight: 600; }
+    .table-row .pnl.positive { color: #10B981; }
+    .table-row .pnl.negative { color: #EF4444; }
+
+    /* Challenges Page */
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title svg {
+      width: 20px;
+      height: 20px;
+      stroke: #D4AF37;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .challenges-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .challenge-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .challenge-card.active {
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .challenge-status {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .challenge-status.active { background: rgba(16, 185, 129, 0.2); color: #10B981; }
+    .challenge-status.passed { background: rgba(59, 130, 246, 0.2); color: #3B82F6; }
+    .challenge-status.failed { background: rgba(239, 68, 68, 0.2); color: #EF4444; }
+
+    .challenge-card h4 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .challenge-card .meta {
+      color: #64748B;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .challenge-progress {
+      margin-bottom: 16px;
+    }
+
+    .challenge-progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .challenge-progress-header span:first-child {
+      color: #94A3B8;
+      font-size: 13px;
+    }
+
+    .challenge-progress-header span:last-child {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .challenge-card .balance {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    /* Products Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .product-card {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .product-card:hover {
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .product-card.selected {
+      background: linear-gradient(145deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+      border-color: #D4AF37;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 16px;
+      background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+      color: #0F172A;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .product-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      color: #D4AF37;
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .product-details {
+      font-size: 13px;
+      color: #94A3B8;
+    }
+
+    .product-details p {
+      margin-bottom: 4px;
+    }
+
+    .buy-section {
+      margin-top: 24px;
+      text-align: center;
+      display: none;
+    }
+
+    .buy-section.visible {
+      display: block;
+    }
+
+    /* Payments Page */
+    .balance-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .balance-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .balance-card-header p {
+      color: #94A3B8;
+      font-size: 14px;
+    }
+
+    .balance-card-header button {
+      background: none;
+      border: none;
+      color: #94A3B8;
+      cursor: pointer;
+    }
+
+    .balance-card-header button svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .balance-amount {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .balance-amount.gold { color: #D4AF37; }
+    .balance-amount.green { color: #10B981; }
+
+    .btn-full {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+      color: #0F172A;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .balance-meta {
+      color: #64748B;
+      font-size: 13px;
+    }
+
+    /* Transactions */
+    .transactions-card {
+      padding: 0;
+    }
+
+    .transactions-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .transactions-header h3 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .transaction-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .transaction-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .transaction-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .transaction-icon.payout { background: rgba(16, 185, 129, 0.15); }
+    .transaction-icon.payout svg { stroke: #10B981; }
+    .transaction-icon.purchase { background: rgba(239, 68, 68, 0.15); }
+    .transaction-icon.purchase svg { stroke: #EF4444; }
+    .transaction-icon.refund { background: rgba(251, 191, 36, 0.15); }
+    .transaction-icon.refund svg { stroke: #FBBF24; }
+
+    .transaction-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .transaction-desc {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .transaction-date {
+      color: #64748B;
+      font-size: 13px;
+    }
+
+    .transaction-amount {
+      text-align: right;
+    }
+
+    .transaction-amount .value {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .transaction-amount .value.positive { color: #10B981; }
+    .transaction-amount .value.negative { color: #EF4444; }
+
+    .transaction-amount .status {
+      color: #64748B;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+
+    .transaction-amount .status svg {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Affiliate Page */
+    .referral-link-card {
+      margin-bottom: 32px;
+    }
+
+    .referral-link-card p {
+      color: #94A3B8;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .referral-link-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .referral-link {
+      flex: 1;
+      padding: 14px 20px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+      font-family: monospace;
+      color: #D4AF37;
+    }
+
+    .btn-copy {
+      padding: 14px 24px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #D4AF37 0%, #B8962E 100%);
+      color: #0F172A;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .btn-copy.copied {
+      background: #10B981;
+      color: #fff;
+    }
+
+    .btn-copy svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .affiliate-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .affiliate-stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .affiliate-stat-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Tier Progress */
+    .tier-card {
+      margin-bottom: 32px;
+    }
+
+    .tier-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .tier-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tier-info svg {
+      width: 24px;
+      height: 24px;
+      stroke: #D4AF37;
+      fill: #D4AF37;
+    }
+
+    .tier-info p:first-of-type {
+      font-weight: 600;
+    }
+
+    .tier-info p:last-of-type {
+      color: #64748B;
+      font-size: 13px;
+    }
+
+    .tier-next {
+      text-align: right;
+    }
+
+    .tier-next p:first-child {
+      color: #94A3B8;
+      font-size: 13px;
+    }
+
+    .tier-next p:last-child {
+      color: #D4AF37;
+      font-size: 13px;
+    }
+
+    .tier-progress-bar {
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+    }
+
+    .tier-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #D4AF37 0%, #F4E4BC 100%);
+      border-radius: 4px;
+    }
+
+    /* Referrals List */
+    .referrals-card {
+      padding: 0;
+    }
+
+    .referrals-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .referrals-header h3 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .referral-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .referral-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .referral-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .referral-name {
+      font-weight: 600;
+    }
+
+    .referral-date {
+      color: #64748B;
+      font-size: 13px;
+    }
+
+    .referral-purchases {
+      text-align: center;
+    }
+
+    .referral-purchases p:first-child {
+      font-weight: 600;
+    }
+
+    .referral-purchases p:last-child {
+      color: #64748B;
+      font-size: 12px;
+    }
+
+    .referral-earnings {
+      text-align: right;
+    }
+
+    .referral-earnings p:first-child {
+      font-weight: 600;
+    }
+
+    .referral-earnings p:first-child.green {
+      color: #10B981;
+    }
+
+    .referral-status {
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .referral-status.active { background: rgba(16, 185, 129, 0.2); color: #10B981; }
+    .referral-status.pending { background: rgba(251, 191, 36, 0.2); color: #FBBF24; }
+    .referral-status.inactive { background: rgba(100, 116, 139, 0.2); color: #64748B; }
+
+    /* Support Page */
+    .support-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .quick-actions h3, .tickets h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .quick-actions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quick-action {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .quick-action:hover {
+      border-color: rgba(212, 175, 55, 0.3);
+      transform: translateX(4px);
+    }
+
+    .quick-action-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quick-action-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .quick-action-text {
+      flex: 1;
+    }
+
+    .quick-action-text p:first-child {
+      font-weight: 600;
+      color: #E2E8F0;
+      margin-bottom: 2px;
+    }
+
+    .quick-action-text p:last-child {
+      color: #64748B;
+      font-size: 13px;
+    }
+
+    .quick-action .chevron {
+      color: #64748B;
+    }
+
+    .quick-action .chevron svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Tickets */
+    .tickets-card {
+      padding: 0;
+    }
+
+    .tickets-list-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .tickets-list-header h3 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .ticket-row {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .ticket-row:hover {
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .ticket-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 8px;
+    }
+
+    .ticket-subject {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .ticket-status {
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .ticket-status.open { background: rgba(251, 191, 36, 0.2); color: #FBBF24; }
+    .ticket-status.resolved { background: rgba(16, 185, 129, 0.2); color: #10B981; }
+
+    .ticket-meta {
+      display: flex;
+      justify-content: space-between;
+      color: #64748B;
+      font-size: 12px;
+    }
+
+    /* FAQ */
+    .faq-section {
+      margin-top: 48px;
+    }
+
+    .faq-section h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 20px;
+      background: none;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+    }
+
+    .faq-question p {
+      font-weight: 600;
+      color: #E2E8F0;
+    }
+
+    .faq-question svg {
+      width: 20px;
+      height: 20px;
+      stroke: #64748B;
+      stroke-width: 2;
+      fill: none;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-question svg {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 20px 20px;
+      color: #94A3B8;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M8 3L4 9h16l-4-6M5 9l7 12 7-12"/></svg>
+      </div>
+      <div class="logo-text">
+        <h1>SIERRA</h1>
+        <p>ELITE</p>
+      </div>
+    </div>
+
+    <nav>
+      <button class="nav-item active" data-page="dashboard">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        <span>Dashboard</span>
+      </button>
+      <button class="nav-item" data-page="history">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Historique</span>
+      </button>
+      <button class="nav-item" data-page="challenges">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <span>Challenges</span>
+      </button>
+      <button class="nav-item" data-page="payments">
+        <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <span>Paiements</span>
+      </button>
+      <button class="nav-item" data-page="affiliate">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Affiliation</span>
+      </button>
+      <button class="nav-item" data-page="support">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>Support</span>
+      </button>
+    </nav>
+
+    <div class="user-section">
+      <div class="user-avatar">Lo</div>
+      <div class="user-info">
+        <p>Lolo</p>
+        <p>Trader Elite ⭐</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="mountain-bg"></div>
+
+    <!-- Header -->
+    <header>
+      <div>
+        <p class="date" id="current-date"></p>
+        <h2>Bonjour, Lolo 👋</h2>
+      </div>
+      <div class="header-actions">
+        <div class="market-status">
+          <div class="status-dot"></div>
+          <span>Marchés ouverts</span>
+        </div>
+        <button class="header-btn gold">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="notification-badge"></span>
+        </button>
+        <button class="header-btn">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="page-content">
+      
+      <!-- DASHBOARD PAGE -->
+      <div class="page active" id="page-dashboard">
+        <!-- Challenge Banner -->
+        <div class="card card-gold challenge-banner fade-in">
+          <div class="challenge-info">
+            <div class="challenge-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </div>
+            <div>
+              <div class="challenge-title">
+                <h3>Challenge Elite 50K</h3>
+                <span class="phase-badge">PHASE 1</span>
+              </div>
+              <p class="challenge-meta">Démarré le 15 Jan 2026 • Jour 12</p>
+            </div>
+          </div>
+          <div class="challenge-balance">
+            <p>Balance actuelle</p>
+            <p class="amount">€54,200</p>
+          </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="card fade-in delay-1">
+            <div class="stat-card-header">
+              <div class="stat-icon green">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
+              <span class="stat-trend up">
+                <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                +8.4%
+              </span>
+            </div>
+            <p class="stat-label">Profit cible</p>
+            <p class="stat-value">€4,200 <span>/ €4,000</span></p>
+            <div class="progress-bar">
+              <div class="progress-fill green" style="width: 100%"></div>
+            </div>
+            <p class="stat-footer green">✓ Objectif atteint !</p>
+          </div>
+
+          <div class="card fade-in delay-2">
+            <div class="stat-card-header">
+              <div class="stat-icon blue">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <span class="stat-trend" style="color: #3B82F6;">17% utilisé</span>
+            </div>
+            <p class="stat-label">Drawdown Max</p>
+            <p class="stat-value">€850 <span>/ €5,000</span></p>
+            <div class="progress-bar">
+              <div class="progress-fill blue" style="width: 17%"></div>
+            </div>
+            <p class="stat-footer muted">Reste €4,150 de marge</p>
+          </div>
+
+          <div class="card fade-in delay-3">
+            <div class="stat-card-header">
+              <div class="stat-icon gold">
+                <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <span class="stat-trend up">
+                <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                +1.24%
+              </span>
+            </div>
+            <p class="stat-label">P&L du jour</p>
+            <p class="stat-value green">+€620</p>
+            <p class="stat-footer muted" style="display: flex; align-items: center; gap: 8px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" stroke="#64748B" stroke-width="2" fill="none"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              3 trades aujourd'hui
+            </p>
+          </div>
+
+          <div class="card fade-in delay-4">
+            <div class="stat-card-header">
+              <div class="stat-icon purple">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <span class="stat-trend" style="color: #10B981;">✓ Min. atteint</span>
+            </div>
+            <p class="stat-label">Jours de trading</p>
+            <p class="stat-value">12 <span>/ 5 min</span></p>
+            <div class="day-indicators">
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator filled"></div>
+              <div class="day-indicator"></div>
+              <div class="day-indicator"></div>
+              <div class="day-indicator"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-row">
+          <div class="card fade-in" style="animation-delay: 0.3s;">
+            <div class="chart-header">
+              <h3>Courbe d'équité</h3>
+              <div class="chart-filters">
+                <button class="chart-filter-btn">7J</button>
+                <button class="chart-filter-btn active">14J</button>
+                <button class="chart-filter-btn">30J</button>
+                <button class="chart-filter-btn">Tout</button>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="equityChart"></canvas>
+            </div>
+          </div>
+
+          <div class="card fade-in" style="animation-delay: 0.4s;">
+            <div class="trades-header">
+              <h3>Trades récents</h3>
+              <button class="view-all-btn">
+                Voir tout
+                <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <div class="trades-list">
+              <div class="trade-row">
+                <div class="trade-info">
+                  <div class="trade-icon long">
+                    <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                  </div>
+                  <div>
+                    <p class="trade-symbol">ES</p>
+                    <p class="trade-time">14:32</p>
+                  </div>
+                </div>
+                <p class="trade-pnl positive">+€362.50</p>
+              </div>
+              <div class="trade-row">
+                <div class="trade-info">
+                  <div class="trade-icon short">
+                    <svg viewBox="0 0 24 24"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+                  </div>
+                  <div>
+                    <p class="trade-symbol">NQ</p>
+                    <p class="trade-time">11:15</p>
+                  </div>
+                </div>
+                <p class="trade-pnl positive">+€875.00</p>
+              </div>
+              <div class="trade-row">
+                <div class="trade-info">
+                  <div class="trade-icon long">
+                    <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                  </div>
+                  <div>
+                    <p class="trade-symbol">ES</p>
+                    <p class="trade-time">09:45</p>
+                  </div>
+                </div>
+                <p class="trade-pnl negative">-€112.50</p>
+              </div>
+              <div class="trade-row">
+                <div class="trade-info">
+                  <div class="trade-icon long">
+                    <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                  </div>
+                  <div>
+                    <p class="trade-symbol">RTY</p>
+                    <p class="trade-time">Hier</p>
+                  </div>
+                </div>
+                <p class="trade-pnl positive">+€340.00</p>
+              </div>
+              <div class="trade-row">
+                <div class="trade-info">
+                  <div class="trade-icon long">
+                    <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                  </div>
+                  <div>
+                    <p class="trade-symbol">NQ</p>
+                    <p class="trade-time">Hier</p>
+                  </div>
+                </div>
+                <p class="trade-pnl positive">+€890.00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Banner -->
+        <div class="card card-gold cta-banner fade-in" style="animation-delay: 0.5s;">
+          <div>
+            <h3>🎉 Félicitations ! Vous êtes éligible au passage en Phase 2</h3>
+            <p>Vous avez atteint tous les objectifs. Cliquez pour valider et recevoir votre compte Phase 2.</p>
+          </div>
+          <button class="btn-primary">
+            Passer en Phase 2
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- HISTORY PAGE -->
+      <div class="page" id="page-history">
+        <div class="page-header">
+          <div>
+            <h2 class="page-title">Historique des trades</h2>
+          </div>
+          <div class="page-actions">
+            <button class="btn-secondary">
+              <svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+              Filtres
+            </button>
+            <button class="btn-secondary">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Exporter
+            </button>
+          </div>
+        </div>
+
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <p class="mini-stat-label">Total trades</p>
+            <p class="mini-stat-value">10</p>
+          </div>
+          <div class="mini-stat">
+            <p class="mini-stat-label">Win Rate</p>
+            <p class="mini-stat-value green">70%</p>
+          </div>
+          <div class="mini-stat">
+            <p class="mini-stat-label">Gain moyen</p>
+            <p class="mini-stat-value green">€587.50</p>
+          </div>
+          <div class="mini-stat">
+            <p class="mini-stat-label">Perte moyenne</p>
+            <p class="mini-stat-value red">€190.83</p>
+          </div>
+          <div class="mini-stat">
+            <p class="mini-stat-label">Profit Factor</p>
+            <p class="mini-stat-value">2.14</p>
+          </div>
+          <div class="mini-stat">
+            <p class="mini-stat-label">Meilleur trade</p>
+            <p class="mini-stat-value green">+€1,095</p>
+          </div>
+          <div class="mini-stat">
+            <p class="mini-stat-label">Pire trade</p>
+            <p class="mini-stat-value red">-€275</p>
+          </div>
+        </div>
+
+        <div class="data-table">
+          <div class="table-header">
+            <span>Date</span>
+            <span>Symbol</span>
+            <span>Entrée / Sortie</span>
+            <span>Direction</span>
+            <span>Lots</span>
+            <span>Durée</span>
+            <span style="text-align: right;">P&L</span>
+          </div>
+          <div class="table-row">
+            <span class="date">28 Jan 2026</span>
+            <span class="symbol">ES</span>
+            <span class="prices">5234.25 → 5241.50</span>
+            <span class="direction long"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg> LONG</span>
+            <span>2</span>
+            <span class="duration">23min</span>
+            <span class="pnl positive">+€362.50</span>
+          </div>
+          <div class="table-row">
+            <span class="date">28 Jan 2026</span>
+            <span class="symbol">NQ</span>
+            <span class="prices">18456.00 → 18412.25</span>
+            <span class="direction short"><svg viewBox="0 0 24 24"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/></svg> SHORT</span>
+            <span>1</span>
+            <span class="duration">45min</span>
+            <span class="pnl positive">+€875.00</span>
+          </div>
+          <div class="table-row">
+            <span class="date">28 Jan 2026</span>
+            <span class="symbol">ES</span>
+            <span class="prices">5228.00 → 5225.75</span>
+            <span class="direction long"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg> LONG</span>
+            <span>1</span>
+            <span class="duration">12min</span>
+            <span class="pnl negative">-€112.50</span>
+          </div>
+          <div class="table-row">
+            <span class="date">27 Jan 2026</span>
+            <span class="symbol">RTY</span>
+            <span class="prices">2045.30 → 2052.10</span>
+            <span class="direction long"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg> LONG</span>
+            <span>2</span>
+            <span class="duration">38min</span>
+            <span class="pnl positive">+€340.00</span>
+          </div>
+          <div class="table-row">
+            <span class="date">27 Jan 2026</span>
+            <span class="symbol">NQ</span>
+            <span class="prices">18380.50 → 18425.00</span>
+            <span class="direction long"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg> LONG</span>
+            <span>1</span>
+            <span class="duration">1h 12min</span>
+            <span class="pnl positive">+€890.00</span>
+          </div>
+          <div class="table-row">
+            <span class="date">26 Jan 2026</span>
+            <span class="symbol">ES</span>
+            <span class="prices">5245.00 → 5238.25</span>
+            <span class="direction short"><svg viewBox="0 0 24 24"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/></svg> SHORT</span>
+            <span>1</span>
+            <span class="duration">28min</span>
+            <span class="pnl positive">+€337.50</span>
+          </div>
+          <div class="table-row">
+            <span class="date">26 Jan 2026</span>
+            <span class="symbol">NQ</span>
+            <span class="prices">18320.00 → 18355.75</span>
+            <span class="direction long"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg> LONG</span>
+            <span>1</span>
+            <span class="duration">52min</span>
+            <span class="pnl positive">+€715.00</span>
+          </div>
+          <div class="table-row">
+            <span class="date">25 Jan 2026</span>
+            <span class="symbol">ES</span>
+            <span class="prices">5210.50 → 5205.00</span>
+            <span class="direction long"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg> LONG</span>
+            <span>2</span>
+            <span class="duration">18min</span>
+            <span class="pnl negative">-€275.00</span>
+          </div>
+          <div class="table-row">
+            <span class="date">25 Jan 2026</span>
+            <span class="symbol">RTY</span>
+            <span class="prices">2058.40 → 2062.10</span>
+            <span class="direction short"><svg viewBox="0 0 24 24"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/></svg> SHORT</span>
+            <span>1</span>
+            <span class="duration">25min</span>
+            <span class="pnl negative">-€185.00</span>
+          </div>
+          <div class="table-row">
+            <span class="date">24 Jan 2026</span>
+            <span class="symbol">NQ</span>
+            <span class="prices">18290.25 → 18345.00</span>
+            <span class="direction long"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg> LONG</span>
+            <span>1</span>
+            <span class="duration">1h 35min</span>
+            <span class="pnl positive">+€1,095.00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHALLENGES PAGE -->
+      <div class="page" id="page-challenges">
+        <div class="page-header">
+          <div>
+            <h2 class="page-title">Challenges</h2>
+            <p class="page-subtitle">Gérez vos challenges actifs ou démarrez-en un nouveau</p>
+          </div>
+        </div>
+
+        <h3 class="section-title">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Mes challenges
+        </h3>
+        <div class="challenges-grid">
+          <div class="card challenge-card active">
+            <span class="challenge-status active">ACTIF</span>
+            <h4>Elite 50K</h4>
+            <p class="meta">Phase 1 • Démarré le 15 Jan 2026</p>
+            <div class="challenge-progress">
+              <div class="challenge-progress-header">
+                <span>Progression</span>
+                <span style="color: #10B981;">105%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill green" style="width: 100%"></div>
+              </div>
+            </div>
+            <p class="balance">€54,200</p>
+          </div>
+          <div class="card challenge-card">
+            <span class="challenge-status passed">RÉUSSI</span>
+            <h4>Standard 50K</h4>
+            <p class="meta">Phase 2 • Démarré le 01 Dec 2025</p>
+            <div class="challenge-progress">
+              <div class="challenge-progress-header">
+                <span>Progression</span>
+                <span style="color: #10B981;">100%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill green" style="width: 100%"></div>
+              </div>
+            </div>
+            <p class="balance">€52,500</p>
+          </div>
+          <div class="card challenge-card">
+            <span class="challenge-status failed">ÉCHOUÉ</span>
+            <h4>Starter 25K</h4>
+            <p class="meta">Phase 1 • Démarré le 15 Nov 2025</p>
+            <div class="challenge-progress">
+              <div class="challenge-progress-header">
+                <span>Progression</span>
+                <span>45%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 45%; background: #EF4444;"></div>
+              </div>
+            </div>
+            <p class="balance">€22,100</p>
+          </div>
+        </div>
+
+        <h3 class="section-title">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nouveau challenge
+        </h3>
+        <div class="products-grid" id="products-grid">
+          <div class="card product-card" data-product="1">
+            <h4>Starter 25K</h4>
+            <p class="product-price">€149</p>
+            <div class="product-details">
+              <p>Capital: €25,000</p>
+              <p>Objectif: €2,000</p>
+              <p>Max DD: €2,500</p>
+              <p>2 phases</p>
+            </div>
+          </div>
+          <div class="card product-card" data-product="2">
+            <span class="product-badge">POPULAIRE</span>
+            <h4>Standard 50K</h4>
+            <p class="product-price">€249</p>
+            <div class="product-details">
+              <p>Capital: €50,000</p>
+              <p>Objectif: €4,000</p>
+              <p>Max DD: €5,000</p>
+              <p>2 phases</p>
+            </div>
+          </div>
+          <div class="card product-card" data-product="3">
+            <h4>Pro 100K</h4>
+            <p class="product-price">€349</p>
+            <div class="product-details">
+              <p>Capital: €100,000</p>
+              <p>Objectif: €8,000</p>
+              <p>Max DD: €10,000</p>
+              <p>2 phases</p>
+            </div>
+          </div>
+          <div class="card product-card" data-product="4">
+            <h4>Elite 150K</h4>
+            <p class="product-price">€449</p>
+            <div class="product-details">
+              <p>Capital: €150,000</p>
+              <p>Objectif: €12,000</p>
+              <p>Max DD: €15,000</p>
+              <p>2 phases</p>
+            </div>
+          </div>
+          <div class="card product-card" data-product="5">
+            <h4>Master 250K</h4>
+            <p class="product-price">€549</p>
+            <div class="product-details">
+              <p>Capital: €250,000</p>
+              <p>Objectif: €20,000</p>
+              <p>Max DD: €25,000</p>
+              <p>1 phase</p>
+            </div>
+          </div>
+        </div>
+        <div class="buy-section" id="buy-section">
+          <button class="btn-primary">Acheter ce challenge</button>
+        </div>
+      </div>
+
+      <!-- PAYMENTS PAGE -->
+      <div class="page" id="page-payments">
+        <div class="page-header">
+          <div>
+            <h2 class="page-title">Paiements</h2>
+            <p class="page-subtitle">Gérez vos paiements et retraits</p>
+          </div>
+        </div>
+
+        <div class="balance-cards">
+          <div class="card card-gold">
+            <div class="balance-card-header">
+              <p>Solde disponible</p>
+              <button id="toggle-balance">
+                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <p class="balance-amount gold" id="balance-display">€2,840.00</p>
+            <button class="btn-full">Demander un retrait</button>
+          </div>
+          <div class="card">
+            <p style="color: #94A3B8; font-size: 14px; margin-bottom: 16px;">Total des gains</p>
+            <p class="balance-amount green">€4,490.00</p>
+            <p class="balance-meta">Depuis le début</p>
+          </div>
+          <div class="card">
+            <p style="color: #94A3B8; font-size: 14px; margin-bottom: 16px;">Prochain payout</p>
+            <p class="balance-amount">5 jours</p>
+            <p class="balance-meta">02 Février 2026</p>
+          </div>
+        </div>
+
+        <div class="card transactions-card">
+          <div class="transactions-header">
+            <h3>Historique des transactions</h3>
+          </div>
+          <div class="transaction-row">
+            <div class="transaction-info">
+              <div class="transaction-icon purchase">
+                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </div>
+              <div>
+                <p class="transaction-desc">Challenge Elite 50K</p>
+                <p class="transaction-date">15 Jan 2026</p>
+              </div>
+            </div>
+            <div class="transaction-amount">
+              <p class="value negative">-€349</p>
+              <p class="status"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Complété</p>
+            </div>
+          </div>
+          <div class="transaction-row">
+            <div class="transaction-info">
+              <div class="transaction-icon payout">
+                <svg viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 7 17 17 7 17"/></svg>
+              </div>
+              <div>
+                <p class="transaction-desc">Payout Décembre</p>
+                <p class="transaction-date">05 Jan 2026</p>
+              </div>
+            </div>
+            <div class="transaction-amount">
+              <p class="value positive">+€2,840</p>
+              <p class="status"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Complété</p>
+            </div>
+          </div>
+          <div class="transaction-row">
+            <div class="transaction-info">
+              <div class="transaction-icon purchase">
+                <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </div>
+              <div>
+                <p class="transaction-desc">Challenge Standard 50K</p>
+                <p class="transaction-date">01 Dec 2025</p>
+              </div>
+            </div>
+            <div class="transaction-amount">
+              <p class="value negative">-€249</p>
+              <p class="status"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Complété</p>
+            </div>
+          </div>
+          <div class="transaction-row">
+            <div class="transaction-info">
+              <div class="transaction-icon payout">
+                <svg viewBox="0 0 24 24"><line x1="7" y1="7" x2="17" y2="17"/><polyline points="17 7 17 17 7 17"/></svg>
+              </div>
+              <div>
+                <p class="transaction-desc">Payout Novembre</p>
+                <p class="transaction-date">03 Dec 2025</p>
+              </div>
+            </div>
+            <div class="transaction-amount">
+              <p class="value positive">+€1,650</p>
+              <p class="status"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Complété</p>
+            </div>
+          </div>
+          <div class="transaction-row">
+            <div class="transaction-info">
+              <div class="transaction-icon refund">
+                <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              </div>
+              <div>
+                <p class="transaction-desc">Reset Challenge</p>
+                <p class="transaction-date">20 Nov 2025</p>
+              </div>
+            </div>
+            <div class="transaction-amount">
+              <p class="value negative">-€75</p>
+              <p class="status"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Complété</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AFFILIATE PAGE -->
+      <div class="page" id="page-affiliate">
+        <div class="page-header">
+          <div>
+            <h2 class="page-title">Programme d'affiliation</h2>
+            <p class="page-subtitle">Gagnez des commissions en parrainant de nouveaux traders</p>
+          </div>
+        </div>
+
+        <div class="card card-gold referral-link-card">
+          <p>Votre lien de parrainage</p>
+          <div class="referral-link-row">
+            <div class="referral-link">https://sierra-elite.com/ref/LOLO2026</div>
+            <button class="btn-copy" id="copy-btn">
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copier
+            </button>
+          </div>
+        </div>
+
+        <div class="affiliate-stats">
+          <div class="card">
+            <div class="affiliate-stat-icon" style="background: rgba(16, 185, 129, 0.15);">
+              <svg viewBox="0 0 24 24" stroke="#10B981"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <p class="stat-label">Gains totaux</p>
+            <p class="stat-value" style="color: #10B981;">€4,250</p>
+          </div>
+          <div class="card">
+            <div class="affiliate-stat-icon" style="background: rgba(251, 191, 36, 0.15);">
+              <svg viewBox="0 0 24 24" stroke="#FBBF24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <p class="stat-label">En attente</p>
+            <p class="stat-value" style="color: #FBBF24;">€850</p>
+          </div>
+          <div class="card">
+            <div class="affiliate-stat-icon" style="background: rgba(59, 130, 246, 0.15);">
+              <svg viewBox="0 0 24 24" stroke="#3B82F6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <p class="stat-label">Parrainages</p>
+            <p class="stat-value" style="color: #3B82F6;">34</p>
+          </div>
+          <div class="card">
+            <div class="affiliate-stat-icon" style="background: rgba(212, 175, 55, 0.15);">
+              <svg viewBox="0 0 24 24" stroke="#D4AF37"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+            </div>
+            <p class="stat-label">Commission</p>
+            <p class="stat-value" style="color: #D4AF37;">15%</p>
+          </div>
+        </div>
+
+        <div class="card tier-card">
+          <div class="tier-header">
+            <div class="tier-info">
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <div>
+                <p>Niveau Gold</p>
+                <p>15% de commission</p>
+              </div>
+            </div>
+            <div class="tier-next">
+              <p>Prochain niveau: Platinum</p>
+              <p>16 parrainages restants</p>
+            </div>
+          </div>
+          <div class="tier-progress-bar">
+            <div class="tier-progress-fill" style="width: 68%"></div>
+          </div>
+        </div>
+
+        <div class="card referrals-card">
+          <div class="referrals-header">
+            <h3>Mes filleuls</h3>
+          </div>
+          <div class="referral-row">
+            <div class="referral-info">
+              <div class="referral-avatar">MD</div>
+              <div>
+                <p class="referral-name">Marc D.</p>
+                <p class="referral-date">Inscrit le 25 Jan 2026</p>
+              </div>
+            </div>
+            <div class="referral-purchases">
+              <p>2</p>
+              <p>achats</p>
+            </div>
+            <div class="referral-earnings">
+              <p class="green">+€89.70</p>
+              <span class="referral-status active">active</span>
+            </div>
+          </div>
+          <div class="referral-row">
+            <div class="referral-info">
+              <div class="referral-avatar">SL</div>
+              <div>
+                <p class="referral-name">Sophie L.</p>
+                <p class="referral-date">Inscrit le 22 Jan 2026</p>
+              </div>
+            </div>
+            <div class="referral-purchases">
+              <p>1</p>
+              <p>achats</p>
+            </div>
+            <div class="referral-earnings">
+              <p class="green">+€37.35</p>
+              <span class="referral-status active">active</span>
+            </div>
+          </div>
+          <div class="referral-row">
+            <div class="referral-info">
+              <div class="referral-avatar">TB</div>
+              <div>
+                <p class="referral-name">Thomas B.</p>
+                <p class="referral-date">Inscrit le 18 Jan 2026</p>
+              </div>
+            </div>
+            <div class="referral-purchases">
+              <p>3</p>
+              <p>achats</p>
+            </div>
+            <div class="referral-earnings">
+              <p class="green">+€134.55</p>
+              <span class="referral-status active">active</span>
+            </div>
+          </div>
+          <div class="referral-row">
+            <div class="referral-info">
+              <div class="referral-avatar">JM</div>
+              <div>
+                <p class="referral-name">Julie M.</p>
+                <p class="referral-date">Inscrit le 15 Jan 2026</p>
+              </div>
+            </div>
+            <div class="referral-purchases">
+              <p>1</p>
+              <p>achats</p>
+            </div>
+            <div class="referral-earnings">
+              <p class="green">+€52.35</p>
+              <span class="referral-status pending">pending</span>
+            </div>
+          </div>
+          <div class="referral-row">
+            <div class="referral-info">
+              <div class="referral-avatar">PR</div>
+              <div>
+                <p class="referral-name">Pierre R.</p>
+                <p class="referral-date">Inscrit le 10 Jan 2026</p>
+              </div>
+            </div>
+            <div class="referral-purchases">
+              <p>0</p>
+              <p>achats</p>
+            </div>
+            <div class="referral-earnings">
+              <p>€0</p>
+              <span class="referral-status inactive">inactive</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUPPORT PAGE -->
+      <div class="page" id="page-support">
+        <div class="page-header">
+          <div>
+            <h2 class="page-title">Support</h2>
+            <p class="page-subtitle">Besoin d'aide ? Nous sommes là pour vous</p>
+          </div>
+        </div>
+
+        <div class="support-grid">
+          <div class="quick-actions">
+            <h3>Actions rapides</h3>
+            <div class="quick-actions-list">
+              <button class="quick-action">
+                <div class="quick-action-icon" style="background: rgba(16, 185, 129, 0.15);">
+                  <svg viewBox="0 0 24 24" stroke="#10B981"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <div class="quick-action-text">
+                  <p>Chat en direct</p>
+                  <p>Réponse en ~2 min</p>
+                </div>
+                <div class="chevron">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+              </button>
+              <button class="quick-action">
+                <div class="quick-action-icon" style="background: rgba(59, 130, 246, 0.15);">
+                  <svg viewBox="0 0 24 24" stroke="#3B82F6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <div class="quick-action-text">
+                  <p>Nouveau ticket</p>
+                  <p>Réponse sous 24h</p>
+                </div>
+                <div class="chevron">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+              </button>
+              <button class="quick-action">
+                <div class="quick-action-icon" style="background: rgba(168, 85, 247, 0.15);">
+                  <svg viewBox="0 0 24 24" stroke="#A855F7"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </div>
+                <div class="quick-action-text">
+                  <p>Documentation</p>
+                  <p>Guides et tutoriels</p>
+                </div>
+                <div class="chevron">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+              </button>
+              <button class="quick-action">
+                <div class="quick-action-icon" style="background: rgba(88, 101, 242, 0.15);">
+                  <svg viewBox="0 0 24 24" stroke="#5865F2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="quick-action-text">
+                  <p>Communauté Discord</p>
+                  <p>5,234 membres</p>
+                </div>
+                <div class="chevron">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div class="tickets">
+            <h3>Mes tickets</h3>
+            <div class="card tickets-card">
+              <div class="ticket-row">
+                <div class="ticket-header">
+                  <p class="ticket-subject">Question sur le drawdown journalier</p>
+                  <span class="ticket-status resolved">Résolu</span>
+                </div>
+                <div class="ticket-meta">
+                  <span>TKT-2847</span>
+                  <span>Dernière réponse: Support</span>
+                </div>
+              </div>
+              <div class="ticket-row">
+                <div class="ticket-header">
+                  <p class="ticket-subject">Demande de reset challenge</p>
+                  <span class="ticket-status open">Ouvert</span>
+                </div>
+                <div class="ticket-meta">
+                  <span>TKT-2801</span>
+                  <span>Dernière réponse: Vous</span>
+                </div>
+              </div>
+              <div class="ticket-row">
+                <div class="ticket-header">
+                  <p class="ticket-subject">Problème connexion Rithmic</p>
+                  <span class="ticket-status resolved">Résolu</span>
+                </div>
+                <div class="ticket-meta">
+                  <span>TKT-2756</span>
+                  <span>Dernière réponse: Support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-section">
+          <h3>Questions fréquentes</h3>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question">
+                <p>Comment fonctionne le calcul du drawdown ?</p>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-answer">
+                Le drawdown maximum est calculé depuis le plus haut niveau de balance atteint (High Water Mark). Le drawdown journalier est réinitialisé chaque jour à 00:00 UTC.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                <p>Quand puis-je demander un payout ?</p>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-answer">
+                Les payouts sont disponibles tous les 14 jours pour les comptes funded. Le minimum de retrait est de 100€.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                <p>Puis-je trader pendant les annonces économiques ?</p>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-answer">
+                Oui, le trading pendant les news est autorisé sur tous nos challenges. Cependant, nous recommandons la prudence.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                <p>Que se passe-t-il si j'atteins mon objectif avant les 5 jours minimum ?</p>
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="faq-answer">
+                Vous devez continuer à trader pendant au moins 5 jours distincts. Vous pouvez trader avec un risque réduit pour maintenir vos gains.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // Update date
+    const dateElement = document.getElementById('current-date');
+    const now = new Date();
+    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    dateElement.textContent = now.toLocaleDateString('fr-FR', options);
+
+    // Navigation
+    const navItems = document.querySelectorAll('.nav-item');
+    const pages = document.querySelectorAll('.page');
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const pageId = item.dataset.page;
+        
+        navItems.forEach(nav => nav.classList.remove('active'));
+        item.classList.add('active');
+        
+        pages.forEach(page => page.classList.remove('active'));
+        document.getElementById(`page-${pageId}`).classList.add('active');
+      });
+    });
+
+    // Equity Chart
+    const ctx = document.getElementById('equityChart').getContext('2d');
+    const gradient = ctx.createLinearGradient(0, 0, 0, 280);
+    gradient.addColorStop(0, 'rgba(212, 175, 55, 0.3)');
+    gradient.addColorStop(1, 'rgba(212, 175, 55, 0)');
+
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+        datasets: [{
+          label: 'Balance',
+          data: [50000, 50450, 51200, 50800, 51650, 52100, 51800, 52400, 53100, 52750, 53400, 54200],
+          borderColor: '#D4AF37',
+          borderWidth: 3,
+          backgroundColor: gradient,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 0,
+          pointHoverRadius: 6,
+          pointHoverBackgroundColor: '#D4AF37',
+          pointHoverBorderColor: '#fff',
+          pointHoverBorderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+            titleColor: '#D4AF37',
+            bodyColor: '#fff',
+            borderColor: 'rgba(212, 175, 55, 0.3)',
+            borderWidth: 1,
+            padding: 12,
+            displayColors: false,
+            callbacks: {
+              title: (items) => `Jour ${items[0].label}`,
+              label: (item) => `Balance: €${item.raw.toLocaleString()}`
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: '#64748B' }
+          },
+          y: {
+            grid: { color: 'rgba(255,255,255,0.05)' },
+            ticks: {
+              color: '#64748B',
+              callback: (value) => `€${(value/1000).toFixed(0)}k`
+            }
+          }
+        }
+      }
+    });
+
+    // Product Selection
+    const productsGrid = document.getElementById('products-grid');
+    const buySection = document.getElementById('buy-section');
+    const productCards = productsGrid.querySelectorAll('.product-card');
+
+    productCards.forEach(card => {
+      card.addEventListener('click', () => {
+        productCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        buySection.classList.add('visible');
+      });
+    });
+
+    // Balance Toggle
+    const toggleBalance = document.getElementById('toggle-balance');
+    const balanceDisplay = document.getElementById('balance-display');
+    let balanceVisible = true;
+
+    toggleBalance.addEventListener('click', () => {
+      balanceVisible = !balanceVisible;
+      balanceDisplay.textContent = balanceVisible ? '€2,840.00' : '••••••';
+      toggleBalance.innerHTML = balanceVisible 
+        ? '<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'
+        : '<svg viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
+    });
+
+    // Copy Button
+    const copyBtn = document.getElementById('copy-btn');
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('https://sierra-elite.com/ref/LOLO2026');
+      copyBtn.classList.add('copied');
+      copyBtn.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Copié !';
+      setTimeout(() => {
+        copyBtn.classList.remove('copied');
+        copyBtn.innerHTML = '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copier';
+      }, 2000);
+    });
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>
