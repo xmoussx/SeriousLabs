@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Délires d'initiés : des frappes militaires aux fan tokens, les marchés de prédiction hors de contrôle - Les Enjeux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --red-primary: #e52e1c;
+            --red-dark: #c41e3a;
+            --text-dark: #1a1a1a;
+            --text-gray: #666;
+            --text-light: #999;
+            --bg-light: #f5f5f5;
+            --border-light: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: #fff;
+        }
+        
+        /* Header */
+        .site-header {
+            background: var(--red-primary);
+            padding: 15px 0;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            display: block;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-align: center;
+            opacity: 0.85;
+        }
+        
+        /* Nav */
+        .nav-bar {
+            background: #fff;
+            border-bottom: 2px solid var(--red-primary);
+            padding: 12px 0;
+        }
+        
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .nav-bar a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-bar a:hover {
+            color: var(--red-primary);
+        }
+        
+        /* Tags */
+        .tag {
+            display: inline-block;
+            background: var(--red-primary);
+            color: white;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        /* Article */
+        article {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 44px;
+            font-weight: 900;
+            line-height: 1.15;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 22px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-gray);
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+        
+        .chapeau {
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .meta {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .meta .author {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 40px 0 18px;
+            padding-top: 10px;
+        }
+        
+        .article-content p {
+            font-size: 16px;
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+        
+        /* Blockquote */
+        blockquote {
+            font-style: italic;
+            color: var(--text-gray);
+            padding: 18px 25px;
+            background: var(--bg-light);
+            border-left: 4px solid var(--red-primary);
+            margin: 24px 0;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        blockquote cite {
+            display: block;
+            font-style: normal;
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+        
+        /* Synthesis */
+        .synthesis {
+            font-style: italic;
+            color: var(--text-gray);
+            padding: 18px 25px;
+            background: var(--bg-light);
+            border-left: 4px solid var(--red-primary);
+            margin: 24px 0;
+            font-size: 15px;
+        }
+
+        /* Info card */
+        .info-card {
+            background: var(--bg-light);
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+
+        .info-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--red-primary);
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .info-card p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Warning card */
+        .warning-card {
+            background: #fef2f2;
+            border-left: 4px solid var(--red-primary);
+            padding: 25px 30px;
+            margin: 30px 0;
+        }
+        
+        .warning-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--red-primary);
+            margin-bottom: 15px;
+        }
+        
+        .warning-card p {
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .warning-card p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Stats row */
+        .stats-row {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            flex: 1;
+            min-width: 140px;
+            background: var(--bg-light);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .stat-box .number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--red-primary);
+            display: block;
+        }
+        
+        .stat-box .label {
+            font-size: 12px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Comparison table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 14px;
+        }
+
+        .comparison-table thead th {
+            background: var(--red-primary);
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .comparison-table tbody td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: #fafafa;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: 30px 0;
+            padding-left: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 18px;
+            align-items: baseline;
+        }
+
+        .timeline-date {
+            min-width: 110px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--red-primary);
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Link card */
+        .link-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-light);
+            padding: 20px 25px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: border-color 0.2s;
+        }
+
+        .link-card:hover {
+            border-color: var(--red-primary);
+        }
+
+        .link-card .link-icon {
+            font-size: 24px;
+            color: var(--red-primary);
+            flex-shrink: 0;
+        }
+
+        .link-card .link-text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .link-card .link-desc {
+            font-size: 12px;
+            color: var(--text-gray);
+            margin-top: 3px;
+        }
+
+        /* Sources */
+        .sources {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+        
+        .sources h3 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .sources ul {
+            list-style: none;
+        }
+        
+        .sources li {
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        .article-footer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+        
+        .footer-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .footer-tags span {
+            background: var(--bg-light);
+            color: var(--text-gray);
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 2px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 28px; }
+            .subtitle { font-size: 18px; }
+            .chapeau { font-size: 15px; }
+            h2 { font-size: 22px; }
+            .article-content p { font-size: 15px; }
+            .logo { font-size: 32px; }
+            .nav-container { gap: 15px; flex-wrap: wrap; }
+            .stats-row { flex-direction: column; }
+            .timeline-item { flex-direction: column; gap: 4px; }
+            .timeline-date { min-width: auto; }
+            .comparison-table { font-size: 12px; }
+            .comparison-table thead th,
+            .comparison-table tbody td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+
+
+<article>
+    
+    <span class="tag">Enquête</span>
+    
+    <h1>Délires d'initiés</h1>
+    <p class="subtitle">Des frappes militaires aux fan tokens, les marchés de prédiction hors de contrôle</p>
+    
+    <p class="chapeau">Sur Polymarket, un compte anonyme a parié avec une précision chirurgicale sur des frappes militaires israéliennes. Un autre a transformé 32 000 dollars en 400 000 la veille d'un coup d'État. Un troisième a deviné 17 détails sur 20 du spectacle de la mi-temps du Super Bowl. En l'espace de quelques semaines, les marchés de prédiction sont devenus le terrain de jeu favori des initiés, qu'ils soient militaires, fonctionnaires ou simples employés d'une production télévisée. Ce 24 février, l'ANJ publie un avertissement qui prend, à la lumière de ces affaires, une résonance particulière.</p>
+    
+    <div class="meta">
+        <span class="author">Antoine Dugast</span> · 24 février 2026 · 8 min de lecture
+    </div>
+
+    <div class="article-content">
+    
+    <h2>Un réserviste, un pseudo et 150 000 dollars</h2>
+    
+    <p>L'histoire commence par un pseudonyme. En juin 2025, un utilisateur de Polymarket se faisant appeler ricosuave666 place sept paris successifs sur la guerre de douze jours entre Israël et l'Iran, baptisée Opération Rising Lion. Il prédit la date exacte de la première frappe israélienne, le déroulement des opérations et le moment de leur cessation. Son taux de réussite est parfait. Ses gains dépassent les 150 000 dollars.</p>
+    
+    <p>Sur les forums spécialisés, d'autres parieurs repèrent rapidement l'anomalie. Le 6 janvier 2026, un utilisateur nommé Senzer identifie le compte et détaille ses positions : trois paris sur le déclenchement de l'attaque, un sur sa fin, le tout avec une mise culminant à 34 000 dollars la semaine de la frappe, transformée en près de 129 000 dollars de profit lorsqu'Israël lance sa campagne aérienne dans la nuit du vendredi. Le compte devient dormant pendant six mois avant de se réactiver en janvier 2026 pour miser, à nouveau, sur une frappe israélienne contre l'Iran.</p>
+    
+    <p>Le 12 février, les autorités israéliennes mettent fin au suspense. Le Shin Bet, la police et le ministère de la Défense annoncent conjointement l'inculpation de deux hommes : un réserviste de Tsahal et un civil. Les charges sont lourdes : infractions graves à la sécurité nationale, corruption et obstruction à la justice. Selon l'acte d'accusation, le réserviste avait accès à des informations classifiées de par ses fonctions militaires et les a exploitées pour placer ses paris via la plateforme crypto.</p>
+
+    <p>C'est la première affaire pénale au monde liée à de l'insider trading sur un marché de prédiction.</p>
+    
+    <blockquote>
+        Placer de tels paris sur la base d'informations secrètes et classifiées constitue une menace réelle pour les opérations de Tsahal et pour la sécurité nationale.
+        <cite>Ministère de la Défense israélien, communiqué conjoint du 12 février 2026</cite>
+    </blockquote>
+
+    <h2>Le pattern : Venezuela, Super Bowl, Google</h2>
+    
+    <p>L'affaire israélienne n'est pas un cas isolé. Elle s'inscrit dans une série qui dessine un phénomène systémique.</p>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <span class="timeline-date">Décembre 2025</span>
+            <span class="timeline-content">Un trader empoche 1,2 million de dollars en misant sur les recherches Google les plus populaires de l'année, avec une précision qui laisse peu de place au hasard. L'analyse blockchain révèle des liens avec des profits antérieurs sur des données liées à Google.</span>
+        </div>
+        <div class="timeline-item">
+            <span class="timeline-date">Janvier 2026</span>
+            <span class="timeline-content">Un trader anonyme mise environ 32 000 dollars sur Polymarket sur la chute de Nicolás Maduro. L'essentiel de ses positions est pris quelques heures avant que Donald Trump n'annonce le raid militaire américain qui conduira à la capture de l'ancien président vénézuélien. Le payout dépasse les 400 000 dollars. Le compte, créé récemment et actif quasi exclusivement sur les marchés liés au Venezuela, coche toutes les cases du trading sur information privilégiée.</span>
+        </div>
+        <div class="timeline-item">
+            <span class="timeline-date">Février 2026</span>
+            <span class="timeline-content">Un compte Polymarket créé deux jours avant le Super Bowl prédit correctement 17 des 20 détails du spectacle de la mi-temps : les chansons interprétées, les apparitions surprises, l'ordre du set. Le profil correspond à celui d'un initié de la production ayant eu accès aux répétitions.</span>
+        </div>
+        <div class="timeline-item">
+            <span class="timeline-date">12 février 2026</span>
+            <span class="timeline-content">Inculpation en Israël du réserviste et du civil à l'origine des paris sur l'Opération Rising Lion. Première affaire criminelle mondiale liée à un marché de prédiction.</span>
+        </div>
+    </div>
+    
+    <p>Le dénominateur commun de ces affaires : l'anonymat permis par les cryptomonnaies sur Polymarket, plateforme offshore enregistrée au Panama qui ne pratique pas de vérification d'identité stricte.</p>
+
+    <h2>« Super cool » contre « érosion de la confiance »</h2>
+    
+    <p>Face à cette accumulation, deux visions diamétralement opposées s'affrontent au sein même de l'industrie.</p>
+    
+    <p>Shayne Coplan, fondateur de Polymarket, assume pleinement. Interrogé par l'émission 60 Minutes, il qualifie l'insider trading de « super cool » et défend l'idée que les initiés rendent un service public en faisant converger les prix vers la vérité plus rapidement. Sa plateforme, opérant principalement en cryptomonnaies, ne propose ni vérification d'identité obligatoire ni interdiction des marchés géopolitiques. The Economist, dans une enquête publiée le 19 février, reconnaît que cette logique a une part de validité théorique, tout en soulignant les risques éthiques et sécuritaires considérables qu'elle engendre.</p>
+    
+    <p>De l'autre côté, Kalshi a opéré un virage spectaculaire. Début février, la plateforme régulée par la CFTC a déployé un arsenal de compliance sans précédent pour un marché de prédiction : création d'un comité de surveillance indépendant incluant le directeur du Wharton Forensic Analytics Lab, partenariat technologique avec Solidus Labs pour la détection des abus par intelligence artificielle, recrutement de Brian Nelson, ancien sous-secrétaire au Trésor américain chargé du terrorisme et du renseignement financier, et nomination d'un directeur de l'enforcement dédié. Son système de surveillance interne, baptisé Poirot, analyse les transactions en temps réel via des modèles de reconnaissance de patterns. En 2025, la plateforme a conduit plus de 200 enquêtes, gelé plusieurs comptes et transmis des dossiers au Department of Justice.</p>
+
+    <blockquote>
+        L'insider trading érode la confiance. Quand les gens pensent qu'un marché est truqué, ils arrêtent de trader. La liquidité s'assèche, les volumes s'effondrent, et le marché meurt.
+        <cite>Tarek Mansour, PDG de Kalshi, sur X, 5 février 2026</cite>
+    </blockquote>
+
+    <p>Kalshi interdit par ailleurs les marchés liés aux guerres, au terrorisme et aux assassinats, exactement les catégories sur lesquelles Polymarket a vu éclore ses affaires les plus controversées.</p>
+
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Polymarket</th>
+                <th>Kalshi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Siège</strong></td>
+                <td>Panama (offshore)</td>
+                <td>New York (États-Unis)</td>
+            </tr>
+            <tr>
+                <td><strong>Régulateur</strong></td>
+                <td>Aucun</td>
+                <td>CFTC</td>
+            </tr>
+            <tr>
+                <td><strong>Vérification d'identité</strong></td>
+                <td>Minimale</td>
+                <td>KYC/AML obligatoire</td>
+            </tr>
+            <tr>
+                <td><strong>Moyen de paiement</strong></td>
+                <td>Cryptomonnaies</td>
+                <td>Dollar US</td>
+            </tr>
+            <tr>
+                <td><strong>Marchés géopolitiques/militaires</strong></td>
+                <td>Oui (guerres, coups d'État)</td>
+                <td>Interdits</td>
+            </tr>
+            <tr>
+                <td><strong>Position sur l'insider trading</strong></td>
+                <td>« Super cool » (S. Coplan)</td>
+                <td>Interdit, +200 enquêtes en 2025</td>
+            </tr>
+            <tr>
+                <td><strong>Statut en France</strong></td>
+                <td>Illégal, géoblocage en place</td>
+                <td>Illégal, géoblocage en place</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>L'ANJ met les mots sur le risque</h2>
+    
+    <p>C'est dans ce contexte que l'Autorité nationale des jeux publie, ce 24 février, un communiqué qui va au-delà de la simple qualification juridique. Oui, les marchés de prédiction sont illégaux en France, assimilés à des jeux d'argent non autorisés. L'ANJ avait déjà obtenu de Polymarket et de Kalshi la mise en place d'un géoblocage pour les utilisateurs français dès fin 2024. Une dizaine de pays européens ont suivi : Allemagne, Belgique, Pays-Bas, Roumanie, Suisse, Pologne, Grèce, Chypre, Portugal et Ukraine.</p>
+    
+    <p>Mais le passage le plus significatif du communiqué concerne un risque que beaucoup jugeaient théorique jusqu'à récemment.</p>
+
+    <div class="warning-card">
+        <h4>Extrait du communiqué de l'ANJ, 24 février 2026</h4>
+        <p>« Dès lors qu'un acteur peut parier sur un événement et en influencer la probabilité, le marché crée une incitation financière à provoquer ou accélérer des issues négatives telles que le sabotage de performance dans le sport ou des actions violentes en géopolitique. »</p>
+    </div>
+    
+    <p>L'affaire ricosuave666 est la démonstration en temps réel de ce scénario : un acteur qui dispose d'une information classifiée sur une frappe militaire et la monétise sur un marché de prédiction.</p>
+    
+    <p>Le régulateur pointe également les caractéristiques addictives amplifiées de ces plateformes : accessibilité permanente, absence de limitation de mises, pas de contrôle d'identité ni de vérification de majorité. Le marketing de ces plateformes, qui se présentent comme des outils d'investissement ou d'analyse, renforce selon l'ANJ une « illusion de compétence » propice à l'addiction : plus l'utilisateur se croit compétent, plus il joue, et plus la boucle addictive s'installe.</p>
+
+    <div class="stats-row">
+        <div class="stat-box">
+            <span class="number">27,9 Md$</span>
+            <span class="label">Volume de transactions<br>janv.-oct. 2025</span>
+        </div>
+        <div class="stat-box">
+            <span class="number">2 Md$</span>
+            <span class="label">Revenus estimés<br>des plateformes</span>
+        </div>
+        <div class="stat-box">
+            <span class="number">~10</span>
+            <span class="label">Pays européens<br>ayant bloqué Polymarket</span>
+        </div>
+    </div>
+
+    <h2>SportFi : la prochaine frontière floue</h2>
+    
+    <p>Pendant que régulateurs et plateformes s'affrontent sur le terrain géopolitique, les frontières continuent de se brouiller du côté sportif. Chiliz, le leader mondial des fan tokens (PSG, FC Barcelone, Juventus, entre autres), prépare une mutation qui rapproche encore davantage ses produits des marchés de prédiction. Selon son PDG Alexandre Dreyfus, interrogé par CoinDesk le 20 février, la prochaine génération de fan tokens intégrera des mécanismes de « tokenomics gamifiées » : la valeur des tokens évoluera automatiquement en fonction des résultats sportifs via des smart contracts, brûlant de l'offre en cas de victoire, l'augmentant en cas de défaite.</p>
+    
+    <p>Dreyfus assume lui-même la passerelle avec les marchés de prédiction. L'exemple qu'il donne à CoinDesk est limpide : un utilisateur peut parier sur Polymarket que le Barça bat le PSG, puis acheter le fan token du Barça pour « hedger » sa position, puisque la valeur du token montera mécaniquement en cas de victoire grâce aux smart contracts. Autrement dit, fan tokens et marchés de prédiction deviennent deux instruments financiers adossés au même événement sportif, deux faces d'une même pièce. Et le terrain est immense : en 2025, le sport représentait déjà 87 % de l'activité de Kalshi.</p>
+    
+    <p>La question de l'insider trading ne concerne donc plus uniquement des réservistes israéliens ou des fonctionnaires américains. Elle se pose pour tout détenteur d'information sportive non publique : un médecin d'équipe qui connaît une blessure avant l'annonce officielle, un directeur sportif qui sait qu'un transfert est bouclé, un membre du staff qui connaît la composition avant sa publication. L'ANJ, dont la mission première est précisément de garantir l'intégrité des paris sportifs en France, se retrouve face à un écosystème crypto qui reproduit les mêmes risques en dehors de tout cadre légal.</p>
+
+    <h2>Le pari le plus risqué</h2>
+    
+    <p>Le géoblocage protège partiellement les joueurs français. Mais il ne résout rien au problème de fond, et tout utilisateur équipé d'un VPN peut le contourner. L'ANJ a posé le bon diagnostic. Reste à trouver les bons outils, à une échelle qui dépasse probablement celle d'un régulateur national.</p>
+    
+    <p class="synthesis">Le plus grand risque des marchés de prédiction, c'est que quelqu'un ait intérêt à ce que le pire arrive.</p>
+
+    <a href="https://les-enjeux.com/2026/02/06/prediction-markets-proces-regulation/" class="link-card">
+        <span class="link-icon">&#8594;</span>
+        <div>
+            <div class="link-text">Prediction markets : 19 procès, une class action et la Maison-Blanche en ligne de mire</div>
+            <div class="link-desc">Les Enjeux, 6 février 2026. Le volet juridique américain.</div>
+        </div>
+    </a>
+
+    <div class="sources">
+        <h3>Sources</h3>
+        <ul>
+            <li>ANJ, communiqué du 24 février 2026</li>
+            <li>The Economist, « Prediction markets are rife with insider betting », 19 février 2026</li>
+            <li>Times of Israel, NPR, NBC News, Wall Street Journal, couverture de l'affaire ricosuave666, 12-14 février 2026</li>
+            <li>Kalshi, communiqué « Surveillance and Enforcement Framework », 5 février 2026</li>
+            <li>CoinDesk, « SportFi's next act: from fan tokens to on-chain markets built around match-day results », 20 février 2026</li>
+        </ul>
+    </div>
+
+    </div>
+</article>
+
+<footer class="article-footer">
+    <div class="footer-tags">
+        <span>Prediction Markets</span>
+        <span>Polymarket</span>
+        <span>Kalshi</span>
+        <span>ANJ</span>
+        <span>Insider Trading</span>
+        <span>Régulation</span>
+        <span>SportFi</span>
+        <span>Chiliz</span>
+    </div>
+</footer>
+
+</body>
+</html>
