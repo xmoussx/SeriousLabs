@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PokerStars tire sa révérence aux États-Unis – Les Enjeux</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rouge: #C0202A;
+    --rouge-fonce: #8B1219;
+    --noir: #111111;
+    --gris-chaud: #F5F2EE;
+    --gris-texte: #3A3A3A;
+    --gris-clair: #E8E4DF;
+    --or: #B8963E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--gris-chaud);
+    color: var(--gris-texte);
+    font-family: 'Source Serif 4', serif;
+    font-weight: 300;
+    line-height: 1.75;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--noir);
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .logo span { color: var(--rouge); }
+
+  .rubrique-header {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    border: 1px solid var(--rouge);
+    padding: 4px 10px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--noir);
+    padding: 60px 40px 50px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    border-bottom: 1px solid var(--rouge);
+    padding-bottom: 2px;
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    max-width: 780px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--rouge);
+  }
+
+  .chapeau {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #BBBBBB;
+    line-height: 1.65;
+    max-width: 680px;
+    border-left: 3px solid var(--rouge);
+    padding-left: 20px;
+    margin-top: 28px;
+  }
+
+  .meta {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .meta-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: #888;
+    text-transform: uppercase;
+  }
+
+  .meta-sep { width: 30px; height: 1px; background: #444; }
+
+  /* BODY */
+  .article-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+
+  .article-body p {
+    font-size: 1.05rem;
+    line-height: 1.82;
+    margin-bottom: 1.6em;
+    color: var(--gris-texte);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.45rem;
+    color: var(--noir);
+    margin: 2.8em 0 1em;
+    position: relative;
+    padding-left: 18px;
+  }
+
+  h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 4px;
+    background: var(--rouge);
+  }
+
+  /* ENCADRÉ */
+  .encadre {
+    background: #fff;
+    border-left: 4px solid var(--rouge);
+    padding: 24px 28px;
+    margin: 2.5em 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .encadre-titre {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 12px;
+  }
+
+  .encadre p {
+    font-size: 0.97rem !important;
+    margin-bottom: 0 !important;
+    line-height: 1.7 !important;
+  }
+
+  /* CITATION */
+  blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--rouge-fonce);
+    border-top: 1px solid var(--gris-clair);
+    border-bottom: 1px solid var(--gris-clair);
+    padding: 24px 0;
+    margin: 2.5em 0;
+    text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--noir);
+    color: #666;
+    text-align: center;
+    padding: 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  footer span { color: var(--rouge); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Les <span>Enjeux</span></div>
+  <div class="rubrique-header">Poker en ligne</div>
+</header>
+
+<div class="hero">
+  <div class="tag">Analyse · Marché américain</div>
+  <h1>PokerStars tire sa révérence :<br><em>la fin d'une ère</em> aux États-Unis</h1>
+  <p class="chapeau">La plus grande salle de poker en ligne de l'histoire s'efface derrière la marque FanDuel sur le marché américain. Un tournant symbolique qui dit beaucoup sur l'état du poker en ligne — et sur les arbitrages stratégiques de Flutter Entertainment.</p>
+  <div class="meta">
+    <span class="meta-date">Mars 2026</span>
+    <div class="meta-sep"></div>
+    <span class="meta-date">Les Enjeux</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <p>Il y a vingt ans, PokerStars représentait quelque chose d'unique dans l'univers du jeu en ligne : une plateforme construite pour et par les joueurs de poker, portée par le slogan <em>We Are Poker</em> et animée par une foi absolue dans la pureté du jeu. Aujourd'hui, la salle qui a accueilli des millions de mains, des centaines de WSOP Main Events et une génération entière de passionnés, disparaît discrètement de la surface du marché américain. Elle ne ferme pas — elle se fond dans FanDuel.</p>
+
+  <p>La décision a été officialisée début mars 2026 : les plateformes PokerStars opérant au New Jersey, en Pennsylvanie et au Michigan vont migrer vers l'écosystème FanDuel. Les joueurs canadiens de l'Ontario suivront le même chemin. La marque survivra, mais uniquement sous la bannière composite <em>PokerStars exclusively on FanDuel</em>. L'application autonome cessera de fonctionner dès la migration effectuée, et les joueurs disposeront de trente jours pour retirer leurs fonds.</p>
+
+  <h2>Une logique de groupe avant tout</h2>
+
+  <p>Pour comprendre cette décision, il faut remonter à la structure actionnariale. PokerStars et FanDuel appartiennent toutes deux à Flutter Entertainment, le mastodonte irlandais du jeu en ligne. Le géant cotée à New York n'a pas caché les difficultés : son cours de Bourse a subi une érosion continue ces cinq dernières années, dans un contexte où les analystes financiers scrutent chaque poste de dépenses. Maintenir deux infrastructures technologiques parallèles pour le même marché géographique, avec des bases de joueurs distinctes, n'avait plus beaucoup de sens économique.</p>
+
+  <p>La consolidation répond également à une réalité structurelle du poker en ligne américain : la fragmentation par État. Contrairement à l'Europe ou à l'Asie, les États-Unis n'autorisent pas les plateformes à mutualiser leurs liquidités à l'échelle fédérale. Chaque juridiction constitue un marché isolé, avec ses propres licences, ses propres pools de joueurs, ses propres contraintes. En regroupant le New Jersey, la Pennsylvanie et le Michigan dans un seul et même client, Flutter espère créer une masse critique suffisante pour relancer l'attractivité des tables et des tournois.</p>
+
+  <blockquote>« We Are Poker » — un slogan devenu vestige d'une époque où le poker suffisait à faire tourner un business.</blockquote>
+
+  <h2>Des promesses concrètes pour les joueurs</h2>
+
+  <p>Pour les joueurs impactés, la migration n'est pas qu'une question de branding. L'intégration dans FanDuel ouvre la voie à un <em>shared wallet</em> — un portefeuille commun permettant d'utiliser les mêmes fonds pour le poker, le casino ou les paris sportifs. Plus significatif encore, le retour du Sunday Million est annoncé : le tournoi hebdomadaire à garantie d'un million de dollars, emblème absolu de l'ère dorée de PokerStars, devrait reprendre sur le sol américain dès 2026.</p>
+
+  <p>Sur le plan pratique, les joueurs qui ne disposent pas encore d'un compte FanDuel devront en créer un. Ceux qui en ont déjà un n'auront rien à faire. Les récompenses PokerStars cesseront d'être attribuées à partir du 13 mars, date à laquelle les coffres non ouverts seront convertis en cash. Un hub d'information dédié à chaque État concerné a été lancé pour accompagner la transition.</p>
+
+  <h2>Le recul symbolique d'une icône</h2>
+
+  <p>Au-delà des aspects opérationnels, c'est la dimension symbolique qui frappe. PokerStars n'est pas une marque parmi d'autres : c'est celle qui a survécu au Black Friday de 2011, qui a réintégré le marché américain quand les conditions le permettaient à nouveau, et qui a longtemps incarné l'idée qu'une salle de poker pure pouvait être un business viable à grande échelle. Sa dilution dans une plateforme de paris sportifs et de jeux de casino confirme ce que l'industrie sait depuis longtemps : le poker seul ne fait plus les frais d'un groupe coté en Bourse.</p>
+
+  <div class="encadre">
+    <div class="encadre-titre">À lire aussi — Dossier Les Enjeux</div>
+    <p><a href="https://les-enjeux.com/2025/11/08/pokerstars-perte-identite-marque/" target="_blank" style="color: var(--rouge-fonce); font-weight: 600; font-family: 'Playfair Display', serif; font-style: italic; text-decoration: none; font-size: 1.05rem;">PokerStars : Du créateur de joueurs à la perte de son identité</a></p>
+    <p style="margin-top: 10px !important;">Dans le premier chapitre de notre saga consacrée à l'opérateur, PokerStars brillait comme une étoile du poker mondial, symbole d'audace et d'ascension. Les années 2010 s'ouvrent sur un tout autre décor : celui d'une marque en mutation, où la rentabilité prend le pas sur la passion et où le rêve des joueurs se délite.</p>
+  </div>
+
+  <p>Ce mouvement illustre une tendance lourde que l'on observe depuis plusieurs années en Europe comme en Amérique du Nord : l'absorption progressive des opérateurs mono-produit dans des écosystèmes de jeu intégrés. Winamax résiste encore en France grâce à un marché domestique solide et une culture de marque forte. Mais pour les acteurs confrontés à la fragmentation réglementaire américaine, le modèle du <em>one-stop-shop</em> — poker, casino, sport sous un même toit — s'impose comme la seule équation rentable. PokerStars vient d'en tirer les conséquences, au prix d'une part de son identité.</p>
+
+</div>
+
+<div style="max-width: 720px; margin: 0 auto; padding: 0 40px 48px; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; color: #999; letter-spacing: 0.05em;">
+  Source : <a href="https://www.poker.org/latest-news/end-of-an-era-pokerstars-to-retire-us-sites-and-join-fanduel-aLGIB6V2SdWt" target="_blank" style="color: #999; text-decoration: underline;">Adam Hampton, Poker.org — 3 mars 2026</a>
+</div>
+
+<footer>
+  © 2026 <span>Les Enjeux</span> — Tous droits réservés
+</footer>
+
+</body>
+</html>
