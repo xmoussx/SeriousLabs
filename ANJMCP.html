@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Open data et jeux d'argent : ce qu'on peut faire avec les données de l'État</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rouge: #C41E3A;
+    --noir: #0D0D0D;
+    --gris: #4A4A4A;
+    --gris-moyen: #8A8A8A;
+    --gris-clair: #E8E8E8;
+    --fond: #F9F7F4;
+    --blanc: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Serif 4', Georgia, serif; background: var(--fond); color: var(--noir); line-height: 1.8; }
+
+  .article-wrap { max-width: 740px; margin: 0 auto; padding: 60px 24px 80px; }
+
+  .rubrique { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--rouge); margin-bottom: 20px; }
+
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4.5vw, 44px); font-weight: 900; line-height: 1.15; color: var(--noir); margin-bottom: 24px; }
+
+  .chapeau { font-family: 'DM Sans', sans-serif; font-size: 17px; line-height: 1.6; color: var(--gris); border-left: 3px solid var(--rouge); padding-left: 20px; margin-bottom: 40px; }
+
+  .meta { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--gris-moyen); margin-bottom: 48px; padding-bottom: 20px; border-bottom: 1px solid var(--gris-clair); }
+
+  p { font-size: 17px; margin-bottom: 22px; color: var(--noir); }
+
+  h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--noir); margin: 48px 0 18px; }
+
+  .encadre { background: var(--blanc); border: 1px solid var(--gris-clair); border-left: 4px solid var(--rouge); padding: 28px 32px; margin: 40px 0; }
+  .encadre-titre { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--rouge); margin-bottom: 14px; }
+  .encadre p { font-size: 15px; margin-bottom: 14px; color: var(--gris); }
+  .encadre p:last-child { margin-bottom: 0; }
+
+  .pull-quote { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; line-height: 1.5; color: var(--rouge); border-top: 2px solid var(--rouge); border-bottom: 1px solid var(--gris-clair); padding: 28px 0; margin: 44px 0; }
+
+  .note-bas { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--gris-moyen); border-top: 1px solid var(--gris-clair); padding-top: 20px; margin-top: 60px; }
+  .note-bas a { color: var(--rouge); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="article-wrap">
+
+  <div class="rubrique">Données &amp; Régulation</div>
+
+  <h1>Open data et jeux d'argent&nbsp;: ce qu'on peut faire avec les données de l'État en une nuit</h1>
+
+  <p class="chapeau">La France a discrètement réalisé quelque chose d'assez remarquable&nbsp;: rendre l'ensemble de ses données publiques accessibles à n'importe quel outil informatique, en temps réel, via une interface standardisée. Les données de l'ANJ y sont. Le défi, c'est d'arriver à s'en saisir.</p>
+
+  <div class="meta">Par Antoine Dugast &nbsp;·&nbsp; Les Enjeux &nbsp;·&nbsp; Mars 2026</div>
+
+  <p>Tout a commencé par une question simple&nbsp;: peut-on construire un tableau de bord du marché des jeux en ligne français en n'utilisant que des données publiques ouvertes&nbsp;? Des données structurées, interrogeables, actualisables, pas des PDFs à copier-coller. La réponse&nbsp;: oui, presque. Et le "presque" est aussi intéressant que le "oui".</p>
+
+  <h2>Une infrastructure d'État remarquable</h2>
+
+  <p>data.gouv.fr expose depuis quelques mois un serveur MCP, un protocole qui permet à n'importe quel outil d'intelligence artificielle de dialoguer directement avec les données publiques françaises, en langage naturel. Poser une question, obtenir des données, sans écrire une ligne de code.</p>
+
+  <div class="encadre">
+    <div class="encadre-titre">C'est quoi, un serveur MCP&nbsp;?</div>
+    <p>MCP signifie Model Context Protocol. C'est un standard récent, conçu pour que les outils d'IA puissent se connecter à des sources de données externes de façon universelle. Imaginez un traducteur universel entre un assistant intelligent et n'importe quelle base de données.</p>
+    <p>Concrètement, cela signifie qu'un développeur peut dire à Claude&nbsp;: "va chercher les données ANJ sur data.gouv.fr et construis-moi un tableau de bord". Le modèle dialogue avec le serveur MCP, récupère les fichiers, les lit, en extrait les chiffres clés. Aucune API spécifique à apprendre, aucun format propriétaire.</p>
+    <p>C'est ce que la France a mis en place au niveau d'un État entier. À notre connaissance, il n'existe pas d'équivalent à cette échelle ailleurs dans le monde.</p>
+  </div>
+
+  <p>L'ANJ y publie depuis 2024 cinq jeux de données&nbsp;: chiffres du marché depuis 2010, interdictions volontaires de jeux, leur répartition géographique, géographie des joueurs actifs, top 100 des rencontres les plus pariées. Des données que peu de régulateurs européens publient sous cette forme.</p>
+
+  <h2>Une expérience accidentée</h2>
+
+  <p>Le serveur MCP de data.gouv.fr est déclaré expérimental, et il l'est vraiment. Les requêtes sont sensibles à la formulation exacte, sans que les règles soient documentées&nbsp;: "autorite nationale des jeux" ne renvoie rien, "jeux en ligne" fonctionne. Il faut tâtonner, affiner, relancer. Au bout du compte&nbsp;: quinze années de données de marché extraites et affichées. PBJ, mises, joueurs actifs, pour 2024.</p>
+
+  <p>Ce tableau de bord se met à jour en une commande. Aucun abonnement propriétaire, aucun accord commercial. Juste des données publiques et quelques heures d'itération.</p>
+
+  <a href="https://data.seriouslabs-consulting.com" target="_blank" style="display:block;background:#0D0D0D;color:#fff;text-decoration:none;padding:24px 32px;margin:36px 0;border-left:4px solid #C41E3A;">
+    <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#C41E3A;margin-bottom:8px;">Tableau de bord interactif</div>
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:6px;">Marché des jeux en ligne français, données ANJ 2010-2024</div>
+    <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#8A8A8A;">data.seriouslabs-consulting.com →</div>
+  </a>
+
+  <h2>Ce qui manque, et ce que ça changerait</h2>
+
+  <p>Les cinq datasets de l'ANJ sont bien là. Le problème n'est pas leur existence, c'est leur granularité et leur fréquence. Les données trimestrielles que l'ANJ publie dans ses bilans semestriels restent au format PDF. Traduites en données ouvertes, elles permettraient de suivre en temps quasi-réel les dynamiques de marché, de détecter une accélération des paris sportifs en pleine Coupe du monde, ou un recul du poker sur un trimestre précis.</p>
+
+  <p>La répartition géographique des joueurs n'est disponible que pour 2023. Une seule année, c'est une photographie. Trois ans de données, c'est une tendance&nbsp;: est-ce que certains départements surreprésentés dans les IVJ le sont aussi dans les comptes joueurs actifs&nbsp;? Ce croisement, impossible aujourd'hui faute de séries temporelles, intéresserait directement les acteurs de la prévention, les chercheurs en santé publique, et les parlementaires qui débattent de la régulation.</p>
+
+  <p>Le top 100 des rencontres les plus pariées n'est publié qu'une fois, sans mise à jour. En données continues, ce serait un outil précieux pour les acteurs de l'intégrité sportive.</p>
+
+  <p>Enfin, la documentation du serveur MCP lui-même est quasi inexistante. Quelles requêtes fonctionnent&nbsp;? Quels formats sont supportés&nbsp;? Quelles sont les limites de charge&nbsp;? Un développeur qui découvre cet outil aujourd'hui apprend essentiellement par essais et erreurs.</p>
+
+  <h2>Une invitation, pas une critique</h2>
+
+  <p>Ce qui a été construit ici en une nuit prouve que la direction est la bonne. L'ANJ publie des données que la plupart des régulateurs européens gardent dans leurs rapports annuels. Des chercheurs, des associations de prévention, des parlementaires pourraient s'en emparer pour produire des analyses qu'aucune administration ne peut produire seule. Mais pour ça, il faut que les données soient fréquentes, documentées, et que l'infrastructure qui les expose soit robuste.</p>
+
+  <p>Le Tetris de sorry.data.gouv.fr est amusant la première fois. La deuxième, il rappelle que la promesse de l'open data n'est tenue que si les outils qui la font vivre sont à la hauteur de cette promesse.</p>
+
+  <div class="note-bas">
+    <strong>Le tableau de bord</strong> est accessible sur <a href="https://data.seriouslabs-consulting.com">data.seriouslabs-consulting.com</a>. Les données sources sont publiées par l'ANJ sur <a href="https://www.data.gouv.fr/organizations/autorite-nationale-des-jeux">data.gouv.fr</a>. Le serveur MCP est documenté sur <a href="https://github.com/datagouv/datagouv-mcp">github.com/datagouv/datagouv-mcp</a>.
+  </div>
+
+</div>
+</body>
+</html>
