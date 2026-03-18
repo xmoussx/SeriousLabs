@@ -162,6 +162,76 @@
     margin: 40px 0;
   }
 
+  .axes-list {
+    margin: 24px 0 36px;
+    counter-reset: axe-counter;
+  }
+
+  .axe {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 0 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    counter-increment: axe-counter;
+  }
+
+  .axe:last-child { border-bottom: none; }
+
+  .axe-num {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 22px;
+    color: var(--rouge);
+    line-height: 1.2;
+    padding-top: 2px;
+  }
+
+  .axe-body {}
+
+  .axe-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .axe-titre {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--noir);
+  }
+
+  .axe-mecanisme {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--gris-fonce);
+    line-height: 1.6;
+    margin: 0 0 10px;
+  }
+
+  .axe-exemples {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .ex-pos, .ex-neg {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    line-height: 1.45;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+
+  .ex-pos { background: var(--vert-pale); color: #1a3d2b; }
+  .ex-neg { background: var(--rouge-pale); color: var(--rouge-sombre); }
+
+  .badge-gris { background: #ebebeb; color: #555; }
+
   .note-bas {
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
@@ -312,83 +382,104 @@
 
 <p>Les paramètres qui déterminent réellement la canalisation sont connus. Leur ordre de priorité, lui, est rarement explicité.</p>
 
-<div class="table-wrapper">
-  <table style="table-layout:fixed;width:100%;">
-    <colgroup>
-      <col style="width:18%">
-      <col style="width:28%">
-      <col style="width:22%">
-      <col style="width:22%">
-      <col style="width:10%">
-    </colgroup>
-    <thead>
-      <tr>
-        <th>Axe de calibrage</th>
-        <th>Mécanisme d'action</th>
-        <th>Exemple positif</th>
-        <th>Exemple négatif</th>
-        <th>Priorité</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="pays" style="font-size:13px;">Portefeuille produits autorisés</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Si l'offre légale est plus étroite que l'illégale (pas de casino, slots limités), le joueur migre pour trouver ce qu'il cherche</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark (casino + paris, offre complète)<br><span style="color:var(--vert);font-weight:600;">Aucun angle mort</span></td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">France (casino interdit), Allemagne (slots très encadrés)<br><span style="color:var(--rouge-sombre);font-weight:600;">L'illégal couvre ce que le légal refuse</span></td>
-        <td><span class="badge badge-rouge">Critique</span></td>
-      </tr>
-      <tr>
-        <td class="pays" style="font-size:13px;">Compétitivité de l'offre (RTP, cotes, bonus)</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Si la fiscalité ou les restrictions obligent les opérateurs à dégrader leur offre, l'illégal devient mécaniquement plus attractif</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Portugal (taux modéré, offre compétitive)<br><span style="color:var(--vert);font-weight:600;">Joueur fidèle au légal</span></td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Allemagne (taxe sur mises, RTP dégradé), Pays-Bas (bonus réduits post-hausse)<br><span style="color:var(--rouge-sombre);font-weight:600;">L'illégal redistribue mieux</span></td>
-        <td><span class="badge badge-rouge">Critique</span></td>
-      </tr>
-      <tr>
-        <td class="pays" style="font-size:13px;">Enforcement sur le marché illégal</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Sans blocage effectif des sites illégaux et des flux de paiement, la canalisation plafonne. L'effet "sites miroirs" limite la portée du blocage seul, sans offre légale attractive en parallèle.</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark (162 domaines bloqués en 2024, coopération multi-autorités)<br><span style="color:var(--vert);font-weight:600;">Blocage + offre légale complète</span></td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">France (1 337 URLs bloquées en 2024, mais marché illégal casino +35% en 2 ans, 5,4M joueurs mensuels)<br><span style="color:var(--rouge-sombre);font-weight:600;">Blocage sans substitut légal</span></td>
-        <td><span class="badge badge-rouge">Critique</span></td>
-      </tr>
-      <tr>
-        <td class="pays" style="font-size:13px;">Accessibilité du cadre de licence</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Un nombre restreint de licences réduit la concurrence légale et peut dégrader l'offre par concentration. Peut être un choix délibéré de politique réglementaire.</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark (licences ouvertes, processus prévisible)<br><span style="color:var(--vert);font-weight:600;">Concurrence légale stimulée</span></td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">France (17 opérateurs agréés, nombre volontairement limité comme outil de contrôle)<br><span style="color:#7a5c00;font-weight:600;">Posture assumée, pas un défaut</span></td>
-        <td><span class="badge badge-ocre">Élevée</span></td>
-      </tr>
-      <tr>
-        <td class="pays" style="font-size:13px;">Assiette fiscale (GGR vs mises)</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Une taxe sur les mises pénalise les produits à fort volume et faible marge (slots), contrairement à une taxe sur le GGR qui préserve la compétitivité de l'offre</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark, Portugal (taxe sur GGR)<br><span style="color:var(--vert);font-weight:600;">RTP préservé</span></td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Allemagne, France paris (taxe sur mises)<br><span style="color:var(--rouge-sombre);font-weight:600;">Offre légale mécaniquement dégradée</span></td>
-        <td><span class="badge badge-ocre">Élevée</span></td>
-      </tr>
-      <tr>
-        <td class="pays" style="font-size:13px;">Niveau de taxation (GGR)</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Le taux importe moins que sa cohérence avec les autres paramètres. Un taux élevé dans un bon cadre est soutenable ; un taux modéré dans un mauvais cadre peut aussi échouer</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark (28%, canalisation 90%+)<br><span style="color:var(--vert);font-weight:600;">Taux élevé, cadre cohérent</span></td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Pays-Bas (37,8%, canalisation 50%)<br><span style="color:var(--rouge-sombre);font-weight:600;">Hausse isolée, sans recalibrage</span></td>
-        <td><span class="badge badge-ocre">Élevée</span></td>
-      </tr>
-      <tr>
-        <td class="pays" style="font-size:13px;">Restrictions comportementales (dépôts, limites)</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Des restrictions trop strictes poussent spécifiquement les joueurs à forte valeur vers l'illégal, qui n'applique aucune limite</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Suède (registre national d'auto-exclusion centralisé, limites de dépôt en cours de révision)<br><span style="color:var(--vert);font-weight:600;">Outil utile si bien calibré</span></td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Pays-Bas (plafonds de dépôt combinés à la hausse fiscale, fuite des joueurs à haute valeur)<br><span style="color:var(--rouge-sombre);font-weight:600;">Double peine pour l'offre légale</span></td>
-        <td><span class="badge" style="background:#f0f0f0;color:#555;">Modérée</span></td>
-      </tr>
-      <tr>
-        <td class="pays" style="font-size:13px;">Encadrement de la publicité</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Des restrictions publicitaires trop larges réduisent la visibilité de l'offre légale sans diminuer la demande globale, au bénéfice de l'illégal</td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark (restrictions ciblées sur contenu et ciblage, pas d'interdiction globale)<br><span style="color:var(--vert);font-weight:600;">Visibilité légale préservée</span></td>
-        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Pays-Bas (interdiction des parrainages sportifs depuis 2024, pression accrue sur les marges légales)<br><span style="color:var(--rouge-sombre);font-weight:600;">Demande non réduite, offre légale invisible</span></td>
-        <td><span class="badge" style="background:#f0f0f0;color:#555;">Modérée</span></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="axes-list">
+
+  <div class="axe">
+    <div class="axe-num">1</div>
+    <div class="axe-body">
+      <div class="axe-header"><span class="axe-titre">Portefeuille produits autorisés</span><span class="badge badge-rouge">Critique</span></div>
+      <p class="axe-mecanisme">Si l'offre légale est plus étroite que l'illégale (pas de casino, slots limités), le joueur migre pour trouver ce qu'il cherche. L'illégal n'a pas ce problème.</p>
+      <div class="axe-exemples">
+        <span class="ex-pos">Danemark : casino + paris, offre complète. Aucun angle mort.</span>
+        <span class="ex-neg">France (casino interdit), Allemagne (slots très encadrés). L'illégal couvre ce que le légal refuse.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="axe">
+    <div class="axe-num">2</div>
+    <div class="axe-body">
+      <div class="axe-header"><span class="axe-titre">Compétitivité de l'offre (RTP, cotes, bonus)</span><span class="badge badge-rouge">Critique</span></div>
+      <p class="axe-mecanisme">Quand la fiscalité ou les restrictions obligent les opérateurs à dégrader leur offre, l'illégal devient mécaniquement plus attractif. Le joueur calcule.</p>
+      <div class="axe-exemples">
+        <span class="ex-pos">Portugal : taux modéré, offre compétitive. Joueur fidèle au légal.</span>
+        <span class="ex-neg">Allemagne (taxe sur mises, RTP dégradé), Pays-Bas (bonus réduits post-hausse). L'illégal redistribue mieux.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="axe">
+    <div class="axe-num">3</div>
+    <div class="axe-body">
+      <div class="axe-header"><span class="axe-titre">Enforcement sur le marché illégal</span><span class="badge badge-rouge">Critique</span></div>
+      <p class="axe-mecanisme">Sans blocage effectif des sites illégaux et des flux de paiement, la canalisation plafonne. L'effet "sites miroirs" limite toutefois la portée du blocage seul, sans offre légale attractive en parallèle.</p>
+      <div class="axe-exemples">
+        <span class="ex-pos">Danemark : 162 domaines bloqués en 2024, coopération multi-autorités. Blocage + offre légale complète.</span>
+        <span class="ex-neg">France : 1 337 URLs bloquées en 2024, mais marché illégal casino +35% en deux ans, 5,4 millions de joueurs mensuels. Blocage sans substitut légal.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="axe">
+    <div class="axe-num">4</div>
+    <div class="axe-body">
+      <div class="axe-header"><span class="axe-titre">Accessibilité du cadre de licence</span><span class="badge badge-ocre">Élevée</span></div>
+      <p class="axe-mecanisme">Un nombre restreint de licences réduit la concurrence légale et peut dégrader l'offre par concentration. Peut être un choix délibéré de politique réglementaire.</p>
+      <div class="axe-exemples">
+        <span class="ex-pos">Danemark : licences ouvertes, processus prévisible et documenté. Concurrence légale stimulée.</span>
+        <span class="ex-neg">France : 17 opérateurs agréés, nombre volontairement limité comme outil de contrôle ANJ. Posture assumée, pas un défaut.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="axe">
+    <div class="axe-num">5</div>
+    <div class="axe-body">
+      <div class="axe-header"><span class="axe-titre">Assiette fiscale (GGR vs mises)</span><span class="badge badge-ocre">Élevée</span></div>
+      <p class="axe-mecanisme">Une taxe sur les mises pénalise les produits à fort volume et faible marge (slots), contrairement à une taxe sur le GGR qui préserve la compétitivité de l'offre. Le choix de l'assiette est souvent plus déterminant que le taux.</p>
+      <div class="axe-exemples">
+        <span class="ex-pos">Danemark, Portugal : taxe sur GGR. RTP préservé, offre compétitive.</span>
+        <span class="ex-neg">Allemagne, France (paris) : taxe sur mises. Offre légale mécaniquement dégradée.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="axe">
+    <div class="axe-num">6</div>
+    <div class="axe-body">
+      <div class="axe-header"><span class="axe-titre">Niveau de taxation (GGR)</span><span class="badge badge-ocre">Élevée</span></div>
+      <p class="axe-mecanisme">Le taux importe moins que sa cohérence avec les autres paramètres. Un taux élevé dans un bon cadre est soutenable. Un taux modéré dans un mauvais cadre peut aussi échouer.</p>
+      <div class="axe-exemples">
+        <span class="ex-pos">Danemark : 28% GGR, canalisation 90%+. Taux élevé, cadre cohérent.</span>
+        <span class="ex-neg">Pays-Bas : 37,8% GGR, canalisation 50%. Hausse isolée, sans recalibrage du reste.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="axe">
+    <div class="axe-num">7</div>
+    <div class="axe-body">
+      <div class="axe-header"><span class="axe-titre">Restrictions comportementales (dépôts, limites)</span><span class="badge badge-gris">Modérée</span></div>
+      <p class="axe-mecanisme">Des restrictions trop strictes poussent spécifiquement les joueurs à forte valeur vers l'illégal, qui n'applique aucune limite. L'outil est utile s'il est calibré sans créer un différentiel d'attractivité trop large.</p>
+      <div class="axe-exemples">
+        <span class="ex-pos">Suède : registre national d'auto-exclusion centralisé, limites de dépôt en cours de révision.</span>
+        <span class="ex-neg">Pays-Bas : plafonds de dépôt combinés à la hausse fiscale, fuite des joueurs à haute valeur. Double peine pour l'offre légale.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="axe">
+    <div class="axe-num">8</div>
+    <div class="axe-body">
+      <div class="axe-header"><span class="axe-titre">Encadrement de la publicité</span><span class="badge badge-gris">Modérée</span></div>
+      <p class="axe-mecanisme">Des restrictions publicitaires trop larges réduisent la visibilité de l'offre légale sans diminuer la demande globale. Le bénéficiaire net est l'illégal, dont la présence sur les réseaux sociaux reste entière.</p>
+      <div class="axe-exemples">
+        <span class="ex-pos">Danemark : restrictions ciblées sur contenu et ciblage, pas d'interdiction globale. Visibilité légale préservée.</span>
+        <span class="ex-neg">Pays-Bas : interdiction des parrainages sportifs depuis 2024. Demande non réduite, offre légale moins visible.</span>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div class="note-bas">
