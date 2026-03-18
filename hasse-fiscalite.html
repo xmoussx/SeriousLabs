@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiscalité du jeu en Europe : calibrer ou tout miser sur la taxe ?</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rouge: #C41E3A;
+    --rouge-pale: #f9e8eb;
+    --rouge-sombre: #8B1528;
+    --noir: #1a1a1a;
+    --gris-fonce: #3a3a3a;
+    --gris-moyen: #6b6b6b;
+    --gris-clair: #f4f4f2;
+    --ocre: #D4A843;
+    --vert: #2d6a4f;
+    --vert-pale: #e8f4ee;
+    --border: #ddd;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--noir);
+    background: #fff;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  .label-rubrique {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.15;
+    color: var(--noir);
+    margin-bottom: 20px;
+  }
+
+  .chapeau {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--gris-fonce);
+    border-left: 3px solid var(--rouge);
+    padding-left: 20px;
+    margin: 28px 0 36px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.3;
+    color: var(--noir);
+    margin: 44px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  /* Tableau comparatif */
+  .table-wrapper {
+    margin: 32px 0;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+  }
+
+  thead {
+    background: var(--noir);
+    color: #fff;
+  }
+
+  thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  tbody tr:nth-child(even) {
+    background: var(--gris-clair);
+  }
+
+  tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    line-height: 1.5;
+    font-size: 13px;
+  }
+
+  td.pays {
+    font-weight: 600;
+    color: var(--noir);
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.03em;
+  }
+
+  .badge-rouge {
+    background: var(--rouge-pale);
+    color: var(--rouge-sombre);
+  }
+
+  .badge-vert {
+    background: var(--vert-pale);
+    color: var(--vert);
+  }
+
+  .badge-ocre {
+    background: #fdf3dc;
+    color: #7a5c00;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  .note-bas {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--gris-moyen);
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    margin-top: 48px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<span class="label-rubrique">Régulation européenne</span>
+
+<h1>Fiscalité du jeu en Europe : calibrer ou tout miser sur la taxe&nbsp;?</h1>
+
+<div class="chapeau">
+  Depuis 2024, une vague de hausses fiscales frappe les marchés européens du jeu en ligne. Présentées comme des outils de santé publique, elles poursuivent en réalité un objectif budgétaire transparent. Là où les données existent déjà, les résultats démentent les promesses. La variable qui détermine la canalisation n'est pas le niveau de prélèvement. C'est la cohérence du modèle réglementaire dans son ensemble.
+</div>
+
+
+<h2>Un scénario familier</h2>
+
+<p>Un gouvernement identifie le secteur du jeu comme une source de recettes sous-exploitée. Il annonce une hausse de taxe en la présentant comme un outil de santé publique, visant à "décourager les produits les plus nocifs". Le secteur régulé alerte sur le risque de migration vers le marché illégal. Le gouvernement balaie ces avertissements, les qualifiant de lobbying. La hausse entre en vigueur. Les joueurs migrent. Les recettes baissent. Le marché noir grossit.</p>
+
+<p>Plusieurs pays européens en sont à des stades différents de ce cycle. Les Pays-Bas l'ont bouclé en moins de deux ans : le pays est le cas d'école le plus documenté. En 2024, le gouvernement relève la taxe sur le produit brut des jeux (PBJ, ou GGR pour Gross Gaming Revenue, soit la marge brute de l'opérateur après reversement des gains) de 30,5% à 34,2%, puis à 37,8% en janvier 2026, sur l'ensemble des verticales. Objectif&nbsp;: 202 millions d'euros de recettes supplémentaires par an. Le régulateur KSA avait pourtant alerté que l'opération serait "doublement contre-productive".</p>
+
+<p>Il avait raison. Au premier semestre 2025, le GGR du marché sous licence a reculé de 25%. Les recettes fiscales ont baissé de 43,5 millions d'euros, soit 13% sous les projections. Et pour la première fois, les dépenses de jeu illégal ont dépassé celles du marché légal, à 617 millions d'euros sur six mois. La canalisation est passée de 58% à 50% en un an, le KSA identifiant le départ des joueurs à haute valeur vers l'offre illégale, notamment pour contourner les plafonds de dépôt.</p>
+
+<p>Le Royaume-Uni s'engage dans le même couloir. Sa Remote Gaming Duty passe de 21% à 40% à partir d'avril 2026, ciblant les casinos et slots en ligne. Une General Betting Duty à 25% (contre 15%) s'y ajoutera en 2027 pour les paris sportifs en ligne. H2 Gambling Capital estime que le marché noir britannique pourrait doubler d'ici 2028, et que les recettes réelles atteindront à peine la moitié des prévisions du Trésor. Le Bureau for Budget Responsibility lui-même a alerté le Parlement sur ce risque lors des débats sur le Finance Bill.</p>
+
+<p>L'Allemagne illustre une variante structurelle du même problème. Sa taxe de 5,3% ne porte pas sur la marge mais sur chaque mise, rendant l'offre légale de slots mécaniquement moins compétitive en termes de taux de redistribution. Résultat&nbsp;: 80% du jeu de casino en ligne se déroule aujourd'hui chez des opérateurs non licenciés, et les recettes fiscales du secteur ont chuté de 47% depuis 2022. La Suède, qui a relevé sa taxe de 18% à 22% en juillet 2024, a suscité une motion parlementaire dès octobre pour revenir en arrière, et affiche une croissance de seulement 1,3% sur son marché sous licence en 2025, loin des attentes d'avant la hausse.</p>
+
+<h2>La France, un cas à part entière</h2>
+
+<p>Le casino en ligne reste interdit en France, ce qui produit mécaniquement une canalisation nulle sur cette verticale. Le marché illégal correspondant est estimé par l'ANJ entre 748 millions et 1,5 milliard d'euros. Lorsque le gouvernement Barnier a tenté de corriger cette situation à l'automne 2024, il a d'emblée reproduit la logique observée chez ses voisins : le projet d'ouverture, glissé dans le budget 2025, prévoyait un taux de 27,8% sur le GGR, mais les prélèvements cumulés avec les charges existantes auraient porté la pression fiscale effective à environ 55%. Une offre légale à ce niveau de charge aurait été structurellement moins compétitive que le marché illégal qu'elle était censée absorber.</p>
+
+<p>Le secteur l'avait compris avant tout le monde. Opérateurs, fédérations et observateurs ont unanimement alerté que le dispositif fiscal envisagé condamnait l'ouverture à produire l'effet inverse de l'objectif affiché : un marché légal non viable, une offre illégale confortée. La chute du gouvernement en décembre 2024 a enterré le projet, mais le débat sur l'ouverture reste entier, et avec lui la question centrale : à quel taux une offre légale devient-elle effectivement compétitive face à l'illégal&nbsp;?</p>
+
+<h2>Le tableau d'ensemble</h2>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Pays</th>
+        <th>Taux effectif (GGR)</th>
+        <th>Périmètre</th>
+        <th>Casino en ligne légal</th>
+        <th>Pression récente</th>
+        <th>Canalisation</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="pays">Pays-Bas</td>
+        <td>37,8%</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Toutes verticales</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Oui</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">+7,3 pts en 2 ans</td>
+        <td>~50%</td>
+        <td><span class="badge badge-rouge">Échec documenté</span></td>
+      </tr>
+      <tr>
+        <td class="pays">Allemagne</td>
+        <td>5,3% sur mises</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Casino en ligne uniquement</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Oui</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Stable (structure)</td>
+        <td>&lt;40% (slots)</td>
+        <td><span class="badge badge-rouge">Effondrement</span></td>
+      </tr>
+      <tr>
+        <td class="pays">France</td>
+        <td>~55% PBJ effectif<br><span style="font-family:'DM Sans',sans-serif;font-size:11px;color:var(--gris-moyen)">(paris + poker agréés)</span></td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Paris sportifs, hippiques, poker</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Non (interdit)</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Projet Barnier enterré (déc. 2024)</td>
+        <td>n.d. casino</td>
+        <td><span class="badge badge-rouge">Cas structurel</span></td>
+      </tr>
+      <tr>
+        <td class="pays">Royaume-Uni</td>
+        <td>40% RGD (casino)<br>25% GBD (paris, 2027)</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">En ligne uniquement</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Oui</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">+19 pts (avril 2026)</td>
+        <td>~85%*</td>
+        <td><span class="badge badge-ocre">Risque élevé</span></td>
+      </tr>
+      <tr>
+        <td class="pays">Suède</td>
+        <td>22%</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Tous jeux en ligne</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Oui</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">+4 pts (juil. 2024)</td>
+        <td>~91%</td>
+        <td><span class="badge badge-ocre">Stagnation</span></td>
+      </tr>
+      <tr>
+        <td class="pays">Portugal</td>
+        <td>~15-25%</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Casino en ligne, paris</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Oui</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Stable</td>
+        <td>Élevée</td>
+        <td><span class="badge badge-vert">Stable</span></td>
+      </tr>
+      <tr>
+        <td class="pays">Espagne</td>
+        <td>20% (10% Ceuta/Melilla)</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Paris sportifs, casino</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Oui</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Stable</td>
+        <td>Modérée</td>
+        <td><span class="badge badge-vert">Stable</span></td>
+      </tr>
+      <tr>
+        <td class="pays">Italie</td>
+        <td>~25%</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Toutes verticales</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Oui</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Stable</td>
+        <td>Correcte</td>
+        <td><span class="badge badge-vert">Stable</span></td>
+      </tr>
+      <tr>
+        <td class="pays" style="color:var(--vert);font-weight:700;">Danemark</td>
+        <td>28%</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Casino en ligne, paris (loteries réservées à l'État)</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Oui</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Stable depuis 2021</td>
+        <td>90%+</td>
+        <td><span class="badge badge-vert">Modèle</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p style="font-family:'DM Sans',sans-serif;font-size:12px;color:var(--gris-moyen);margin-top:-16px;margin-bottom:28px;">* Estimation avant l'entrée en vigueur de la hausse d'avril 2026. Sources&nbsp;: KSA, Gambling Commission, Spelinspektionen, Spillemyndigheden, SRIJ, VNLOK, H2GC, ANJ.</p>
+
+<h2>Le fine-tuning (calibrage fin) contre le levier unique</h2>
+
+<p>Le paradoxe danois résume à lui seul l'enseignement de ce tableau. Le Danemark taxe à 28% sur le GGR, soit davantage que ce que pratiquaient les Pays-Bas avant leur dérapage. Pourtant, sa canalisation dépasse 90%, son marché a progressé de 5,6% en 2024, et son régulateur a bloqué 162 sites illégaux en coopération avec d'autres autorités. Ce résultat n'est pas lié au taux : il tient à un portefeuille de produits ouvert, un cadre de licence accessible, un enforcement actif et une relation régulateur-opérateur fondée sur la transparence plutôt que sur la méfiance.</p>
+
+<p>L'hypothèse implicite derrière chaque hausse fiscale présentée comme un outil de santé publique est que le joueur qui trouve l'offre légale moins attractive jouera moins. Les données de neuf marchés européens, et l'étude publiée dans Harm Reduction Journal portant sur 29 pays, infirment cette hypothèse : le niveau de taxation n'est pas corrélé au taux de canalisation. Les joueurs ne jouent pas moins, ils jouent ailleurs, sur des plateformes sans supervision, sans outils de jeu responsable, sans recours en cas de litige. Chaque point de taxe supplémentaire au-delà du seuil de viabilité de l'offre légale transfère de la demande vers un marché illégal qui ne paie rien et ne protège personne.</p>
+
+<p>Les paramètres qui déterminent réellement la canalisation sont connus. Leur ordre de priorité, lui, est rarement explicité.</p>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Axe de calibrage</th>
+        <th>Mécanisme d'action</th>
+        <th>Exemple positif</th>
+        <th>Exemple négatif</th>
+        <th>Priorité</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="pays" style="font-size:13px;">Portefeuille produits autorisés</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Si l'offre légale est plus étroite que l'illégale (pas de casino, slots limités), le joueur migre pour trouver ce qu'il cherche</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark (casino + paris, offre complète)<br><span style="color:var(--vert);font-weight:600;">Aucun angle mort</span></td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">France (casino interdit), Allemagne (slots très encadrés)<br><span style="color:var(--rouge-sombre);font-weight:600;">L'illégal couvre ce que le légal refuse</span></td>
+        <td><span class="badge badge-rouge">Critique</span></td>
+      </tr>
+      <tr>
+        <td class="pays" style="font-size:13px;">Compétitivité de l'offre (RTP, cotes, bonus)</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Si la fiscalité ou les restrictions obligent les opérateurs à dégrader leur offre, l'illégal devient mécaniquement plus attractif</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Portugal (taux modéré, offre compétitive)<br><span style="color:var(--vert);font-weight:600;">Joueur fidèle au légal</span></td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Allemagne (taxe sur mises, RTP dégradé), Pays-Bas (bonus réduits post-hausse)<br><span style="color:var(--rouge-sombre);font-weight:600;">L'illégal redistribue mieux</span></td>
+        <td><span class="badge badge-rouge">Critique</span></td>
+      </tr>
+      <tr>
+        <td class="pays" style="font-size:13px;">Enforcement sur le marché illégal</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Sans blocage effectif des sites illégaux et des flux de paiement, la canalisation plafonne. L'effet "sites miroirs" limite la portée du blocage seul, sans offre légale attractive en parallèle.</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark (162 domaines bloqués en 2024, coopération multi-autorités)<br><span style="color:var(--vert);font-weight:600;">Blocage + offre légale complète</span></td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">France (1 337 URLs bloquées en 2024, mais marché illégal casino +35% en 2 ans, 5,4M joueurs mensuels)<br><span style="color:var(--rouge-sombre);font-weight:600;">Blocage sans substitut légal</span></td>
+        <td><span class="badge badge-rouge">Critique</span></td>
+      </tr>
+      <tr>
+        <td class="pays" style="font-size:13px;">Accessibilité du cadre de licence</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Un nombre restreint de licences réduit la concurrence légale et peut dégrader l'offre par concentration. Peut être un choix délibéré de politique réglementaire.</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark (licences ouvertes, processus prévisible)<br><span style="color:var(--vert);font-weight:600;">Concurrence légale stimulée</span></td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">France (17 opérateurs agréés, nombre volontairement limité comme outil de contrôle)<br><span style="color:#7a5c00;font-weight:600;">Posture assumée, pas un défaut</span></td>
+        <td><span class="badge badge-ocre">Élevée</span></td>
+      </tr>
+      <tr>
+        <td class="pays" style="font-size:13px;">Assiette fiscale (GGR vs mises)</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Une taxe sur les mises pénalise les produits à fort volume et faible marge (slots), contrairement à une taxe sur le GGR qui préserve la compétitivité de l'offre</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark, Portugal (taxe sur GGR)<br><span style="color:var(--vert);font-weight:600;">RTP préservé</span></td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Allemagne, France paris (taxe sur mises)<br><span style="color:var(--rouge-sombre);font-weight:600;">Offre légale mécaniquement dégradée</span></td>
+        <td><span class="badge badge-ocre">Élevée</span></td>
+      </tr>
+      <tr>
+        <td class="pays" style="font-size:13px;">Niveau de taxation (GGR)</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Le taux importe moins que sa cohérence avec les autres paramètres. Un taux élevé dans un bon cadre est soutenable ; un taux modéré dans un mauvais cadre peut aussi échouer</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark (28%, canalisation 90%+)<br><span style="color:var(--vert);font-weight:600;">Taux élevé, cadre cohérent</span></td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Pays-Bas (37,8%, canalisation 50%)<br><span style="color:var(--rouge-sombre);font-weight:600;">Hausse isolée, sans recalibrage</span></td>
+        <td><span class="badge badge-ocre">Élevée</span></td>
+      </tr>
+      <tr>
+        <td class="pays" style="font-size:13px;">Restrictions comportementales (dépôts, limites)</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Des restrictions trop strictes poussent spécifiquement les joueurs à forte valeur vers l'illégal, qui n'applique aucune limite</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Suède (registre national d'auto-exclusion centralisé, limites de dépôt en cours de révision)<br><span style="color:var(--vert);font-weight:600;">Outil utile si bien calibré</span></td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Pays-Bas (plafonds de dépôt combinés à la hausse fiscale, fuite des joueurs à haute valeur)<br><span style="color:var(--rouge-sombre);font-weight:600;">Double peine pour l'offre légale</span></td>
+        <td><span class="badge" style="background:#f0f0f0;color:#555;">Modérée</span></td>
+      </tr>
+      <tr>
+        <td class="pays" style="font-size:13px;">Encadrement de la publicité</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Des restrictions publicitaires trop larges réduisent la visibilité de l'offre légale sans diminuer la demande globale, au bénéfice de l'illégal</td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Danemark (restrictions ciblées sur contenu et ciblage, pas d'interdiction globale)<br><span style="color:var(--vert);font-weight:600;">Visibilité légale préservée</span></td>
+        <td style="font-family:'DM Sans',sans-serif;font-size:12px;">Pays-Bas (interdiction des parrainages sportifs depuis 2024, pression accrue sur les marges légales)<br><span style="color:var(--rouge-sombre);font-weight:600;">Demande non réduite, offre légale invisible</span></td>
+        <td><span class="badge" style="background:#f0f0f0;color:#555;">Modérée</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="note-bas">
+  Sources&nbsp;: KSA (Pays-Bas), Gambling Commission (UK), Spelinspektionen (Suède), Spillemyndigheden (Danemark), SRIJ (Portugal), VNLOK, H2 Gambling Capital, ANJ, Harm Reduction Journal (étude sur 29 marchés européens, 2025), European Casino Association / YieldSec, Office for Budget Responsibility (UK), iGaming Business.
+</div>
+
+
+
+</body>
+</html>
