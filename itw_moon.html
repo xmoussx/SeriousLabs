@@ -231,21 +231,41 @@
   }
 
   .fn-grille {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 0;
   }
 
   .fn-item {
-    display: grid;
-    grid-template-columns: 28px 1fr;
-    gap: 0 10px;
-    padding: 12px 20px 12px 0;
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
     border-bottom: 1px solid var(--bordure);
   }
 
-  .fn-item:nth-child(odd) { border-right: 1px solid var(--bordure); padding-right: 28px; }
-  .fn-item:nth-child(even) { padding-left: 28px; }
+  .fn-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--rouge);
+    min-width: 20px;
+    padding-top: 2px;
+  }
+
+  .fn-terme {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--encre);
+    margin-bottom: 2px;
+  }
+
+  .fn-def {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--gris);
+  }
 
   .fn-num {
     font-family: 'DM Sans', sans-serif;
@@ -307,7 +327,7 @@
 
     <div class="reponse">
       <div class="speaker">Alexandre</div>
-      <div class="reponse-text"><p>On a eu de la chance de pouvoir gagner beaucoup d'argent jeune dans quelque chose qui nous plaisait énormément. On était très fortunés d'avoir pu monter un <span class="fn-ref">bankroll<sup class="fn">2</sup></span> tout en jouant un jeu qu'on adorait.</p></div>
+      <div class="reponse-text"><p>On a eu une chance incroyable de pouvoir gagner beaucoup d'argent jeune dans quelque chose qui nous passionnait vraiment. Construire une <span class="fn-ref">bankroll<sup class="fn">2</sup></span> en jouant à un jeu qu'on adorait, c'était une situation idéale.</p></div>
     </div>
 
     <div class="reponse">
@@ -317,17 +337,17 @@
 
     <div class="reponse">
       <div class="speaker">Antoine</div>
-      <div class="reponse-text"><p>Avec le recul, vous auriez pu vous donner des conseils, sur la gestion du <span class="fn-ref">bankroll<sup class="fn">2</sup></span>, pour aller encore plus loin ?</p></div>
+      <div class="reponse-text"><p>Avec le recul, vous auriez pu vous donner des conseils, sur la gestion de la <span class="fn-ref">bankroll<sup class="fn">2</sup></span>, pour aller encore plus loin ?</p></div>
     </div>
 
     <div class="reponse">
       <div class="speaker">Alexandre</div>
-      <div class="reponse-text"><p>Je retiendrais surtout qu'on a eu de la chance sur le timing. Depuis quelques années après qu'on a arrêté, le poker online de grosses parties est complètement fini. Il y a des gens qui jouent avec des IA à côté d'eux. On a vraiment commencé au bon moment.</p></div>
+      <div class="reponse-text"><p>Je retiendrais surtout la chance qu'on a eue sur le timing. Quelques années après notre départ, le poker online de grosses parties a pratiquement disparu. Il y a désormais des gens qui jouent avec des IA à côté d'eux. On a commencé au bon moment, et on est partis au bon moment.</p></div>
     </div>
 
     <div class="reponse">
       <div class="speaker">Sébastien</div>
-      <div class="reponse-text"><p>C'est aussi pour ça qu'on a arrêté, en grande partie. On voyait ça venir. Le <span class="fn-ref">bankroll<sup class="fn">2</sup></span> n'a pas posé de problème particulier, donc dans l'ensemble on a bien géré.</p></div>
+      <div class="reponse-text"><p>C'est aussi pour ça qu'on a arrêté, en grande partie. On voyait ça venir. La <span class="fn-ref">bankroll<sup class="fn">2</sup></span> n'a pas posé de problème particulier, donc dans l'ensemble on a bien géré.</p></div>
     </div>
   </div>
 
@@ -340,7 +360,7 @@
 
     <div class="reponse">
       <div class="speaker">Alexandre</div>
-      <div class="reponse-text"><p>On fait encore du gambling, donc il y a toujours la notion de <span class="fn-ref">variance<sup class="fn">3</sup></span>. Il faut prendre des décisions en sachant que l'<span class="fn-ref">échantillon<sup class="fn">4</sup></span> est petit, naviguer sans avoir de vérité absolue comme signal. Ça ressemble beaucoup au poker. Et comme au poker, on joue avec une information partielle. Au poker, tu ne sais pas la main de l'adversaire. En <span class="fn-ref">sport betting<sup class="fn">5</sup></span>, certains acteurs peuvent avoir plus d'informations que toi, mais il faut exploiter chaque signal disponible.</p></div>
+      <div class="reponse-text"><p>On fait encore du gambling, donc la notion de <span class="fn-ref">variance<sup class="fn">3</sup></span> reste centrale. Il faut prendre des décisions en sachant que l'<span class="fn-ref">échantillon<sup class="fn">4</sup></span> est petit, avancer sans certitude absolue. Ça ressemble beaucoup au poker. Et comme au poker, on joue avec une information partielle. Au poker, tu ne sais pas la main de l'adversaire. En <span class="fn-ref">sport betting<sup class="fn">5</sup></span>, certains acteurs peuvent avoir plus d'informations que toi, mais il faut exploiter chaque signal disponible.</p></div>
     </div>
 
     <div class="reponse">
@@ -360,7 +380,7 @@
 
     <div class="reponse">
       <div class="speaker">Sébastien</div>
-      <div class="reponse-text"><p>Surtout Alex, il était <span class="fn-ref">GTO<sup class="fn">8</sup></span> avant le GTO. Tout est mathématique et modélisé pour avoir un <span class="fn-ref">edge<sup class="fn">9</sup></span>. En hindsight, si je cherche un truc où j'aurais pu faire mieux dans ma carrière, c'est d'avoir trop cherché à être <span class="fn-ref">GTO<sup class="fn">8</sup></span> et pas assez exploitant. J'aurais pu être plus efficace si j'avais davantage cherché à exploiter les failles de mes adversaires.</p></div>
+      <div class="reponse-text"><p>Surtout Alex, il était <span class="fn-ref">GTO<sup class="fn">8</sup></span> avant le GTO. Tout est mathématique et modélisé pour avoir un <span class="fn-ref">edge<sup class="fn">9</sup></span>. Avec le recul, si je cherche un truc où j'aurais pu faire mieux dans ma carrière, c'est d'avoir trop cherché à être <span class="fn-ref">GTO<sup class="fn">8</sup></span> et pas assez exploitant. J'aurais pu être plus efficace si j'avais davantage cherché à exploiter les failles de mes adversaires.</p></div>
     </div>
   </div>
 
@@ -391,21 +411,12 @@
       </div>
     </div>
 
-    <div class="reponse">
-      <div class="speaker">Alexandre</div>
-      <div class="reponse-text"><p>Depuis le début, je suis le seul quant. C'est le bon moment d'en chercher d'autres.</p></div>
-    </div>
   </div>
 
   <!-- Q modèle -->
   <div class="question-bloc">
     <div class="question-label">Question 05</div>
     <div class="question-text">Vos modèles, c'est de la prédiction sportive pure, ou plutôt agréger les cotes existantes et en faire une synthèse ?</div>
-
-    <div class="reponse">
-      <div class="speaker">Sébastien</div>
-      <div class="reponse-text"><p>C'est fondamental.</p></div>
-    </div>
 
     <div class="reponse">
       <div class="speaker">Alexandre</div>
@@ -466,11 +477,6 @@
     </div>
 
     <div class="reponse">
-      <div class="speaker">Alexandre</div>
-      <div class="reponse-text"><p>Pour eux, la précision des cotes n'est pas un enjeu central. Si leur prix n'est pas parfait, la grande majorité des joueurs perdra quand même, et les rares qui gagnent seront simplement exclus.</p></div>
-    </div>
-
-    <div class="reponse">
       <div class="speaker">Sébastien</div>
       <div class="reponse-text"><p>Il y a en réalité une dizaine de <span class="fn-ref">sharpbooks<sup class="fn">18</sup></span> qui font le marché, avec des cotes précises et un <span class="fn-ref">payout<sup class="fn">19</sup></span> élevé. Tous les <span class="fn-ref">softbooks<sup class="fn">15</sup></span> les copient et enlèvent 5 à 10%. Si Pinnacle affiche 1,95, eux donnent 1,85. Sur les grands marchés, ils copient aveuglément. Mais ils proposent aussi beaucoup de marchés qui n'existent pas chez les sharpbooks. Là, ils fixent leurs propres prix, et là ils sont très facilement exploitables. C'est précisément sur ces marchés-là qu'ils bannissent tous leurs clients gagnants.</p></div>
     </div>
@@ -496,7 +502,7 @@
 
     <div class="reponse">
       <div class="speaker">Alexandre</div>
-      <div class="reponse-text"><p>StatsBomb, c'était notre provider de data football. On était déjà clients. La logique, c'est d'abord de connaître le secteur de l'intérieur : on comprend mieux les risques. Et il y a des synergies : investir nous donne une voix pour orienter la roadmap, qu'ils couvrent telle ligue, tel type de data.</p></div>
+      <div class="reponse-text"><p>StatsBomb, c'était notre fournisseur de données football. On était déjà clients. La logique, c'est d'abord de connaître le secteur de l'intérieur : on comprend mieux les risques. Et il y a des synergies : investir nous donne une voix pour orienter la feuille de route, qu'ils couvrent telle ligue, tel type de data.</p></div>
     </div>
 
     <div class="reponse">
@@ -534,7 +540,7 @@
 
     <div class="reponse">
       <div class="speaker">Sébastien</div>
-      <div class="reponse-text"><p>Oui, bien sûr. Pas Moon Intelligence en tant que tel, mais le <span class="fn-ref">syndicat<sup class="fn">16</sup></span> associé et les <span class="fn-ref">market makers<sup class="fn">11</sup></span> associés sont actifs. Le sport sur Polymarket, ça fait à peine un an. Ça a vraiment démarré avec la saison de football américain en août dernier.</p></div>
+      <div class="reponse-text"><p>Oui, absolument. Moon Intelligence n'y opère pas directement, mais le <span class="fn-ref">syndicat<sup class="fn">16</sup></span> et les <span class="fn-ref">market makers<sup class="fn">11</sup></span> avec lesquels on travaille y sont actifs. Il faut dire que le sport sur Polymarket, c'est très récent : ça n'a vraiment pris de l'ampleur qu'avec la saison de football américain, en août dernier.</p></div>
     </div>
 
     <div class="reponse">
@@ -585,7 +591,7 @@
 
     <div class="reponse">
       <div class="speaker">Sébastien</div>
-      <div class="reponse-text"><p>Ils n'ont pas encore ouvert la version US au grand public, c'est en bêta. Pour nous, l'existence de Polymarket est clairement une bonne chose. Si les <span class="fn-ref">softbooks<sup class="fn">15</sup></span> captent trop de marché, notre seule option c'est le <span class="fn-ref">B2B<sup class="fn">24</sup></span> provider. Si la liquidité se concentre sur Polymarket ou un <span class="fn-ref">betting exchange<sup class="fn">13</sup></span>, des acteurs comme nous accèdent à la liquidité en direct. C'est incomparablement plus intéressant.</p></div>
+      <div class="reponse-text"><p>Ils n'ont pas encore ouvert la version US au grand public, c'est en bêta. Pour nous, l'existence de Polymarket est clairement une bonne chose. Si les <span class="fn-ref">softbooks<sup class="fn">15</sup></span> captent trop de marché, notre seule option reste d'être fournisseur <span class="fn-ref">B2B<sup class="fn">24</sup></span>. Si la liquidité se concentre sur Polymarket ou un <span class="fn-ref">betting exchange<sup class="fn">13</sup></span>, des acteurs comme nous accèdent à la liquidité en direct. C'est incomparablement plus intéressant.</p></div>
     </div>
   </div>
 
@@ -613,7 +619,7 @@
 
     <div class="reponse">
       <div class="speaker">Sébastien</div>
-      <div class="reponse-text"><p>On pivote une partie de notre activité vers plus de <span class="fn-ref">B2B<sup class="fn">24</sup></span> bookmaker, donc oui, des produits comme les nôtres pourraient fonctionner sur n'importe quel marché régulé, France comprise. Sur les buteurs en revanche, un produit sur lequel on travaille, le marché français est bon. Winamax et Betclic sont assez impressionnants là-dessus. Sur Betfair, le marché des buteurs est vide, pas de <span class="fn-ref">market maker<sup class="fn">11</sup></span>. On voit ça comme une opportunité : <span class="fn-ref">market maker<sup class="fn">11</sup></span> sur Betfair sur les buteurs, d'abord pour gagner en tradant, ensuite pour construire une offre B2B. Un bookmaker qui veut se différencier sur ce marché peut ensuite venir nous voir.</p></div>
+      <div class="reponse-text"><p>On pivote une partie de notre activité vers plus de <span class="fn-ref">B2B<sup class="fn">24</sup></span> bookmaker, donc oui, des produits comme les nôtres pourraient fonctionner sur n'importe quel marché régulé, France comprise. Sur les buteurs en revanche, un produit sur lequel on travaille, le marché français est bon. Winamax et Betclic sont assez impressionnants là-dessus. Sur Betfair, le marché des buteurs est vide, pas de <span class="fn-ref">market maker<sup class="fn">11</sup></span>. On voit ça comme une opportunité : assurer le <span class="fn-ref">market making<sup class="fn">11</sup></span> sur Betfair sur les buteurs, d'abord pour gagner en tradant, ensuite pour construire une offre B2B. Un bookmaker qui veut se différencier sur ce marché peut ensuite venir nous voir.</p></div>
     </div>
 
     <div class="reponse">
@@ -623,12 +629,7 @@
 
     <div class="reponse">
       <div class="speaker">Sébastien</div>
-      <div class="reponse-text"><p>Oui, clairement. L'argument principal : si tu veux attirer des opérateurs sharp en France et qu'il n'y a ni exchange ni <span class="fn-ref">marchés de prédiction<sup class="fn">12</sup></span>... Ce qui se passe aux États-Unis est instructif. La grande différence sur Polymarket et Kalshi, c'est qu'ils n'offrent que quelques types de marchés, pas d'accumulateurs, pas de combos, pas de scénarios à 200 contre 1. Juste le vainqueur du match ou le <span class="fn-ref">handicap<sup class="fn">28</sup></span>. Ce type de pari est beaucoup moins addictif, beaucoup moins proche du casino. Si la réglementation séparait clairement ces deux registres, elle pourrait ouvrir le premier sans les risques du second. Et les joueurs qui cherchent de bonnes cotes n'iraient pas dans le marché offshore.</p></div>
-    </div>
-
-    <div class="reponse">
-      <div class="speaker">Alexandre</div>
-      <div class="reponse-text"><p>C'est la courbe de Laffer appliquée aux paris : à partir d'un certain niveau de taxation, les revenus de l'État baissent parce que les joueurs migrent ailleurs.</p></div>
+      <div class="reponse-text"><p>Oui, clairement. L'argument principal : si tu veux attirer des opérateurs sharp en France et qu'il n'y a ni exchange ni <span class="fn-ref">marchés de prédiction<sup class="fn">12</sup></span>... Ce qui se passe aux États-Unis est instructif. La grande différence sur Polymarket et Kalshi, c'est qu'ils n'offrent que quelques types de marchés, pas d'accumulateurs, pas de combos, pas de scénarios à 200 contre 1. Juste le vainqueur du match ou le <span class="fn-ref">handicap<sup class="fn">28</sup></span>. Ce type de pari est beaucoup moins addictif, beaucoup moins proche du casino. Si la réglementation séparait clairement ces deux registres, elle pourrait ouvrir le premier sans les risques du second. Et les joueurs qui cherchent de bonnes cotes n'iraient pas dans le marché offshore. C'est, en quelque sorte, la courbe de Laffer appliquée aux paris : au-delà d'un certain niveau de taxation, les revenus de l'État baissent parce que les joueurs migrent ailleurs.</p></div>
     </div>
 
     <div class="exergue">
@@ -645,7 +646,7 @@
 
     <div class="reponse">
       <div class="speaker">Alexandre</div>
-      <div class="reponse-text"><p>Étendre notre coverage. On travaille sur les buteurs. On veut couvrir le basket européen, le hockey européen, le baseball coréen et japonais. Même si on couvre déjà dix sports, il y a encore beaucoup d'avenues inexplorées.</p></div>
+      <div class="reponse-text"><p>Étendre notre couverture. On travaille sur les buteurs. On veut couvrir le basket européen, le hockey européen, le baseball coréen et japonais. Même si on couvre déjà dix sports, il y a encore beaucoup d'avenues inexplorées.</p></div>
     </div>
 
     <div class="reponse">
@@ -691,14 +692,6 @@
         </div>
       </div>
 
-    </div>
-  </div>
-</div>
-
-</body>
-</html>
-
-
       <div class="fn-item">
         <div class="fn-num">2</div>
         <div>
@@ -707,282 +700,6 @@
         </div>
       </div>
 
-    </div>
-  </div>
-</div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">3</div>
-        <div>
-          <div class="fn-terme">Variance</div>
-          <div class="fn-def">Dispersion des résultats autour de la moyenne. En pratique : la série de malchance qui fait qu'un modèle gagnant peut perdre sur une longue période.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">4</div>
-        <div>
-          <div class="fn-terme">Sample size</div>
-          <div class="fn-def">Taille de l'échantillon. Un "petit sample" signifie que les résultats observés ne sont pas encore statistiquement significatifs.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">5</div>
-        <div>
-          <div class="fn-terme">Sport betting</div>
-          <div class="fn-def">Terme générique pour les paris sportifs, utilisé ici dans son acception professionnelle et quantitative.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">6</div>
-        <div>
-          <div class="fn-terme">High agency</div>
-          <div class="fn-def">Capacité à prendre en charge un projet de A à Z sans attendre d'être guidé. Proche de "débrouillardise" mais plus structurel : quelqu'un qui identifie les problèmes et les résout de sa propre initiative.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">7</div>
-        <div>
-          <div class="fn-terme">Cash game</div>
-          <div class="fn-def">Format de poker où les mises ont une valeur réelle, par opposition aux tournois où l'on joue des jetons fictifs. Sébastien et Alex étaient principalement des joueurs de cash game high stakes.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">8</div>
-        <div>
-          <div class="fn-terme">GTO (Game Theory Optimal)</div>
-          <div class="fn-def">Stratégie mathématiquement équilibrée au poker, qui ne peut pas être exploitée par un adversaire rationnel. Sébastien estime avoir été trop GTO dans sa carrière, au détriment d'une approche plus exploitative.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">9</div>
-        <div>
-          <div class="fn-terme">Edge</div>
-          <div class="fn-def">Avantage statistique. Avoir un edge, c'est être en position d'espérance positive sur le long terme.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">10</div>
-        <div>
-          <div class="fn-terme">Tracking data</div>
-          <div class="fn-def">Données de suivi précises : position de chaque joueur et du ballon à chaque instant. Plus riches que les simples statistiques de résultats.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">11</div>
-        <div>
-          <div class="fn-terme">Market maker</div>
-          <div class="fn-def">Acteur qui assure la liquidité d'un marché en affichant en permanence des prix d'achat et de vente. Il gagne le spread, c'est-à-dire la différence entre les deux côtés. En paris sportifs, il affiche des cotes des deux côtés d'un événement.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">12</div>
-        <div>
-          <div class="fn-terme">Prediction market</div>
-          <div class="fn-def">Plateforme où l'on parie sur la probabilité d'événements futurs (résultats sportifs, élections, etc.). Polymarket et Kalshi sont les exemples dominants. Le prix du contrat reflète la probabilité estimée par le marché.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">13</div>
-        <div>
-          <div class="fn-terme">Betting exchange</div>
-          <div class="fn-def">Plateforme où les joueurs parient les uns contre les autres, sans bookmaker intermédiaire. Betfair est l'exemple le plus connu. Les cotes sont fixées par l'offre et la demande.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">14</div>
-        <div>
-          <div class="fn-terme">Spread</div>
-          <div class="fn-def">Écart entre le prix d'achat et le prix de vente affiché par un market maker. C'est sa marge brute sur chaque transaction.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">15</div>
-        <div>
-          <div class="fn-terme">Softbook</div>
-          <div class="fn-def">Bookmaker qui gère son risque en limitant ou en excluant les joueurs gagnants. C'est le modèle de la quasi-totalité des opérateurs européens grand public. La précision des cotes est secondaire pour eux.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">16</div>
-        <div>
-          <div class="fn-terme">Syndicat de paris</div>
-          <div class="fn-def">Groupe organisé de parieurs professionnels qui mutualise capital et expertise. Proche d'un hedge fund mais dédié aux paris sportifs.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">17</div>
-        <div>
-          <div class="fn-terme">Flow de bets</div>
-          <div class="fn-def">Flux de paris observé en temps réel sur un marché. Analyser le flow permet de détecter des informations : si un côté se fait massivement miser, quelqu'un sait peut-être quelque chose.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">18</div>
-        <div>
-          <div class="fn-terme">Sharpbook</div>
-          <div class="fn-def">Bookmaker qui accepte tous les joueurs, y compris les gagnants, et s'en sort en proposant des cotes très précises avec une marge réduite. Pinnacle est la référence mondiale.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">19</div>
-        <div>
-          <div class="fn-terme">Payout</div>
-          <div class="fn-def">Part des mises reversée aux joueurs sous forme de gains. Un payout de 95% signifie que le bookmaker prélève 5% de marge en moyenne.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">20</div>
-        <div>
-          <div class="fn-terme">Seed round</div>
-          <div class="fn-def">Premier tour de financement formel d'une startup, après les fonds propres des fondateurs.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">21</div>
-        <div>
-          <div class="fn-terme">Pricing</div>
-          <div class="fn-def">L'acte de fixer une cote. "Faire le pricing" d'un match, c'est déterminer à quelle probabilité chaque issue devrait être cotée.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">22</div>
-        <div>
-          <div class="fn-terme">ROI (Return on Investment)</div>
-          <div class="fn-def">Rendement sur investissement. En paris sportifs, un ROI de 4-5% signifie que pour 100 euros misés, on en récupère 104-105 euros en moyenne sur le long terme.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">23</div>
-        <div>
-          <div class="fn-terme">Ticks</div>
-          <div class="fn-def">Plus petite unité de variation d'une cote sur un marché. "Capturer 5 ticks" signifie que le spread entre les deux côtés du pari représente 5 de ces unités.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">24</div>
-        <div>
-          <div class="fn-terme">B2B (Business to Business)</div>
-          <div class="fn-def">Modèle commercial où l'on vend à des professionnels plutôt qu'aux consommateurs finaux. Moon Intelligence vend ses cotes et ses services à des bookmakers et des syndicats, pas directement aux parieurs.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">25</div>
-        <div>
-          <div class="fn-terme">TRJ (Taux de Retour au Joueur)</div>
-          <div class="fn-def">Part des mises reversée aux joueurs. En France, il est capé réglementairement à 85% pour les paris sportifs. Les 15% restants constituent la marge maximale de l'opérateur.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">26</div>
-        <div>
-          <div class="fn-terme">Vig (ou vigorish)</div>
-          <div class="fn-def">Marge prélevée par le bookmaker sur chaque pari. Un marché à 1,90 / 1,90 sur un événement 50/50 représente une vig d'environ 5%.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">27</div>
-        <div>
-          <div class="fn-terme">Sharp betting</div>
-          <div class="fn-def">Style de pari axé sur la recherche d'un edge mathématique, à l'opposé du pari récréatif. Les "sharps" sont les parieurs professionnels qui misent sur des inefficiences de marché.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">28</div>
-        <div>
-          <div class="fn-terme">Handicap</div>
-          <div class="fn-def">Pari où l'on donne un avantage fictif à l'équipe la plus faible pour équilibrer les cotes. Exemple : Liverpool -1 but signifie que Liverpool doit gagner par au moins deux buts d'écart pour que le pari soit gagnant.</div>
-        </div>
-      </div>
-
-      
-
-      <div class="fn-item">
-        <div class="fn-num">29</div>
-        <div>
-          <div class="fn-terme">Player props</div>
-          <div class="fn-def">Paris sur les performances individuelles d'un joueur : nombre de buts, de points, de passes décisives. Marché en forte croissance, distinct des paris sur le résultat du match.</div>
-        </div>
-      </div>
-
-      
-
       <div class="fn-item">
         <div class="fn-num">3</div>
         <div>
@@ -1196,14 +913,6 @@
         <div>
           <div class="fn-terme">Player props</div>
           <div class="fn-def">Paris sur les performances individuelles d'un joueur : nombre de buts, de points, de passes décisives. Marché en forte croissance, distinct des paris sur le résultat du match.</div>
-        </div>
-      </div>
-
-      <div class="fn-item">
-        <div class="fn-num">1</div>
-        <div>
-          <div class="fn-terme">High stakes</div>
-          <div class="fn-def">Tables ou limites de mise très élevées au poker. Les parties high stakes online que Sébastien et Alexandre jouaient avaient des blindes pouvant atteindre plusieurs milliers de dollars par main.</div>
         </div>
       </div>
 
