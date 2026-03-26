@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Board — Réunion de rédaction Les Enjeux</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0eeeb; color: #1a1a1a; min-height: 100vh; }
+  header { background: #fff; border-bottom: 3px solid #E8320A; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; }
+  header .logo { font-size: 11px; font-weight: 700; letter-spacing: 5px; color: #E8320A; text-transform: uppercase; }
+  header h1 { font-size: 15px; font-weight: 500; color: #555; }
+  header .meta { font-size: 12px; color: #aaa; }
+  .board { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; padding: 22px 22px 60px; min-height: calc(100vh - 60px); align-items: start; }
+  .column { background: #fff; border-radius: 6px; border-top: 3px solid #E8320A; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .column-header { padding: 12px 14px; border-bottom: 1px solid #f0f0f0; }
+  .column-num { font-size: 10px; color: #E8320A; font-weight: 700; letter-spacing: 3px; margin-bottom: 3px; }
+  .column-title { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+  .cards { padding: 10px; display: flex; flex-direction: column; gap: 8px; min-height: 100px; }
+  .card { background: #fafafa; border: 1px solid #ebebeb; border-radius: 5px; padding: 10px 12px; font-size: 12px; position: relative; }
+  .card-fields { display: flex; flex-direction: column; gap: 6px; }
+  .field { display: flex; align-items: flex-start; gap: 6px; }
+  .field-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #c0c0c0; text-transform: uppercase; min-width: 52px; padding-top: 2px; flex-shrink: 0; }
+  .field-val { font-size: 12px; color: #333; line-height: 1.4; }
+  .field-val.empty { color: #ccc; font-style: italic; }
+  .delete-btn { position: absolute; top: 6px; right: 8px; background: none; border: none; color: #ddd; cursor: pointer; font-size: 13px; line-height: 1; padding: 2px 4px; border-radius: 3px; transition: color 0.15s, background 0.15s; }
+  .delete-btn:hover { color: #E8320A; background: #f5f0f0; }
+  .add-form { padding: 10px; border-top: 1px solid #f5f5f5; }
+  .add-form input, .add-form textarea { width: 100%; background: #fff; border: 1px solid #e0e0e0; border-radius: 4px; color: #333; font-size: 12px; padding: 6px 8px; font-family: inherit; resize: none; margin-bottom: 5px; outline: none; transition: border-color 0.15s; }
+  .add-form input:focus, .add-form textarea:focus { border-color: #E8320A; }
+  .add-form input::placeholder, .add-form textarea::placeholder { color: #ccc; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .add-btn { width: 100%; background: #E8320A; border: none; border-radius: 4px; color: #fff; font-size: 12px; font-weight: 600; padding: 7px; cursor: pointer; font-family: inherit; letter-spacing: 0.5px; transition: background 0.15s; }
+  .add-btn:hover { background: #c82a08; }
+  .toggle-form-btn { width: 100%; background: none; border: 1px dashed #ddd; border-radius: 4px; color: #bbb; font-size: 12px; padding: 7px; cursor: pointer; font-family: inherit; transition: border-color 0.15s, color 0.15s; margin-top: 2px; }
+  .toggle-form-btn:hover { border-color: #E8320A; color: #E8320A; }
+  .form-hidden { display: none; }
+  .footer-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #e8e8e8; padding: 8px 28px; display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #aaa; }
+  .export-btn { background: none; border: 1px solid #ddd; border-radius: 4px; color: #999; font-size: 11px; padding: 5px 12px; cursor: pointer; font-family: inherit; transition: border-color 0.15s, color 0.15s; }
+  .export-btn:hover { border-color: #E8320A; color: #E8320A; }
+  @media (max-width: 1100px) { .board { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px) { .board { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">Les&nbsp;&nbsp;Enjeux</span>
+  <h1>Réunion de rédaction — 26 mars 2026, 14h</h1>
+  <span class="meta" id="total-count">0 note</span>
+</header>
+
+<div class="board" id="board"></div>
+
+<div class="footer-bar">
+  <span>Board de notes — usage interne</span>
+  <button class="export-btn" onclick="exportNotes()">Exporter les notes</button>
+</div>
+
+<script>
+const COLS = [
+  { id: "contexte",   num: "01", title: "Contexte & objectif" },
+  { id: "tour",       num: "02", title: "Tour de table" },
+  { id: "strategie",  num: "03", title: "Clarification stratégique" },
+  { id: "editorial",  num: "04", title: "Axes éditoriaux" },
+  { id: "actions",    num: "05", title: "Prochaines étapes" },
+];
+
+let data = {};
+COLS.forEach(c => { data[c.id] = []; });
+
+function save() {
+  try { localStorage.setItem("lesenjeux-board", JSON.stringify(data)); } catch(e) {}
+}
+
+function load() {
+  try {
+    const raw = localStorage.getItem("lesenjeux-board");
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      COLS.forEach(c => { if (parsed[c.id]) data[c.id] = parsed[c.id]; });
+    }
+  } catch(e) {}
+}
+
+function updateCount() {
+  const total = COLS.reduce((s, c) => s + data[c.id].length, 0);
+  document.getElementById("total-count").textContent = total + (total <= 1 ? " note" : " notes");
+}
+
+function renderCard(note, colId, idx) {
+  return '<div class="card"><button class="delete-btn" onclick="deleteCard(\''+colId+'\', '+idx+')">✕</button><div class="card-fields"><div class="field"><span class="field-label">Quoi</span><span class="field-val">'+escHtml(note.quoi)+'</span></div><div class="field"><span class="field-label">Qui</span><span class="field-val '+(note.qui?'':'empty')+'">'+(note.qui?escHtml(note.qui):'—')+'</span></div><div class="field"><span class="field-label">Deadline</span><span class="field-val '+(note.deadline?'':'empty')+'">'+(note.deadline?escHtml(note.deadline):'—')+'</span></div></div></div>';
+}
+
+function renderColumn(col) {
+  const cards = data[col.id].map((n, i) => renderCard(n, col.id, i)).join('');
+  return '<div class="column" id="col-'+col.id+'"><div class="column-header"><div class="column-num">'+col.num+'</div><div class="column-title">'+col.title+'</div></div><div class="cards" id="cards-'+col.id+'">'+cards+'</div><div class="add-form"><div class="form-inner form-hidden" id="form-'+col.id+'"><textarea id="inp-quoi-'+col.id+'" rows="2" placeholder="Note / décision / idée..."></textarea><div class="form-row"><input id="inp-qui-'+col.id+'" type="text" placeholder="Qui ?"><input id="inp-deadline-'+col.id+'" type="text" placeholder="Deadline"></div><button class="add-btn" onclick="addCard(\''+col.id+'\')">Ajouter</button></div><button class="toggle-form-btn" id="toggle-'+col.id+'" onclick="toggleForm(\''+col.id+'\')">+ Ajouter une note</button></div></div>';
+}
+
+function render() {
+  document.getElementById("board").innerHTML = COLS.map(renderColumn).join('');
+  updateCount();
+}
+
+function toggleForm(colId) {
+  const form = document.getElementById('form-'+colId);
+  const btn = document.getElementById('toggle-'+colId);
+  const hidden = form.classList.contains("form-hidden");
+  form.classList.toggle("form-hidden", !hidden);
+  btn.textContent = hidden ? "✕ Annuler" : "+ Ajouter une note";
+  if (hidden) document.getElementById('inp-quoi-'+colId).focus();
+}
+
+function addCard(colId) {
+  const quoi = document.getElementById('inp-quoi-'+colId).value.trim();
+  if (!quoi) return;
+  const qui = document.getElementById('inp-qui-'+colId).value.trim();
+  const deadline = document.getElementById('inp-deadline-'+colId).value.trim();
+  data[colId].push({ quoi, qui, deadline });
+  save();
+  render();
+}
+
+function deleteCard(colId, idx) {
+  data[colId].splice(idx, 1);
+  save();
+  render();
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function exportNotes() {
+  let out = "RÉUNION DE RÉDACTION — LES ENJEUX — 26 mars 2026\n" + "=".repeat(52) + "\n\n";
+  COLS.forEach(col => {
+    const notes = data[col.id];
+    if (!notes.length) return;
+    out += col.num + ". " + col.title.toUpperCase() + "\n" + "-".repeat(40) + "\n";
+    notes.forEach((n, i) => {
+      out += "  " + (i+1) + ". " + n.quoi + "\n";
+      if (n.qui) out += "     Qui : " + n.qui + "\n";
+      if (n.deadline) out += "     Deadline : " + n.deadline + "\n";
+    });
+    out += "\n";
+  });
+  const blob = new Blob([out], { type: "text/plain;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "notes-reunion-lesenjeux.txt";
+  a.click();
+}
+
+load();
+render();
+</script>
+</body>
+</html>
