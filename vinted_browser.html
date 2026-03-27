@@ -7,374 +7,187 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #f5f3ee;
-    --surface: #ffffff;
-    --border: #e2dfd8;
-    --text: #1a1916;
-    --muted: #8a8680;
-    --accent: #2d5a3d;
-    --accent-light: #e8f0ea;
-    --mono: 'DM Mono', monospace;
-    --sans: 'DM Sans', sans-serif;
+    --bg: #f5f3ee; --surface: #ffffff; --border: #e2dfd8;
+    --text: #1a1916; --muted: #8a8680; --accent: #2d5a3d;
+    --accent-light: #e8f0ea; --mono: 'DM Mono', monospace; --sans: 'DM Sans', sans-serif;
   }
+  body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; }
 
-  body {
-    font-family: var(--sans);
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 0;
-  }
-
-  /* ── Upload screen ── */
   #upload-screen {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 2rem;
   }
-
-  .upload-title {
-    font-size: 13px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-family: var(--mono);
-  }
-
+  .upload-title { font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); font-family: var(--mono); }
   .upload-box {
-    width: 400px;
-    background: var(--surface);
-    border: 1.5px dashed var(--border);
-    border-radius: 16px;
-    padding: 3rem 2rem;
-    text-align: center;
-    cursor: pointer;
+    width: 380px; background: var(--surface); border: 1.5px dashed var(--border);
+    border-radius: 16px; padding: 3rem 2rem; text-align: center; cursor: pointer;
     transition: border-color 0.2s, background 0.2s;
   }
   .upload-box:hover { border-color: var(--accent); background: var(--accent-light); }
-
-  .upload-icon {
-    width: 48px; height: 48px;
-    background: var(--accent-light);
-    border-radius: 12px;
-    margin: 0 auto 1rem;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-  }
-
   .upload-box h2 { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
   .upload-box p { font-size: 13px; color: var(--muted); }
 
-  /* ── App layout ── */
   #app { display: none; }
 
   .topbar {
-    position: sticky; top: 0; z-index: 100;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 24px;
-    display: flex; align-items: center; gap: 16px;
+    position: sticky; top: 0; z-index: 100; background: var(--surface);
+    border-bottom: 1px solid var(--border); padding: 10px 20px;
+    display: flex; align-items: center; gap: 12px;
   }
-
-  .topbar-title {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    flex: 1;
-  }
-
-  .counter {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    background: var(--bg);
-    padding: 4px 10px;
-    border-radius: 20px;
-  }
-
+  .topbar-title { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; flex: 1; }
+  .counter { font-family: var(--mono); font-size: 12px; color: var(--muted); background: var(--bg); padding: 4px 10px; border-radius: 20px; }
   .nav-btn {
-    font-family: var(--mono);
-    font-size: 12px;
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 6px 14px;
-    cursor: pointer;
-    color: var(--text);
-    transition: all 0.15s;
+    font-family: var(--mono); font-size: 12px; background: none; border: 1px solid var(--border);
+    border-radius: 8px; padding: 5px 12px; cursor: pointer; color: var(--text); transition: all 0.15s;
   }
   .nav-btn:hover:not(:disabled) { background: var(--accent); color: #fff; border-color: var(--accent); }
   .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
-  /* ── Progress bar ── */
-  .progress-bar {
-    height: 2px;
-    background: var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: var(--accent);
-    transition: width 0.3s ease;
-  }
+  .progress-bar { height: 2px; background: var(--border); }
+  .progress-fill { height: 100%; background: var(--accent); transition: width 0.3s ease; }
 
-  /* ── Main content ── */
   .main {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 2rem;
-    align-items: start;
+    max-width: 1100px; margin: 0 auto; padding: 1.5rem;
+    display: grid; grid-template-columns: 1fr 380px; gap: 1.5rem; align-items: start;
   }
 
-  /* ── Photo gallery ── */
+  /* ── Galerie ── */
   .gallery { display: flex; flex-direction: column; gap: 8px; }
 
-  .photo-main {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 12px;
-    background: var(--border);
-    cursor: pointer;
-  }
-
-  .photo-thumbs {
+  .photo-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 6px;
   }
 
   .photo-thumb {
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 6px;
-    background: var(--border);
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: border-color 0.15s;
+    aspect-ratio: 1; object-fit: cover; border-radius: 8px;
+    background: var(--border); cursor: pointer;
+    border: 2px solid transparent; transition: border-color 0.15s;
+    width: 100%;
   }
-  .photo-thumb.active { border-color: var(--accent); }
   .photo-thumb:hover { border-color: var(--muted); }
+  .photo-thumb.active { border-color: var(--accent); }
+
+  .photo-main-wrap {
+    width: 100%; aspect-ratio: 4/3; overflow: hidden;
+    border-radius: 12px; background: var(--border); cursor: zoom-in;
+  }
+  .photo-main { width: 100%; height: 100%; object-fit: contain; }
 
   .vinted-link {
-    display: block;
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
-    text-decoration: none;
-    padding: 8px;
-    border: 1px solid var(--accent-light);
-    border-radius: 8px;
-    background: var(--accent-light);
+    display: block; text-align: center; font-family: var(--mono); font-size: 11px;
+    color: var(--accent); text-decoration: none; padding: 7px;
+    border: 1px solid var(--accent-light); border-radius: 8px; background: var(--accent-light);
     transition: background 0.15s;
   }
   .vinted-link:hover { background: var(--accent); color: #fff; }
 
-  /* ── Fields ── */
+  /* ── Champs ── */
   .fields { display: flex; flex-direction: column; gap: 2px; }
 
   .field-group-title {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding: 16px 0 6px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 4px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+    padding: 12px 0 6px; border-bottom: 1px solid var(--border); margin-bottom: 4px;
   }
 
   .field-row {
-    display: flex;
-    align-items: stretch;
-    gap: 0;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    margin-bottom: 4px;
-    background: var(--surface);
-    transition: border-color 0.15s;
+    display: flex; align-items: stretch; border-radius: 8px;
+    overflow: hidden; border: 1px solid var(--border); margin-bottom: 3px;
+    background: var(--surface); transition: border-color 0.15s;
   }
   .field-row:hover { border-color: var(--muted); }
 
   .field-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    padding: 8px 10px;
-    background: var(--bg);
-    border-right: 1px solid var(--border);
-    min-width: 80px;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    padding: 7px 10px; background: var(--bg); border-right: 1px solid var(--border);
+    min-width: 75px; display: flex; align-items: center; white-space: nowrap;
   }
-
   .field-value {
-    font-size: 13px;
-    padding: 8px 10px;
-    flex: 1;
-    line-height: 1.4;
-    color: var(--text);
-    word-break: break-word;
-    user-select: all;
+    font-size: 13px; padding: 7px 10px; flex: 1; line-height: 1.4;
+    color: var(--text); word-break: break-word; user-select: all;
   }
-
-  .field-value.prix {
-    font-family: var(--mono);
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--accent);
-  }
+  .field-value.prix { font-family: var(--mono); font-size: 15px; font-weight: 500; color: var(--accent); }
 
   .copy-btn {
-    font-family: var(--mono);
-    font-size: 10px;
-    padding: 0 10px;
-    background: none;
-    border: none;
-    border-left: 1px solid var(--border);
-    cursor: pointer;
-    color: var(--muted);
-    transition: all 0.15s;
-    white-space: nowrap;
+    font-family: var(--mono); font-size: 10px; padding: 0 10px;
+    background: none; border: none; border-left: 1px solid var(--border);
+    cursor: pointer; color: var(--muted); transition: all 0.15s; white-space: nowrap;
   }
   .copy-btn:hover { background: var(--accent); color: #fff; }
   .copy-btn.copied { background: var(--accent); color: #fff; }
 
+  .description-wrap { position: relative; }
   .description-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px;
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--text);
-    white-space: pre-wrap;
-    word-break: break-word;
-    user-select: all;
-    position: relative;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 10px 10px 12px; font-size: 13px; line-height: 1.6;
+    color: var(--text); white-space: pre-wrap; word-break: break-word;
+    user-select: all; max-height: 180px; overflow-y: auto;
   }
-
   .description-copy {
-    position: absolute;
-    top: 8px; right: 8px;
-    font-family: var(--mono);
-    font-size: 10px;
-    padding: 4px 8px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    cursor: pointer;
-    color: var(--muted);
-    transition: all 0.15s;
+    position: absolute; top: 6px; right: 6px; font-family: var(--mono); font-size: 10px;
+    padding: 3px 8px; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 6px; cursor: pointer; color: var(--muted); transition: all 0.15s;
   }
   .description-copy:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
   .copy-all-btn {
-    margin-top: 1rem;
-    width: 100%;
-    padding: 12px;
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    transition: opacity 0.15s;
+    margin-top: 10px; width: 100%; padding: 11px; background: var(--accent);
+    color: #fff; border: none; border-radius: 10px; font-family: var(--mono);
+    font-size: 12px; letter-spacing: 0.08em; cursor: pointer; transition: opacity 0.15s;
   }
   .copy-all-btn:hover { opacity: 0.85; }
 
-  /* ── Keyboard hint ── */
-  .kbd-hint {
-    text-align: center;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    padding: 1rem;
-  }
-  kbd {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-family: var(--mono);
-    font-size: 10px;
-  }
+  .kbd-hint { text-align: center; font-family: var(--mono); font-size: 11px; color: var(--muted); padding: 12px; }
+  kbd { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 2px 6px; font-family: var(--mono); font-size: 10px; }
 
-  /* ── Toast ── */
   .toast {
-    position: fixed;
-    bottom: 24px; left: 50%;
+    position: fixed; bottom: 20px; left: 50%;
     transform: translateX(-50%) translateY(60px);
-    background: var(--text);
-    color: #fff;
-    font-family: var(--mono);
-    font-size: 12px;
-    padding: 10px 20px;
-    border-radius: 20px;
-    transition: transform 0.25s ease;
-    pointer-events: none;
-    z-index: 999;
+    background: var(--text); color: #fff; font-family: var(--mono); font-size: 12px;
+    padding: 8px 18px; border-radius: 20px; transition: transform 0.25s ease;
+    pointer-events: none; z-index: 999;
   }
   .toast.show { transform: translateX(-50%) translateY(0); }
 
-  @media (max-width: 640px) {
+  @media (max-width: 700px) {
     .main { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- Upload screen -->
 <div id="upload-screen">
   <div class="upload-title">Vinted Browser</div>
   <div class="upload-box" onclick="document.getElementById('csv-input').click()">
-    <div class="upload-icon">📂</div>
-    <h2>Importer le CSV</h2>
-    <p>Clique pour choisir ton fichier vinted_oliv-sns.csv</p>
+    <h2>📂 Importer le CSV</h2>
+    <p>Clique pour choisir ton fichier CSV Vinted</p>
   </div>
   <input type="file" id="csv-input" accept=".csv" style="display:none">
 </div>
 
-<!-- App -->
 <div id="app">
   <div class="topbar">
     <div class="topbar-title">VINTED BROWSER — oliv-sns</div>
-    <div class="counter" id="counter">1 / 361</div>
+    <div class="counter" id="counter">1 / —</div>
     <button class="nav-btn" id="btn-prev" onclick="navigate(-1)">← Préc</button>
     <button class="nav-btn" id="btn-next" onclick="navigate(1)">Suiv →</button>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
 
   <div class="main">
-    <!-- Galerie -->
     <div class="gallery">
-      <img id="photo-main" class="photo-main" src="" alt="" onclick="openPhoto()">
-      <div class="photo-thumbs" id="photo-thumbs"></div>
+      <div class="photo-main-wrap" onclick="openPhoto()">
+        <img id="photo-main" class="photo-main" src="" alt="">
+      </div>
+      <div class="photo-grid" id="photo-grid"></div>
       <a id="vinted-link" class="vinted-link" href="#" target="_blank">Voir sur Vinted ↗</a>
     </div>
-
-    <!-- Champs -->
     <div class="fields" id="fields"></div>
   </div>
-
-  <div class="kbd-hint">
-    <kbd>←</kbd> <kbd>→</kbd> pour naviguer entre les fiches
-  </div>
+  <div class="kbd-hint"><kbd>←</kbd> <kbd>→</kbd> pour naviguer</div>
 </div>
 
 <div class="toast" id="toast">Copié !</div>
@@ -405,7 +218,7 @@ function parseCSV(text) {
     const vals = [];
     let cur = '', inQ = false;
     for (let c of line) {
-      if (c === '"') { inQ = !inQ; }
+      if (c === '"') inQ = !inQ;
       else if (c === ',' && !inQ) { vals.push(cur); cur = ''; }
       else cur += c;
     }
@@ -414,6 +227,17 @@ function parseCSV(text) {
     headers.forEach((h, i) => obj[h] = (vals[i] || '').trim());
     return obj;
   }).filter(r => r.id || r.titre);
+}
+
+function parsePrix(val) {
+  if (!val) return '';
+  // Si c'est un dict Python style {'amount': '20.0', 'currency_code': 'EUR'}
+  const match = val.match(/['"]amount['"]\s*:\s*['"]?([\d.]+)/);
+  if (match) return parseFloat(match[1]).toFixed(2) + ' €';
+  // Si c'est déjà un nombre
+  const num = parseFloat(val);
+  if (!isNaN(num)) return num.toFixed(2) + ' €';
+  return val;
 }
 
 function render() {
@@ -433,81 +257,63 @@ function render() {
   }
 
   const mainImg = document.getElementById('photo-main');
-  if (photos.length > 0) {
-    mainImg.src = photos[0];
-    mainImg.style.display = 'block';
-  } else {
-    mainImg.src = '';
-    mainImg.style.display = 'none';
-  }
+  mainImg.src = photos[0] || '';
 
-  const thumbs = document.getElementById('photo-thumbs');
-  thumbs.innerHTML = '';
+  const grid = document.getElementById('photo-grid');
+  grid.innerHTML = '';
   photos.forEach((p, i) => {
     const img = document.createElement('img');
-    img.src = p;
-    img.className = 'photo-thumb' + (i === 0 ? ' active' : '');
+    img.src = p; img.className = 'photo-thumb' + (i === 0 ? ' active' : '');
     img.onclick = () => {
       mainImg.src = p;
-      thumbs.querySelectorAll('.photo-thumb').forEach(t => t.classList.remove('active'));
+      grid.querySelectorAll('.photo-thumb').forEach(t => t.classList.remove('active'));
       img.classList.add('active');
     };
-    thumbs.appendChild(img);
+    grid.appendChild(img);
   });
 
-  // Lien Vinted
-  const link = document.getElementById('vinted-link');
-  link.href = item.url || '#';
+  document.getElementById('vinted-link').href = item.url || '#';
 
   // Champs
   const fields = document.getElementById('fields');
   fields.innerHTML = '';
 
-  const infos = [
-    { label: 'Titre',   key: 'titre',   cls: '' },
-    { label: 'Prix',    key: 'prix',    cls: 'prix', suffix: ' €' },
-    { label: 'Marque',  key: 'marque',  cls: '' },
-    { label: 'Taille',  key: 'taille',  cls: '' },
-    { label: 'État',    key: 'etat',    cls: '' },
-    { label: 'Matière', key: 'matiere', cls: '' },
-    { label: 'Couleur', key: 'couleur', cls: '' },
-    { label: 'Envoi',   key: 'envoi_min', cls: '', suffix: ' €' },
-    { label: 'Tags',    key: 'hashtags', cls: '' },
-  ];
+  const prix = parsePrix(item.prix);
 
-  addGroupTitle(fields, 'Informations');
-  infos.forEach(({ label, key, cls, suffix }) => {
-    let val = item[key] || '';
-    if (!val) return;
-    if (suffix && val) val = val + suffix;
-    addField(fields, label, val, cls);
-  });
+  addTitle(fields, 'Informations');
+  addField(fields, 'Titre',   item.titre,   '');
+  addField(fields, 'Prix',    prix,          'prix');
+  addField(fields, 'Marque',  item.marque,   '');
+  addField(fields, 'Taille',  item.taille,   '');
+  addField(fields, 'État',    item.etat,     '');
+  addField(fields, 'Matière', item.matiere,  '');
+  addField(fields, 'Couleur', item.couleur,  '');
+  addField(fields, 'Envoi',   item.envoi_min ? item.envoi_min + ' €' : '', '');
+  addField(fields, 'Tags',    item.hashtags,  '');
 
   if (item.description) {
-    addGroupTitle(fields, 'Description');
+    addTitle(fields, 'Description');
     const wrap = document.createElement('div');
-    wrap.style.position = 'relative';
+    wrap.className = 'description-wrap';
     const box = document.createElement('div');
     box.className = 'description-box';
     box.textContent = item.description;
     const btn = document.createElement('button');
     btn.className = 'description-copy';
     btn.textContent = 'Copier';
-    btn.onclick = () => { copyText(item.description); btn.textContent = '✓'; setTimeout(() => btn.textContent = 'Copier', 1500); };
-    wrap.appendChild(box);
-    wrap.appendChild(btn);
+    btn.onclick = () => { copy(item.description); btn.textContent = '✓'; setTimeout(() => btn.textContent = 'Copier', 1500); };
+    wrap.appendChild(box); wrap.appendChild(btn);
     fields.appendChild(wrap);
   }
 
-  // Bouton tout copier
-  const allBtn = document.createElement('button');
-  allBtn.className = 'copy-all-btn';
-  allBtn.textContent = 'Tout copier';
-  allBtn.onclick = copyAll;
-  fields.appendChild(allBtn);
+  const all = document.createElement('button');
+  all.className = 'copy-all-btn';
+  all.textContent = 'Tout copier';
+  all.onclick = copyAll;
+  fields.appendChild(all);
 }
 
-function addGroupTitle(parent, text) {
+function addTitle(parent, text) {
   const el = document.createElement('div');
   el.className = 'field-group-title';
   el.textContent = text;
@@ -515,44 +321,41 @@ function addGroupTitle(parent, text) {
 }
 
 function addField(parent, label, value, cls) {
+  if (!value) return;
   const row = document.createElement('div');
   row.className = 'field-row';
+  const safeVal = value.replace(/'/g, '&#39;');
   row.innerHTML = `
     <span class="field-label">${label}</span>
-    <span class="field-value ${cls}">${value}</span>
-    <button class="copy-btn" onclick="copyFieldBtn(this, '${value.replace(/'/g,"\\'")}')">copier</button>
+    <span class="field-value ${cls}">${safeVal}</span>
+    <button class="copy-btn" onclick="copyBtn(this, this.previousElementSibling.textContent)">copier</button>
   `;
   parent.appendChild(row);
 }
 
-function copyFieldBtn(btn, val) {
-  copyText(val);
-  btn.textContent = '✓';
-  btn.classList.add('copied');
+function copyBtn(btn, val) {
+  copy(val);
+  btn.textContent = '✓'; btn.classList.add('copied');
   setTimeout(() => { btn.textContent = 'copier'; btn.classList.remove('copied'); }, 1500);
 }
 
 function copyAll() {
   const item = items[current];
-  const parts = [
-    item.titre, item.prix ? item.prix + ' €' : '',
-    item.marque, item.taille, item.etat,
-    item.matiere, item.couleur,
-    item.envoi_min ? item.envoi_min + ' €' : '',
-    item.hashtags, item.description
-  ].filter(Boolean);
-  copyText(parts.join('\n'));
+  const prix = parsePrix(item.prix);
+  const parts = [item.titre, prix, item.marque, item.taille, item.etat,
+                 item.matiere, item.couleur, item.envoi_min ? item.envoi_min + ' €' : '',
+                 item.hashtags, item.description].filter(Boolean);
+  copy(parts.join('\n'));
   showToast('Tout copié !');
 }
 
-function copyText(text) {
-  navigator.clipboard.writeText(text).then(() => showToast('Copié !'));
+function copy(text) {
+  navigator.clipboard.writeText(text).then(() => showToast());
 }
 
 function showToast(msg = 'Copié !') {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 1800);
 }
 
