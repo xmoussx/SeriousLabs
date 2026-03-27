@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinted Browser — oliv-sns</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f3ee;
+    --surface: #ffffff;
+    --border: #e2dfd8;
+    --text: #1a1916;
+    --muted: #8a8680;
+    --accent: #2d5a3d;
+    --accent-light: #e8f0ea;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* ── Upload screen ── */
+  #upload-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .upload-title {
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-family: var(--mono);
+  }
+
+  .upload-box {
+    width: 400px;
+    background: var(--surface);
+    border: 1.5px dashed var(--border);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .upload-box:hover { border-color: var(--accent); background: var(--accent-light); }
+
+  .upload-icon {
+    width: 48px; height: 48px;
+    background: var(--accent-light);
+    border-radius: 12px;
+    margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+
+  .upload-box h2 { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
+  .upload-box p { font-size: 13px; color: var(--muted); }
+
+  /* ── App layout ── */
+  #app { display: none; }
+
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+
+  .topbar-title {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    flex: 1;
+  }
+
+  .counter {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--bg);
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .nav-btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 14px;
+    cursor: pointer;
+    color: var(--text);
+    transition: all 0.15s;
+  }
+  .nav-btn:hover:not(:disabled) { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* ── Progress bar ── */
+  .progress-bar {
+    height: 2px;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  /* ── Main content ── */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* ── Photo gallery ── */
+  .gallery { display: flex; flex-direction: column; gap: 8px; }
+
+  .photo-main {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 12px;
+    background: var(--border);
+    cursor: pointer;
+  }
+
+  .photo-thumbs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  .photo-thumb {
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 6px;
+    background: var(--border);
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.15s;
+  }
+  .photo-thumb.active { border-color: var(--accent); }
+  .photo-thumb:hover { border-color: var(--muted); }
+
+  .vinted-link {
+    display: block;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    padding: 8px;
+    border: 1px solid var(--accent-light);
+    border-radius: 8px;
+    background: var(--accent-light);
+    transition: background 0.15s;
+  }
+  .vinted-link:hover { background: var(--accent); color: #fff; }
+
+  /* ── Fields ── */
+  .fields { display: flex; flex-direction: column; gap: 2px; }
+
+  .field-group-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 16px 0 6px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+
+  .field-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 4px;
+    background: var(--surface);
+    transition: border-color 0.15s;
+  }
+  .field-row:hover { border-color: var(--muted); }
+
+  .field-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    padding: 8px 10px;
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  .field-value {
+    font-size: 13px;
+    padding: 8px 10px;
+    flex: 1;
+    line-height: 1.4;
+    color: var(--text);
+    word-break: break-word;
+    user-select: all;
+  }
+
+  .field-value.prix {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .copy-btn {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 0 10px;
+    background: none;
+    border: none;
+    border-left: 1px solid var(--border);
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .copy-btn:hover { background: var(--accent); color: #fff; }
+  .copy-btn.copied { background: var(--accent); color: #fff; }
+
+  .description-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text);
+    white-space: pre-wrap;
+    word-break: break-word;
+    user-select: all;
+    position: relative;
+  }
+
+  .description-copy {
+    position: absolute;
+    top: 8px; right: 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 4px 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.15s;
+  }
+  .description-copy:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .copy-all-btn {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 12px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .copy-all-btn:hover { opacity: 0.85; }
+
+  /* ── Keyboard hint ── */
+  .kbd-hint {
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    padding: 1rem;
+  }
+  kbd {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+  }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(60px);
+    background: var(--text);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: transform 0.25s ease;
+    pointer-events: none;
+    z-index: 999;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 640px) {
+    .main { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Upload screen -->
+<div id="upload-screen">
+  <div class="upload-title">Vinted Browser</div>
+  <div class="upload-box" onclick="document.getElementById('csv-input').click()">
+    <div class="upload-icon">📂</div>
+    <h2>Importer le CSV</h2>
+    <p>Clique pour choisir ton fichier vinted_oliv-sns.csv</p>
+  </div>
+  <input type="file" id="csv-input" accept=".csv" style="display:none">
+</div>
+
+<!-- App -->
+<div id="app">
+  <div class="topbar">
+    <div class="topbar-title">VINTED BROWSER — oliv-sns</div>
+    <div class="counter" id="counter">1 / 361</div>
+    <button class="nav-btn" id="btn-prev" onclick="navigate(-1)">← Préc</button>
+    <button class="nav-btn" id="btn-next" onclick="navigate(1)">Suiv →</button>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+  <div class="main">
+    <!-- Galerie -->
+    <div class="gallery">
+      <img id="photo-main" class="photo-main" src="" alt="" onclick="openPhoto()">
+      <div class="photo-thumbs" id="photo-thumbs"></div>
+      <a id="vinted-link" class="vinted-link" href="#" target="_blank">Voir sur Vinted ↗</a>
+    </div>
+
+    <!-- Champs -->
+    <div class="fields" id="fields"></div>
+  </div>
+
+  <div class="kbd-hint">
+    <kbd>←</kbd> <kbd>→</kbd> pour naviguer entre les fiches
+  </div>
+</div>
+
+<div class="toast" id="toast">Copié !</div>
+
+<script>
+let items = [], current = 0;
+
+document.getElementById('csv-input').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    items = parseCSV(ev.target.result);
+    if (items.length) {
+      current = 0;
+      document.getElementById('upload-screen').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      render();
+    }
+  };
+  reader.readAsText(file, 'utf-8');
+});
+
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  const headers = lines[0].replace(/^\uFEFF/, '').split(',').map(h => h.trim().replace(/^"|"$/g,''));
+  return lines.slice(1).map(line => {
+    const vals = [];
+    let cur = '', inQ = false;
+    for (let c of line) {
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { vals.push(cur); cur = ''; }
+      else cur += c;
+    }
+    vals.push(cur);
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = (vals[i] || '').trim());
+    return obj;
+  }).filter(r => r.id || r.titre);
+}
+
+function render() {
+  const item = items[current];
+  const total = items.length;
+
+  document.getElementById('counter').textContent = `${current + 1} / ${total}`;
+  document.getElementById('progress').style.width = `${((current + 1) / total) * 100}%`;
+  document.getElementById('btn-prev').disabled = current === 0;
+  document.getElementById('btn-next').disabled = current === total - 1;
+
+  // Photos
+  const photos = [];
+  for (let j = 1; j <= 8; j++) {
+    const p = item[`photo_${j}`] || (j === 1 ? item['photo'] : '');
+    if (p) photos.push(p);
+  }
+
+  const mainImg = document.getElementById('photo-main');
+  if (photos.length > 0) {
+    mainImg.src = photos[0];
+    mainImg.style.display = 'block';
+  } else {
+    mainImg.src = '';
+    mainImg.style.display = 'none';
+  }
+
+  const thumbs = document.getElementById('photo-thumbs');
+  thumbs.innerHTML = '';
+  photos.forEach((p, i) => {
+    const img = document.createElement('img');
+    img.src = p;
+    img.className = 'photo-thumb' + (i === 0 ? ' active' : '');
+    img.onclick = () => {
+      mainImg.src = p;
+      thumbs.querySelectorAll('.photo-thumb').forEach(t => t.classList.remove('active'));
+      img.classList.add('active');
+    };
+    thumbs.appendChild(img);
+  });
+
+  // Lien Vinted
+  const link = document.getElementById('vinted-link');
+  link.href = item.url || '#';
+
+  // Champs
+  const fields = document.getElementById('fields');
+  fields.innerHTML = '';
+
+  const infos = [
+    { label: 'Titre',   key: 'titre',   cls: '' },
+    { label: 'Prix',    key: 'prix',    cls: 'prix', suffix: ' €' },
+    { label: 'Marque',  key: 'marque',  cls: '' },
+    { label: 'Taille',  key: 'taille',  cls: '' },
+    { label: 'État',    key: 'etat',    cls: '' },
+    { label: 'Matière', key: 'matiere', cls: '' },
+    { label: 'Couleur', key: 'couleur', cls: '' },
+    { label: 'Envoi',   key: 'envoi_min', cls: '', suffix: ' €' },
+    { label: 'Tags',    key: 'hashtags', cls: '' },
+  ];
+
+  addGroupTitle(fields, 'Informations');
+  infos.forEach(({ label, key, cls, suffix }) => {
+    let val = item[key] || '';
+    if (!val) return;
+    if (suffix && val) val = val + suffix;
+    addField(fields, label, val, cls);
+  });
+
+  if (item.description) {
+    addGroupTitle(fields, 'Description');
+    const wrap = document.createElement('div');
+    wrap.style.position = 'relative';
+    const box = document.createElement('div');
+    box.className = 'description-box';
+    box.textContent = item.description;
+    const btn = document.createElement('button');
+    btn.className = 'description-copy';
+    btn.textContent = 'Copier';
+    btn.onclick = () => { copyText(item.description); btn.textContent = '✓'; setTimeout(() => btn.textContent = 'Copier', 1500); };
+    wrap.appendChild(box);
+    wrap.appendChild(btn);
+    fields.appendChild(wrap);
+  }
+
+  // Bouton tout copier
+  const allBtn = document.createElement('button');
+  allBtn.className = 'copy-all-btn';
+  allBtn.textContent = 'Tout copier';
+  allBtn.onclick = copyAll;
+  fields.appendChild(allBtn);
+}
+
+function addGroupTitle(parent, text) {
+  const el = document.createElement('div');
+  el.className = 'field-group-title';
+  el.textContent = text;
+  parent.appendChild(el);
+}
+
+function addField(parent, label, value, cls) {
+  const row = document.createElement('div');
+  row.className = 'field-row';
+  row.innerHTML = `
+    <span class="field-label">${label}</span>
+    <span class="field-value ${cls}">${value}</span>
+    <button class="copy-btn" onclick="copyFieldBtn(this, '${value.replace(/'/g,"\\'")}')">copier</button>
+  `;
+  parent.appendChild(row);
+}
+
+function copyFieldBtn(btn, val) {
+  copyText(val);
+  btn.textContent = '✓';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = 'copier'; btn.classList.remove('copied'); }, 1500);
+}
+
+function copyAll() {
+  const item = items[current];
+  const parts = [
+    item.titre, item.prix ? item.prix + ' €' : '',
+    item.marque, item.taille, item.etat,
+    item.matiere, item.couleur,
+    item.envoi_min ? item.envoi_min + ' €' : '',
+    item.hashtags, item.description
+  ].filter(Boolean);
+  copyText(parts.join('\n'));
+  showToast('Tout copié !');
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => showToast('Copié !'));
+}
+
+function showToast(msg = 'Copié !') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+function navigate(dir) {
+  current = Math.max(0, Math.min(items.length - 1, current + dir));
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openPhoto() {
+  const src = document.getElementById('photo-main').src;
+  if (src) window.open(src, '_blank');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') navigate(1);
+  if (e.key === 'ArrowLeft') navigate(-1);
+});
+</script>
+</body>
+</html>
