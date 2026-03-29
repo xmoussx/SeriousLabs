@@ -28,133 +28,157 @@
   .upload-box h2 { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
   .upload-box p { font-size: 13px; color: var(--muted); }
 
-  #app { display: none; }
+  #app { display: none; height: 100vh; flex-direction: column; }
 
   .topbar {
-    position: sticky; top: 0; z-index: 100; background: var(--surface);
-    border-bottom: 1px solid var(--border); padding: 10px 20px;
-    display: flex; align-items: center; gap: 12px;
+    background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 20px;
+    display: flex; align-items: center; gap: 12px; flex-shrink: 0;
   }
   .topbar-title { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; flex: 1; }
   .counter { font-family: var(--mono); font-size: 12px; color: var(--muted); background: var(--bg); padding: 4px 10px; border-radius: 20px; }
+  .desc-count { font-family: var(--mono); font-size: 11px; color: var(--accent); background: var(--accent-light); padding: 4px 10px; border-radius: 20px; }
   .nav-btn {
     font-family: var(--mono); font-size: 12px; background: none; border: 1px solid var(--border);
     border-radius: 8px; padding: 5px 12px; cursor: pointer; color: var(--text); transition: all 0.15s;
   }
   .nav-btn:hover:not(:disabled) { background: var(--accent); color: #fff; border-color: var(--accent); }
   .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .export-btn {
+    font-family: var(--mono); font-size: 11px; background: var(--accent); color: #fff;
+    border: none; border-radius: 8px; padding: 5px 12px; cursor: pointer;
+  }
+  .export-btn:hover { opacity: 0.85; }
 
-  .progress-bar { height: 2px; background: var(--border); }
+  .progress-bar { height: 2px; background: var(--border); flex-shrink: 0; }
   .progress-fill { height: 100%; background: var(--accent); transition: width 0.3s ease; }
 
-  .main {
-    max-width: 1100px; margin: 0 auto; padding: 1.5rem;
-    display: grid; grid-template-columns: 1fr 380px; gap: 1.5rem; align-items: start;
-  }
-
-  /* ── Galerie ── */
-  .gallery { display: flex; flex-direction: column; gap: 8px; }
-
-  .photo-grid {
+  /* Layout principal : panneau gauche (Vinted) + panneau droit (infos) */
+  .workspace {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    grid-template-columns: 1fr 420px;
+    flex: 1;
+    overflow: hidden;
+    height: calc(100vh - 44px);
   }
 
+  /* Panneau Vinted */
+  .vinted-panel {
+    display: flex; flex-direction: column;
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .vinted-toolbar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 12px; background: var(--bg); border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .vinted-url {
+    flex: 1; font-family: var(--mono); font-size: 11px; color: var(--muted);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .open-tab-btn {
+    font-family: var(--mono); font-size: 11px; padding: 4px 10px;
+    background: none; border: 1px solid var(--border); border-radius: 6px;
+    cursor: pointer; color: var(--muted); white-space: nowrap; transition: all 0.15s;
+    text-decoration: none; display: inline-block;
+  }
+  .open-tab-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .iframe-wrap { flex: 1; position: relative; overflow: hidden; }
+  #vinted-iframe {
+    width: 100%; height: 100%; border: none;
+    background: var(--bg);
+  }
+  .iframe-blocked {
+    display: none; position: absolute; inset: 0;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 1rem; background: var(--bg); text-align: center; padding: 2rem;
+  }
+  .iframe-blocked.visible { display: flex; }
+  .iframe-blocked p { font-size: 14px; color: var(--muted); max-width: 300px; line-height: 1.6; }
+  .iframe-blocked a {
+    font-family: var(--mono); font-size: 12px; padding: 10px 20px;
+    background: var(--accent); color: #fff; border-radius: 8px; text-decoration: none;
+  }
+
+  /* Panneau infos */
+  .info-panel { overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 4px; }
+
+  /* Photos miniatures */
+  .photo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin-bottom: 8px; }
   .photo-thumb {
-    aspect-ratio: 1; object-fit: cover; border-radius: 8px;
-    background: var(--border); cursor: pointer;
-    border: 2px solid transparent; transition: border-color 0.15s;
-    width: 100%;
+    aspect-ratio: 1; object-fit: cover; border-radius: 6px; background: var(--border);
+    cursor: pointer; border: 2px solid transparent; transition: border-color 0.15s; width: 100%;
   }
-  .photo-thumb:hover { border-color: var(--muted); }
   .photo-thumb.active { border-color: var(--accent); }
-
-  .photo-main-wrap {
-    width: 100%; aspect-ratio: 4/3; overflow: hidden;
-    border-radius: 12px; background: var(--border); cursor: zoom-in;
-  }
-  .photo-main { width: 100%; height: 100%; object-fit: contain; }
-
-  .vinted-link {
-    display: block; text-align: center; font-family: var(--mono); font-size: 11px;
-    color: var(--accent); text-decoration: none; padding: 7px;
-    border: 1px solid var(--accent-light); border-radius: 8px; background: var(--accent-light);
-    transition: background 0.15s;
-  }
-  .vinted-link:hover { background: var(--accent); color: #fff; }
-
-  /* ── Champs ── */
-  .fields { display: flex; flex-direction: column; gap: 2px; }
+  .photo-thumb:hover { border-color: var(--muted); }
 
   .field-group-title {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--muted);
-    padding: 12px 0 6px; border-bottom: 1px solid var(--border); margin-bottom: 4px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); padding: 10px 0 5px; border-bottom: 1px solid var(--border); margin-bottom: 3px;
   }
-
   .field-row {
-    display: flex; align-items: stretch; border-radius: 8px;
-    overflow: hidden; border: 1px solid var(--border); margin-bottom: 3px;
-    background: var(--surface); transition: border-color 0.15s;
+    display: flex; align-items: stretch; border-radius: 8px; overflow: hidden;
+    border: 1px solid var(--border); margin-bottom: 3px; background: var(--surface);
   }
   .field-row:hover { border-color: var(--muted); }
-
   .field-label {
-    font-family: var(--mono); font-size: 11px; color: var(--muted);
-    padding: 7px 10px; background: var(--bg); border-right: 1px solid var(--border);
-    min-width: 75px; display: flex; align-items: center; white-space: nowrap;
+    font-family: var(--mono); font-size: 11px; color: var(--muted); padding: 6px 8px;
+    background: var(--bg); border-right: 1px solid var(--border); min-width: 70px;
+    display: flex; align-items: center; white-space: nowrap;
   }
-  .field-value {
-    font-size: 13px; padding: 7px 10px; flex: 1; line-height: 1.4;
-    color: var(--text); word-break: break-word; user-select: all;
-  }
-  .field-value.prix { font-family: var(--mono); font-size: 15px; font-weight: 500; color: var(--accent); }
-
+  .field-value { font-size: 13px; padding: 6px 8px; flex: 1; color: var(--text); word-break: break-word; user-select: all; }
+  .field-value.prix { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--accent); }
   .copy-btn {
-    font-family: var(--mono); font-size: 10px; padding: 0 10px;
-    background: none; border: none; border-left: 1px solid var(--border);
-    cursor: pointer; color: var(--muted); transition: all 0.15s; white-space: nowrap;
+    font-family: var(--mono); font-size: 10px; padding: 0 8px; background: none;
+    border: none; border-left: 1px solid var(--border); cursor: pointer; color: var(--muted); transition: all 0.15s;
   }
-  .copy-btn:hover { background: var(--accent); color: #fff; }
-  .copy-btn.copied { background: var(--accent); color: #fff; }
+  .copy-btn:hover, .copy-btn.copied { background: var(--accent); color: #fff; }
 
-  .description-wrap { position: relative; }
-  .description-box {
+  .desc-header {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); padding: 10px 0 5px; border-bottom: 1px solid var(--border); margin-bottom: 6px;
+  }
+  .desc-saved-badge {
+    font-size: 10px; color: var(--accent); background: var(--accent-light);
+    padding: 2px 8px; border-radius: 10px; display: none;
+  }
+  .desc-textarea {
+    width: 100%; min-height: 100px; padding: 8px 10px;
+    font-family: var(--sans); font-size: 13px; line-height: 1.6; color: var(--text);
     background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
-    padding: 10px 10px 10px 12px; font-size: 13px; line-height: 1.6;
-    color: var(--text); white-space: pre-wrap; word-break: break-word;
-    user-select: all; max-height: 180px; overflow-y: auto;
+    resize: vertical; outline: none; transition: border-color 0.15s;
   }
-  .description-copy {
-    position: absolute; top: 6px; right: 6px; font-family: var(--mono); font-size: 10px;
-    padding: 3px 8px; background: var(--bg); border: 1px solid var(--border);
-    border-radius: 6px; cursor: pointer; color: var(--muted); transition: all 0.15s;
+  .desc-textarea:focus { border-color: var(--accent); }
+  .desc-textarea::placeholder { color: var(--muted); font-size: 12px; }
+  .desc-actions { display: flex; gap: 6px; margin-top: 5px; }
+  .desc-save-btn {
+    font-family: var(--mono); font-size: 11px; padding: 6px 12px;
+    background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; flex: 1;
   }
-  .description-copy:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .desc-copy-btn {
+    font-family: var(--mono); font-size: 11px; padding: 6px 12px;
+    background: none; color: var(--muted); border: 1px solid var(--border); border-radius: 8px; cursor: pointer;
+  }
+  .desc-copy-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
   .copy-all-btn {
-    margin-top: 10px; width: 100%; padding: 11px; background: var(--accent);
+    margin-top: 8px; width: 100%; padding: 10px; background: var(--accent);
     color: #fff; border: none; border-radius: 10px; font-family: var(--mono);
-    font-size: 12px; letter-spacing: 0.08em; cursor: pointer; transition: opacity 0.15s;
+    font-size: 12px; cursor: pointer;
   }
   .copy-all-btn:hover { opacity: 0.85; }
 
-  .kbd-hint { text-align: center; font-family: var(--mono); font-size: 11px; color: var(--muted); padding: 12px; }
-  kbd { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 2px 6px; font-family: var(--mono); font-size: 10px; }
+  .kbd-hint { text-align: center; font-family: var(--mono); font-size: 10px; color: var(--muted); padding: 8px; flex-shrink: 0; }
+  kbd { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 1px 5px; font-family: var(--mono); font-size: 9px; }
 
   .toast {
-    position: fixed; bottom: 20px; left: 50%;
-    transform: translateX(-50%) translateY(60px);
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(60px);
     background: var(--text); color: #fff; font-family: var(--mono); font-size: 12px;
-    padding: 8px 18px; border-radius: 20px; transition: transform 0.25s ease;
-    pointer-events: none; z-index: 999;
+    padding: 8px 18px; border-radius: 20px; transition: transform 0.25s ease; pointer-events: none; z-index: 999;
   }
   .toast.show { transform: translateX(-50%) translateY(0); }
-
-  @media (max-width: 700px) {
-    .main { grid-template-columns: 1fr; }
-  }
 </style>
 </head>
 <body>
@@ -172,25 +196,39 @@
   <div class="topbar">
     <div class="topbar-title">VINTED BROWSER — oliv-sns</div>
     <div class="counter" id="counter">1 / —</div>
+    <div class="desc-count" id="desc-count">0 descriptions</div>
     <button class="nav-btn" id="btn-prev" onclick="navigate(-1)">← Préc</button>
     <button class="nav-btn" id="btn-next" onclick="navigate(1)">Suiv →</button>
+    <button class="export-btn" onclick="exportCSV()">📥 Exporter CSV</button>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
 
-  <div class="main">
-    <div class="gallery">
-      <div class="photo-main-wrap" onclick="openPhoto()">
-        <img id="photo-main" class="photo-main" src="" alt="">
+  <div class="workspace">
+
+    <!-- Panneau Vinted -->
+    <div class="vinted-panel">
+      <div class="vinted-toolbar">
+        <span class="vinted-url" id="vinted-url"></span>
+        <a class="open-tab-btn" id="open-tab" href="#" target="_blank">Ouvrir dans un onglet ↗</a>
       </div>
-      <div class="photo-grid" id="photo-grid"></div>
-      <a id="vinted-link" class="vinted-link" href="#" target="_blank">Voir sur Vinted ↗</a>
+      <div class="iframe-wrap">
+        <iframe id="vinted-iframe" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+        <div class="iframe-blocked" id="iframe-blocked">
+          <p>Vinted bloque l'affichage en cadre intégré.<br>Ouvre l'annonce dans un onglet séparé.</p>
+          <a id="blocked-link" href="#" target="_blank">Ouvrir l'annonce ↗</a>
+        </div>
+      </div>
     </div>
-    <div class="fields" id="fields"></div>
+
+    <!-- Panneau infos -->
+    <div class="info-panel" id="info-panel">
+    </div>
+
   </div>
-  <div class="kbd-hint"><kbd>←</kbd> <kbd>→</kbd> pour naviguer</div>
+  <div class="kbd-hint"><kbd>←</kbd> <kbd>→</kbd> naviguer · <kbd>S</kbd> sauvegarder description · <kbd>Ctrl+S</kbd> dans la zone de texte</div>
 </div>
 
-<div class="toast" id="toast">Copié !</div>
+<div class="toast" id="toast"></div>
 
 <script>
 let items = [], current = 0;
@@ -204,7 +242,8 @@ document.getElementById('csv-input').addEventListener('change', function(e) {
     if (items.length) {
       current = 0;
       document.getElementById('upload-screen').style.display = 'none';
-      document.getElementById('app').style.display = 'block';
+      const app = document.getElementById('app');
+      app.style.display = 'flex';
       render();
     }
   };
@@ -214,6 +253,7 @@ document.getElementById('csv-input').addEventListener('change', function(e) {
 function parseCSV(text) {
   const lines = text.trim().split('\n');
   const headers = lines[0].replace(/^\uFEFF/, '').split(',').map(h => h.trim().replace(/^"|"$/g,''));
+  if (!headers.includes('description')) headers.push('description');
   return lines.slice(1).map(line => {
     const vals = [];
     let cur = '', inQ = false;
@@ -231,13 +271,47 @@ function parseCSV(text) {
 
 function parsePrix(val) {
   if (!val) return '';
-  // Si c'est un dict Python style {'amount': '20.0', 'currency_code': 'EUR'}
-  const match = val.match(/['"]amount['"]\s*:\s*['"]?([\d.]+)/);
-  if (match) return parseFloat(match[1]).toFixed(2) + ' €';
-  // Si c'est déjà un nombre
-  const num = parseFloat(val);
-  if (!isNaN(num)) return num.toFixed(2) + ' €';
-  return val;
+  const m = val.match(/['"]amount['"]\s*:\s*['"]?([\d.]+)/);
+  if (m) return parseFloat(m[1]).toFixed(2) + ' €';
+  const n = parseFloat(val);
+  return !isNaN(n) ? n.toFixed(2) + ' €' : val;
+}
+
+function updateDescCount() {
+  const n = items.filter(i => i.description && i.description.trim()).length;
+  document.getElementById('desc-count').textContent = `${n} / ${items.length} descriptions`;
+}
+
+function loadIframe(url) {
+  const iframe = document.getElementById('vinted-iframe');
+  const blocked = document.getElementById('iframe-blocked');
+  blocked.classList.remove('visible');
+  iframe.src = url;
+
+  // Détecter si l'iframe est bloqué
+  iframe.onload = () => {
+    try {
+      // Si on peut accéder au document, c'est ok
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (!doc || doc.title === '' || doc.body.innerHTML === '') throw new Error('blocked');
+    } catch(e) {
+      blocked.classList.add('visible');
+      document.getElementById('blocked-link').href = url;
+    }
+  };
+  // Timeout fallback
+  setTimeout(() => {
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (!doc || !doc.body || doc.body.innerHTML.length < 100) {
+        blocked.classList.add('visible');
+        document.getElementById('blocked-link').href = url;
+      }
+    } catch(e) {
+      blocked.classList.add('visible');
+      document.getElementById('blocked-link').href = url;
+    }
+  }, 3000);
 }
 
 function render() {
@@ -248,131 +322,161 @@ function render() {
   document.getElementById('progress').style.width = `${((current + 1) / total) * 100}%`;
   document.getElementById('btn-prev').disabled = current === 0;
   document.getElementById('btn-next').disabled = current === total - 1;
+  updateDescCount();
 
-  // Photos
+  // Iframe Vinted
+  const url = item.url || '#';
+  document.getElementById('vinted-url').textContent = url;
+  document.getElementById('open-tab').href = url;
+  loadIframe(url);
+
+  // Panneau infos
+  const panel = document.getElementById('info-panel');
+  panel.innerHTML = '';
+
+  // Photos miniatures
   const photos = [];
   for (let j = 1; j <= 8; j++) {
     const p = item[`photo_${j}`] || (j === 1 ? item['photo'] : '');
     if (p) photos.push(p);
   }
-
-  const mainImg = document.getElementById('photo-main');
-  mainImg.src = photos[0] || '';
-
-  const grid = document.getElementById('photo-grid');
-  grid.innerHTML = '';
-  photos.forEach((p, i) => {
-    const img = document.createElement('img');
-    img.src = p; img.className = 'photo-thumb' + (i === 0 ? ' active' : '');
-    img.onclick = () => {
-      mainImg.src = p;
-      grid.querySelectorAll('.photo-thumb').forEach(t => t.classList.remove('active'));
-      img.classList.add('active');
-    };
-    grid.appendChild(img);
-  });
-
-  document.getElementById('vinted-link').href = item.url || '#';
-
-  // Champs
-  const fields = document.getElementById('fields');
-  fields.innerHTML = '';
-
-  const prix = parsePrix(item.prix);
-
-  addTitle(fields, 'Informations');
-  addField(fields, 'Titre',   item.titre,   '');
-  addField(fields, 'Prix',    prix,          'prix');
-  addField(fields, 'Marque',  item.marque,   '');
-  addField(fields, 'Taille',  item.taille,   '');
-  addField(fields, 'État',    item.etat,     '');
-  addField(fields, 'Matière', item.matiere,  '');
-  addField(fields, 'Couleur', item.couleur,  '');
-  addField(fields, 'Envoi',   item.envoi_min ? item.envoi_min + ' €' : '', '');
-  addField(fields, 'Tags',    item.hashtags,  '');
-
-  if (item.description) {
-    addTitle(fields, 'Description');
-    const wrap = document.createElement('div');
-    wrap.className = 'description-wrap';
-    const box = document.createElement('div');
-    box.className = 'description-box';
-    box.textContent = item.description;
-    const btn = document.createElement('button');
-    btn.className = 'description-copy';
-    btn.textContent = 'Copier';
-    btn.onclick = () => { copy(item.description); btn.textContent = '✓'; setTimeout(() => btn.textContent = 'Copier', 1500); };
-    wrap.appendChild(box); wrap.appendChild(btn);
-    fields.appendChild(wrap);
+  if (photos.length) {
+    const grid = document.createElement('div');
+    grid.className = 'photo-grid';
+    photos.forEach((p, i) => {
+      const img = document.createElement('img');
+      img.src = p; img.className = 'photo-thumb' + (i === 0 ? ' active' : '');
+      img.onclick = () => {
+        document.getElementById('vinted-iframe').src = p;
+        grid.querySelectorAll('.photo-thumb').forEach(t => t.classList.remove('active'));
+        img.classList.add('active');
+      };
+      grid.appendChild(img);
+    });
+    panel.appendChild(grid);
   }
 
+  addTitle(panel, 'Informations');
+  addField(panel, 'Titre',   item.titre,           '');
+  addField(panel, 'Prix',    parsePrix(item.prix),  'prix');
+  addField(panel, 'Marque',  item.marque,           '');
+  addField(panel, 'Taille',  item.taille,           '');
+  addField(panel, 'État',    item.etat,             '');
+  addField(panel, 'Favoris', item.favoris,          '');
+  addField(panel, 'Vues',    item.vues,             '');
+
+  // Description éditable
+  const descHeader = document.createElement('div');
+  descHeader.className = 'desc-header';
+  const badge = document.createElement('span');
+  badge.className = 'desc-saved-badge'; badge.id = 'desc-badge';
+  badge.textContent = '✓ Sauvegardé';
+  if (item.description && item.description.trim()) badge.style.display = 'inline';
+  descHeader.innerHTML = '<span>Description</span>';
+  descHeader.appendChild(badge);
+  panel.appendChild(descHeader);
+
+  const textarea = document.createElement('textarea');
+  textarea.className = 'desc-textarea'; textarea.id = 'desc-textarea';
+  textarea.placeholder = 'Colle ici la description depuis Vinted...';
+  textarea.value = item.description || '';
+  panel.appendChild(textarea);
+
+  const descActions = document.createElement('div');
+  descActions.className = 'desc-actions';
+  const saveBtn = document.createElement('button');
+  saveBtn.className = 'desc-save-btn'; saveBtn.textContent = 'Sauvegarder';
+  saveBtn.onclick = saveDescription;
+  const copyDescBtn = document.createElement('button');
+  copyDescBtn.className = 'desc-copy-btn'; copyDescBtn.textContent = 'Copier';
+  copyDescBtn.onclick = () => copy(textarea.value);
+  descActions.appendChild(saveBtn); descActions.appendChild(copyDescBtn);
+  panel.appendChild(descActions);
+
   const all = document.createElement('button');
-  all.className = 'copy-all-btn';
-  all.textContent = 'Tout copier';
+  all.className = 'copy-all-btn'; all.textContent = 'Tout copier';
   all.onclick = copyAll;
-  fields.appendChild(all);
+  panel.appendChild(all);
+}
+
+function saveDescription() {
+  const ta = document.getElementById('desc-textarea');
+  if (ta) {
+    items[current].description = ta.value;
+    const badge = document.getElementById('desc-badge');
+    if (badge) badge.style.display = 'inline';
+    updateDescCount();
+    showToast('Description sauvegardée !');
+  }
 }
 
 function addTitle(parent, text) {
-  const el = document.createElement('div');
-  el.className = 'field-group-title';
-  el.textContent = text;
-  parent.appendChild(el);
+  const el = document.createElement('div'); el.className = 'field-group-title';
+  el.textContent = text; parent.appendChild(el);
 }
 
 function addField(parent, label, value, cls) {
   if (!value) return;
-  const row = document.createElement('div');
-  row.className = 'field-row';
-  const safeVal = value.replace(/'/g, '&#39;');
-  row.innerHTML = `
-    <span class="field-label">${label}</span>
-    <span class="field-value ${cls}">${safeVal}</span>
-    <button class="copy-btn" onclick="copyBtn(this, this.previousElementSibling.textContent)">copier</button>
-  `;
+  const row = document.createElement('div'); row.className = 'field-row';
+  row.innerHTML = `<span class="field-label">${label}</span><span class="field-value ${cls}">${value}</span><button class="copy-btn" onclick="copyBtn(this,this.previousElementSibling.textContent)">copier</button>`;
   parent.appendChild(row);
 }
 
 function copyBtn(btn, val) {
-  copy(val);
-  btn.textContent = '✓'; btn.classList.add('copied');
+  copy(val); btn.textContent = '✓'; btn.classList.add('copied');
   setTimeout(() => { btn.textContent = 'copier'; btn.classList.remove('copied'); }, 1500);
 }
 
 function copyAll() {
   const item = items[current];
-  const prix = parsePrix(item.prix);
-  const parts = [item.titre, prix, item.marque, item.taille, item.etat,
-                 item.matiere, item.couleur, item.envoi_min ? item.envoi_min + ' €' : '',
-                 item.hashtags, item.description].filter(Boolean);
-  copy(parts.join('\n'));
-  showToast('Tout copié !');
+  const parts = [item.titre, parsePrix(item.prix), item.marque, item.taille, item.etat, item.description].filter(Boolean);
+  copy(parts.join('\n')); showToast('Tout copié !');
 }
 
-function copy(text) {
-  navigator.clipboard.writeText(text).then(() => showToast());
-}
+function copy(text) { navigator.clipboard.writeText(text).then(() => showToast('Copié !')); }
 
-function showToast(msg = 'Copié !') {
+function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 1800);
 }
 
 function navigate(dir) {
+  const ta = document.getElementById('desc-textarea');
+  if (ta) items[current].description = ta.value;
   current = Math.max(0, Math.min(items.length - 1, current + dir));
   render();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function openPhoto() {
-  const src = document.getElementById('photo-main').src;
-  if (src) window.open(src, '_blank');
+function exportCSV() {
+  const ta = document.getElementById('desc-textarea');
+  if (ta) items[current].description = ta.value;
+  const headers = Object.keys(items[0]);
+  const rows = [headers.join(',')];
+  items.forEach(item => {
+    const vals = headers.map(h => {
+      const v = (item[h] || '').toString().replace(/"/g, '""');
+      return v.includes(',') || v.includes('\n') || v.includes('"') ? `"${v}"` : v;
+    });
+    rows.push(vals.join(','));
+  });
+  const blob = new Blob(['\uFEFF' + rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'vinted_oliv-sns_complet.csv';
+  a.click();
+  showToast('CSV exporté !');
 }
 
 document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'TEXTAREA') {
+    if ((e.key === 's' || e.key === 'S') && (e.ctrlKey || e.metaKey)) { e.preventDefault(); saveDescription(); }
+    if (e.key === 'Escape') e.target.blur();
+    return;
+  }
   if (e.key === 'ArrowRight') navigate(1);
   if (e.key === 'ArrowLeft') navigate(-1);
+  if (e.key === 's' || e.key === 'S') saveDescription();
 });
 </script>
 </body>
