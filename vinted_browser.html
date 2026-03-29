@@ -43,11 +43,70 @@
   }
   .nav-btn:hover:not(:disabled) { background: var(--accent); color: #fff; border-color: var(--accent); }
   .nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .jump-wrap { display: flex; align-items: center; gap: 4px; }
+  .jump-label { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .jump-input {
+    font-family: var(--mono); font-size: 12px; width: 55px; padding: 4px 6px;
+    border: 1px solid var(--border); border-radius: 6px; text-align: center;
+    background: var(--bg); color: var(--text); outline: none;
+  }
+  .jump-input:focus { border-color: var(--accent); }
+  .jump-btn {
+    font-family: var(--mono); font-size: 11px; padding: 4px 8px;
+    background: none; border: 1px solid var(--border); border-radius: 6px;
+    cursor: pointer; color: var(--muted); transition: all 0.15s;
+  }
+  .jump-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
   .export-btn {
     font-family: var(--mono); font-size: 11px; background: var(--accent); color: #fff;
     border: none; border-radius: 8px; padding: 5px 12px; cursor: pointer;
   }
   .export-btn:hover { opacity: 0.85; }
+  .list-btn {
+    font-family: var(--mono); font-size: 11px; background: none; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 8px; padding: 5px 12px; cursor: pointer; transition: all 0.15s;
+  }
+  .list-btn:hover, .list-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
+
+  /* Panneau liste */
+  .list-panel {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4); z-index: 200; align-items: flex-start; justify-content: center;
+    padding-top: 60px;
+  }
+  .list-panel.open { display: flex; }
+  .list-inner {
+    background: var(--surface); border-radius: 16px; width: 560px; max-height: 70vh;
+    display: flex; flex-direction: column; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .list-header {
+    padding: 12px 16px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .list-search {
+    flex: 1; font-family: var(--sans); font-size: 14px; padding: 6px 10px;
+    border: 1px solid var(--border); border-radius: 8px; outline: none; background: var(--bg);
+  }
+  .list-search:focus { border-color: var(--accent); }
+  .list-close {
+    font-family: var(--mono); font-size: 12px; padding: 5px 10px;
+    background: none; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--muted);
+  }
+  .list-close:hover { background: var(--bg); }
+  .list-items { overflow-y: auto; flex: 1; }
+  .list-item {
+    display: flex; align-items: center; gap: 10px; padding: 8px 16px;
+    cursor: pointer; border-bottom: 1px solid var(--border); transition: background 0.1s;
+  }
+  .list-item:hover { background: var(--accent-light); }
+  .list-item.current { background: var(--accent-light); border-left: 3px solid var(--accent); }
+  .list-item-num { font-family: var(--mono); font-size: 11px; color: var(--muted); min-width: 30px; }
+  .list-item-thumb { width: 36px; height: 36px; object-fit: cover; border-radius: 6px; background: var(--border); flex-shrink: 0; }
+  .list-item-info { flex: 1; min-width: 0; }
+  .list-item-title { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .list-item-meta { font-size: 11px; color: var(--muted); font-family: var(--mono); }
+  .list-item-desc { font-size: 10px; color: var(--accent); background: var(--accent-light); padding: 1px 6px; border-radius: 8px; white-space: nowrap; }
 
   .progress-bar { height: 2px; background: var(--border); flex-shrink: 0; }
   .progress-fill { height: 100%; background: var(--accent); transition: width 0.3s ease; }
@@ -199,9 +258,26 @@
     <div class="desc-count" id="desc-count">0 descriptions</div>
     <button class="nav-btn" id="btn-prev" onclick="navigate(-1)">← Préc</button>
     <button class="nav-btn" id="btn-next" onclick="navigate(1)">Suiv →</button>
+    <div class="jump-wrap">
+      <span class="jump-label">aller à</span>
+      <input class="jump-input" type="number" id="jump-input" min="1" placeholder="n°" onkeydown="if(event.key==='Enter') jumpTo()">
+      <button class="jump-btn" onclick="jumpTo()">→</button>
+    </div>
     <button class="export-btn" onclick="exportCSV()">📥 Exporter CSV</button>
+    <button class="list-btn" id="list-btn" onclick="toggleList()">☰ Liste</button>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+  <!-- Panneau liste -->
+  <div class="list-panel" id="list-panel" onclick="if(event.target===this) toggleList()">
+    <div class="list-inner">
+      <div class="list-header">
+        <input class="list-search" type="text" id="list-search" placeholder="Rechercher par titre..." oninput="filterList()">
+        <button class="list-close" onclick="toggleList()">✕ Fermer</button>
+      </div>
+      <div class="list-items" id="list-items"></div>
+    </div>
+  </div>
 
   <div class="workspace">
 
@@ -446,6 +522,70 @@ function navigate(dir) {
   if (ta) items[current].description = ta.value;
   current = Math.max(0, Math.min(items.length - 1, current + dir));
   render();
+}
+
+function jumpTo() {
+  const ta = document.getElementById('desc-textarea');
+  if (ta) items[current].description = ta.value;
+  const input = document.getElementById('jump-input');
+  const n = parseInt(input.value);
+  if (!isNaN(n) && n >= 1 && n <= items.length) {
+    current = n - 1;
+    input.value = '';
+    render();
+  } else {
+    showToast(`Entre un numéro entre 1 et ${items.length}`);
+  }
+}
+
+function toggleList() {
+  const panel = document.getElementById('list-panel');
+  const btn   = document.getElementById('list-btn');
+  const isOpen = panel.classList.toggle('open');
+  btn.classList.toggle('active', isOpen);
+  if (isOpen) {
+    renderList(items);
+    setTimeout(() => document.getElementById('list-search').focus(), 100);
+  }
+}
+
+function renderList(filtered) {
+  const container = document.getElementById('list-items');
+  container.innerHTML = '';
+  filtered.forEach((item, fi) => {
+    const realIdx = items.indexOf(item);
+    const div = document.createElement('div');
+    div.className = 'list-item' + (realIdx === current ? ' current' : '');
+    const thumb = item.photo_1 || item.photo || '';
+    const prix  = parsePrix(item.prix);
+    const hasDesc = item.description && item.description.trim();
+    div.innerHTML = `
+      <span class="list-item-num">${realIdx + 1}</span>
+      ${thumb ? `<img class="list-item-thumb" src="${thumb}" alt="">` : '<div class="list-item-thumb"></div>'}
+      <div class="list-item-info">
+        <div class="list-item-title">${item.titre || '(sans titre)'}</div>
+        <div class="list-item-meta">${[prix, item.marque, item.taille].filter(Boolean).join(' · ')}</div>
+      </div>
+      ${hasDesc ? '<span class="list-item-desc">✓ desc</span>' : ''}
+    `;
+    div.onclick = () => {
+      const ta = document.getElementById('desc-textarea');
+      if (ta) items[current].description = ta.value;
+      current = realIdx;
+      render();
+      toggleList();
+    };
+    container.appendChild(div);
+  });
+  if (filtered.length === 0) {
+    container.innerHTML = '<div style="padding:2rem;text-align:center;color:var(--muted);font-size:13px;">Aucun résultat</div>';
+  }
+}
+
+function filterList() {
+  const q = document.getElementById('list-search').value.toLowerCase();
+  const filtered = q ? items.filter(i => (i.titre || '').toLowerCase().includes(q)) : items;
+  renderList(filtered);
 }
 
 function exportCSV() {
