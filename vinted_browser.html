@@ -623,7 +623,13 @@ function exportCSV() {
   const ta = document.getElementById('desc-textarea');
   if (ta) items[current].description = ta.value;
   const headers = Object.keys(items[0]);
-  const escape = v => '"' + (v || '').toString().replace(/"/g, '""') + '"';
+  // Nettoyer et échapper une valeur pour CSV
+  const escape = v => {
+    let s = (v || '').toString();
+    s = s.replace(/\r\n/g, ' ').replace(/\r/g, ' ').replace(/\n/g, ' '); // sauts de ligne → espace
+    s = s.replace(/"/g, '""'); // guillemets doublés
+    return '"' + s + '"';
+  };
   const rows = [headers.map(escape).join(',')];
   items.forEach(item => {
     rows.push(headers.map(h => escape(item[h])).join(','));
