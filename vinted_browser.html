@@ -327,31 +327,35 @@ document.getElementById('csv-input').addEventListener('change', function(e) {
 });
 
 function parseCSV(text) {
-  text = text.replace(/^\uFEFF/, '');
-  // Parser qui gère les champs multilignes (descriptions avec \n)
-  const records = [];
-  let cur = '', inQ = false;
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i];
-    if (c === '"') {
-      if (inQ && text[i+1] === '"') { cur += '"'; i++; }
-      else inQ = !inQ;
-    } else if ((c === '\n' || (c === '\r' && text[i+1] === '\n')) && !inQ) {
-      if (c === '\r') i++;
-      records.push(cur); cur = '';
-    } else {
-      cur += c;
-    }
-  }
-  if (cur.trim()) records.push(cur);
+  text = text.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 
-  const headers = parseCSVLine(records[0]);
+  // Parse en tenant compte des champs multilignes entre guillemets
+  function parseAll(txt) {
+    const rows = [];
+    let row = [], cur = '', inQ = false, i = 0;
+    while (i < txt.length) {
+      const c = txt[i];
+      if (c === '"') {
+        if (inQ && txt[i+1] === '"') { cur += '"'; i += 2; continue; }
+        inQ = !inQ; i++; continue;
+      }
+      if (c === ',' && !inQ) { row.push(cur); cur = ''; i++; continue; }
+      if (c === '\n' && !inQ) { row.push(cur); rows.push(row); row = []; cur = ''; i++; continue; }
+      cur += c; i++;
+    }
+    if (cur || row.length) { row.push(cur); rows.push(row); }
+    return rows;
+  }
+
+  const rows = parseAll(text).filter(r => r.some(v => v.trim()));
+  if (rows.length < 2) return [];
+
+  const headers = rows[0];
   if (!headers.includes('description')) headers.push('description');
 
-  return records.slice(1).filter(l => l.trim()).map(line => {
-    const vals = parseCSVLine(line);
+  return rows.slice(1).map(vals => {
     const obj = {};
-    headers.forEach((h, i) => obj[h] = (vals[i] !== undefined ? vals[i] : ''));
+    headers.forEach((h, i) => obj[h] = vals[i] !== undefined ? vals[i] : '');
     return obj;
   }).filter(r => r.id || r.titre);
 }
