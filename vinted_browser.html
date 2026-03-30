@@ -327,10 +327,28 @@ document.getElementById('csv-input').addEventListener('change', function(e) {
 });
 
 function parseCSV(text) {
-  const lines = text.trim().split(/\r?\n/);
-  const headers = parseCSVLine(lines[0].replace(/^\uFEFF/, ''));
+  text = text.replace(/^\uFEFF/, '');
+  // Parser qui gère les champs multilignes (descriptions avec \n)
+  const records = [];
+  let cur = '', inQ = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (c === '"') {
+      if (inQ && text[i+1] === '"') { cur += '"'; i++; }
+      else inQ = !inQ;
+    } else if ((c === '\n' || (c === '\r' && text[i+1] === '\n')) && !inQ) {
+      if (c === '\r') i++;
+      records.push(cur); cur = '';
+    } else {
+      cur += c;
+    }
+  }
+  if (cur.trim()) records.push(cur);
+
+  const headers = parseCSVLine(records[0]);
   if (!headers.includes('description')) headers.push('description');
-  return lines.slice(1).filter(l => l.trim()).map(line => {
+
+  return records.slice(1).filter(l => l.trim()).map(line => {
     const vals = parseCSVLine(line);
     const obj = {};
     headers.forEach((h, i) => obj[h] = (vals[i] !== undefined ? vals[i] : ''));
