@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belgique 2024 : le marché décroche, la régulation interpelle</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rouge: #C41E3A;
+    --noir: #111111;
+    --gris-fonce: #1e1e1e;
+    --gris-texte: #2d2d2d;
+    --gris-clair: #f4f2ef;
+    --gris-mid: #e8e4df;
+    --blanc: #ffffff;
+    --accent: #8B0000;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--blanc);
+    color: var(--gris-texte);
+    line-height: 1.6;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--gris-fonce);
+    color: var(--blanc);
+    padding: 72px 48px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(196,30,58,0.04) 40px,
+      rgba(196,30,58,0.04) 41px
+    );
+  }
+
+  .hero-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: var(--rouge);
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 780px;
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rouge);
+  }
+
+  .hero-intro {
+    font-family: 'Source Serif 4', serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.65;
+    max-width: 680px;
+    color: rgba(255,255,255,0.8);
+    position: relative;
+  }
+
+  /* CHIFFRES CLÉS */
+  .stats-band {
+    background: var(--rouge);
+    padding: 36px 48px;
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    flex: 1;
+    min-width: 180px;
+    padding: 0 32px 0 0;
+    border-right: 1px solid rgba(255,255,255,0.25);
+    margin-right: 32px;
+  }
+
+  .stat-item:last-child {
+    border-right: none;
+    margin-right: 0;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--blanc);
+    line-height: 1;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* CORPS */
+  .article-body {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 64px 48px;
+  }
+
+  /* SECTIONS THÉMATIQUES */
+  .section {
+    margin-bottom: 64px;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--noir);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--rouge);
+    padding-bottom: 12px;
+  }
+
+  .section p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: var(--gris-texte);
+    margin-bottom: 16px;
+  }
+
+  /* INFO-CARD */
+  .info-card {
+    background: var(--gris-clair);
+    border-left: 4px solid var(--rouge);
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+  }
+
+  .info-card strong {
+    font-weight: 600;
+    color: var(--noir);
+  }
+
+  /* WARNING-CARD */
+  .warning-card {
+    background: #fff5f5;
+    border: 1px solid rgba(196,30,58,0.2);
+    border-left: 4px solid var(--rouge);
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+  }
+
+  .warning-card .warning-title {
+    font-weight: 600;
+    color: var(--rouge);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  /* TABLEAU */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+  }
+
+  .data-table th {
+    background: var(--noir);
+    color: var(--blanc);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .data-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--gris-mid);
+    color: var(--gris-texte);
+  }
+
+  .data-table tr:nth-child(even) td {
+    background: var(--gris-clair);
+  }
+
+  .negative { color: var(--rouge); font-weight: 600; }
+  .positive { color: #1a7a3c; font-weight: 600; }
+
+  /* SEPARATEUR */
+  .sep {
+    border: none;
+    border-top: 1px solid var(--gris-mid);
+    margin: 48px 0;
+  }
+
+  /* CONCLUSION */
+  .conclusion {
+    background: var(--noir);
+    color: var(--blanc);
+    padding: 48px;
+    margin-top: 48px;
+  }
+
+  .conclusion h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--blanc);
+  }
+
+  .conclusion p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 12px;
+  }
+
+  .source-line {
+    margin-top: 48px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: #888;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 600px) {
+    .hero, .article-body { padding: 40px 24px; }
+    .stats-band { padding: 28px 24px; }
+    .stat-item { min-width: 130px; }
+    .stat-num { font-size: 28px; }
+    .conclusion { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Belgique 2024 : premier <em>décrochage</em> du marché</h1>
+  <p class="hero-intro">Le rapport annuel des données financières de la Commission des jeux de hasard belge (CJH) enregistre la première baisse du marché depuis la crise Covid. Un recul de 4,86% qui, lu en détail, ressemble davantage à une correction après trois ans de croissance de 60% qu'à un décrochage structurel. Les segments les plus organisés du marché légal tiennent. Ce qui recule, c'est le terrestre de masse, les segments mécaniquement affectés par la nouvelle réglementation, et les effets comptables du décumul.</p>
+</div>
+
+
+
+<div class="article-body">
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <h2>La hausse des casinos en ligne cache un transfert interne, pas une croissance réelle</h2>
+    <p>Les casinos en ligne belges (licences A+) affichent +8,7% de GGR en 2024, soit 494 millions d'euros. Une performance qui tranche avec la tendance générale du marché. Mais la CJH tempère elle-même l'interprétation.</p>
+    <p>Pour comprendre ce qui s'est passé, il faut revenir sur la règle du décumul imposée par la réglementation belge : un opérateur ne peut plus proposer sur un même site des jeux relevant de licences différentes. Un groupe qui détenait une licence A+ (casino), une B+ (salle de jeux automatiques) et une F+ (paris) devait donc exploiter trois sites distincts. Face à cette contrainte, plusieurs opérateurs ont fait un choix commercial : concentrer leur offre de jeux de hasard sur leur seul site A+ (casino), et leur offre de paris sur leur site F+, en abandonnant le site B+.</p>
+    <p>Résultat : le GGR n'a pas été créé, il a migré des sites B+ vers les sites A+. Les licences B+ enregistrent une chute de 23,83%, précisément proportionnelle à la hausse des A+. Agrégés, A+ et B+ totalisent 686 millions d'euros en 2024, contre 707 millions en 2023, soit une baisse réelle de 3%.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Licence online</th>
+          <th>GGR 2023</th>
+          <th>GGR 2024</th>
+          <th>Évolution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Classe A+ (casinos)</td>
+          <td>454 998 742 €</td>
+          <td>494 572 306 €</td>
+          <td class="positive">+8,70%</td>
+        </tr>
+        <tr>
+          <td>Classe B+ (salles de jeux)</td>
+          <td>252 010 696 €</td>
+          <td>191 967 167 €</td>
+          <td class="negative">-23,83%</td>
+        </tr>
+        <tr>
+          <td>Classe F+ (paris)</td>
+          <td>237 574 441 €</td>
+          <td>232 562 707 €</td>
+          <td class="negative">-2,11%</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+
+  <hr class="sep">
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <h2>Un régulateur qui surveillait 1,6 milliard d'euros sans analyste financier</h2>
+    <p>Le rapport contient un aveu institutionnel rare. La collecte et le traitement des données financières nécessitent, selon la CJH, au minimum un collaborateur à temps plein. Ce poste était vacant en 2024 et en 2025. Conséquence directe : les données financières 2024 n'ont pas pu figurer dans le rapport annuel 2024, publié l'an dernier.</p>
+    <p>C'est le recrutement d'un nouveau collaborateur à la cellule Contrôle financier en décembre 2025 qui a permis de produire ce rapport, avec 15 mois de décalage sur les faits qu'il documente. La CJH elle-même qualifie le résultat de "rapport assez sommaire".</p>
+
+    <div class="warning-card">
+      <span class="warning-title">Point de vigilance</span>
+      La méthode de collecte a par ailleurs été modifiée en 2024, passant d'une déclaration annuelle à une déclaration trimestrielle. Des erreurs de communication entre opérateurs et régulateur ont été identifiées, notamment sur les données des bingos en cafés pour 2023, ce qui rend certaines comparaisons annuelles partiellement fragiles.
+    </div>
+
+    <p>La question de la capacité opérationnelle des régulateurs à traiter des données de marché en temps réel est un débat qui dépasse largement la Belgique. L'ANJ française investit sur ce terrain depuis plusieurs années. La comparaison est instructive.</p>
+  </div>
+
+  <hr class="sep">
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <h2>L'Euro 2024 et les JO n'ont pas suffi à soutenir les paris en ligne</h2>
+    <p>C'est l'un des résultats les plus contre-intuitifs du rapport. L'année 2024 était marquée par deux événements sportifs majeurs : le Championnat d'Europe de football en juin et les Jeux Olympiques de Paris en juillet-août. La CJH indique explicitement qu'elle anticipait une hausse de l'activité paris. Il n'en a rien été.</p>
+    <p>Le GGR des paris en ligne recule de 2,11%, à 232 millions d'euros, après une croissance de 13% en 2023. Les paris offline chutent eux de 13,58%, plombés par la disparition accélérée des agences de paris (408 fin 2024, contre 535 deux ans plus tôt, soit -24%).</p>
+
+    <div class="info-card">
+      <strong>Répartition du GGR paris par canal en 2024 :</strong> paris en ligne 63,84%, agences de paris 25,77%, librairies 10,25%, hippodromes et bookmakers représentant moins de 0,15% combinés.
+    </div>
+
+    <p>Les paris sportifs restent le segment dominant et sont les seuls à progresser (+4%). Les paris hippiques s'effondrent (-32,77%) et les "autres paris" (événements, virtuels) subissent une chute de 44,67%, peut-être liée aux restrictions réglementaires sur les produits proposables.</p>
+    <p>L'incapacité des grands événements sportifs à doper un marché pourtant "en attente" mérite analyse : saturation de l'offre, effet des restrictions de bonus, ou déport vers des opérateurs hors du périmètre légal ?</p>
+  </div>
+
+  <hr class="sep">
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <h2>La présidente du régulateur soulève le risque de marché illégal sans pouvoir y répondre</h2>
+    <p>Dans son mot introductif, Magali Clavie, présidente de la CJH, formule une mise en garde qui sort de l'ordinaire pour un document officiel. Elle reconnaît que les nouvelles règles (âge minimum relevé de 18 à 21 ans, interdiction de bonus, limitations de la publicité, réintroduction du contrôle Epis dans les agences de paris) ont bien eu un impact sur les opérateurs légaux. Mais elle soulève aussitôt ce qu'elle appelle une "crainte" : les joueurs se sont-ils simplement arrêtés, ou une partie d'entre eux s'est-elle tournée vers le marché illégal ?</p>
+
+    <div class="warning-card">
+      <span class="warning-title">Citation du rapport</span>
+      La présidente écrit que l'on "ne peut exclure que les joueurs qui sont restés actifs chez les opérateurs légaux n'aient que peu ou prou modifié leurs habitudes et que d'autres aient été tentés de se tourner, consciemment ou pas, vers le secteur illégal, de plus en plus visible, accessible et davantage attractif aux yeux de certains joueurs".
+    </div>
+
+    <p>La CJH appelle à des études pour "infirmer ou confirmer ces craintes" et à un "devoir d'encadrement" des opérateurs avec monitoring par le régulateur. Autrement dit : le régulateur belge ne sait pas encore si sa politique de protection des joueurs a atteint son objectif, ou si elle a simplement déplacé le problème.</p>
+    <p>C'est un aveu d'incertitude qui illustre la difficulté structurelle de tout régulateur face à la canalisation : réduire l'offre légale n'est efficace sur le plan de la protection que si le marché illégal n'absorbe pas la demande déplacée. La Belgique, avec 15 mois de recul et un outillage statistique encore lacunaire, n'est pas en mesure de répondre à cette question aujourd'hui.</p>
+  </div>
+
+  <div class="conclusion">
+    <h3>Une correction, pas un effondrement</h3>
+    <p>Le recul de 4,86% du GGR belge en 2024 doit être lu dans son contexte : le marché avait progressé de 60% entre 2020 et 2023. Les segments les plus structurés du marché légal, casinos et salles de jeux automatiques offline, affichent une croissance modeste mais réelle. Ce qui recule, c'est le terrestre de masse (agences de paris en contraction accélérée, cafés), des segments dont le repli était engagé avant même les nouvelles règles.</p>
+    <p>Les quatre enseignements de ce rapport pointent vers une même question, que la CJH pose elle-même sans pouvoir y répondre : la réglementation a visiblement freiné les opérateurs légaux. A-t-elle pour autant protégé les joueurs, ou une partie d'entre eux a-t-elle simplement migré ailleurs ? La Belgique ne le sait pas encore, faute d'instruments de mesure. C'est peut-être le vrai signal à retenir.</p>
+  </div>
+
+  <p class="source-line">Source : Commission des Jeux de Hasard (CJH), Rapport annuel, Données financières 2024, approuvé le 23 mars 2026.</p>
+
+</div>
+
+</body>
+</html>
