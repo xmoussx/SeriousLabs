@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barrière Casino et le Fridge lancent un comedy club itinérant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rouge: #C41E3A;
+      --noir: #0f0f0f;
+      --gris-fonce: #1c1c1c;
+      --gris-texte: #2e2e2e;
+      --gris-clair: #f4f2ef;
+      --gris-meta: #888;
+      --serif: 'Playfair Display', Georgia, serif;
+      --body: 'Source Serif 4', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    body {
+      background: var(--gris-clair);
+      color: var(--gris-texte);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--noir);
+      color: #fff;
+      padding: 56px 40px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--rouge);
+    }
+
+    .hero-rubrique {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rouge);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      max-width: 760px;
+      color: #fff;
+    }
+
+    .hero-meta {
+      margin-top: 24px;
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--gris-meta);
+      letter-spacing: 0.05em;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ARTICLE BODY */
+    .article-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* CHAPEAU */
+    .chapo {
+      font-family: var(--body);
+      font-size: 19px;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--gris-texte);
+      border-left: 3px solid var(--rouge);
+      padding-left: 20px;
+      margin-bottom: 40px;
+    }
+
+    /* CORPS */
+    .article-body p {
+      margin-bottom: 20px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--gris-texte);
+    }
+
+    /* INTERTITRES */
+    .article-body h2 {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--noir);
+      margin: 40px 0 16px;
+      padding-top: 8px;
+      border-top: 1px solid #ddd;
+    }
+
+    /* CITATION */
+    blockquote {
+      margin: 32px 0;
+      padding: 20px 24px;
+      background: #fff;
+      border-left: 4px solid var(--rouge);
+      font-family: var(--body);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--gris-texte);
+    }
+
+    blockquote cite {
+      display: block;
+      margin-top: 10px;
+      font-style: normal;
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--gris-meta);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* INFO CARD */
+    .info-card {
+      background: #fff;
+      border: 1px solid #e0ddd8;
+      border-top: 3px solid var(--rouge);
+      padding: 24px 28px;
+      margin: 36px 0;
+      font-family: var(--sans);
+      font-size: 14px;
+    }
+
+    .info-card-title {
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rouge);
+      margin-bottom: 12px;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-card ul li {
+      padding: 5px 0;
+      border-bottom: 1px solid #f0ede8;
+      color: var(--gris-texte);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .info-card ul li:last-child {
+      border-bottom: none;
+    }
+
+    .info-card ul li strong {
+      color: var(--noir);
+    }
+
+    /* SOURCE */
+    .source-block {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid #ddd;
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--gris-meta);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+<h1>Barrière Casino et le Fridge de Kev Adams lancent un comedy club itinérant dans les casinos français</h1>
+    <div class="hero-meta">
+      <span>31 mars 2026</span>
+      <span>Paris, conférence de presse</span>
+    </div>
+  </div>
+
+  <div class="article-wrapper">
+
+    <p class="chapo">
+      Le Groupe Barrière et le Fridge Comedy Club ont annoncé ce mardi 31 mars à Paris, lors d'une conférence de presse animée par Kev Adams, fondateur du Fridge, et Clément Martin Saint Léon, directeur général casinos du Groupe Barrière, un partenariat inédit : installer des espaces de stand-up permanents au sein d'une dizaine de casinos Barrière en France.
+    </p>
+
+    <div class="article-body">
+
+      <p>Le format retenu est celui du comedy club à l'américaine : des plateaux de 4 humoristes se succédant sur des séances de 55 minutes, dans des salles de 80 à 150 places aménagées au sein des établissements.</p>
+
+      <h2>Un modèle importé de Las Vegas</h2>
+
+      <p>L'idée n'est pas nouvelle outre-Atlantique. Kev Adams cite en référence le Laugh Factory, longtemps installé au Flamingo de Las Vegas.</p>
+
+      <blockquote>
+        "C'est en allant là-bas que je me suis dit qu'il y avait quelque chose à faire."
+        <cite>Kev Adams, fondateur du Fridge</cite>
+      </blockquote>
+
+      <p>Le modèle américain intègre le comedy club comme composante à part entière de l'offre d'entertainment du casino, au même titre que la restauration ou le spectacle musical. En France, le Fridge existe depuis décembre 2020, rue Saint-Denis à Paris, avec une expansion progressive : Bruxelles, Montpellier, Rouen, et deux nouvelles ouvertures prévues cette année à Bordeaux et Lyon. Le partenariat avec Barrière permet au réseau de s'implanter dans des villes, comme Lille, où il n'aurait pas nécessairement ouvert en propre.</p>
+
+      <h2>Des espaces reconvertis, une billetterie à 24 euros</h2>
+
+      <p>Du côté de Barrière, l'opération répond à une problématique concrète : la reconversion des anciennes boîtes de nuit, fermées depuis le Covid et inutilisées. Là où l'espace ne convient pas, comme à Lille, une grande salle de spectacle de 1 200 places sera réduite à une capacité de 100 places pour recréer l'atmosphère intimiste du format.</p>
+
+      <p>Le billet est fixé à 24 euros. Deux séances par soir sont prévues, à 19h et 21h, pensées pour s'insérer dans un parcours de soirée incluant restaurant et jeu. Des offres combinées (billetterie, restauration, jeu) sont mentionnées dans la brochure de presse, mais Clément Martin Saint Léon a confirmé qu'aucun pack n'existe à ce stade. Le produit est à l'étude.</p>
+
+      <h2>Une programmation mixte, des questions ouvertes</h2>
+
+      <p>Les premiers plateaux annoncés mêlent humoristes confirmés et jeunes talents. Parmi les noms cités : David Voinson, Myriam Baroukh, Elie Semoun, Hugo Tout seul ou Doully. Kev Adams a également évoqué la possibilité de passages non annoncés de célébrités, et un futur concours de jeunes talents adossé à l'émission "Humour à la plage" diffusée sur TF1.</p>
+
+      <p>La question de l'accès aux mineurs a obtenu une réponse claire, quoique nuancée : en zone contrôlée du casino, l'entrée sera réservée aux majeurs. Hors zone contrôlée, comme ce sera le cas à Lille, les mineurs pourront accéder au comedy club. Une politique qui variera donc selon la configuration de chaque établissement. Les premiers shows sont prévus début avril à Lille, La Baule, Dinard et Deauville.</p>
+
+
+
+      <h2>Un pari sur l'expérientiel face aux opérateurs en ligne</h2>
+
+      <blockquote>
+        "Ce qu'on vend, ce n'est pas de l'espérance de gain comme certains autres acteurs du jeu. Ce qu'on vend, c'est cet instant passé, c'est l'émotion qu'on va traverser pendant la soirée."
+        <cite>Clément Martin Saint Léon, directeur général casinos du Groupe Barrière</cite>
+      </blockquote>
+
+      <p>Au-delà du partenariat lui-même, la démarche révèle une orientation stratégique claire du Groupe Barrière : renforcer la dimension expérientielle de ses établissements plutôt que d'optimiser le seul revenu du jeu. Face à la progression des opérateurs en ligne, qui captent une part croissante des mises sans pouvoir rivaliser sur l'offre physique, Barrière mise sur la soirée complète comme argument de différenciation. Le comedy club s'inscrit dans cette logique, aux côtés de la restauration et du spectacle vivant, comme élément d'une promesse de divertissement premium accessible en région.</p>
+
+    </div>
+
+    <div class="source-block">
+      Source : conférence de presse Barrière Casino / Le Fridge, Paris, 31 mars 2026
+    </div>
+
+  </div>
+
+</body>
+</html>
