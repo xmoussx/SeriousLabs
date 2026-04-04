@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JONUM : trop peu, trop tard</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rouge: #C41E3A;
+    --noir: #111111;
+    --gris-fonce: #2a2a2a;
+    --gris-moyen: #666666;
+    --gris-clair: #f4f2ef;
+    --blanc: #ffffff;
+    --bordure: #ddd8d0;
+    --vert-doux: #e8f5e9;
+    --vert-texte: #2e7d32;
+    --rouge-doux: #fde8eb;
+    --jaune-doux: #fef9e7;
+    --jaune-texte: #7d6608;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--blanc);
+    color: var(--noir);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  /* ================================
+     ARTICLE
+  ================================ */
+
+  .hero {
+    background: var(--gris-fonce);
+    padding: 64px 0 56px;
+    border-bottom: 3px solid var(--rouge);
+  }
+
+  .hero-inner {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .rubrique {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--blanc);
+    margin-bottom: 20px;
+  }
+
+  .chapeau {
+    font-family: 'Source Serif 4', serif;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #c8c2b8;
+    font-weight: 300;
+    max-width: 640px;
+    border-left: 3px solid var(--rouge);
+    padding-left: 18px;
+    margin-top: 28px;
+  }
+
+  .meta {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--bordure);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--gris-moyen);
+  }
+
+  .meta-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--rouge);
+  }
+
+  .article-body {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+  }
+
+  .article-body p {
+    margin-bottom: 26px;
+    font-weight: 400;
+    color: var(--gris-fonce);
+  }
+
+  .article-body p:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--rouge);
+    float: left;
+    line-height: 0.82;
+    margin-right: 8px;
+    margin-top: 6px;
+  }
+
+  .intertitre {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--noir);
+    margin: 44px 0 20px;
+    padding-top: 28px;
+    border-top: 1px solid var(--bordure);
+  }
+
+  blockquote {
+    margin: 36px 0;
+    padding: 22px 28px;
+    background: var(--gris-clair);
+    border-left: 4px solid var(--rouge);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--gris-fonce);
+    line-height: 1.7;
+  }
+
+  blockquote cite {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--gris-moyen);
+  }
+
+  .tableau-wrapper {
+    margin: 40px 0;
+    overflow-x: auto;
+    border: 1px solid var(--bordure);
+  }
+
+  .tableau-titre {
+    background: var(--gris-fonce);
+    color: var(--blanc);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 18px;
+  }
+
+  .tableau-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+  }
+
+  .tableau-wrapper thead th {
+    background: var(--gris-clair);
+    padding: 11px 16px;
+    text-align: left;
+    font-weight: 500;
+    color: var(--gris-fonce);
+    border-bottom: 2px solid var(--bordure);
+    white-space: nowrap;
+  }
+
+  .tableau-wrapper tbody td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--bordure);
+    color: var(--gris-fonce);
+    vertical-align: top;
+  }
+
+  .tableau-wrapper tbody tr:last-child td { border-bottom: none; }
+  .tableau-wrapper tbody tr:nth-child(even) td { background: #faf9f7; }
+
+  .flag-fr { color: var(--rouge); font-weight: 500; }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .badge-rouge { background: var(--rouge-doux); color: var(--rouge); }
+  .badge-orange { background: #fef3e2; color: #b45309; }
+  .badge-vert { background: var(--vert-doux); color: var(--vert-texte); }
+  .badge-gris { background: #f0efed; color: var(--gris-moyen); }
+
+  .note-bas {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 2px solid var(--bordure);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--gris-moyen);
+    line-height: 1.7;
+  }
+
+  .note-bas strong { color: var(--gris-fonce); font-weight: 500; }
+
+  /* ================================
+     SÉPARATEUR ANNEXE
+  ================================ */
+
+  .separateur-annexe {
+    background: var(--rouge);
+    padding: 14px 0;
+    margin-top: 0;
+  }
+
+  .sep-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .sep-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .sep-trait {
+    width: 1px;
+    height: 14px;
+    background: rgba(255,255,255,0.3);
+  }
+
+  .sep-titre {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--blanc);
+  }
+
+  /* ================================
+     ANNEXE
+  ================================ */
+
+  .annexe-hero {
+    background: var(--gris-fonce);
+    padding: 52px 0 44px;
+    border-bottom: 3px solid var(--rouge);
+  }
+
+  .annexe-hero-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .annexe-hero h1 {
+    font-size: clamp(26px, 3.5vw, 40px);
+  }
+
+  .annexe-sous-titre {
+    font-family: 'Source Serif 4', serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #c8c2b8;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-top: 16px;
+  }
+
+  .preambule {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 36px;
+    border-bottom: 1px solid var(--bordure);
+  }
+
+  .preambule p {
+    color: var(--gris-fonce);
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .preambule p:last-of-type { margin-bottom: 0; }
+
+  .principes {
+    margin: 28px 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 600px) { .principes { grid-template-columns: 1fr; } }
+
+  .principe-item {
+    background: var(--gris-clair);
+    border-left: 3px solid var(--rouge);
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--gris-fonce);
+    line-height: 1.5;
+  }
+
+  .principe-item strong {
+    display: block;
+    color: var(--rouge);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .annexe-body {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .proposition {
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 2px solid var(--bordure);
+  }
+
+  .prop-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+
+  .prop-numero {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--rouge);
+    line-height: 1;
+    flex-shrink: 0;
+    opacity: 0.22;
+    margin-top: -4px;
+  }
+
+  .prop-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 5px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--noir);
+    line-height: 1.3;
+  }
+
+  .comparatif {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 22px 0 0;
+    border: 1px solid var(--bordure);
+    overflow: hidden;
+  }
+
+  @media (max-width: 600px) { .comparatif { grid-template-columns: 1fr; } }
+
+  .comp-col { padding: 18px 20px; }
+
+  .comp-actuel {
+    background: var(--rouge-doux);
+    border-right: 1px solid var(--bordure);
+  }
+
+  .comp-propose { background: var(--vert-doux); }
+
+  .comp-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .comp-actuel .comp-label { color: var(--rouge); }
+  .comp-propose .comp-label { color: var(--vert-texte); }
+
+  .comp-col p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    color: var(--gris-fonce);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .justification {
+    background: var(--jaune-doux);
+    border-left: 3px solid #d4a017;
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-size: 14px;
+    font-family: 'Source Serif 4', serif;
+    color: var(--gris-fonce);
+    line-height: 1.7;
+  }
+
+  .justification strong {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--jaune-texte);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .synthese {
+    margin-top: 56px;
+    padding: 32px;
+    background: var(--gris-fonce);
+  }
+
+  .synthese-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--rouge);
+    margin-bottom: 14px;
+  }
+
+  .synthese h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--blanc);
+    margin-bottom: 14px;
+    line-height: 1.35;
+  }
+
+  .synthese p {
+    font-size: 15px;
+    color: #c8c2b8;
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  .table-synthese {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+  }
+
+  .table-synthese th {
+    text-align: left;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .table-synthese td {
+    padding: 10px 14px;
+    color: #c8c2b8;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .table-synthese tr:last-child td { border-bottom: none; }
+  .priorite-haute { color: var(--rouge); font-weight: 500; }
+  .priorite-moy { color: #d4a017; font-weight: 500; }
+
+  .note-annexe {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--bordure);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--gris-moyen);
+    line-height: 1.7;
+  }
+
+  .note-annexe strong { color: var(--gris-fonce); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- ================================
+     ARTICLE
+================================ -->
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="rubrique">Régulation &nbsp;/&nbsp; Gaming Web3</div>
+    <h1>JONUM : trop peu, trop tard</h1>
+    <p class="chapeau">La France a créé le premier cadre légal européen pour les jeux à objets numériques monétisables. Deux mois après son entrée en vigueur, un seul opérateur s'est déclaré. L'acteur pour lequel le texte a été pensé n'y figure pas.</p>
+  </div>
+</div>
+
+<div class="meta">
+  <span>Les Enjeux</span>
+  <span class="meta-dot"></span>
+  <span>Analyse</span>
+  <span class="meta-dot"></span>
+  <span>4 avril 2026</span>
+</div>
+
+<div class="article-body">
+
+  <p>Le cadre réglementaire des jeux à objets numériques monétisables est entré en vigueur le 7 février 2026, soit 21 mois après la promulgation de la loi SREN qui l'a créé. La liste des entreprises déclarées auprès de l'Autorité nationale des jeux compte, au 4 avril 2026, un seul nom : CyLimit, une startup de fantasy cyclisme, dont le récépissé a été émis le 13 mars 2026. Sorare, la licorne française dont l'activité a directement inspiré la rédaction du texte, n'y figure pas. Ce chiffre, à lui seul, résume la situation.</p>
+
+  <p>La loi SREN a créé un objet juridique inédit : le JONUM (jeu à objets numériques monétisables) désigne tout jeu en ligne où le joueur consent un sacrifice financier pour obtenir, via un mécanisme de hasard, des actifs numériques échangeables. Le texte, parfois surnommé "loi Sorare", avait pour ambition de sortir le gaming Web3 du flou juridique et de positionner la France comme pionnière d'une régulation adaptée, à rebours de l'approche belge ou néerlandaise, qui assimile ces jeux aux jeux d'argent et les interdit de facto, et de l'approche britannique, qui a conduit le UKGC à engager des poursuites pénales contre Sorare en septembre 2024 pour exploitation de services de jeux sans licence, avec un procès fixé au 15 juin 2026 à Birmingham. Le texte qui en résulte protège efficacement les joueurs contre des gains qu'il leur interdit de recevoir.</p>
+
+  <p class="intertitre">Une structure de récompenses qui rompt la chaîne de valeur</p>
+
+  <p>Le point de rupture se trouve dans la définition des récompenses. La loi interdit explicitement tout gain "en monnaie ayant cours légal". Le décret du 4 février 2026 précise ce que le joueur peut recevoir à la place : des crypto-actifs (hors stablecoins, c'est-à-dire hors crypto-monnaies dont la valeur est indexée sur une devise comme l'euro ou le dollar), plafonnés à 25 000 euros par an et par jeu, dans la limite de 20% du chiffre d'affaires annuel de l'opérateur, et des récompenses en nature plafonnées à 1 000 euros par an. L'exclusion des stablecoins n'est pas un détail technique : c'est le seul instrument qui aurait permis de rémunérer le joueur en crypto sans l'exposer à la volatilité des marchés. Le token AXS, natif d'Axie Infinity et précisément du type que le décret autorise en récompense, a perdu plus de 98% de sa valeur entre novembre 2021 (165 dollars) et début 2026 (environ 2 dollars). La réponse du secteur à cette volatilité converge vers les stablecoins : Mythical Games a annoncé pour 2026 une marketplace libellée en USDC, abandonnant les actifs volatils. Le JONUM interdit cette solution. Des acteurs du secteur confirment explorer une interprétation alternative du texte sur ce point, sans succès à ce stade.</p>
+
+  <p>Le résultat est une asymétrie difficile à justifier : le joueur supporte un risque financier que l'ANJ elle-même reconnaît en imposant un message de mise en garde contre les "pertes d'argent", mais ne peut recevoir en retour que des actifs crypto volatils dans des volumes plafonnés. Sur un jeu générant 10 millions d'euros de revenus annuels, l'ensemble des participants ne peut recevoir que 2 millions d'euros en crypto-actifs, quelle que soit l'ampleur des mises engagées. Le play-to-earn (modèle où les joueurs monétisent leur temps de jeu via des récompenses en crypto-actifs) repose sur la convertibilité des gains. Sans elle, il ne reste que le "play".</p>
+
+  <p class="intertitre">Sorare : les bénéfices du cadre sans ses contraintes</p>
+
+  <p>Le cas Sorare illustre la tension dans laquelle le texte place les opérateurs. Interrogée par SBC News fin mars 2026 sur l'absence de déclaration, la société a répondu qu'il n'y avait "aucun retard" et qu'elle était "en discussions constructives et continues avec l'ANJ", prenant "le temps de finaliser le dossier correctement". Sur la question de savoir si déclarer une offre JONUM reviendrait à admettre qu'elle opère un produit de jeu d'argent, la réponse de la société est sans ambiguïté :</p>
+
+  <blockquote>
+    "Le cadre JONUM ne doit en aucun cas être interprété comme une admission que Sorare opère comme une société de jeux d'argent réels. Le cadre JONUM reconnaît en réalité la nature unique de notre activité et confirme explicitement qu'elle se situe en dehors du champ des régulations du jeu."
+    <cite>Porte-parole Sorare, SBC News, mars 2026</cite>
+  </blockquote>
+
+  <p>La société veut la sécurité juridique que le cadre offre, sans la formalisation réglementaire qu'il implique. En attendant, elle opère sous l'accord informel conclu avec l'ANJ en 2023, qui lui permettait d'élargir l'accès gratuit à ses tournois en contrepartie d'un statu quo régulatoire. Ce n'est pas une situation de conformité : c'est une tolérance provisoire reconduite par défaut, pendant que la principale intéressée prépare un dossier dont elle ne précise pas l'échéance.</p>
+
+  <p class="intertitre">Un marché qui s'est reconfiguré sans attendre</p>
+
+  <p>Le décret est arrivé dans un contexte de marché structurellement différent de celui de 2022, au moment où le débat législatif s'était ouvert. Selon DappRadar, plateforme de suivi des données blockchain, le volume global de trading NFT en 2024 atteignait 13,7 milliards de dollars, soit un recul de plus de 60% par rapport au pic. Les wallets actifs dans l'écosystème gaming Web3 ont reculé de 4,4% au troisième trimestre 2025. Les plateformes qui ont survécu à l'effondrement d'Axie Infinity en 2022 ont toutes pivoté vers des modèles moins dépendants de la tokenomique (l'ingénierie économique propre aux tokens) pour miser sur le gameplay et la propriété numérique. Sorare elle-même a migré fin 2025 vers Solana, une blockchain publique réputée pour ses faibles coûts de transaction, et affiche pour objectif 2026 d'atteindre la rentabilité sans nouvelle levée de fonds. C'est un agenda de consolidation, pas d'expansion réglementaire.</p>
+
+  <p>Selon Mordor Intelligence, cabinet d'études spécialisé dans les marchés numériques, 28% des studios de jeux blockchain citaient en 2025 l'incertitude réglementaire comme frein principal à leur développement. Le cadre JONUM résout cette incertitude pour le marché français, mais à des conditions que le secteur juge insuffisamment attractives pour s'engager dans une démarche de déclaration.</p>
+
+  <p class="intertitre">Entre interdiction et vide juridique : ce que fait le reste de l'Europe</p>
+
+  <div class="tableau-wrapper">
+    <div class="tableau-titre">Régulation du gaming Web3 en Europe (avril 2026)</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Pays</th>
+          <th>Loot boxes</th>
+          <th>Gaming Web3 / P2E</th>
+          <th>Approche</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="flag-fr"><strong>France</strong></td>
+          <td>Légales (si pas de valeur externe)</td>
+          <td>Cadre JONUM, déclaration ANJ</td>
+          <td><span class="badge badge-vert">Régime dédié</span></td>
+        </tr>
+        <tr>
+          <td>Royaume-Uni</td>
+          <td>Légales (auto-régulation industry)</td>
+          <td>Pas de régime, Gambling Act 2005</td>
+          <td><span class="badge badge-rouge">Poursuites pénales (Sorare, juin 2026)</span></td>
+        </tr>
+        <tr>
+          <td>Belgique</td>
+          <td>Illégales depuis 2018</td>
+          <td>Probablement illégal</td>
+          <td><span class="badge badge-rouge">Très restrictif</span></td>
+        </tr>
+        <tr>
+          <td>Pays-Bas</td>
+          <td>Illégales si valeur externe</td>
+          <td>Probablement illégal</td>
+          <td><span class="badge badge-rouge">Restrictif</span></td>
+        </tr>
+        <tr>
+          <td>Allemagne</td>
+          <td>Labels obligatoires (pas de ban)</td>
+          <td>Pas de régime dédié</td>
+          <td><span class="badge badge-orange">Protection des mineurs</span></td>
+        </tr>
+        <tr>
+          <td>Espagne</td>
+          <td>Projet de loi (non adopté)</td>
+          <td>Pas de régime dédié</td>
+          <td><span class="badge badge-gris">En transition</span></td>
+        </tr>
+        <tr>
+          <td>Pologne</td>
+          <td>Légales</td>
+          <td>Pas de régime dédié</td>
+          <td><span class="badge badge-gris">Permissif</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>La France est la seule juridiction européenne à avoir créé un régime légal dédié au gaming Web3. C'est un fait, et il mérite d'être reconnu. Mais ce positionnement pionnier prend une valeur différente selon ce qu'il produit. La Belgique et les Pays-Bas ont opté pour l'assimilation aux jeux d'argent, avec une application reconnue comme largement insuffisante : 82% des 100 jeux iPhone les plus lucratifs en Belgique continuaient en 2024 à proposer des loot boxes malgré l'interdiction en vigueur depuis 2018. Le Royaume-Uni a choisi l'enforcement pénal sélectif, avec les poursuites contre Sorare comme seul précédent connu dans le secteur Web3. Aucun de ces modèles n'est satisfaisant. Mais aucun ne tente non plus de réguler un secteur en contraction tout en imposant des contraintes de récompenses que les concurrents mondiaux de ces mêmes opérateurs n'ont pas.</p>
+
+  <p>Un bilan de mi-parcours est prévu en 2027, qui donnera lieu à un rapport du gouvernement au Parlement. Si la liste des déclarants reste courte, des ajustements seront inévitables, une ouverture aux stablecoins ou un relèvement des plafonds étant les plus probables. Mais leur utilité dépend du calendrier. La fenêtre pendant laquelle une juridiction de référence pour le gaming Web3 pouvait encore s'imposer en Europe se situait entre 2022 et 2023, au moment où le secteur cherchait activement de la clarté réglementaire. Elle s'est refermée avant que le décret n'existe.</p>
+
+  <div class="note-bas">
+    <strong>Sources :</strong> ANJ (anj.fr/jeux-objets-numeriques-monetisables-jonum, consulté le 4 avril 2026) ; Décret n° 2026-60 du 4 février 2026, Journal officiel du 6 février 2026 ; SBC News, "Sorare : nothing to declare?", mars 2026 ; UKGC, consumer information notice Sorare prosecution, mise à jour du 1er juillet 2025 ; DappRadar, données blockchain 2024 ; Mordor Intelligence, NFT gaming market report, 2025.
+  </div>
+
+</div>
+
+<!-- ================================
+     ANNEXE
+================================ -->
+
+<div class="separateur-annexe">
+  <div class="sep-inner">
+    <span class="sep-label">Les Enjeux</span>
+    <span class="sep-trait"></span>
+    <span class="sep-titre">Annexe : Pour un décret JONUM révisé</span>
+  </div>
+</div>
+
+<div class="annexe-hero">
+  <div class="annexe-hero-inner">
+    <div class="rubrique">Propositions de réforme</div>
+    <h1>Six mesures pour un cadre viable</h1>
+    <p class="annexe-sous-titre">Une analyse des dispositions du décret n° 2026-60 du 4 février 2026 dont la révision conditionne la viabilité de l'expérimentation, avec propositions de modification article par article.</p>
+  </div>
+</div>
+
+<div class="preambule">
+  <p>L'expérimentation JONUM court jusqu'en mai 2027. Un bilan de mi-parcours est prévu d'ici là. Si la liste des déclarants reste proche de zéro, ce bilan devra identifier les obstacles structurels et proposer des ajustements. Les six propositions qui suivent anticipent cet exercice en partant d'un principe simple : une réglementation efficace est celle que ses destinataires acceptent de respecter.</p>
+  <p>Les trois premières propositions relèvent du décret et peuvent être modifiées par voie réglementaire, sans révision législative. Les deux suivantes touchent à des pratiques administratives ou à des positions formelles de l'ANJ. La sixième requiert une initiative législative distincte.</p>
+
+  <div class="principes">
+    <div class="principe-item">
+      <strong>Principe 1</strong>
+      La protection des joueurs ne requiert pas l'élimination des gains convertibles. Elle requiert leur encadrement.
+    </div>
+    <div class="principe-item">
+      <strong>Principe 2</strong>
+      Un plafond de récompenses doit être calibré sur le risque réel, pas sur une fraction arbitraire du chiffre d'affaires.
+    </div>
+    <div class="principe-item">
+      <strong>Principe 3</strong>
+      La friction réglementaire à l'entrée doit être proportionnée à la taille et à la maturité de l'opérateur.
+    </div>
+    <div class="principe-item">
+      <strong>Principe 4</strong>
+      Un cadre expérimental n'a de valeur que s'il génère des données. Sans déclarants, il n'y a rien à évaluer.
+    </div>
+  </div>
+</div>
+
+<div class="annexe-body">
+
+  <div class="proposition">
+    <div class="prop-header">
+      <div class="prop-numero">1</div>
+      <div>
+        <div class="prop-tag">Récompenses accessoires / Art. 2 du décret</div>
+        <h2>Autoriser les stablecoins comme récompenses accessoires</h2>
+      </div>
+    </div>
+    <div class="comparatif">
+      <div class="comp-col comp-actuel">
+        <div class="comp-label">Disposition actuelle</div>
+        <p>Les récompenses accessoires en crypto-actifs sont autorisées à l'exception des jetons de monnaie électronique au sens du règlement MiCA (stablecoins). La monnaie fiat est interdite.</p>
+      </div>
+      <div class="comp-col comp-propose">
+        <div class="comp-label">Proposition de modification</div>
+        <p>Autoriser les stablecoins réglementés sous MiCA (USDC, EURC) comme récompenses accessoires, dans les mêmes plafonds individuels que les autres crypto-actifs (25 000 euros par an), avec obligations de reporting renforcées à l'ANJ.</p>
+      </div>
+    </div>
+    <div class="justification">
+      <strong>Justification</strong>
+      Le token AXS, natif d'Axie Infinity et du type exact autorisé par le décret actuel, a perdu plus de 98% de sa valeur entre novembre 2021 et début 2026. Imposer ce type d'actif comme seule récompense crypto expose le joueur à un risque spéculatif que la réglementation JONUM prétend encadrer. Les stablecoins réglementés sous MiCA font l'objet d'une supervision financière solide. Des opérateurs mondiaux comme Mythical Games ont eux-mêmes opté pour une marketplace libellée en USDC en 2026, abandonnant les actifs volatils. Refuser aux opérateurs déclarés JONUM ce que leurs concurrents non régulés utilisent librement est contre-productif. La France peut imposer des obligations de reporting spécifiques sur les stablecoins sans les interdire.
+    </div>
+  </div>
+
+  <div class="proposition">
+    <div class="prop-header">
+      <div class="prop-numero">2</div>
+      <div>
+        <div class="prop-tag">Plafond opérateur / Art. 2 du décret</div>
+        <h2>Remplacer le plafond de 20% du CA par un ratio fondé sur les mises</h2>
+      </div>
+    </div>
+    <div class="comparatif">
+      <div class="comp-col comp-actuel">
+        <div class="comp-label">Disposition actuelle</div>
+        <p>La valeur totale des crypto-actifs distribués à l'ensemble des participants d'un jeu ne peut représenter plus de 20% du chiffre d'affaires issu de ce jeu au cours de l'année civile.</p>
+      </div>
+      <div class="comp-col comp-propose">
+        <div class="comp-label">Proposition de modification</div>
+        <p>Remplacer le plafond de 20% du CA par un taux de retour joueur (RTP) exprimé en pourcentage du total des mises engagées, compris entre 50% et 85%, à définir par l'ANJ selon la catégorie de jeu.</p>
+      </div>
+    </div>
+    <div class="justification">
+      <strong>Justification</strong>
+      Le plafond de 20% du chiffre d'affaires crée une déconnexion arbitraire entre ce que les joueurs dépensent et ce qu'ils peuvent espérer recevoir. Le chiffre d'affaires d'un opérateur JONUM en phase de lancement est structurellement faible, ce qui rend le plafond contraignant avant même d'avoir un modèle éprouvé. La notion de taux de retour joueur est éprouvée dans la régulation des jeux d'argent en ligne et calibre la redistribution sur le volume réel de jeu plutôt que sur la marge de l'opérateur. Un RTP encadré entre 50% et 85% offre une protection efficace contre les modèles prédateurs tout en permettant des économies de jeu viables. L'ANJ dispose déjà des outils de contrôle adaptés à ce mécanisme.
+    </div>
+  </div>
+
+  <div class="proposition">
+    <div class="prop-header">
+      <div class="prop-numero">3</div>
+      <div>
+        <div class="prop-tag">Protection des joueurs / Art. 6 du décret</div>
+        <h2>Déplacer l'auto-limitation de l'inscription vers la première mise</h2>
+      </div>
+    </div>
+    <div class="comparatif">
+      <div class="comp-col comp-actuel">
+        <div class="comp-label">Disposition actuelle</div>
+        <p>Dès l'ouverture du compte, avant tout accès au jeu, le joueur doit fixer ses limites de dépenses sur 7 jours et son temps de jeu sur 7 jours. Ces limites sont obligatoires pour accéder à la plateforme.</p>
+      </div>
+      <div class="comp-col comp-propose">
+        <div class="comp-label">Proposition de modification</div>
+        <p>Le joueur peut accéder à une version d'exploration sans fixer de limites. Les limites de dépenses et de temps deviennent obligatoires au moment de la première mise financière réelle. Un rappel visible est affiché à chaque connexion.</p>
+      </div>
+    </div>
+    <div class="justification">
+      <strong>Justification</strong>
+      L'obligation d'auto-limitation avant tout accès est une friction d'entrée sans équivalent dans aucun marché P2E mondial ni dans les jeux vidéo classiques. Elle suppose que le joueur connaît ses limites avant d'avoir découvert le produit, ce qui est comportementalement peu réaliste. L'objectif de protection est mieux atteint si la limite est fixée au moment où le joueur décide de s'engager financièrement. Cette approche est cohérente avec le droit comparé des jeux en ligne européens, qui conditionne généralement les limites de dépenses à l'acte de jeu, pas à l'inscription. Le rappel à chaque connexion maintient la pression comportementale sans bloquer la découverte du produit.
+    </div>
+  </div>
+
+  <div class="proposition">
+    <div class="prop-header">
+      <div class="prop-numero">4</div>
+      <div>
+        <div class="prop-tag">Conformité / Position formelle de l'ANJ</div>
+        <h2>Fixer un délai de mise en conformité pour les opérateurs non déclarés</h2>
+      </div>
+    </div>
+    <div class="comparatif">
+      <div class="comp-col comp-actuel">
+        <div class="comp-label">Situation actuelle</div>
+        <p>Les opérateurs qui entrent dans le champ des JONUM mais n'ont pas déposé de déclaration ANJ se trouvent dans une zone grise non définie. Aucune disposition ne précise leur statut ni les délais dans lesquels ils doivent se conformer.</p>
+      </div>
+      <div class="comp-col comp-propose">
+        <div class="comp-label">Proposition de modification</div>
+        <p>Publier une position formelle de l'ANJ fixant un délai de mise en conformité (proposé : 6 mois à compter de la publication) pour les opérateurs actifs en France entrant dans le champ JONUM. Passé ce délai, les opérateurs non déclarés sont traités comme offre illégale au sens de la loi SREN.</p>
+      </div>
+    </div>
+    <div class="justification">
+      <strong>Justification</strong>
+      L'absence de délai de mise en conformité crée une asymétrie : les opérateurs qui se déclarent supportent les obligations du cadre, tandis que ceux qui ne se déclarent pas continuent d'opérer sous tolérance implicite. Cette tolérance, compréhensible en phase de lancement, devient problématique si elle se prolonge, car elle prive le cadre de sa raison d'être. Un délai public et formel crée une incitation à la déclaration, permet à l'ANJ de mesurer le niveau d'adoption réel, et offre aux opérateurs une visibilité sur leurs obligations. Il est dans l'intérêt des opérateurs eux-mêmes de bénéficier d'une protection juridique formelle plutôt que d'une tolérance révocable à tout moment.
+    </div>
+  </div>
+
+  <div class="proposition">
+    <div class="prop-header">
+      <div class="prop-numero">5</div>
+      <div>
+        <div class="prop-tag">Procédure / Pratique administrative de l'ANJ</div>
+        <h2>Créer une voie rapide pour les opérateurs déjà régulés dans l'UE</h2>
+      </div>
+    </div>
+    <div class="comparatif">
+      <div class="comp-col comp-actuel">
+        <div class="comp-label">Disposition actuelle</div>
+        <p>Le dossier de déclaration préalable est unique pour tous les opérateurs, quelle que soit leur taille ou leur situation réglementaire dans d'autres juridictions. Le délai d'instruction est de 15 jours ouvrables.</p>
+      </div>
+      <div class="comp-col comp-propose">
+        <div class="comp-label">Proposition de modification</div>
+        <p>Créer un régime simplifié pour les opérateurs déjà régulés dans un autre État membre de l'UE ou de l'EEE (MGA, UKGC, KSA, etc.), leur permettant de transmettre leur dossier de conformité étranger en substitution partielle du dossier ANJ. Délai d'instruction ramené à 7 jours ouvrables.</p>
+      </div>
+    </div>
+    <div class="justification">
+      <strong>Justification</strong>
+      Le dossier de déclaration JONUM est décrit par les opérateurs comme exigeant "une quantité significative d'informations détaillées" (Sorare, mars 2026). Pour un opérateur déjà audité et régulé dans une autre juridiction UE, cette exigence représente une duplication de travail sans bénéfice réglementaire proportionné. Le principe de reconnaissance mutuelle, applicable en matière d'agrément dans d'autres contextes européens, justifie une approche de passeport partiel. Cette mesure réduit le coût de conformité pour les opérateurs les plus crédibles tout en permettant à l'ANJ de concentrer ses ressources sur les dossiers présentant des zones d'incertitude réelle.
+    </div>
+  </div>
+
+  <div class="proposition">
+    <div class="prop-header">
+      <div class="prop-numero">6</div>
+      <div>
+        <div class="prop-tag">Convertibilité / Révision de l'art. 40 de la loi SREN</div>
+        <h2>Introduire un seuil de conversion en euros pour les gains cumulés</h2>
+      </div>
+    </div>
+    <div class="comparatif">
+      <div class="comp-col comp-actuel">
+        <div class="comp-label">Disposition actuelle (loi SREN)</div>
+        <p>Tout gain en monnaie ayant cours légal est interdit. Aucune conversion directe en euros n'est possible via l'opérateur, quelle que soit l'ampleur des gains accumulés.</p>
+      </div>
+      <div class="comp-col comp-propose">
+        <div class="comp-label">Proposition de modification</div>
+        <p>Permettre la conversion en euros des récompenses accumulées au-delà d'un seuil annuel minimum (proposé : 500 euros), sous condition de KYC renforcé et dans la limite du plafond individuel existant. La conversion transite obligatoirement par un établissement de paiement agréé déclaré à l'ANJ.</p>
+      </div>
+    </div>
+    <div class="justification">
+      <strong>Justification</strong>
+      Cette mesure nécessite une modification de l'article 40 de la loi SREN et dépasse le périmètre du décret. Elle est toutefois la plus structurante pour la viabilité du modèle et justifie une initiative législative dans le cadre du bilan de mi-parcours. L'interdiction absolue de tout gain en euros nie l'essence du play-to-earn. Le seuil minimal de 500 euros exclut les petits gains spéculatifs tout en permettant aux joueurs engagés de valoriser réellement leur activité. L'obligation de transiter par un établissement de paiement agréé répond aux préoccupations LCB-FT sans fermer la boucle économique du jeu, et rapproche le JONUM des standards des tournois de poker en ligne agréés, où les gains sont pleinement convertibles sous contrôle réglementaire.
+    </div>
+  </div>
+
+  <div class="synthese">
+    <div class="synthese-label">Synthèse</div>
+    <h3>Ce qui peut être fait maintenant, ce qui requiert une révision législative</h3>
+    <p>Trois propositions (1, 2, 3) relèvent du seul pouvoir réglementaire et peuvent être intégrées dans un décret modificatif avant le bilan de mi-parcours de 2027. Deux autres (4, 5) relèvent de la pratique administrative de l'ANJ et sont applicables sans délai législatif. La proposition 6 nécessite une modification de l'article 40 de la loi SREN.</p>
+    <table class="table-synthese">
+      <thead>
+        <tr>
+          <th>Proposition</th>
+          <th>Levier</th>
+          <th>Priorité</th>
+          <th>Délai estimé</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. Autoriser les stablecoins</td>
+          <td>Décret modificatif</td>
+          <td class="priorite-haute">Haute</td>
+          <td>3 à 6 mois</td>
+        </tr>
+        <tr>
+          <td>2. RTP en lieu du plafond 20% CA</td>
+          <td>Décret modificatif</td>
+          <td class="priorite-haute">Haute</td>
+          <td>3 à 6 mois</td>
+        </tr>
+        <tr>
+          <td>3. Auto-limitation à la première mise</td>
+          <td>Décret modificatif</td>
+          <td class="priorite-moy">Moyenne</td>
+          <td>3 à 6 mois</td>
+        </tr>
+        <tr>
+          <td>4. Délai de mise en conformité formel</td>
+          <td>Position ANJ</td>
+          <td class="priorite-haute">Haute</td>
+          <td>Immédiat</td>
+        </tr>
+        <tr>
+          <td>5. Voie rapide opérateurs régulés UE</td>
+          <td>Décision administrative ANJ</td>
+          <td class="priorite-moy">Moyenne</td>
+          <td>1 à 3 mois</td>
+        </tr>
+        <tr>
+          <td>6. Seuil de conversion en euros</td>
+          <td>Révision législative (art. 40 SREN)</td>
+          <td class="priorite-haute">Haute, complexe</td>
+          <td>12 à 18 mois</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note-annexe">
+    <strong>Note méthodologique :</strong> Ces propositions sont formulées sur la base du décret n° 2026-60 du 4 février 2026, de la loi SREN du 21 mai 2024 (articles 40 et 41), des FAQ publiées par l'ANJ et du benchmark des régulations européennes applicables aux loot boxes et aux jeux Web3. Elles reflètent une analyse éditoriale indépendante de Les Enjeux et n'engagent aucun opérateur ni aucune autorité réglementaire.
+  </div>
+
+</div>
+</body>
+</html>
