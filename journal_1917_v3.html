@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journal de Vendée · 1917 - Andrée Potier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:      #E4E0D8;
+  --paper:   #F3F1EC;
+  --paper-s: #EAE7E0;
+  --paper-d: #D8D3C8;
+  --ink:     #191510;
+  --ink-s:   #36291E;
+  --ink-f:   #68584C;
+  --a:       #5A4735;
+  --a-m:     #7C6450;
+  --a-l:     #A08870;
+  --sepia:   #96856E;
+  --sep-l:   #BAAД96;
+  --red:     #782222;
+  --bdr:     #BEB4A6;
+}
+
+/* trick: named variable for light sepia since CSS doesn't allow A in hex */
+:root { --sep-l: #BAA896; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* ─── NAV ─────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--ink); border-bottom: 1px solid var(--a-m);
+}
+nav ul { display: flex; justify-content: center; list-style: none; max-width: 980px; margin: 0 auto; }
+nav a {
+  display: block; padding: 11px 22px;
+  color: var(--sep-l); text-decoration: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  transition: color .2s;
+}
+nav a:hover { color: var(--a-l); }
+
+/* Last entry — hide the timeline track that would bleed into the bilan */
+.entry.last::after { display: none; }
+
+/* ─── HEADER ──────────────────────────────────── */
+header {
+  background: var(--ink); text-align: center;
+  padding: 84px 24px 68px; position: relative; overflow: hidden;
+}
+header::after {
+  content: ''; position: absolute;
+  bottom: 0; left: 10%; right: 10%; height: 1px; background: var(--a-m);
+}
+.h-eye {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--a-l); margin-bottom: 22px;
+}
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 6vw, 70px); font-weight: 700; line-height: 1.05;
+  color: var(--paper);
+}
+h1 .sub {
+  display: block; font-style: italic; font-weight: 400;
+  font-size: 0.47em; color: var(--a-l); margin-top: 12px; letter-spacing: 0.03em;
+}
+.h-orn { color: var(--a-m); font-size: 18px; letter-spacing: 0.6em; margin: 26px 0; }
+.h-tag {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 16px; color: var(--sepia);
+}
+
+/* ─── WRAPPER ─────────────────────────────────── */
+.page { max-width: 980px; margin: 0 auto; padding: 0 24px 100px; }
+section { margin: 60px 0; }
+
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px; font-weight: 600; color: var(--a);
+  padding-bottom: 13px; border-bottom: 1px solid var(--sep-l);
+  position: relative; display: flex; align-items: baseline; gap: 14px;
+  margin-bottom: 28px;
+}
+.sec-title::after {
+  content: ''; position: absolute; bottom: -1px; left: 0;
+  width: 48px; height: 2px; background: var(--a-m);
+}
+.sec-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; color: var(--a-l); letter-spacing: 0.12em; text-transform: uppercase;
+}
+
+/* ─── INTRO ───────────────────────────────────── */
+.intro-grid { display: grid; grid-template-columns: 1fr 220px; gap: 28px; }
+.intro-box {
+  background: var(--paper); border: 1px solid var(--bdr);
+  border-left: 3px solid var(--a-m); padding: 32px 40px;
+}
+.intro-box p { margin-bottom: 1em; text-align: justify; hyphens: auto; }
+.intro-box p:last-child { margin-bottom: 0; }
+.intro-byline {
+  margin-top: 20px; text-align: right; font-style: italic;
+  color: var(--ink-f); border-top: 1px solid var(--sep-l); padding-top: 12px; font-size: 16px;
+}
+.note-panel {
+  background: var(--paper-s); border: 1px solid var(--bdr);
+  padding: 20px; font-size: 14px; line-height: 1.6; color: var(--ink-s);
+}
+.note-panel strong {
+  display: block; font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--a-m); margin-bottom: 8px; font-weight: 400;
+}
+
+/* ─── YEAR CARDS ──────────────────────────────── */
+.year-row { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--bdr); overflow: hidden; }
+.yc {
+  background: var(--paper); padding: 22px 18px;
+  border-right: 1px solid var(--bdr); position: relative;
+}
+.yc:last-child { border-right: none; }
+.yc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--paper-d); }
+.yc.red::before { background: var(--red); }
+.yc-m {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--a-m); margin-bottom: 10px;
+}
+.yc-t { font-size: 14px; line-height: 1.5; color: var(--ink-s); }
+
+/* ─── FAMILY TREE ─────────────────────────────── */
+.tree-wrap {
+  background: var(--paper); border: 1px solid var(--bdr);
+  padding: 36px 28px 28px; overflow-x: auto; margin-bottom: 32px;
+}
+.tree-lbl {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--a-m); text-align: center; margin-bottom: 28px;
+}
+
+/* ─── CHAR CARDS ──────────────────────────────── */
+.char-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+.cg-head {
+  grid-column: 1 / -1; margin: 18px 0 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--a-m); padding-bottom: 5px; border-bottom: 1px solid var(--sep-l);
+}
+.cc {
+  background: var(--paper); border: 1px solid var(--bdr);
+  padding: 13px 15px; transition: border-color .2s;
+}
+.cc:hover { border-color: var(--a-m); }
+.cc.hl { border-left: 2px solid var(--a-m); }
+.cc-n { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+.cc-r { font-size: 13px; font-style: italic; color: var(--ink-f); margin-top: 3px; }
+.cc-d { font-size: 12px; color: var(--sepia); margin-top: 4px; font-family: 'Cormorant Garamond', serif; }
+
+/* ─── JOURNAL TIMELINE ────────────────────────── */
+.month-sep {
+  display: flex; align-items: center; gap: 0;
+  margin: 52px 0 32px; position: relative;
+}
+.month-sep::before {
+  content: ''; position: absolute;
+  top: 50%; left: 0; right: 0; height: 1px; background: var(--sep-l);
+}
+.month-pill {
+  background: var(--ink); color: var(--paper);
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 21px; padding: 6px 24px; position: relative; z-index: 1;
+  border: 1px solid var(--a-m); white-space: nowrap; flex-shrink: 0;
+}
+.month-loc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; color: var(--ink-f); letter-spacing: 0.08em;
+  position: relative; z-index: 1; background: var(--bg);
+  padding: 0 10px; white-space: nowrap; flex-shrink: 0;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 88px 24px 1fr;
+  margin-bottom: 34px;
+  position: relative;
+}
+
+/* Timeline vertical track - absolutely positioned on .entry, NOT inside content */
+.entry::after {
+  content: '';
+  position: absolute;
+  left: 99.5px;   /* 88 (date) + 12 (half of 24px dot col) - 0.5 */
+  top: 24px;
+  width: 1px;
+  height: calc(100% + 34px); /* span into the gap between entries */
+  background: var(--sep-l);
+  z-index: 0;
+}
+.entry:last-child::after { display: none; }
+
+.e-date {
+  font-family: 'Playfair Display', serif;
+  text-align: right; padding-right: 0; padding-top: 5px; color: var(--a);
+}
+.e-day { font-size: 28px; font-weight: 600; display: block; line-height: 1; }
+.e-mo  { font-size: 12px; font-style: italic; color: var(--ink-f); display: block; }
+
+.e-dot-col {
+  display: flex; flex-direction: column; align-items: center; padding-top: 11px;
+  position: relative; z-index: 1;
+}
+.e-dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  border: 1.5px solid var(--bdr); background: var(--paper-s);
+  flex-shrink: 0; z-index: 1;
+}
+
+.e-body {
+  background: var(--paper); border: 1px solid var(--bdr);
+  padding: 20px 26px; margin-left: 14px;
+  position: relative;
+}
+.entry.notable .e-body { border-left: 2px solid var(--red); }
+.entry.war     .e-body { border-left: 2px solid var(--a-m); }
+
+.e-loc {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 13px; color: var(--ink-f); margin-bottom: 10px; letter-spacing: 0.04em;
+}
+.e-text { text-align: justify; hyphens: auto; }
+.e-text p { margin-bottom: .75em; }
+.e-text p:last-child { margin-bottom: 0; }
+
+/* Person name hover trigger */
+.p {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--a-m);
+  text-underline-offset: 2px;
+  cursor: default;
+  transition: color .15s;
+}
+.p:hover { color: var(--a); }
+
+/* ─── TOOLTIP CARTOUCHE ───────────────────────── */
+#tt {
+  position: fixed; z-index: 9999;
+  background: var(--ink); color: var(--paper);
+  padding: 12px 16px; max-width: 230px;
+  border: 1px solid var(--a-m);
+  pointer-events: none;
+  opacity: 0; transition: opacity .12s;
+  font-family: 'EB Garamond', serif;
+}
+#tt.on { opacity: 1; }
+#tt-n { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 600; margin-bottom: 4px; color: var(--paper); }
+#tt-r { font-size: 13px; font-style: italic; color: var(--a-l); margin-bottom: 0; }
+#tt-i { font-size: 12px; color: var(--sepia); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 7px; margin-top: 7px; line-height: 1.5; }
+
+/* ─── FOOTER ──────────────────────────────────── */
+footer {
+  background: var(--ink); color: var(--sepia);
+  text-align: center; padding: 54px 24px;
+  font-style: italic; font-size: 15px;
+}
+.f-orn { font-size: 18px; color: var(--a-m); display: block; margin-bottom: 16px; letter-spacing: 0.6em; }
+footer p { margin: 5px 0; }
+footer strong { color: var(--paper); font-weight: 400; }
+footer .f-tech { margin-top: 18px; font-size: 12px; color: var(--ink-f); font-style: normal; font-family: 'Cormorant Garamond', serif; letter-spacing: 0.05em; }
+
+/* ─── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 720px) {
+  .intro-grid { grid-template-columns: 1fr; }
+  .year-row { grid-template-columns: 1fr 1fr; }
+  .year-row .yc:nth-child(2) { border-right: none; }
+  .year-row .yc:nth-child(1), .year-row .yc:nth-child(2) { border-bottom: 1px solid var(--bdr); }
+  nav a { padding: 10px 12px; font-size: 11px; }
+  .intro-box { padding: 22px 24px; }
+}
+@media (max-width: 500px) {
+  .entry { grid-template-columns: 1fr; }
+  .e-date { text-align: left; margin-bottom: 8px; }
+  .e-dot-col { display: none; }
+  .entry::after { display: none; }
+  .e-body { margin-left: 0; }
+  .year-row { grid-template-columns: 1fr; }
+  .year-row .yc { border-right: none; border-bottom: 1px solid var(--bdr); }
+}
+</style>
+</head>
+<body>
+
+<!-- TOOLTIP -->
+<div id="tt" aria-hidden="true">
+  <div id="tt-n"></div>
+  <div id="tt-r"></div>
+  <div id="tt-i"></div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <p class="h-eye">Famille Potier · Pigeaud · Vendée</p>
+  <h1>Journal de Vendée<span class="sub">Andrée Potier - 1917</span></h1>
+  <p class="h-orn">✦ ✦ ✦</p>
+  <p class="h-tag">Fille de Victor et Marie Potier, quinze ans, au Poiré-sur-Vie · Grande Guerre, troisième année</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#annee">L'Année</a></li>
+    <li><a href="#personnages">Personnages</a></li>
+    <li><a href="#journal">Journal</a></li>
+    <li><a href="#bilan">Bilan</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+<!-- ══ INTRODUCTION ══════════════════════════════ -->
+<section id="introduction">
+  <h2 class="sec-title">Introduction <span class="sec-sub">par Anne Dugast</span></h2>
+  <div class="intro-grid">
+    <div class="intro-box">
+      <p>Lorsque j'ai redécouvert les cahiers d'enfance et de jeunesse de ma mère, Andrée Potier (1902–1993), soigneusement conservés dans une vieille armoire familiale, j'ai été saisie par la justesse, la vivacité et la sensibilité de son regard. Écrits entre 1917 et 1954, ses journaux forment une chronique unique de la vie quotidienne en Vendée, traversée par les grands événements du XX<sup>e</sup> siècle - les deux guerres, les évolutions sociales, les rites familiaux et les élans intimes d'une femme en devenir.</p>
+      <p>Ce travail de retranscription, entrepris avec rigueur et émotion, m'a permis de redonner voix à une mémoire longtemps restée silencieuse. Page après page, c'est tout un univers qui renaît : celui d'une adolescente, puis d'une jeune femme, prise entre les exigences de son époque et ses aspirations personnelles. J'ai tenu à respecter au plus près la langue, le rythme et l'esprit de ces écrits, n'intervenant que pour clarifier ponctuellement certains noms ou références devenus obscurs.</p>
+      <p>Ce premier volume, consacré à l'année 1917, inaugure une série de publications à venir, couvrant près de quarante ans de journal. Il témoigne de ce que l'histoire peut receler de plus intime : les traces de celles et ceux qui, sans jamais prétendre à l'héroïsme, ont vécu et écrit au fil des jours, sans savoir qu'ils laisseraient, à leur insu, une empreinte précieuse.</p>
+      <div class="intro-byline">Anne Dugast, historienne</div>
+    </div>
+    <div class="note-panel">
+      <strong>Note éditoriale</strong>
+      Les entrées du journal sont présentées dans leur intégralité, fidèles à la retranscription d'Anne Dugast. Les noms soulignés dans le texte révèlent une fiche personnage au survol.
+    </div>
+  </div>
+</section>
+
+<!-- ══ L'ANNÉE ══════════════════════════════════ -->
+<section id="annee">
+  <h2 class="sec-title">L'Année 1917</h2>
+  <p style="color:var(--ink-s);margin-bottom:22px;font-size:17px;">Andrée a quinze ans. Entre le Poiré-sur-Vie, les Sables-d'Olonne et le pensionnat de Chavagnes, le journal oscille entre la légèreté de l'adolescence et le poids de la maladie, de la guerre et du deuil.</p>
+  <div class="year-row">
+    <div class="yc red">
+      <div class="yc-m">Juillet</div>
+      <div class="yc-t">Cérémonie du Sacré-Cœur. Grand-mère décline. Lucie gravement malade à Giromagny.</div>
+    </div>
+    <div class="yc red">
+      <div class="yc-m">Août</div>
+      <div class="yc-t">3<sup>e</sup> anniversaire de la mobilisation. Morts de l'oncle Aristide et du cousin Guesdon. Séjour aux Sables.</div>
+    </div>
+    <div class="yc red">
+      <div class="yc-m">Septembre</div>
+      <div class="yc-t">Mort du petit Chailloux. Disparition de Guynemer. Maman part soigner Lucie. Rentrée à Chavagnes.</div>
+    </div>
+    <div class="yc red">
+      <div class="yc-m">Décembre</div>
+      <div class="yc-t">Noël dramatique : agonie de grand-mère. Elle survit, pour quelques semaines encore.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PERSONNAGES ═══════════════════════════════ -->
+<section id="personnages">
+  <h2 class="sec-title">Personnages de 1917</h2>
+
+  <!-- SVG TREE -->
+  <div class="tree-wrap">
+    <div class="tree-lbl">Arbre de la famille directe d'Andrée</div>
+    <svg viewBox="0 0 720 456" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:580px;display:block;" font-family="'EB Garamond',Georgia,serif">
+
+      <!-- ── CONNECTORS (drawn first, behind nodes) ── -->
+      <!-- Grand-mère → Victor (dashed, ancestor) -->
+      <path d="M360,80 L360,104 L152,104 L152,120" fill="none" stroke="#BEB4A6" stroke-width="1" stroke-dasharray="5,4"/>
+      <!-- Marriage horizontal - plain line, no symbol -->
+      <line x1="248" y1="155" x2="490" y2="155" stroke="#BEB4A6" stroke-width="1"/>
+      <!-- Children branch -->
+      <line x1="368" y1="155" x2="368" y2="210" stroke="#BEB4A6" stroke-width="1"/>
+      <line x1="188" y1="210" x2="568" y2="210" stroke="#BEB4A6" stroke-width="1"/>
+      <line x1="188" y1="210" x2="188" y2="232" stroke="#BEB4A6" stroke-width="1"/>
+      <line x1="568" y1="210" x2="568" y2="232" stroke="#BEB4A6" stroke-width="1"/>
+      <!-- Pigeaud separator -->
+      <line x1="20" y1="348" x2="700" y2="348" stroke="#BEB4A6" stroke-width="1" stroke-dasharray="6,5"/>
+
+      <!-- ── GRAND-MÈRE ── -->
+      <rect x="260" y="8" width="200" height="72" fill="#EDE9E1" stroke="#AA9090" stroke-width="1" stroke-dasharray="5,3"/>
+      <text x="360" y="33" text-anchor="middle" font-size="14" font-weight="600" fill="#191510" font-family="'Playfair Display',serif">Grand-mère Potier</text>
+      <text x="360" y="50" text-anchor="middle" font-size="12" font-style="italic" fill="#782222">† janvier 1918</text>
+      <text x="360" y="67" text-anchor="middle" font-size="10" fill="#96856E" font-family="'Cormorant Garamond',serif">Marie, mère de Victor &amp; Abel · ~1840</text>
+
+      <!-- ── VICTOR ── -->
+      <rect x="57" y="120" width="190" height="70" fill="#F3F1EC" stroke="#BEB4A6" stroke-width="1"/>
+      <text x="152" y="145" text-anchor="middle" font-size="14" font-weight="600" fill="#191510" font-family="'Playfair Display',serif">Victor Potier</text>
+      <text x="152" y="162" text-anchor="middle" font-size="12" font-style="italic" fill="#68584C">Papa</text>
+      <text x="152" y="178" text-anchor="middle" font-size="10" fill="#96856E" font-family="'Cormorant Garamond',serif">1874 – 1931</text>
+
+      <!-- ── MARIE PIGEAUD ── -->
+      <rect x="490" y="120" width="190" height="70" fill="#F3F1EC" stroke="#BEB4A6" stroke-width="1"/>
+      <text x="585" y="145" text-anchor="middle" font-size="14" font-weight="600" fill="#191510" font-family="'Playfair Display',serif">Marie Pigeaud</text>
+      <text x="585" y="162" text-anchor="middle" font-size="12" font-style="italic" fill="#68584C">Maman</text>
+      <text x="585" y="178" text-anchor="middle" font-size="10" fill="#96856E" font-family="'Cormorant Garamond',serif">22.3.1874 – 11.5.1941</text>
+
+      <!-- ── ANDRÉE (hero) ── -->
+      <rect x="83" y="232" width="210" height="82" fill="#191510" stroke="#7C6450" stroke-width="1.5"/>
+      <text x="188" y="258" text-anchor="middle" font-size="15" font-weight="600" fill="#F3F1EC" font-family="'Playfair Display',serif">Andrée Potier</text>
+      <text x="188" y="276" text-anchor="middle" font-size="11" font-style="italic" fill="#A08870">auteure du journal</text>
+      <text x="188" y="293" text-anchor="middle" font-size="10" fill="#96856E" font-family="'Cormorant Garamond',serif">10.9.1902 – 21.3.1993</text>
+
+      <!-- ── JACQUELINE ── -->
+      <rect x="463" y="232" width="210" height="72" fill="#F3F1EC" stroke="#BEB4A6" stroke-width="1"/>
+      <text x="568" y="258" text-anchor="middle" font-size="14" font-weight="600" fill="#191510" font-family="'Playfair Display',serif">Jacqueline Potier</text>
+      <text x="568" y="275" text-anchor="middle" font-size="11" font-style="italic" fill="#68584C">« Canette », sœur cadette</text>
+      <text x="568" y="292" text-anchor="middle" font-size="10" fill="#96856E" font-family="'Cormorant Garamond',serif">1904 – 1994</text>
+
+      <!-- ── PIGEAUD SECTION LABEL ── -->
+      <text x="360" y="368" text-anchor="middle" font-size="10" fill="#7C6450" letter-spacing="2" font-family="'Cormorant Garamond',serif">FRÈRES ET SŒURS DE MARIE PIGEAUD (CÔTÉ MATERNEL D'ANDRÉE)</text>
+
+      <!-- Siblings: 5 × 118px + 4 × 10px = 630, offset = (720-630)/2 = 45 -->
+      <!-- Eugène x=45 | Gaston x=173 | Denise x=301 | Alfred x=429 | Raymond x=557 -->
+
+      <!-- Eugène -->
+      <rect x="45" y="384" width="118" height="68" fill="#F3F1EC" stroke="#BEB4A6" stroke-width="1"/>
+      <text x="104" y="408" text-anchor="middle" font-size="13" font-weight="600" fill="#191510" font-family="'Playfair Display',serif">Eugène</text>
+      <text x="104" y="424" text-anchor="middle" font-size="11" font-style="italic" fill="#68584C">Oncle Eugène</text>
+      <text x="104" y="440" text-anchor="middle" font-size="10" fill="#96856E" font-family="'Cormorant Garamond',serif">1862–1922 → Madeleine</text>
+
+      <!-- Gaston -->
+      <rect x="173" y="384" width="118" height="68" fill="#F3F1EC" stroke="#BEB4A6" stroke-width="1"/>
+      <text x="232" y="408" text-anchor="middle" font-size="13" font-weight="600" fill="#191510" font-family="'Playfair Display',serif">Gaston</text>
+      <text x="232" y="424" text-anchor="middle" font-size="11" font-style="italic" fill="#68584C">Oncle Gaston</text>
+      <text x="232" y="440" text-anchor="middle" font-size="10" fill="#96856E" font-family="'Cormorant Garamond',serif">1864–1950</text>
+
+      <!-- Denise -->
+      <rect x="301" y="384" width="118" height="68" fill="#F3F1EC" stroke="#BEB4A6" stroke-width="1"/>
+      <text x="360" y="408" text-anchor="middle" font-size="13" font-weight="600" fill="#191510" font-family="'Playfair Display',serif">Denise</text>
+      <text x="360" y="424" text-anchor="middle" font-size="11" font-style="italic" fill="#68584C">Tante Denise, Giromagny</text>
+      <text x="360" y="440" text-anchor="middle" font-size="10" fill="#782222" font-family="'Cormorant Garamond',serif">1867–1925 → Lucie (†1918)</text>
+
+      <!-- Alfred -->
+      <rect x="429" y="384" width="118" height="68" fill="#F3F1EC" stroke="#BEB4A6" stroke-width="1"/>
+      <text x="488" y="408" text-anchor="middle" font-size="13" font-weight="600" fill="#191510" font-family="'Playfair Display',serif">Alfred</text>
+      <text x="488" y="424" text-anchor="middle" font-size="11" font-style="italic" fill="#68584C">Oncle Alfred</text>
+      <text x="488" y="440" text-anchor="middle" font-size="10" fill="#96856E" font-family="'Cormorant Garamond',serif">1870–1949 → Henri, Françoise</text>
+
+      <!-- Raymond -->
+      <rect x="557" y="384" width="118" height="68" fill="#F3F1EC" stroke="#BEB4A6" stroke-width="1"/>
+      <text x="616" y="408" text-anchor="middle" font-size="13" font-weight="600" fill="#191510" font-family="'Playfair Display',serif">Raymond</text>
+      <text x="616" y="424" text-anchor="middle" font-size="11" font-style="italic" fill="#68584C">Oncle Raymond</text>
+      <text x="616" y="440" text-anchor="middle" font-size="10" fill="#96856E" font-family="'Cormorant Garamond',serif">1878–1939</text>
+
+    </svg>
+  </div>
+
+  <!-- CHARACTER CARDS -->
+  <div class="char-grid">
+
+    <div class="cg-head">Famille immédiate - maison du Poiré</div>
+    <div class="cc hl"><div class="cc-n">Victor Potier</div><div class="cc-r">Papa · propriétaire au Poiré-sur-Vie</div><div class="cc-d">1874 – 1931</div></div>
+    <div class="cc hl"><div class="cc-n">Marie Pigeaud</div><div class="cc-r">Maman · institutrice, directrice d'école</div><div class="cc-d">22.3.1874 – 11.5.1941</div></div>
+    <div class="cc"><div class="cc-n">Jacqueline Potier</div><div class="cc-r">« Canette » · sœur cadette, pianiste</div><div class="cc-d">1904 – 1994</div></div>
+    <div class="cc"><div class="cc-n">Grand-mère Potier</div><div class="cc-r">Mère de Victor &amp; Abel · agonise à Noël 1917</div><div class="cc-d">~1840 · † janvier 1918</div></div>
+    <div class="cc"><div class="cc-n">Sœur Agathe</div><div class="cc-r">Religieuse · aide familiale indispensable</div><div class="cc-d">Présente dans tout le journal</div></div>
+
+    <div class="cg-head">Branche Potier - oncle Abel</div>
+    <div class="cc"><div class="cc-n">Tante Abel</div><div class="cc-r">Marie Yvernogeau · épouse d'Abel Potier</div><div class="cc-d">Abel mourra en oct. 1918 de la grippe</div></div>
+    <div class="cc"><div class="cc-n">Marguerite Potier</div><div class="cc-r">Cousine · fille d'Abel · épousera Mignen</div><div class="cc-d">Promenades et musique au Poiré</div></div>
+    <div class="cc"><div class="cc-n">Charlotte Potier</div><div class="cc-r">Cousine · fille d'Abel · au brevet avec Andrée</div><div class="cc-d">Épousera Léon Gourraud</div></div>
+    <div class="cc"><div class="cc-n">Tante Victor</div><div class="cc-r">Épouse d'un Victor Pigeaud · « au Parc »</div><div class="cc-d">Identité à préciser</div></div>
+
+    <div class="cg-head">Branche Pigeaud - côté maternel</div>
+    <div class="cc"><div class="cc-n">Oncle Eugène Pigeaud</div><div class="cc-r">Frère de Maman · séjour aux Sables avec les Potier</div><div class="cc-d">1862 – 1922</div></div>
+    <div class="cc"><div class="cc-n">Madeleine Pigeaud</div><div class="cc-r">Cousine · fille d'Eugène</div><div class="cc-d">1898 – 1983</div></div>
+    <div class="cc"><div class="cc-n">Tante Denise Pigeaud</div><div class="cc-r">Sœur de Maman · à Giromagny, soigne Lucie</div><div class="cc-d">1867 – 1925</div></div>
+    <div class="cc"><div class="cc-n">Lucie Yehl</div><div class="cc-r">Cousine · fille de Tante Denise · typhoïde à Giromagny</div><div class="cc-d">4.3.1900 · † 1918</div></div>
+    <div class="cc"><div class="cc-n">Henri Pigeaud</div><div class="cc-r">Cousin · fils d'Alfred · au front en Autriche</div><div class="cc-d">† 1974</div></div>
+    <div class="cc"><div class="cc-n">Françoise Pigeaud</div><div class="cc-r">Cousine · fille d'Alfred · mère de Menine</div><div class="cc-d">Lettres et photos tout l'automne</div></div>
+
+    <div class="cg-head">Voisins &amp; entourage du Poiré</div>
+    <div class="cc"><div class="cc-n">Famille Chailloux</div><div class="cc-r">Voisins · 4 enfants perdus dont Edmond (†1914) et le petit (†14 sept. 1917)</div><div class="cc-d">Tante Chailloux toujours active</div></div>
+    <div class="cc"><div class="cc-n">Famille Gendreau</div><div class="cc-r">Voisins · pêche au marais aux Sables d'Olonne</div><div class="cc-d">Radégonde fiancée, déc. 1917</div></div>
+    <div class="cc"><div class="cc-n">Cousin Guesdon</div><div class="cc-r">Cousin · hémorragie foudroyante</div><div class="cc-d">† 6 août 1917 · retarde le départ aux Sables</div></div>
+    <div class="cc"><div class="cc-n">Oncle Aristide</div><div class="cc-r">Oncle d'Andrée · branche à préciser</div><div class="cc-d">† juillet 1917</div></div>
+    <div class="cc"><div class="cc-n">Mariette &amp; Guillaume</div><div class="cc-r">Domestiques · la couleuvre, c'est une serpente !</div><div class="cc-d">Employés au Poiré-sur-Vie</div></div>
+
+    <div class="cg-head">Pensionnat de Chavagnes-en-Paillers</div>
+    <div class="cc"><div class="cc-n">Mademoiselle Pouzet</div><div class="cc-r">Professeur · classe du brevet</div><div class="cc-d">Chavagnes-en-Paillers</div></div>
+    <div class="cc"><div class="cc-n">Anne-Marie Bélaubre</div><div class="cc-r">Camarade de brevet · pensionnaire</div><div class="cc-d">Sœur de Berthe Bélaubre</div></div>
+    <div class="cc"><div class="cc-n">Juliette Gouyer</div><div class="cc-r">Camarade de brevet · pensionnaire</div><div class="cc-d">Chavagnes 1917</div></div>
+    <div class="cc"><div class="cc-n">Jeanne de Lajartre</div><div class="cc-r">Camarade de brevet · pensionnaire</div><div class="cc-d">Chavagnes 1917</div></div>
+    <div class="cc"><div class="cc-n">Simone Robert</div><div class="cc-r">Camarade de brevet · pensionnaire</div><div class="cc-d">Chavagnes 1917</div></div>
+    <div class="cc"><div class="cc-n">Anne Le Tilly</div><div class="cc-r">Camarade de brevet · pensionnaire</div><div class="cc-d">Chavagnes 1917</div></div>
+    <div class="cc"><div class="cc-n">Marie-Paule Béger</div><div class="cc-r">Camarade de brevet · pensionnaire</div><div class="cc-d">Chavagnes 1917</div></div>
+
+  </div>
+</section>
+
+<!-- ══ JOURNAL ═══════════════════════════════════ -->
+<section id="journal">
+  <h2 class="sec-title">Le Journal <span class="sec-sub">1917 · Le Poiré - Sables-d'Olonne - Chavagnes</span></h2>
+
+  <!-- ── JUILLET ── -->
+  <div class="month-sep">
+    <div class="month-pill">Juillet</div>
+    <div class="month-loc">été 1917 · Le Poiré-sur-Vie</div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">20</span><span class="e-mo">juillet</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-loc">Le Poiré-sur-Vie</div>
+      <div class="e-text"><p>Il est environ deux heures, je suis assise à mon bureau dans notre chambre et je suis bien tranquille ; le temps est gris mais lourd et nuageux ! Nous avons eu aujourd'hui à la maison la cérémonie de l'Intronisation au Sacré Cœur ; <span class="p" data-p="grand-mere">grand-mère</span> nous avait demandé de communier pour elle. <span class="p" data-p="marguerite">Marguerite</span> et <span class="p" data-p="charlotte">Charlotte</span> sont restées un moment à la maison, nous avons fait un peu de musique. Pendant la matinée, j'ai aidé <span class="p" data-p="soeur-agathe">Sœur Agathe</span> à la décoration de la chambre, nous avons disposé une tenture rouge piquée d'œillets roses et de grandes marguerites, le tableau assez beau représentant le Sacré-Cœur est placé sur un coussin, de chaque côté sont disposés des vases de fleurs et des candélabres.</p></div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">22</span><span class="e-mo">juillet</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text">
+        <p><span class="p" data-p="soeur-agathe">Sœur Agathe</span> étant partie en retraite, <span class="p" data-p="maman">Maman</span> est très occupée près de <span class="p" data-p="grand-mere">grand-mère</span> qui a été, il y a une dizaine de jours, sérieusement malade d'une crise d'urémie. Nous partons aux Sables dans une quinzaine, je crois qu'<span class="p" data-p="oncle-eugene">oncle Eugène</span> et <span class="p" data-p="madeleine">Madeleine</span> viendront nous y retrouver.</p>
+        <p>Avant-hier, nous sommes allées chez <span class="p" data-p="tante-victor">Tante Victor</span> au Parc, elle nous a raconté toutes sortes d'histoires plus étonnantes les unes que les autres, après m'avoir répété pour la cinquantième fois : « Tu as grandi encore, tu seras comme ma nièce Clara, elle était la plus petite de sa Communion et elle a grandi l'année de son mariage ! » Puis elle nous a raconté, en faisant une salade de tout, que Guillaume avait peur d'Holopherne et qu'il avait télégraphié au Pape de renvoyer le « général » Mercier ! « Mercier ou Nivelle, l'un ou l'autre » - mais le Pape n'a pas renvoyé le général « non le cardinal » Mercier, nous avons cru mourir de rire !</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">23</span><span class="e-mo">juillet</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text">
+        <p>Dans quelques jours nous partirons aux Sables, je n'ai pas encore habité notre nouvelle maison mais je crois que je m'y plairai. La maison se trouve sur le boulevard de l'Ouest à mi-chemin du remblai et du port.</p>
+        <p><span class="p" data-p="grand-mere">Grand-mère</span> ne va décidément pas bien, sa dernière crise d'urémie l'a beaucoup fatiguée, elle était encore assez forte quand nous l'avons quittée en octobre, mais à la Pentecôte, je l'avais déjà trouvée changée, elle s'est voûtée, elle marche difficilement, je ne sais pas si nous la garderons longtemps.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">24</span><span class="e-mo">juillet</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p><span class="p" data-p="papa">Papa</span> s'est décidé à changer l'auto qui avait décidément besoin de trop de réparations. <span class="p" data-p="sorin">Sorin</span> nous amènera demain une Chenard quinze chevaux, presque neuve, avec sept places.</p></div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">25</span><span class="e-mo">juillet</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p>Ce matin, nous avons eu une carte d'<span class="p" data-p="henri">Henri</span> et une de <span class="p" data-p="francoise">Françoise</span>. Tout le monde va bien, la petite a été mise pour la première fois en robe et en culotte.</p></div>
+    </div>
+  </div>
+
+  <div class="entry notable">
+    <div class="e-date"><span class="e-day">26</span><span class="e-mo">juillet</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p>Nous avons reçu ce matin une lettre de Giromagny, la fièvre muqueuse de <span class="p" data-p="lucie">Lucie</span> s'est aggravée, son état est très grave, mais non encore désespéré !</p></div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">30</span><span class="e-mo">juillet</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text">
+        <p>Hier, journée d'émotions. Le soir je remarque que les roses de la salle à manger étaient fanées, je sors pour les jeter et je jette en même temps l'eau du vase sur l'herbe à côté de moi, soudain j'aperçois, tout près, un serpent assez gros qui remuait terrifié, je me suis sauvée en criant à la maison, <span class="p" data-p="mariette">Mariette</span> brandissant la pelle à feu s'y est précipitée suivie de <span class="p" data-p="guillaume">Guillaume</span> et ils sont revenus avec une grosse couleuvre : « Madame, c'est une serpente » ! Nous avons fini par bien rire ! Enfin hier soir, nous étions assises avec <span class="p" data-p="marguerite">Marguerite</span> le long de la route, un ivrogne s'est précipité sur nous en criant « N'ayez pas peur ! » - Nous nous sommes sauvées !</p>
+        <p><strong><span class="p" data-p="oncle-aristide">L'oncle Aristide</span> est mort !</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── AOÛT ── -->
+  <div class="month-sep">
+    <div class="month-pill">Août</div>
+    <div class="month-loc">été 1917 · Le Poiré - Sables-d'Olonne</div>
+  </div>
+
+  <div class="entry war">
+    <div class="e-date"><span class="e-day">2</span><span class="e-mo">août</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text">
+        <p>Il pleut dans la cour, le vent secoue les marronniers, la pluie ruisselle le long des vitres, on dirait que la nature se met en deuil pour célébrer un bien triste anniversaire. <strong>Il y a trois ans ! La mobilisation !</strong></p>
+        <p>Toute la famille, sauf nous deux, était à Saint-Gilles chez <span class="p" data-p="oncle-gaston">oncle Gaston</span>, le soir toutes les cloches sonnèrent, on placarda devant la poste une grande affiche, c'était fini, il n'y avait plus d'espoir ! La mobilisation !, ce mot volait, répété de bouche en bouche, les cloches tintaient le glas de ceux qui ne devaient pas revenir, les femmes pleuraient ! et à l'est, se déployait un merveilleux arc-en-ciel, l'arc du triomphe de la France, disions-nous. Nous étions tristes et cependant pleines d'espérance. Nous ne pouvions pas savoir ce qu'était la guerre !</p>
+        <p>Que cela est loin ! Je n'aurai jamais cru que trois ans de guerre ne suffiraient pas ; et après la Marne, l'Yser, la bataille des Flandres, Verdun et Craonne, je me retrouve à la bataille de Belgique, dans cette même chambre où j'avais tant prié avec <span class="p" data-p="francoise">Françoise</span> pour que la guerre n'éclate pas.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">3</span><span class="e-mo">août</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p>Il y avait au courrier une lettre de <span class="p" data-p="tante-denise">Tante Denise</span> nous annonçant que <span class="p" data-p="lucie">Lucie</span> est maintenant hors de danger, elle a eu une forte typhoïde. Par contre, Solange a échoué à son brevet.</p></div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">4</span><span class="e-mo">août</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p>Nous partons mardi pour les Sables, <span class="p" data-p="oncle-eugene">oncle Eugène</span> et <span class="p" data-p="madeleine">Madeleine</span> nous y rejoindront bientôt.</p></div>
+    </div>
+  </div>
+
+  <div class="entry notable">
+    <div class="e-date"><span class="e-day">6</span><span class="e-mo">août</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p>Le pauvre <span class="p" data-p="cousin-guesdon">cousin Guesdon</span> est mort ce matin, étouffé par une hémorragie, l'enterrement est mercredi à deux heures, si bien que notre départ aux Sables se trouve retardé ! Quelle déveine !</p></div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">10</span><span class="e-mo">août</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p>Nous partirons tout de même demain, j'ai aidé <span class="p" data-p="maman">Maman</span> à faire quelques préparatifs ; toute la journée, <span class="p" data-p="jacqueline">Jacqueline</span> a ressassé sur son piano une Danse marocaine de je ne sais qui, un Nocturne de Field et une Marche militaire de Schubert.</p></div>
+    </div>
+  </div>
+
+  <!-- ── SEPTEMBRE ── -->
+  <div class="month-sep">
+    <div class="month-pill">Septembre</div>
+    <div class="month-loc">automne 1917 · retour des Sables, Le Poiré</div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">13</span><span class="e-mo">sept.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-loc">Retour des Sables-d'Olonne</div>
+      <div class="e-text">
+        <p>Plus d'un mois sans rien écrire, il est vrai que nous revenons à peine des Sables où nous avons fait un séjour bien agréable. <span class="p" data-p="oncle-eugene">Oncle Eugène</span> et <span class="p" data-p="madeleine">Madeleine</span> ont passé plusieurs jours avec nous, nous avons organisé une pêche au marais avec les <span class="p" data-p="gendreau">Gendreau</span> et Dodin.</p>
+        <p>Notre temps s'est passé de façon agréable mais un peu monotone, le matin le marché, l'après-midi la plage, souvent un bon bain, je me suis beaucoup plu aux Sables, j'habite une grande chambre claire et gaie donnant sur le boulevard, de ma fenêtre j'aperçois le chenal et même, par dessus les toits, un peu de mer.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry notable">
+    <div class="e-date"><span class="e-day">14</span><span class="e-mo">sept.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text">
+        <p>Le <span class="p" data-p="chailloux">petit Chailloux</span> est mort cette nuit à 3 h., <span class="p" data-p="soeur-agathe">Sœur Agathe</span> était à le veiller, l'enterrement est dimanche. Toujours pas de nouvelles de cette pauvre <span class="p" data-p="lucie">Lucie</span>, que <span class="p" data-p="tante-denise">Tante Denise</span> doit être ennuyée toute seule à Giromagny.</p>
+        <p>On dit que notre grand aviateur <span class="p" data-p="guynemer">Guynemer</span> a disparu. - L'enterrement du petit <span class="p" data-p="chailloux">Chailloux</span> a eu lieu tout à l'heure, ses parents et ses sœurs étaient bien peinés, cela fait le quatrième enfant qu'ils perdent - et l'on songe à ce pauvre Edmond, disparu près de Sedan depuis août 1914.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry war">
+    <div class="e-date"><span class="e-day">17</span><span class="e-mo">sept.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p><span class="p" data-p="maman">Maman</span> compte partir ces jours-ci pour Giromagny, cela nous inquiète. Les gares et les trains sont souvent bombardés.</p></div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">18</span><span class="e-mo">sept.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p>En rentrant nous avons trouvé à la maison une dépêche de <span class="p" data-p="tante-denise">Tante Denise</span> disant que <span class="p" data-p="lucie">Lucie</span> était très fatiguée, et demandant à <span class="p" data-p="maman">Maman</span> de venir - et Maman est partie ce matin, elle doit coucher à Paris et en repartir demain matin vers 8 h. et sauf imprévu, elle peut être à Giromagny à 5 heures et demi, mais il est possible qu'on l'arrête en route pour ses papiers et tout cela peut la retarder.</p></div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">22</span><span class="e-mo">sept.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p>La dépêche nous est parvenue - <span class="p" data-p="maman">Maman</span> est arrivée sans encombre !</p></div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">24</span><span class="e-mo">sept.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text">
+        <p>Hier matin, au courrier, nous avions une lettre de <span class="p" data-p="maman">Maman</span> : <span class="p" data-p="lucie">Lucie</span> va un tout petit peu mieux, la fièvre a légèrement baissé, elle s'alimente avec des crèmes, des glaces qui lui font prendre encore assez d'œufs, mais le cœur bat toujours aussi vite et Maman ne parle pas de revenir. Nous avons été déjeuner chez <span class="p" data-p="tante-abel">Tante Abel</span> avec Oncle Logerie et avons mangé un fameux cuissot de chevreuil auquel <span class="p" data-p="soeur-agathe">Sœur Agathe</span> grillait d'envie de goûter.</p>
+        <p>Nous avons reçu ce matin une lettre de <span class="p" data-p="francoise">Françoise</span>, contenant deux photos de <span class="p" data-p="menine">Menine</span>, prises le jour de ses quatre mois.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">25</span><span class="e-mo">sept.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-loc">Excursion à Sainte-Radegonde</div>
+      <div class="e-text">
+        <p>Nous sommes allées hier à Sainte-Radegonde, départ à 10 h. avec nos provisions et nos ouvrages. Au dessert, <span class="p" data-p="soeur-agathe">Sœur Agathe</span> veut déboucher une bouteille de limonade : « vous allez voir comme je la débouche bien » - Pouf ! le bouchon saute plus haut que la chapelle, et voilà Sœur Agathe inondée et attrapée ! Nous avons bien ri.</p>
+        <p>Sainte-Radegonde est une chapelle ancienne bâtie sur les fondations successives de deux chapelles plus anciennes encore ; c'est là que la tradition place le miracle des avoines ; la statue de Sainte-Radegonde porte une couronne royale sur un voile de religieuse et sur sa robe de bure grossière est posé un manteau fleurdelisé.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry notable">
+    <div class="e-date"><span class="e-day">27</span><span class="e-mo">sept.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text">
+        <p>Comme la date de la rentrée vient vite, encore quelques jours et nous serons « en boite ». Cette année m'effraie plus que les autres car il y a la perspective du brevet au bout.</p>
+        <p>Nous avons reçu ce matin une lettre de <span class="p" data-p="maman">Maman</span> : <span class="p" data-p="lucie">Lucie</span> ne va pas mieux du tout, le traitement ne donne plus guère de résultat, le médecin pense que Lucie a une endocardite infectieuse et il a bien peur que l'infection s'étende dans tout le sang, nous n'avons plus d'espoir de la sauver mais la maladie peut se prolonger encore quelque temps et Maman ne parle pas de revenir bientôt !</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry war">
+    <div class="e-date"><span class="e-day">28</span><span class="e-mo">sept.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text">
+        <p>Hier, dans l'après-midi, une partie du régiment de La Roche est venu camper ici, nous devions loger un lieutenant et un sergent, il a fallu préparer les chambres, tout installer, mais le sergent est venu seul, le lieutenant étant resté au cantonnement avec les hommes.</p>
+        <p>Les vendanges s'avancent, c'est presque à chaque instant que je vois passer des charrettes chargées de tonneaux. Dans le jardin, les pommiers et les pruniers plient sous le poids des fruits, nous les ramassons pour en faire du cidre ou pour préparer notre provision d'hiver.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">30</span><span class="e-mo">sept.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text">
+        <p>J'aime la maison comme une vieille amie, il m'est doux, en rentrant de promenade, d'apercevoir la grille, les marronniers qui encadrent le portail, les massifs de sauge, d'hortensias et de volubilis, les lilas, les arbres familiers, les bâtiments de la ferme à côté et la maison avec ses marches fleuries de géraniums, ses fenêtres ouvertes, si gaies, si accueillantes !</p>
+        <p>Au courrier, ce matin, une lettre de <span class="p" data-p="maman">Maman</span> et une d'<span class="p" data-p="henri">Henri</span> : <span class="p" data-p="lucie">Lucie</span> ne va pas mieux, l'infection passe dans le sang ; <strong><span class="p" data-p="henri">Henri</span> est arrivé à destination, en Autriche, à quelques kilomètres du front.</strong></p>
+        <p>La nouvelle de la disparition de <span class="p" data-p="guynemer">Guynemer</span> est officiellement confirmée, c'est une grande perte pour la France, il avait 23 ans, le grade de capitaine, la légion d'honneur, 53 avions boches au tableau.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OCTOBRE ── -->
+  <div class="month-sep">
+    <div class="month-pill">Octobre</div>
+    <div class="month-loc">automne 1917 · départ pour Chavagnes-en-Paillers</div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">2</span><span class="e-mo">octobre</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-loc">Veille du départ pour le pensionnat</div>
+      <div class="e-text">
+        <p>Demain, nous allons partir à Chavagnes.</p>
+        <p style="font-style:italic;color:var(--ink-f);font-size:16px;">- Trois mois de silence dans le journal. La vie du pensionnat absorbe tout.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DÉCEMBRE ── -->
+  <div class="month-sep">
+    <div class="month-pill">Décembre</div>
+    <div class="month-loc">hiver 1917 · Noël dramatique</div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">24</span><span class="e-mo">déc.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-loc">Pensionnat de Chavagnes-en-Paillers</div>
+      <div class="e-text"><p>Trois mois de passés ! Je suis cette année, ainsi que <span class="p" data-p="charlotte">Charlotte</span>, au brevet chez <span class="p" data-p="mlle-pouzet">Mlle Pouzet</span>, nous sommes quatorze, huit pensionnaires : <span class="p" data-p="anne-marie-belaubre">Anne-Marie Bélaubre</span>, <span class="p" data-p="juliette-gouyer">Juliette Gouyer</span>, <span class="p" data-p="jeanne-de-lajartre">Jeanne de Lajartre</span>, <span class="p" data-p="simone-robert">Simone Robert</span>, <span class="p" data-p="anne-le-tilly">Anne Le Tilly</span>, <span class="p" data-p="marie-paule-beger">Marie-Paule Béger</span>, <span class="p" data-p="charlotte">Charlotte</span> et moi, deux demi-pensionnaires, quatre externes. Nous avons beaucoup de travail, beaucoup de leçons, nous faisons chaque semaine un examen d'épreuve, chaque mois un examen d'excellence, nous avons le jeudi une leçon de coupe et le samedi une leçon de dessin. Ces trois mois se sont passés en somme assez vite, et même assez gaiement, car je m'amuse beaucoup avec le cours complémentaire, et avec tout mon travail, je n'ai pas le temps de m'ennuyer !</p></div>
+    </div>
+  </div>
+
+  <div class="entry notable">
+    <div class="e-date"><span class="e-day">27</span><span class="e-mo">déc.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text">
+        <p>Quelles tristes vacances nous passons, nous qui comptions si bien nous amuser. Depuis dimanche, <span class="p" data-p="grand-mere">grand-mère</span> n'est pas bien du tout, elle a une de ses crises d'urémie maintenant si fréquentes ! <span class="p" data-p="soeur-agathe">Sœur Agathe</span> a fait tous les remèdes prescrits : sangsues, ventouses, piqûres, mais sans grands résultat ! Au contraire, l'état de grand-mère s'est aggravé le lendemain 24, elle s'est fatiguée à répéter toute la journée la fin de « l'Ave Maria » - <em>Sainte Marie Mère de Dieu…</em></p>
+        <p>Vers le soir nous avons fait venir le docteur qui a déclaré qu'il n'y avait plus rien à faire, M. <span class="p" data-p="abbe-rabiller">l'abbé Rabiller</span> est donc venu apporter l'Extrême-Onction dans la nuit de Noël, bien triste veillée pour nous ! Nous avons cependant été à la Messe de Minuit.</p>
+        <p>Le Matin de Noël, nous avons eu chacune quelques bonbons dans nos souliers, malgré sa maladie <span class="p" data-p="grand-mere">grand-mère</span> y avait pensé et en avait chargé <span class="p" data-p="soeur-agathe">Sœur Agathe</span>. Après les Vêpres, l'état de notre pauvre malade s'est aggravé très rapidement et, de six à sept heures, elle a eu une agonie affreuse, avec des râles et des gémissements !</p>
+        <p>Vers sept heures et demi, elle a toussé deux ou trois fois, cela a paru la soulager, elle a repris connaissance, a dit quelques mots et s'est endormie.</p>
+        <p style="font-style:italic;color:var(--ink-f);margin-top:10px;">8 heures - Nous venons de dîner et sommes installés pour la veillée. <span class="p" data-p="papa">Papa</span> et <span class="p" data-p="maman">Maman</span> de chaque côté du feu, <span class="p" data-p="jacqueline">Jacqueline</span> à genoux sur une chaise, les coudes sur la table, position très incommode. J'ai bien peur que cette crise finisse mal, elle a été beaucoup plus forte que les autres. Et puis <span class="p" data-p="grand-mere">grand-mère</span> a 78 ans !</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">28</span><span class="e-mo">déc.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p>Au courrier, nous avions une lettre de <span class="p" data-p="francoise">Françoise</span> à laquelle était jointe une photo qui la représente portant <span class="p" data-p="menine">Menine</span>, accompagnée de Dick, le chien que Mme Journot d'Olbreuse avait promis à notre chère petite Denise. <span class="p" data-p="menine">Menine</span> ressemble à Denise en bébé, il me semble.</p></div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">29</span><span class="e-mo">déc.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text"><p><span class="p" data-p="grand-mere">Grand-mère</span> va plutôt mieux.</p></div>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="e-date"><span class="e-day">30</span><span class="e-mo">déc.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-text">
+        <p>Après les Vêpres, nous sommes rentrées goûter, <span class="p" data-p="grand-mere">grand-mère</span> a eu quantité de visites, les Violeau de la Jamonière, Zénobie, Mlle Ordonneau, <span class="p" data-p="abbe-tenailleau">l'Abbé Tenailleau</span> et pour comble <span class="p" data-p="soeur-agathe">Sœur Agathe</span> n'était pas là, <span class="p" data-p="marguerite">Marguerite</span> chez <span class="p" data-p="tante-chailloux">Tante Chailloux</span> - et il fallait qu'à nous trois nous recevions tout ce monde.</p>
+        <p>En sortant l'Abbé dit à <span class="p" data-p="grand-mere">grand-mère</span> : « Je prierai pour vous, Madame Potier ! » - « Monsieur l'Abbé, c'est tout ce que vous avez de mieux à faire ! » Nous avons tellement ri que <span class="p" data-p="soeur-agathe">Sœur Agathe</span>, arrivée sur ces entrefaites, nous a mises à la porte !</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="entry war last">
+    <div class="e-date"><span class="e-day">31</span><span class="e-mo">déc.</span></div>
+    <div class="e-dot-col"><div class="e-dot"></div></div>
+    <div class="e-body">
+      <div class="e-loc">Dernier jour de l'année</div>
+      <div class="e-text">
+        <p>Le dernier jour de l'année 1917.</p>
+        <p>Elle n'a pas été bien bonne, cette troisième année de guerre ne nous a pas apporté de changements notables dans l'état de nos armées, si ce n'est la défection de la Russie ; elle nous a valu l'établissement de la carte du sucre et la fermeture des pâtisseries le lundi et le mardi, tant pis pour les gourmandes ! Pour nous, elle nous a apporté la naissance de <span class="p" data-p="menine">Menine</span>, la maladie de <span class="p" data-p="lucie">Lucie</span>, celle de <span class="p" data-p="grand-mere">grand-mère</span> !</p>
+        <p><span class="p" data-p="tante-chailloux">Tante Chailloux</span> prétend que <span class="p" data-p="gendreau">Radégonde Gendreau</span> est fiancée avec un jeune homme de Paris, dont le nom est encore inconnu. Qui vivra, verra !</p>
+        <p style="font-style:italic;text-align:right;color:var(--ink-f);margin-top:14px;">À l'année prochaine.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BILAN DE L'ANNÉE -->
+  <div id="bilan" style="margin-top:52px;background:var(--paper);border:1px solid var(--bdr);border-top:2px solid var(--a-m);padding:36px 44px;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--a-m);margin-bottom:22px;">Bilan de l'année 1917</div>
+    <p style="font-size:17px;line-height:1.85;color:var(--ink-s);text-align:justify;hyphens:auto;margin-bottom:1em;">L'année 1917 se referme sur une famille marquée par l'inquiétude et le deuil. Trois disparus : l'oncle Aristide en juillet, le cousin Guesdon emporté en août par une hémorragie foudroyante, le petit Chailloux en septembre - quatrième enfant que ses parents perdent. La famille pense aussi à ce pauvre Edmond Chailloux, disparu près de Sedan depuis août 1914.</p>
+    <p style="font-size:17px;line-height:1.85;color:var(--ink-s);text-align:justify;hyphens:auto;margin-bottom:1em;">Depuis l'été, la cousine Lucie Yehl, à Giromagny, lutte contre la typhoïde : crue sauvée en août, elle rechute en septembre. Sa mère envoie chercher Maman, qui part seule à travers la France en guerre. À Noël, c'est au tour de grand-mère d'agoniser à 78 ans, répétant à mi-voix la fin de l'Ave Maria. Elle survivra quelques semaines encore.</p>
+    <p style="font-size:17px;line-height:1.85;color:var(--ink-s);text-align:justify;hyphens:auto;">Pourtant la vie a ses joies : le séjour aux Sables-d'Olonne avec oncle Eugène et Madeleine, les escapades à Sainte-Radegonde, la limonade qui inonde Sœur Agathe, la naissance de Menine chez Françoise. Et pour Andrée, la rentrée à Chavagnes-en-Paillers dans la classe du brevet - quatorze élèves, beaucoup de travail, « pas le temps de s'ennuyer ».</p>
+    <div style="margin-top:26px;padding-top:20px;border-top:1px solid var(--sep-l);font-size:16px;color:var(--ink-f);font-style:italic;text-align:center;line-height:1.7;">
+      « Pour nous, elle nous a apporté la naissance de Menine, la maladie de Lucie, celle de grand-mère ! »
+      <span style="display:block;font-style:normal;font-size:12px;color:var(--sepia);margin-top:8px;font-family:'Cormorant Garamond',serif;letter-spacing:0.06em;">Andrée Potier · 31 décembre 1917</span>
+    </div>
+  </div>
+
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-orn">✦ ✦ ✦</span>
+  <p>Journal d'<strong>Andrée Potier</strong> (1902–1993) · Vendée, France</p>
+  <p>Retranscrit et présenté par <strong>Anne Dugast</strong>, historienne</p>
+  <p style="margin-top:6px;">Famille <strong>Potier · Pigeaud · Dugast</strong></p>
+  <p class="f-tech">Conception et hébergement · <strong style="color:var(--sep-l);">Antoine Dugast - Serious Labs</strong></p>
+</footer>
+
+<script>
+const P = {
+  'grand-mere':   { n:'Grand-mère Potier', r:'Mère de Victor & Abel Potier', i:'† janvier 1918' },
+  'maman':        { n:'Marie Pigeaud', r:'Maman · institutrice, directrice d\'école', i:'22.3.1874 – 11.5.1941' },
+  'papa':         { n:'Victor Potier', r:'Papa · propriétaire au Poiré-sur-Vie', i:'1874 – 1931' },
+  'jacqueline':   { n:'Jacqueline Potier', r:'Sœur cadette d\'Andrée · « Canette »', i:'1904 – 1994' },
+  'soeur-agathe': { n:'Sœur Agathe', r:'Religieuse · aide familiale', i:'' },
+  'marguerite':   { n:'Marguerite Potier', r:'Cousine · fille d\'Abel Potier', i:'' },
+  'charlotte':    { n:'Charlotte Potier', r:'Cousine · fille d\'Abel · camarade de brevet', i:'' },
+  'tante-victor': { n:'Tante Victor', r:'Au Parc · épouse d\'un Victor Pigeaud', i:'' },
+  'oncle-eugene': { n:'Oncle Eugène Pigeaud', r:'Frère de Maman', i:'1862 – 1922' },
+  'madeleine':    { n:'Madeleine Pigeaud', r:'Cousine · fille d\'Eugène', i:'1898 – 1983' },
+  'tante-denise': { n:'Tante Denise Pigeaud', r:'Sœur de Maman · à Giromagny', i:'1867 – 1925' },
+  'lucie':        { n:'Lucie Yehl', r:'Cousine · fille de Tante Denise', i:'4.3.1900 – † 1918 · typhoïde' },
+  'henri':        { n:'Henri Pigeaud', r:'Cousin · fils d\'Alfred Pigeaud', i:'† 1974' },
+  'francoise':    { n:'Françoise Pigeaud', r:'Cousine · fille d\'Alfred Pigeaud', i:'' },
+  'menine':       { n:'Menine', r:'Fille de Françoise Pigeaud · née en 1917', i:'' },
+  'oncle-gaston': { n:'Oncle Gaston Pigeaud', r:'Frère de Maman', i:'1864 – 1950' },
+  'tante-abel':   { n:'Tante Abel · Marie Yvernogeau', r:'Épouse d\'Abel Potier', i:'' },
+  'mariette':     { n:'Mariette', r:'Domestique au Poiré-sur-Vie', i:'' },
+  'guillaume':    { n:'Guillaume', r:'Domestique au Poiré-sur-Vie', i:'' },
+  'oncle-aristide':  { n:'Oncle Aristide', r:'Oncle d\'Andrée', i:'† juillet 1917' },
+  'cousin-guesdon':  { n:'Cousin Guesdon', r:'Cousin d\'Andrée', i:'† 6 août 1917' },
+  'chailloux':    { n:'Famille Chailloux', r:'Voisins du Poiré-sur-Vie', i:'Petit Chailloux † 14 sept. 1917 · Edmond † août 1914' },
+  'gendreau':     { n:'Famille Gendreau', r:'Voisins du Poiré-sur-Vie', i:'' },
+  'guynemer':     { n:'Georges Guynemer', r:'As de l\'aviation française', i:'24.12.1894 – † 11.9.1917 · 53 victoires' },
+  'sorin':        { n:'Sorin', r:'Garagiste · Le Poiré-sur-Vie', i:'' },
+  'mlle-pouzet':       { n:'Mademoiselle Pouzet', r:'Professeur · classe du brevet', i:'Chavagnes-en-Paillers' },
+  'abbe-rabiller':     { n:'M. l\'abbé Rabiller', r:'Prêtre · Le Poiré-sur-Vie', i:'' },
+  'abbe-tenailleau':   { n:'M. l\'abbé Tenailleau', r:'Prêtre · Le Poiré-sur-Vie', i:'' },
+  'tante-chailloux':   { n:'Tante Chailloux', r:'Voisine · famille Chailloux', i:'' },
+  'anne-marie-belaubre': { n:'Anne-Marie Bélaubre', r:'Camarade de brevet · Chavagnes', i:'' },
+  'juliette-gouyer':   { n:'Juliette Gouyer', r:'Camarade de brevet · Chavagnes', i:'' },
+  'jeanne-de-lajartre':{ n:'Jeanne de Lajartre', r:'Camarade de brevet · Chavagnes', i:'' },
+  'simone-robert':     { n:'Simone Robert', r:'Camarade de brevet · Chavagnes', i:'' },
+  'anne-le-tilly':     { n:'Anne Le Tilly', r:'Camarade de brevet · Chavagnes', i:'' },
+  'marie-paule-beger': { n:'Marie-Paule Béger', r:'Camarade de brevet · Chavagnes', i:'' },
+};
+
+const tt  = document.getElementById('tt');
+const ttn = document.getElementById('tt-n');
+const ttr = document.getElementById('tt-r');
+const tti = document.getElementById('tt-i');
+let mx = 0, my = 0;
+
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+document.querySelectorAll('.p').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    const d = P[el.dataset.p];
+    if (!d) return;
+    ttn.textContent = d.n;
+    ttr.textContent = d.r;
+    tti.textContent = d.i;
+    tti.style.display = d.i ? 'block' : 'none';
+    tt.classList.add('on');
+    place();
+  });
+  el.addEventListener('mouseleave', () => tt.classList.remove('on'));
+});
+
+function place() {
+  const W = 234, pad = 14;
+  let x = mx + 12, y = my - 12;
+  if (x + W > window.innerWidth - pad) x = mx - W - 12;
+  if (y + tt.offsetHeight > window.innerHeight - pad) y = my - tt.offsetHeight - 4;
+  if (y < pad) y = pad;
+  tt.style.left = x + 'px';
+  tt.style.top  = y + 'px';
+}
+
+document.addEventListener('mousemove', () => { if (tt.classList.contains('on')) place(); });
+</script>
+</body>
+</html>
