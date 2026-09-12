@@ -37,11 +37,20 @@ echo "Déploiement de $SOURCE vers $TARGET"
 
 sudo mkdir -p "$TARGET"
 
-# --delete purge ce qui n'est plus dans la liste, y compris un fichier hérité
-# qui s'y serait glissé lors d'un déploiement précédent.
-sudo rsync -a --delete \
-  --exclude '.env' \
-  "${CONTENU[@]/#/$SOURCE/}" "$TARGET/"
+# On monte d'abord l'arborescence exacte voulue dans un répertoire temporaire,
+# puis on synchronise ce répertoire avec --delete. Passer directement une liste
+# de sources à rsync ne purgerait PAS les fichiers isolés déjà présents à la
+# racine de la cible : rsync ne considère alors pas la cible comme le miroir
+# d'une source unique. D'où l'étape intermédiaire.
+STAGING="$(mktemp -d)"
+trap 'rm -rf "$STAGING"' EXIT
+
+for item in "${CONTENU[@]}"; do
+  cp -a "$SOURCE/$item" "$STAGING/"
+done
+rm -f "$STAGING/.env"
+
+sudo rsync -a --delete "$STAGING/" "$TARGET/"
 
 sudo chown -R www-data:www-data "$TARGET"
 sudo find "$TARGET" -type d -exec chmod 755 {} +
