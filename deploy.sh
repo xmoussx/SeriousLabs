@@ -24,6 +24,12 @@ CONTENU=(
   assets
   en
   api
+  # Vérification de propriété Google Search Console par fichier. Elle n'a
+  # d'effet que servie à la racine du domaine, d'où sa présence ici plutôt
+  # que dans archives/. À conserver tant que la propriété « Préfixe d'URL »
+  # existe côté Google ; la propriété « Domaine » se vérifie par TXT et ne
+  # dépend pas de ce fichier.
+  googleb56e9726ff2adfff.html
 )
 
 for item in "${CONTENU[@]}"; do
@@ -60,7 +66,8 @@ sudo nginx -t
 sudo systemctl reload nginx
 
 echo "Déployé. Vérification :"
-for chemin in / /en/ /mentions-legales.html /en/legal.html /robots.txt /sitemap.xml; do
+for chemin in / /en/ /mentions-legales.html /en/legal.html /robots.txt /sitemap.xml \
+              /googleb56e9726ff2adfff.html; do
   code=$(curl -s -o /dev/null -w '%{http_code}' -H 'Host: seriouslabs.tech' "http://127.0.0.1$chemin")
   printf '  %-26s %s\n' "$chemin" "$code"
 done
