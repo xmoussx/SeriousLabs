@@ -67,7 +67,10 @@ sudo systemctl reload nginx
 
 echo "Déployé. Vérification :"
 for chemin in / /en/ /mentions-legales.html /en/legal.html /robots.txt /sitemap.xml \
-              /googleb56e9726ff2adfff.html; do
-  code=$(curl -s -o /dev/null -w '%{http_code}' -H 'Host: seriouslabs.tech' "http://127.0.0.1$chemin")
+              /googleb56e9726ff2adfff.html /assets/img/logo.svg; do
+  # En HTTPS : depuis la bascule, HTTP renvoie un 301 et masquerait une page
+  # réellement cassée derrière un code de redirection.
+  code=$(curl -sk -o /dev/null -w '%{http_code}' \
+           --resolve seriouslabs.tech:443:127.0.0.1 "https://seriouslabs.tech$chemin")
   printf '  %-26s %s\n' "$chemin" "$code"
 done
