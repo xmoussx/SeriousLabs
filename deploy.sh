@@ -67,7 +67,8 @@ sudo systemctl reload nginx
 
 echo "Déployé. Vérification :"
 for chemin in / /en/ /mentions-legales.html /en/legal.html /robots.txt /sitemap.xml \
-              /googleb56e9726ff2adfff.html /assets/img/logo.svg; do
+              /googleb56e9726ff2adfff.html /assets/img/logo.svg \
+              /assets/img/og-fr.png /assets/img/og-en.png; do
   # En HTTPS : depuis la bascule, HTTP renvoie un 301 et masquerait une page
   # réellement cassée derrière un code de redirection.
   code=$(curl -sk -o /dev/null -w '%{http_code}' \
