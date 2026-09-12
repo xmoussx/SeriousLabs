@@ -1,0 +1,4 @@
+# Jamais versionné : ce dépôt est public.
+.env
+*.env
+var/
