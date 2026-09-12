@@ -1,625 +1,553 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serious Labs - We Build Meaningful Games</title>
-    <meta name="description" content="Independent game studio based in Paris. We design competitive, experimental and elegant play experiences.">
-    <meta property="og:title" content="Serious Labs - We Build Meaningful Games">
-    <meta property="og:description" content="Independent game studio based in Paris. We design competitive, experimental and elegant play experiences.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://seriouslabs.tech">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath d='M60 140 L40 180 C38 185 40 190 45 190 L155 190 C160 190 162 185 160 180 L140 140 L140 50 C140 45 135 40 130 40 L70 40 C65 40 60 45 60 50 Z' fill='%23000'/%3E%3Crect x='85' y='25' width='30' height='20' rx='3' fill='%23000'/%3E%3Ccircle cx='80' cy='15' r='3' fill='%23000'/%3E%3Ccircle cx='100' cy='8' r='4' fill='%23000'/%3E%3Ccircle cx='120' cy='18' r='2.5' fill='%23000'/%3E%3Crect x='90' y='80' width='20' height='4' rx='2' fill='%23fff'/%3E%3Crect x='98' y='72' width='4' height='20' rx='2' fill='%23fff'/%3E%3C/svg%3E">
-    
-    <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Variables */
-        :root {
-            --black: #000000;
-            --white: #ffffff;
-            --gray: #666666;
-            --light-gray: #f8f8f8;
-            --accent: #0066ff;
-            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        /* Base */
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            font-family: var(--font);
-            color: var(--black);
-            background: var(--white);
-            line-height: 1.5;
-            font-weight: 400;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Typography */
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        h2 {
-            font-size: clamp(1.75rem, 3vw, 2.5rem);
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-        }
-
-        p {
-            font-size: 1.125rem;
-            line-height: 1.6;
-            color: var(--gray);
-        }
-
-        /* Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section {
-            padding: 6rem 0;
-        }
-
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 100;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            color: var(--black);
-        }
-
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            object-fit: contain;
-        }
-
-        .logo-text {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            color: var(--black);
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-link:hover {
-            opacity: 0.7;
-        }
-
-        .lang-switch {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .lang-btn {
-            padding: 0.5rem 0.75rem;
-            background: transparent;
-            border: 1px solid var(--gray);
-            color: var(--gray);
-            cursor: pointer;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .lang-btn.active {
-            background: var(--black);
-            color: var(--white);
-            border-color: var(--black);
-        }
-
-        .lang-btn:hover:not(.active) {
-            border-color: var(--black);
-            color: var(--black);
-        }
-
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-logo {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 3rem;
-            object-fit: contain;
-        }
-
-        .hero-tagline {
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta {
-            display: inline-flex;
-            align-items: center;
-            padding: 1rem 2rem;
-            background: var(--black);
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            gap: 0.5rem;
-            margin: 0 0.5rem;
-        }
-
-        .cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-secondary {
-            background: transparent;
-            color: var(--black);
-            border: 2px solid var(--black);
-        }
-
-        .cta-secondary:hover {
-            background: var(--black);
-            color: var(--white);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            cursor: pointer;
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-        }
-
-        .scroll-indicator:hover {
-            opacity: 1;
-        }
-
-        .scroll-arrow {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--black);
-            border-top: none;
-            border-left: none;
-            transform: rotate(45deg);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) rotate(45deg);
-            }
-            40% {
-                transform: translateY(-8px) rotate(45deg);
-            }
-            60% {
-                transform: translateY(-4px) rotate(45deg);
-            }
-        }
-
-        /* Projects */
-        .projects {
-            background: var(--white);
-        }
-
-        .projects-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .projects h2 {
-            margin-bottom: 2rem;
-        }
-
-        .projects-placeholder {
-            background: var(--light-gray);
-            padding: 4rem 2rem;
-            border: 2px dashed #ddd;
-            margin-top: 3rem;
-        }
-
-        .projects-placeholder p {
-            font-size: 1.125rem;
-            margin-bottom: 1rem;
-        }
-
-        .projects-status {
-            font-size: 0.875rem;
-            color: var(--gray);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--black);
-            color: var(--white);
-            padding: 3rem 0;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-logo-icon {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-
-        .footer-text {
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .footer-link {
-            color: var(--white);
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer-link:hover {
-            opacity: 0.7;
-        }
-
-        .linkedin-icon {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        .email-icon {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        /* Language content */
-        .lang-content {
-            display: none;
-        }
-
-        .lang-content.active {
-            display: block;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            .section {
-                padding: 4rem 0;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .hero-logo {
-                width: 220px;
-                height: 220px;
-                margin-bottom: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.125rem;
-                margin-bottom: 2rem;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.5rem;
-            }
-
-            .scroll-indicator {
-                bottom: 2rem;
-            }
-
-            .cta {
-                margin: 0.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .header {
-                padding: 1rem 0;
-            }
-
-            .logo-text {
-                font-size: 1.125rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serious Labs — L'IA au service de votre métier, pas à sa place</title>
+<meta name="description" content="Nous formons vos équipes à l'IA et installons les outils, en une journée, dans vos locaux. Pour les TPE et les cabinets de 5 à 20 personnes. Vos experts gardent la main sur le travail.">
+
+<link rel="canonical" href="https://seriouslabs.tech/">
+<link rel="alternate" hreflang="fr" href="https://seriouslabs.tech/">
+<link rel="alternate" hreflang="en" href="https://seriouslabs.tech/en/">
+<link rel="alternate" hreflang="x-default" href="https://seriouslabs.tech/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://seriouslabs.tech/">
+<meta property="og:site_name" content="Serious Labs">
+<meta property="og:title" content="Serious Labs — L'IA au service de votre métier, pas à sa place">
+<meta property="og:description" content="Nous formons vos équipes à l'IA et installons les outils, en une journée, dans vos locaux. Vos experts gardent la main sur le travail.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0b0c'/%3E%3Crect x='7' y='7' width='8' height='8' fill='%23fff'/%3E%3Crect x='17' y='17' width='8' height='8' fill='%230026ff'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Serious Labs",
+  "legalName": "SERIOUS LABS SAS",
+  "url": "https://seriouslabs.tech/",
+  "email": "contact@seriouslabs.tech",
+  "description": "Formation à l'intelligence artificielle et installation d'outils en entreprise, pour les TPE et cabinets de 5 à 20 personnes.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "12 rue Juliette Dodu",
+    "postalCode": "75010",
+    "addressLocality": "Paris",
+    "addressCountry": "FR"
+  },
+  "areaServed": "FR",
+  "vatID": "FR43988917209"
+}
+</script>
 </head>
+
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">
-                    <img class="logo-icon" src="seriouslabs.png" alt="Serious Labs">
-                    <span class="logo-text">SERIOUS LABS</span>
-                </a>
-                <div class="nav-links">
-                    <a href="training.html" class="nav-link" id="formations-link">Formations</a>
-                    <div class="lang-switch">
-                        <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
-                        <button class="lang-btn" onclick="switchLanguage('fr')">FR</button>
-                    </div>
-                </div>
-            </div>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="masthead">
+  <div class="wrap masthead__inner">
+    <a class="wordmark" href="/"><span class="wordmark__mark"></span>SERIOUS&nbsp;LABS</a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="nav__link" href="#metiers">Métiers</a>
+      <a class="nav__link" href="#calculateur">Calculateur</a>
+      <a class="nav__link" href="#deroule">Déroulé</a>
+      <a class="nav__link" href="#financement">Financement</a>
+      <span class="nav__sep"></span>
+      <a class="lang" href="/en/" hreflang="en" lang="en">EN</a>
+      <a class="nav__cta" href="#contact">Nous écrire</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <!-- ================================================================ hero -->
+  <section class="wrap hero">
+    <div class="hero__grid">
+      <div>
+        <p class="eyebrow" data-index="00">Formation &amp; installation d'outils IA</p>
+        <h1 class="display hero__title">Votre équipe garde le métier.<br><em>L'IA prend le reste.</em></h1>
+      </div>
+
+      <div class="hero__aside">
+        <p class="lede">Nous venons une journée dans vos locaux. Nous formons vos équipes et nous installons les outils. À la fin de la journée, tout fonctionne et tout le monde sait s'en servir.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#calculateur">Calculer mes économies</a>
+          <a class="btn btn--ghost" href="#deroule">Comment ça se passe</a>
         </div>
-    </header>
-
-    <!-- English Content -->
-    <div id="en-content" class="lang-content active">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <img class="hero-logo" src="seriouslabs.png" alt="Serious Labs">
-                    
-                    <h1 class="hero-tagline">We build meaningful games.</h1>
-                    
-                    <p class="hero-subtitle">Independent game studio based in Paris. We design competitive, experimental and elegant play experiences.</p>
-                    
-                    <div>
-                        <a href="#projects" class="cta">
-                            Discover our work
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
-                        </a>
-                        <a href="training.html" class="cta cta-secondary">
-                            Training programs
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="scroll-indicator" onclick="document.getElementById('projects').scrollIntoView()">
-                <div class="scroll-arrow"></div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section projects">
-            <div class="container">
-                <div class="projects-content">
-                    <h2>Our Work</h2>
-                    
-                    <div class="projects-placeholder">
-                        <p>We are currently working on our first release.</p>
-                        <p class="projects-status">Stay tuned.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <p class="hero__note">Pensé pour les structures de 5 à 20 personnes : cabinets d'expertise comptable, avocats, agences, bureaux d'études, artisans structurés.</p>
+      </div>
     </div>
 
-    <!-- French Content -->
-    <div id="fr-content" class="lang-content">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <img class="hero-logo" src="seriouslabs.png" alt="Serious Labs">
-                    
-                    <h1 class="hero-tagline">Nous créons des jeux porteurs de sens.</h1>
-                    
-                    <p class="hero-subtitle">Studio de jeu indépendant basé à Paris. Nous concevons des expériences de jeu compétitives, expérimentales et élégantes.</p>
-                    
-                    <div>
-                        <a href="#projects" class="cta">
-                            Découvrir nos projets
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                            </svg>
-                        </a>
-                        <a href="training.html" class="cta cta-secondary">
-                            Formations
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="scroll-indicator" onclick="document.getElementById('projects').scrollIntoView()">
-                <div class="scroll-arrow"></div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section projects">
-            <div class="container">
-                <div class="projects-content">
-                    <h2>Nos Projets</h2>
-                    
-                    <div class="projects-placeholder">
-                        <p>Nous travaillons actuellement sur notre première sortie.</p>
-                        <p class="projects-status">Restez connectés.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="figures rise">
+      <div class="figure">
+        <p class="figure__value num">756<span class="figure__unit"> h</span></p>
+        <p class="figure__label">récupérées chaque année dans un cabinet de huit personnes</p>
+      </div>
+      <div class="figure">
+        <p class="figure__value num">34 000<span class="figure__unit"> €</span></p>
+        <p class="figure__label">de temps rendu à votre activité, sur la même base annuelle</p>
+      </div>
+      <div class="figure">
+        <p class="figure__value num">1<span class="figure__unit"> journée</span></p>
+        <p class="figure__label">pour former l'équipe, installer les outils et repartir</p>
+      </div>
     </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img class="footer-logo-icon" src="seriouslabs.png" alt="Serious Labs">
-                </div>
-                
-                <div class="footer-text">
-                    © 2025 Serious Labs. All rights reserved.
-                </div>
-                
-                <div class="footer-links">
-                    <a href="mailto:contact@seriouslabs.tech" class="footer-link" title="Email">
-                        <svg class="email-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.linkedin.com/company/serious-labs/" class="footer-link" title="LinkedIn">
-                        <svg class="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+  <!-- ============================================================= constat -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow" data-index="01">Le constat</p>
+          <h2 class="h2 head__title">L'argent ne part pas là où vous le cherchez.</h2>
         </div>
-    </footer>
+        <div>
+          <p class="prose">Dans une structure de moins de vingt personnes, personne n'a le temps de mesurer où passent les heures. Elles ne partent pas dans le métier — elles partent <strong>autour</strong> du métier. Dans les mails qu'on réécrit trois fois, les devis qu'on refait de zéro, les documents qu'on cherche, les comptes rendus qu'on repousse au samedi.</p>
+          <p class="prose">Ces heures-là ne se facturent pas. Elles se paient quand même.</p>
+        </div>
+      </div>
 
-    <script>
-        function switchLanguage(lang) {
-            // Hide all content
-            document.querySelectorAll('.lang-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Show selected language content
-            document.getElementById(lang + '-content').classList.add('active');
-            
-            // Update button states
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`[onclick="switchLanguage('${lang}')"]`).classList.add('active');
-            
-            // Update HTML lang attribute and formations link text
-            document.documentElement.lang = lang;
-            const formationsLink = document.getElementById('formations-link');
-            if (lang === 'fr') {
-                formationsLink.textContent = 'Formations';
-            } else {
-                formationsLink.textContent = 'Training';
-            }
-        }
+      <div class="leaks rise">
+        <article class="leak">
+          <p class="leak__hours">Chaque semaine</p>
+          <h3 class="h3 leak__title">Réécrire ce qui existe déjà</h3>
+          <p class="leak__text">La proposition commerciale qu'on repart d'une page blanche alors qu'on en a fait quarante versions. Le même mail de relance, reformulé pour la centième fois.</p>
+        </article>
+        <article class="leak">
+          <p class="leak__hours">Chaque semaine</p>
+          <h3 class="h3 leak__title">Chercher au lieu de trouver</h3>
+          <p class="leak__text">Retrouver la bonne clause, le bon barème, le bon dossier client. L'information existe chez vous : elle est simplement introuvable au moment où il la faut.</p>
+        </article>
+        <article class="leak">
+          <p class="leak__hours">Chaque semaine</p>
+          <h3 class="h3 leak__title">Reporter l'administratif au soir</h3>
+          <p class="leak__text">Les relances, les comptes rendus, le suivi. Ce qui n'est jamais urgent devient du travail du dimanche, puis du retard, puis de la trésorerie en moins.</p>
+        </article>
+        <article class="leak">
+          <p class="leak__hours">Chaque semaine</p>
+          <h3 class="h3 leak__title">Faire attendre le client</h3>
+          <p class="leak__text">Un devis qui part à J+5 au lieu de J+1, c'est une affaire sur cinq qui se joue ailleurs. Le coût ne se voit pas en comptabilité : il se voit dans le carnet de commandes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+  <!-- ============================================================= métiers -->
+  <section class="section" id="metiers">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow" data-index="02">Les gisements</p>
+          <h2 class="h2 head__title">Où le temps revient, métier par métier.</h2>
+        </div>
+        <div>
+          <p class="prose">Voici ce que nous outillons concrètement. Dans chaque cas, le principe est le même et il ne bouge jamais : <strong>l'outil prépare, votre expert décide</strong>. Rien ne sort de chez vous sans qu'un humain de votre équipe l'ait relu et assumé.</p>
+          <p class="prose">Les heures indiquées sont des gains hebdomadaires par personne concernée, volontairement prudents.</p>
+        </div>
+      </div>
 
-        // Header transparency on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
-        });
-    </script>
+      <div class="trades rise">
+
+        <article class="trade">
+          <p class="trade__no">01</p>
+          <h3 class="h3">Rédaction &amp; correspondance</h3>
+          <p class="trade__text">Mails, comptes rendus de réunion, notes internes, courriers types. <b>Vous dictez le fond, l'outil tient la plume, vous validez.</b></p>
+          <p class="trade__gain"><strong class="num">1,2 h</strong><span>par personne / semaine</span></p>
+        </article>
+
+        <article class="trade">
+          <p class="trade__no">02</p>
+          <h3 class="h3">Devis &amp; propositions</h3>
+          <p class="trade__text">Partir de vos meilleures propositions passées plutôt que d'une page blanche. <b>Le chiffrage et l'engagement restent les vôtres.</b></p>
+          <p class="trade__gain"><strong class="num">0,8 h</strong><span>par personne / semaine</span></p>
+        </article>
+
+        <article class="trade">
+          <p class="trade__no">03</p>
+          <h3 class="h3">Facturation, relances, administratif</h3>
+          <p class="trade__text">Suivi des impayés, relances rédigées, pièces classées et retrouvables. <b>Aucune écriture comptable n'est produite sans vous.</b></p>
+          <p class="trade__gain"><strong class="num">0,7 h</strong><span>par personne / semaine</span></p>
+        </article>
+
+        <article class="trade">
+          <p class="trade__no">04</p>
+          <h3 class="h3">Recherche, veille &amp; synthèse</h3>
+          <p class="trade__text">Interroger vos propres documents en langage courant, suivre les évolutions de votre secteur. <b>Chaque réponse est sourcée pour que vous puissiez la vérifier.</b></p>
+          <p class="trade__gain"><strong class="num">0,8 h</strong><span>par personne / semaine</span></p>
+        </article>
+
+        <article class="trade">
+          <p class="trade__no">05</p>
+          <h3 class="h3">Contrats &amp; documents types</h3>
+          <p class="trade__text">Génération à partir de vos modèles maison, repérage des clauses manquantes. <b>La signature engage votre responsabilité : elle reste un acte humain.</b></p>
+          <p class="trade__gain"><strong class="num">0,6 h</strong><span>par personne / semaine</span></p>
+        </article>
+
+        <article class="trade">
+          <p class="trade__no">06</p>
+          <h3 class="h3">Reporting &amp; tableaux de bord</h3>
+          <p class="trade__text">Vos chiffres agrégés et commentés chaque semaine, sans ressaisie. <b>Les indicateurs que vous suivez, pas ceux d'un logiciel générique.</b></p>
+          <p class="trade__gain"><strong class="num">0,6 h</strong><span>par personne / semaine</span></p>
+        </article>
+
+        <article class="trade">
+          <p class="trade__no">07</p>
+          <h3 class="h3">Support &amp; réponses récurrentes</h3>
+          <p class="trade__text">Les questions que vos clients posent chaque semaine, préparées à l'avance. <b>Le message part sous votre nom, après votre relecture.</b></p>
+          <p class="trade__gain"><strong class="num">1,0 h</strong><span>par personne / semaine</span></p>
+        </article>
+
+        <article class="trade">
+          <p class="trade__no">08</p>
+          <h3 class="h3">Traduction &amp; communication</h3>
+          <p class="trade__text">Documents bilingues, publications, supports commerciaux. <b>Votre ton et votre vocabulaire, appris à partir de ce que vous avez déjà écrit.</b></p>
+          <p class="trade__gain"><strong class="num">0,5 h</strong><span>par personne / semaine</span></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= calculateur -->
+  <section class="section section--tint" id="calculateur">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow" data-index="03">Le calcul</p>
+          <h2 class="h2 head__title">Ce que ça représente chez vous.</h2>
+        </div>
+        <div>
+          <p class="prose">Réglez les curseurs sur votre situation réelle. Le calcul se fait devant vous, et toutes les hypothèses sont ouvertes : vous pouvez les contester et les changer.</p>
+        </div>
+      </div>
+
+      <div class="calc rise" data-calc>
+
+        <!-- entrées -->
+        <div class="calc__panel">
+
+          <div class="field">
+            <div class="field__label">
+              <label for="effectif">Combien de personnes dans la structure</label>
+              <span class="field__value" data-out="effectif">8 personnes</span>
+            </div>
+            <input type="range" id="effectif" min="1" max="40" step="1" value="8">
+            <div class="scale"><span>1</span><span>40</span></div>
+          </div>
+
+          <div class="field">
+            <div class="field__label">
+              <label id="lbl-activites">Ce que vous voulez outiller</label>
+            </div>
+            <div class="tasks" role="group" aria-labelledby="lbl-activites">
+              <label class="task">
+                <input type="checkbox" data-rate="1.2" checked>
+                <span class="task__box" aria-hidden="true"></span>
+                <span class="task__name">Rédaction &amp; correspondance</span>
+                <span class="task__rate">1,2 h</span>
+              </label>
+              <label class="task">
+                <input type="checkbox" data-rate="0.8" checked>
+                <span class="task__box" aria-hidden="true"></span>
+                <span class="task__name">Devis &amp; propositions</span>
+                <span class="task__rate">0,8 h</span>
+              </label>
+              <label class="task">
+                <input type="checkbox" data-rate="0.7" checked>
+                <span class="task__box" aria-hidden="true"></span>
+                <span class="task__name">Facturation &amp; administratif</span>
+                <span class="task__rate">0,7 h</span>
+              </label>
+              <label class="task">
+                <input type="checkbox" data-rate="0.8" checked>
+                <span class="task__box" aria-hidden="true"></span>
+                <span class="task__name">Recherche &amp; veille</span>
+                <span class="task__rate">0,8 h</span>
+              </label>
+              <label class="task">
+                <input type="checkbox" data-rate="0.6">
+                <span class="task__box" aria-hidden="true"></span>
+                <span class="task__name">Contrats &amp; documents types</span>
+                <span class="task__rate">0,6 h</span>
+              </label>
+              <label class="task">
+                <input type="checkbox" data-rate="0.6">
+                <span class="task__box" aria-hidden="true"></span>
+                <span class="task__name">Reporting &amp; tableaux de bord</span>
+                <span class="task__rate">0,6 h</span>
+              </label>
+              <label class="task">
+                <input type="checkbox" data-rate="1.0">
+                <span class="task__box" aria-hidden="true"></span>
+                <span class="task__name">Support &amp; réponses récurrentes</span>
+                <span class="task__rate">1,0 h</span>
+              </label>
+              <label class="task">
+                <input type="checkbox" data-rate="0.5">
+                <span class="task__box" aria-hidden="true"></span>
+                <span class="task__name">Traduction &amp; communication</span>
+                <span class="task__rate">0,5 h</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="assump">
+            <button type="button" class="assump__toggle" data-assump-toggle aria-expanded="false" aria-controls="hypotheses">
+              Voir et modifier les hypothèses
+            </button>
+            <div class="assump__body" id="hypotheses" data-assump-body hidden>
+              <div class="assump__field">
+                <label for="cout-horaire">Coût horaire chargé (€)</label>
+                <input type="number" id="cout-horaire" value="45" min="10" max="300" step="1" inputmode="decimal">
+              </div>
+              <div class="assump__field">
+                <label for="semaines">Semaines travaillées</label>
+                <input type="number" id="semaines" value="45" min="1" max="52" step="1" inputmode="numeric">
+              </div>
+              <div class="assump__field">
+                <label for="adoption">Taux d'adoption réel (%)</label>
+                <input type="number" id="adoption" value="60" min="5" max="100" step="5" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- sortie -->
+        <div class="calc__panel calc__panel--out">
+          <p class="out__label">Temps rendu à votre activité, par an</p>
+          <p class="out__money num" data-out="money" aria-live="polite">34 020 €</p>
+
+          <div class="out__split">
+            <div>
+              <p class="out__fig num"><span data-out="hours">756</span> <span>h</span></p>
+              <p class="out__cap">soit <span class="num" data-out="days">108</span> journées de sept heures</p>
+            </div>
+            <div>
+              <p class="out__fig num"><span data-out="weekly">16,8</span> <span>h</span></p>
+              <p class="out__cap">récupérées chaque semaine dans l'équipe</p>
+            </div>
+          </div>
+
+          <div class="out__foot">
+            <a class="btn btn--wide" href="#contact" data-calc-to-form>Parler de ce chiffre</a>
+            <p class="out__disclaimer">Estimation, pas un engagement. Elle applique un taux d'adoption réel de 60 % : nous partons du principe que personne n'utilise un outil neuf à 100 % de son potentiel. Les gains par activité proviennent de nos interventions et restent volontairement bas.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= déroulé -->
+  <section class="section" id="deroule">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow" data-index="04">L'intervention</p>
+          <h2 class="h2 head__title">Une journée chez vous, et c'est en place.</h2>
+        </div>
+        <div>
+          <p class="prose">Pas de plateforme à louer, pas de projet sur six mois, pas de consultant qui revient tous les mardis. Nous venons, nous formons, nous installons, nous repartons. <strong>Les outils restent chez vous et vous appartiennent.</strong></p>
+        </div>
+      </div>
+
+      <div class="steps rise">
+        <article class="step">
+          <p class="step__when">Avant · 45 minutes</p>
+          <h3 class="h3 step__title">On regarde votre semaine</h3>
+          <p class="step__text">Un appel pour comprendre ce qui vous mange vos heures. Nous repartons avec vos vrais documents de travail pour préparer la journée sur vos cas, pas sur des exemples génériques.</p>
+        </article>
+        <article class="step">
+          <p class="step__when">Le jour J · matin</p>
+          <h3 class="h3 step__title">On forme toute l'équipe</h3>
+          <p class="step__text">Tout le monde dans la même salle, sur ses propres dossiers. À la pause déjeuner, chacun a déjà produit quelque chose d'utilisable. Aucun prérequis technique.</p>
+        </article>
+        <article class="step">
+          <p class="step__when">Le jour J · après-midi</p>
+          <h3 class="h3 step__title">On installe pour de bon</h3>
+          <p class="step__text">Les outils sont configurés sur vos postes, avec vos modèles, votre vocabulaire, vos dossiers. Rien à réinstaller le lendemain, rien qui dépende de notre présence.</p>
+        </article>
+        <article class="step">
+          <p class="step__when">Après · 30 jours</p>
+          <h3 class="h3 step__title">On vérifie que ça a tenu</h3>
+          <p class="step__text">Un point à un mois. Ce qui n'est pas utilisé est corrigé ou retiré : un outil que personne n'ouvre est une dépense, pas un investissement.</p>
+        </article>
+      </div>
+
+      <div class="pull rise" style="margin-top: clamp(2.5rem, 5vw, 4rem);">
+        <p>Aucun document ne part de chez vous sans qu'une personne de votre équipe l'ait écrit, relu et assumé. C'est la seule règle que nous ne négocions pas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= financement -->
+  <section class="section section--tint" id="financement">
+    <div class="wrap">
+      <div class="finance">
+        <div>
+          <p class="eyebrow" data-index="05">Le budget</p>
+          <h2 class="h2 head__title" style="margin-top:1.1rem">C'est de la formation, pas du conseil.</h2>
+          <p class="prose" style="margin-top:1.6rem">Notre intervention a la forme d'une journée de formation en présentiel, dans vos locaux, avec vos équipes. Elle entre naturellement dans votre budget de formation professionnelle.</p>
+          <ul class="checklist">
+            <li>Une journée en présentiel, dans vos locaux, sur vos propres dossiers</li>
+            <li>Toute l'équipe formée en même temps, sans prérequis technique</li>
+            <li>Les outils installés et configurés dans la journée, et qui restent chez vous</li>
+            <li>Un point de contrôle à trente jours, compris dans l'intervention</li>
+            <li>Tarif établi sur devis, selon l'effectif et les activités à outiller</li>
+          </ul>
+        </div>
+
+        <div class="notice">
+          <p class="notice__tag">Où nous en sommes</p>
+          <p><strong>La certification Qualiopi est en cours d'obtention</strong>, ainsi que l'enregistrement de notre déclaration d'activité d'organisme de formation.</p>
+          <p>Nous préférons l'écrire noir sur blanc plutôt que de l'insinuer : tant que ces démarches ne sont pas finalisées, nos interventions ne peuvent pas faire l'objet d'une prise en charge par un OPCO. Elles restent finançables sur votre budget de formation interne.</p>
+          <p>Si la prise en charge OPCO est déterminante pour vous, dites-le nous dans votre message : nous vous préviendrons dès que ce sera effectif.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= contact -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow" data-index="06">Le contact</p>
+          <h2 class="h2 head__title">Parlons de votre semaine.</h2>
+        </div>
+        <div>
+          <p class="prose">Décrivez-nous ce qui vous prend le plus de temps. Nous répondons sous un jour ouvré, avec une estimation de ce qui est récupérable chez vous — <strong>sans rendez-vous commercial obligatoire</strong>.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+
+        <div class="contact__meta">
+          <div class="meta__item">
+            <p class="meta__key">Écrire directement</p>
+            <p class="meta__val"><a class="link" href="mailto:contact@seriouslabs.tech">contact@seriouslabs.tech</a></p>
+          </div>
+          <div class="meta__item">
+            <p class="meta__key">Où nous sommes</p>
+            <p class="meta__val">12 rue Juliette Dodu<br>75010 Paris</p>
+          </div>
+          <div class="meta__item">
+            <p class="meta__key">Où nous intervenons</p>
+            <p class="meta__val">Paris et Île-de-France en présentiel.<br>Reste de la France selon le calendrier.</p>
+          </div>
+          <div class="meta__item">
+            <p class="meta__key">Délai de réponse</p>
+            <p class="meta__val">Un jour ouvré</p>
+          </div>
+        </div>
+
+        <form data-contact-form action="/api/contact.php" method="post" novalidate>
+
+          <div class="form__row">
+            <div class="form__field">
+              <label for="f-nom">Votre nom</label>
+              <input type="text" id="f-nom" name="nom" required autocomplete="name" maxlength="120">
+            </div>
+            <div class="form__field">
+              <label for="f-societe">Votre structure</label>
+              <input type="text" id="f-societe" name="societe" required autocomplete="organization" maxlength="160">
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="form__field">
+              <label for="f-email">Courriel professionnel</label>
+              <input type="email" id="f-email" name="email" required autocomplete="email" maxlength="200">
+            </div>
+            <div class="form__field">
+              <label for="f-tel">Téléphone <span class="opt">— facultatif</span></label>
+              <input type="tel" id="f-tel" name="telephone" autocomplete="tel" maxlength="40">
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="form__field">
+              <label for="f-effectif">Effectif</label>
+              <input type="number" id="f-effectif" name="effectif" min="1" max="2000" value="8" inputmode="numeric">
+            </div>
+            <div class="form__field">
+              <label for="f-secteur">Votre secteur</label>
+              <select id="f-secteur" name="secteur">
+                <option value="">Choisir…</option>
+                <option>Expertise comptable</option>
+                <option>Avocats &amp; juridique</option>
+                <option>Agence &amp; communication</option>
+                <option>Bureau d'études &amp; ingénierie</option>
+                <option>Artisanat &amp; bâtiment</option>
+                <option>Commerce &amp; distribution</option>
+                <option>Santé &amp; professions libérales</option>
+                <option>Autre</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form__field">
+            <label for="f-message">Ce qui vous prend le plus de temps aujourd'hui</label>
+            <textarea id="f-message" name="message" required maxlength="4000" placeholder="Par exemple : nos devis partent trop tard, on passe nos samedis sur les comptes rendus, on ne retrouve jamais les bons documents…"></textarea>
+          </div>
+
+          <!-- piège à robots : un humain ne remplit jamais ce champ -->
+          <div class="pot" aria-hidden="true">
+            <label for="f-site">Ne pas remplir ce champ</label>
+            <input type="text" id="f-site" name="site_web" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="ts" value="">
+
+          <label class="consent">
+            <input type="checkbox" name="consentement" required>
+            <span>J'accepte que ces informations soient utilisées pour me recontacter. Elles ne sont ni revendues ni transmises à un tiers. <a class="link" href="/mentions-legales.html">En savoir plus</a></span>
+          </label>
+
+          <button class="btn btn--wide" type="submit">Envoyer</button>
+          <p class="form__status" data-status hidden></p>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div>
+        <a class="wordmark" href="/"><span class="wordmark__mark"></span>SERIOUS&nbsp;LABS</a>
+        <p class="foot__claim">L'IA ne fait pas votre métier. Elle vous rend le temps de le faire.</p>
+      </div>
+      <nav class="foot__links" aria-label="Liens de pied de page">
+        <a href="#metiers">Métiers outillés</a>
+        <a href="#calculateur">Calculateur d'économies</a>
+        <a href="#deroule">Déroulé d'une intervention</a>
+        <a href="#financement">Financement</a>
+        <a href="/mentions-legales.html">Mentions légales &amp; confidentialité</a>
+        <a href="/en/" hreflang="en" lang="en">English version</a>
+      </nav>
+    </div>
+    <div class="foot__bar">
+      <p>© <span data-year>2026</span> SERIOUS LABS SAS — 12 rue Juliette Dodu, 75010 Paris</p>
+      <p>SIRET 988 917 209 00013 — <a class="link" href="mailto:contact@seriouslabs.tech">contact@seriouslabs.tech</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js" defer></script>
+<script>document.querySelector('input[name="ts"]').value = Date.now();</script>
 </body>
 </html>
