@@ -15,14 +15,17 @@ entrées qui composent réellement le site.
 - `privacy-policy.html` et `delete-account.html` — ce sont typiquement les
   pages exigées par les stores pour une application mobile. Vérifier ce que
   pointent les fiches Alphadash avant d'y toucher.
-- `googleb56e9726ff2adfff.html` — vérification de propriété Google Search
-  Console. Un fichier de ce type ne prouve la propriété que s'il est servi à la
-  racine du domaine. GitHub Pages étant désactivé sur ce dépôt, il ne l'est pas
-  d'ici.
 
-## Point de vigilance après la bascule DNS
+## Le fichier de vérification Google n'est plus ici
 
-Si la propriété de seriouslabs.tech dans Search Console repose sur un fichier
-servi par l'ancien hébergement OVH, elle sautera au moment où le domaine
-pointera vers le VPS. La parade est de basculer la vérification sur un
-enregistrement DNS TXT, qui ne dépend plus de l'hébergement.
+`googleb56e9726ff2adfff.html` a été remis à la racine du dépôt et ajouté à la
+liste de `deploy.sh` : un fichier de ce type ne prouve la propriété du domaine
+que s'il est réellement servi à la racine du site.
+
+Constat du 12 septembre 2026 : il répondait 404 sur l'ancien hébergement et
+aucun enregistrement `google-site-verification` n'existait dans la zone. La
+propriété n'était donc plus vérifiée du tout. Le fichier redeviendra effectif
+dès que le domaine pointera vers le VPS.
+
+La vérification par enregistrement TXT reste préférable : elle couvre l'apex et
+tous les sous-domaines d'un coup, et ne dépend d'aucun hébergement.
