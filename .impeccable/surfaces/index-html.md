@@ -28,23 +28,41 @@ sont les heures autour du métier qui lui coûtent, voit son propre chiffre
 calculé dans les cases du carnet avec chaque hypothèse imprimée à côté, et
 écrit.
 
-FIRST VIEWPORT: Feuillet original plein cadre. Le bandeau pré-imprimé du
-carnet ouvre la page bord à bord, filet d'encre de deux pixels dessous : à
-gauche la mention « Carnet d'intervention », à droite le bloc de référence
-encadré (établi le, exemplaire client, validité). Dessous, l'énoncé, dont le
-mot pivot est tamponné — cadre rouge incliné, jamais un simple changement de
-teinte. À sa droite un panneau « conditions » encadré portant l'offre en paires
-intitulé/valeur et le tampon « sans engagement ». L'action principale est
-frappée au tampon : cadre rouge incliné débordant du bloc. Une perforation
-ferme la fenêtre, le feuillet canari affleurant dessous.
+FIRST VIEWPORT: Feuillet original plein cadre. L'en-tête pré-imprimé du carnet
+court bord à bord : la fiole et SERIOUS LABS à gauche, à droite le bloc de
+référence encadré (numéro, date, mention « exemplaire client »). Dessous,
+l'énoncé est écrit DANS le plus grand champ du formulaire, en Archivo Black à
+clamp(2.6rem, 6.4vw, 5.4rem), sa seconde ligne tamponnée. À sa droite un
+panneau « conditions » encadré portant l'offre en paires intitulé/valeur.
+L'action principale est celle du carnet : un bloc tamponné en bas à droite du
+feuillet. Une perforation ferme la fenêtre, le feuillet canari affleurant
+dessous.
 
-ÉCHELLE, ÉCART JUSTIFIÉ : l'énoncé est composé en clamp(2.2rem, 5.3vw, 4.5rem)
-et non en clamp(2.6rem, 6.4vw, 5.4rem). Mesure à l'appui, à 1440x900 : la
-grande échelle portait le bas de l'action à 1150 px, hors fenêtre. À l'échelle
-retenue, le bandeau pré-imprimé finit à 250 px et l'action à 887 px en
-français, 815 px en anglais — le signal du carnet et le geste principal sont
-donc tous deux au-dessus de la ligne de flottaison, ce que la grande échelle
-interdisait.
+EXCEPTIONS À LA PROMESSE CI-DESSUS — consignées, non réécrites, chacune avec sa
+raison et sa mesure :
+
+1. Numéro de liasse : NON CONSTRUIT. Un numéro inventé sur un site commercial se
+   lit comme une référence de devis réelle, et PRODUCT.md interdit d'inventer
+   toute donnée factuelle. Le bloc porte donc « établi le », « exemplaire » et
+   « validité », qui sont vrais. La promesse reste écrite telle quelle ci-dessus
+   pour que l'écart reste visible.
+
+2. Échelle de l'énoncé : clamp(2.2rem, 5.3vw, 4.5rem) au lieu de
+   clamp(2.6rem, 6.4vw, 5.4rem). Mesure à 1440x900 : à la grande échelle, le bas
+   de l'action principale tombait à 1150 px, hors fenêtre. À l'échelle retenue,
+   le bandeau finit à 210 px et l'action à 816 px en français, 747 px en anglais.
+
+3. Position de l'action : en bas à gauche de la colonne de l'énoncé, et non en
+   bas à droite du feuillet. Le panneau « conditions » occupe la droite ; y
+   placer aussi l'action séparerait le geste de la phrase qui le motive.
+
+4. Perforation fermant la fenêtre : TENUE EN ANGLAIS (858 px), MANQUÉE EN
+   FRANÇAIS DE 27 px (927 px pour une fenêtre de 900). Le français est environ
+   15 % plus long à contenu égal et l'énoncé y prend cinq lignes contre quatre.
+   Tout ce qui pouvait être resserré sans étouffer la page l'a été : le premier
+   feuillet a sa propre respiration, réduite ; l'interlignage de l'énoncé est
+   passé à .96. Aller plus loin supposerait de raccourcir l'énoncé français,
+   qui est le meilleur état de la copie après deux passes de réécriture.
 
 FORM: Le carnet à souche — candidat 1 de ma liste, choisi par l'utilisateur
 contre le candidat 7 que le tirage avait assigné. Clé de tirage 49a0b518.
