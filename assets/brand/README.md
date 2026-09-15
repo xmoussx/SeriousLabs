@@ -17,3 +17,20 @@ est donc l'unique original connu. Il est versionné ici pour cette raison.
 **Ne pas supprimer.** Depuis la bascule DNS du 12 septembre, l'ancienne URL ne
 le sert plus ; l'hébergement OVH en garde une copie, mais son sort n'est pas
 tranché.
+
+## logo-origine-marque.svg et logo-origine-verrou.svg
+
+Vectorisations **fidèles** du PNG ci-dessus, obtenues par tracé automatique
+(potrace 1.16) et non par redessin : les contours sont ceux du dessin d'origine,
+manette comprise.
+
+- `logo-origine-verrou.svg` — le verrou complet, fiole et mot-symbole. 6 Ko.
+- `logo-origine-marque.svg` — la fiole seule. 2,5 Ko.
+
+L'isolement de la marque a demandé un masquage par composantes connexes : la
+fiole est un triangle et le « S » de SERIOUS se glisse à l'intérieur de son
+rectangle englobant, plus haut. Aucune découpe rectangulaire ne les sépare.
+
+Les deux fichiers portent `fill="currentColor"` : ils prennent la couleur du
+texte environnant et fonctionnent donc sur fond clair comme sur fond sombre,
+sans seconde version.
