@@ -254,6 +254,11 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 .sheet--rose .prose strong { color: var(--on-rose); }
 
 /* La valeur remplie : carbone dactylographié, légèrement hors registre. */
+.typed, .terms__row dd, .lines .qty, .split__v {
+  /* Le carbone d'une liasse ne tombe jamais tout à fait sur la frappe :
+     un demi-pixel de décalage suffit à le dire. */
+  text-shadow: .55px .55px 0 rgba(107, 104, 98, .3);
+}
 .typed {
   font-family: var(--type);
   font-variant-numeric: tabular-nums;
@@ -366,6 +371,26 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
   align-items: start;
 }
 
+/* Le bandeau pré-imprimé : c'est lui qui dit « carnet » avant toute lecture.
+   Il court bord à bord en tête du premier feuillet, sous la barre de nav. */
+.slip {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  flex-wrap: wrap;
+  padding-bottom: .85rem;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: clamp(2rem, 4vw, 3.25rem);
+}
+.slip__t {
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--rule);
+}
+
 .ref {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -385,9 +410,22 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 /* Archivo Black n'a pas d'italique : sans cette règle le navigateur en
    fabrique un penché, qui est une faute de fabrication. La seconde ligne est
    tamponnée, pas inclinée. */
+/* Le mot pivot est tamponné, pas recoloré : dans ce monde l'état et l'accent
+   se marquent, ils ne changent pas de teinte. */
 .statement em {
   font-style: normal;
+  position: relative;
+  display: inline-block;
   color: var(--stamp);
+  padding: 0 .12em;
+}
+.statement em::before {
+  content: '';
+  position: absolute;
+  inset: .12em -.1em .18em;
+  border: .055em solid var(--stamp);
+  transform: rotate(-1.4deg);
+  pointer-events: none;
 }
 
 .top__lede {
@@ -441,6 +479,20 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 
 .btn--wide { width: 100%; }
 
+/* Le geste du carnet : l'action est frappée au tampon sur le feuillet. */
+.btn--stamp { position: relative; }
+.btn--stamp::after {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border: 2px solid var(--stamp);
+  transform: rotate(-1.1deg);
+  pointer-events: none;
+  transition: transform .18s, border-color .18s;
+}
+.btn--stamp:hover::after { transform: rotate(.8deg); border-color: var(--ink); }
+.act-block { padding-top: .35rem; }
+
 @media (max-width: 900px) { .top { grid-template-columns: 1fr; } }
 
 /* ---------------------------------------------- les lignes du formulaire -- */
@@ -490,6 +542,8 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 .lines .desig b { font-weight: 700; display: block; }
 .lines .desig span { display: block; font-size: .875rem; opacity: .78; margin-top: .2rem; max-width: 62ch; overflow-wrap: anywhere; }
 .lines .qty {
+  border-left: 1px solid currentColor;
+  padding-left: 1.1rem;
   text-align: right;
   font-family: var(--type);
   font-variant-numeric: tabular-nums;
@@ -923,6 +977,17 @@ input[type="range"]::-moz-range-thumb {
 }
 .pad-foot a { color: var(--ply-original); }
 
+/* La souche : le talon qui reste dans le carnet une fois le feuillet détaché.
+   C'est elle qui porte l'identité légale — la part que le vendeur garde. */
+.souche {
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ply-canari);
+  margin-bottom: 1.6rem;
+}
+
 .pad-foot__top {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
@@ -930,7 +995,18 @@ input[type="range"]::-moz-range-thumb {
   padding-bottom: 2.25rem;
   border-bottom: 1px solid rgba(252, 251, 247, .22);
 }
-@media (max-width: 760px) { .pad-foot__top { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { /* La souche : le talon qui reste dans le carnet une fois le feuillet détaché.
+   C'est elle qui porte l'identité légale — la part que le vendeur garde. */
+.souche {
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ply-canari);
+  margin-bottom: 1.6rem;
+}
+
+.pad-foot__top { grid-template-columns: 1fr; } }
 
 .pad-foot .mark { color: var(--ply-original); padding-block: 0; }
 .pad-foot .mark img { filter: invert(1) brightness(1.6); }

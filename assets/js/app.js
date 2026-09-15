@@ -218,10 +218,11 @@
   if (year) year.textContent = new Date().getFullYear();
 
   // Le carnet porte la date du jour, comme un vrai bordereau.
-  var today = document.querySelector('[data-today]');
-  if (today) {
-    today.textContent = new Date().toLocaleDateString(locale, {
-      day: '2-digit', month: '2-digit', year: 'numeric'
-    });
-  }
+  // Le carnet porte la date à deux endroits : le bandeau et le bordereau.
+  var stamped = new Date().toLocaleDateString(locale, {
+    day: '2-digit', month: '2-digit', year: 'numeric'
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-today]'), function (el) {
+    el.textContent = stamped;
+  });
 })();
