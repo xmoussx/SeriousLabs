@@ -325,7 +325,9 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
   white-space: nowrap;
   padding-block: .9rem;
 }
-.mark img { height: 21px; width: auto; }
+/* Le tracé d'origine est plus élancé que large : à hauteur égale il pèse
+   moins que le mot-symbole. On le remonte pour rétablir l'équilibre optique. */
+.mark img { height: 25px; width: auto; }
 
 .pad-nav { display: flex; align-items: stretch; gap: 0; }
 
