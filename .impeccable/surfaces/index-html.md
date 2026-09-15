@@ -78,6 +78,12 @@ raison et sa mesure :
    mesurées. C'est lui qui remplit la promesse de STORY — reconnaître l'objet
    avant d'avoir lu un mot.
 
+   ARBITRAGE, 15 septembre 2026 : écart ACCEPTÉ comme exception permanente par
+   Antoine Dugast, les trois options mesurées lui ayant été présentées
+   (accepter, retirer l'action secondaire, raccourcir l'énoncé). La promesse
+   reste écrite telle quelle plus haut ; une refonte future de ce premier écran
+   devra donc la traiter à nouveau, et non la considérer comme abandonnée.
+
 FORM: Le carnet à souche — candidat 1 de ma liste, choisi par l'utilisateur
 contre le candidat 7 que le tirage avait assigné. Clé de tirage 49a0b518.
 
