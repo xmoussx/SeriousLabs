@@ -2,3 +2,6 @@
 .env
 *.env
 var/
+
+# Espace de travail des skills de design : captures et état de construction.
+.impeccable/review/
