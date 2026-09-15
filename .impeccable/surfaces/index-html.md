@@ -56,13 +56,27 @@ raison et sa mesure :
    bas à droite du feuillet. Le panneau « conditions » occupe la droite ; y
    placer aussi l'action séparerait le geste de la phrase qui le motive.
 
-4. Perforation fermant la fenêtre : TENUE EN ANGLAIS (858 px), MANQUÉE EN
-   FRANÇAIS DE 27 px (927 px pour une fenêtre de 900). Le français est environ
-   15 % plus long à contenu égal et l'énoncé y prend cinq lignes contre quatre.
-   Tout ce qui pouvait être resserré sans étouffer la page l'a été : le premier
-   feuillet a sa propre respiration, réduite ; l'interlignage de l'énoncé est
-   passé à .96. Aller plus loin supposerait de raccourcir l'énoncé français,
-   qui est le meilleur état de la copie après deux passes de réécriture.
+4. Perforation fermant la fenêtre : NON TENUE DE FAÇON FIABLE, dans les deux
+   langues. Mesure de la position haute de la première perforation selon la
+   hauteur de fenêtre réelle, barre du navigateur déduite :
+     1920x1080 bureau (955 px utiles) : FR 930 dedans, EN 861 dedans
+     1536x864 portable 1080p           : FR 930 dehors, EN 861 dedans
+     1440x900 conservateur             : FR 927 dehors, EN 858 dedans
+     1440x900 macOS (789 px utiles)    : FR 927 dehors, EN 858 dehors
+   La promesse ne tient donc qu'au-delà d'environ 935 px utiles en anglais et
+   960 px en français, c'est-à-dire sur un écran de bureau et pas sur un
+   portable. Une consignation antérieure disait « tenue en anglais » : elle
+   reposait sur la seule hauteur de test de 900 px et était trop flatteuse.
+
+   Ce qui a été fait sans toucher à la copie : premier feuillet doté de sa
+   propre respiration resserrée, interlignage de l'énoncé à .96. Fermer
+   réellement la fenêtre sur un portable supposerait de retirer l'action
+   secondaire ou de raccourcir l'énoncé, donc de payer la promesse en contenu.
+
+   Le signal du carnet, lui, ne dépend pas de cette perforation : le bandeau
+   pré-imprimé finit à 210 px et reste visible sur toutes les hauteurs
+   mesurées. C'est lui qui remplit la promesse de STORY — reconnaître l'objet
+   avant d'avoir lu un mot.
 
 FORM: Le carnet à souche — candidat 1 de ma liste, choisi par l'utilisateur
 contre le candidat 7 que le tirage avait assigné. Clé de tirage 49a0b518.
