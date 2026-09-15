@@ -131,6 +131,9 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
   padding-block: var(--sheet);
   position: relative;
 }
+/* Le premier feuillet porte le bandeau pré-imprimé en plus des autres : il se
+   resserre pour que la perforation reste dans la première fenêtre. */
+.sheet--first { padding-block: clamp(1.6rem, 2.6vw, 2.5rem) clamp(2rem, 3.2vw, 2.75rem); }
 .sheet--canari { background: var(--ply-canari); color: var(--on-canari); }
 .sheet--rose   { background: var(--ply-rose);   color: var(--on-rose); }
 
@@ -219,7 +222,7 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 .statement {
   font-family: var(--disp);
   font-size: clamp(2.2rem, 5.3vw, 4.5rem);
-  line-height: 1.0;
+  line-height: .96;
   letter-spacing: -.032em;
   font-weight: 400;
   text-wrap: balance;
@@ -377,11 +380,11 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 1.5rem 2rem;
+  gap: 1rem 2rem;
   flex-wrap: wrap;
-  padding-bottom: .85rem;
+  padding-bottom: .8rem;
   border-bottom: 2px solid var(--ink);
-  margin-bottom: clamp(2rem, 4vw, 3.25rem);
+  margin-bottom: clamp(1.6rem, 2.8vw, 2.4rem);
 }
 .slip__t {
   font-size: .6875rem;
@@ -394,8 +397,10 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 .ref {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: .3rem 1rem;
+  gap: .3rem 1.1rem;
   font-size: .78rem;
+  border: 1px solid var(--rule-soft);
+  padding: .7rem .95rem;
 }
 .ref dt {
   font-weight: 600;
@@ -429,7 +434,7 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 }
 
 .top__lede {
-  margin-top: 1.5rem;
+  margin-top: 1.15rem;
   max-width: 54ch;
   font-size: clamp(1.02rem, 1.45vw, 1.16rem);
   color: var(--ink-2);
@@ -450,7 +455,7 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 .terms__row dt { color: var(--ink-2); }
 .terms__row dd { margin: 0; font-family: var(--type); text-align: right; font-weight: 700; }
 
-.act-block { margin-top: 1.35rem; display: grid; gap: .6rem; }
+.act-block { margin-top: 1.5rem; display: grid; gap: .75rem; }
 
 .btn {
   display: inline-flex;
