@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-15T07:00:00Z",
+  "title": "Design System: Serious Labs",
+  "extensions": {
+    "colorMeta": {
+      "ply-original": { "role": "neutral", "displayName": "Original crème", "canonical": "#fcfbf7", "note": "Premier pli de la liasse. Fond du body, des feuillets non colorés, de tous les champs de saisie, et couleur du texte sur le pied à l'encre." },
+      "ply-canari": { "role": "tertiary", "displayName": "Canari", "canonical": "#f0d24b", "note": "Deuxième pli. Régions entières (.sheet--canari), fond de survol de la navigation, fond du message de succès, liens du pied, et theme-color déclarée par les quatre pages." },
+      "ply-rose": { "role": "tertiary", "displayName": "Rose carbone", "canonical": "#efb8c0", "note": "Troisième pli. Employé pour la seule région du calculateur." },
+      "ink": { "role": "neutral", "displayName": "Encre de frappe", "canonical": "#16181a", "note": "Titres, valeurs, fond des boutons, fond du pied, filets d'accentuation à 2 px. 17,19:1 sur l'original." },
+      "ink-2": { "role": "neutral", "displayName": "Encre atténuée", "canonical": "#44474b", "note": "Corps de texte sur feuillet original, liens de navigation au repos, unités du relevé. 9,02:1 sur l'original." },
+      "rule": { "role": "primary", "displayName": "Bleu de devis", "canonical": "#2c5aa0", "note": "L'encre du pré-imprimé : intitulés en capitales, filets, en-têtes de colonnes, chevron du select, molette de la barre de défilement. 6,59:1 sur l'original. Jamais un titre, jamais une phrase, jamais une valeur." },
+      "rule-soft": { "role": "primary", "displayName": "Bleu de filet", "canonical": "#9db2d4", "note": "Filets d'un pixel uniquement. 2,08:1 sur l'original : inutilisable sous un texte comme sous la bordure d'une commande." },
+      "stamp": { "role": "secondary", "displayName": "Rouge de tampon", "canonical": "#8e2340", "note": "L'unique accent. Cadres inclinés, croix des cases cochées, poignée du curseur, caret, anneau de focus, bordure d'erreur, fond des boutons survolés. 8,23:1 sur l'original, 5,69:1 sur canari, 4,99:1 sur rose, mais 2,09:1 sur l'encre du pied — où l'anneau de focus cède au canari." },
+      "carbon": { "role": "neutral", "displayName": "Carbone", "canonical": "#6b6862", "note": "Teinte du décalage de carbone, employée à 30 % d'opacité en text-shadow, et couleur des textes indicatifs de champ (5,11:1 sur le fond crème du champ)." },
+      "on-canari": { "role": "neutral", "displayName": "Encre du canari", "canonical": "#453804", "note": "Couleur de texte de .sheet--canari. 7,70:1 sur le canari." },
+      "on-canari-2": { "role": "neutral", "displayName": "Encre moyenne du canari", "canonical": "#5f4e06", "note": "Prose, légendes et filets de champ sur canari. 5,44:1 sur le canari — là où un gris neutre tomberait à 3,71:1." },
+      "on-rose": { "role": "neutral", "displayName": "Encre du rose", "canonical": "#4d1f27", "note": "Couleur de texte de .sheet--rose, bordure de la souche, des cases à cocher et des saisies d'hypothèses. 7,97:1 sur le rose." },
+      "on-rose-2": { "role": "neutral", "displayName": "Encre moyenne du rose", "canonical": "#6d3a43", "note": "Prose, légendes et notes sur rose. 5,26:1 sur le rose." }
+    },
+    "tonalRampsNote": "Le système ne définit aucune échelle tonale : chaque encre est un aplat unique. Les seules variantes réellement construites sont des composites alpha, listés sous extensions.composites. Aucune rampe n'a été synthétisée, faute d'être lisible dans le code.",
+    "composites": [
+      { "name": "stub-surface", "value": "rgba(252, 251, 247, .42)", "over": "{colors.ply-rose}", "resolved": "#f4d4d7", "purpose": "Fond de la souche du calculateur : une zone plus fortement pressée du papier rose." },
+      { "name": "tick-box-surface", "value": "rgba(252, 251, 247, .55)", "over": "{colors.ply-rose}", "resolved": "#f6ddde", "purpose": "Fond d'une case à cocher dessinée." },
+      { "name": "assumption-input-surface", "value": "rgba(252, 251, 247, .8)", "over": "{colors.ply-rose}", "resolved": "#f9eeec", "purpose": "Fond d'une saisie d'hypothèse." },
+      { "name": "row-hover-ink", "value": "rgba(22, 24, 26, .045)", "over": "{colors.ply-original}", "purpose": "Voile de survol d'une ligne de relevé sur feuillet original." },
+      { "name": "row-hover-canari", "value": "rgba(74, 60, 5, .07)", "over": "{colors.ply-canari}", "purpose": "Voile de survol d'une ligne de relevé sur feuillet canari." },
+      { "name": "tick-hover-rose", "value": "rgba(77, 31, 39, .06)", "over": "{colors.ply-rose}", "purpose": "Voile de survol d'une ligne de case à cocher." },
+      { "name": "footer-link", "value": "rgba(252, 251, 247, .78)", "over": "{colors.ink}", "resolved": "#c9c9c6", "purpose": "Lien de pied au repos. 10,73:1." },
+      { "name": "footer-fine-print", "value": "rgba(252, 251, 247, .62)", "over": "{colors.ink}", "resolved": "#a5a5a3", "purpose": "Barre légale du pied. 7,21:1." },
+      { "name": "perf-hairline", "value": "rgba(22, 24, 26, .1)", "over": "toute perforation", "purpose": "Filet d'un pixel posé en bas de la bande de perforation, qui donne l'épaisseur du pli." },
+      { "name": "carbon-offset", "value": "rgba(107, 104, 98, .3)", "over": "toute valeur remplie", "purpose": "Le décalage de carbone, en text-shadow de .55px .55px 0." }
+    ],
+    "typographyMeta": {
+      "display": { "displayName": "Énoncé", "purpose": "L'énoncé du premier feuillet (.statement). Une seule occurrence par page, text-wrap: balance." },
+      "total": { "displayName": "Total de la souche", "purpose": "Le montant calculé (.total). Seul autre emploi d'Archivo Black à grande échelle, et seul élément animé de la page." },
+      "headline": { "displayName": "Titre de feuillet", "purpose": "Un titre de section par feuillet (.heading). Variantes mineures : claim du pied, première phrase de .rule-of-house, h2 des pages de texte." },
+      "title": { "displayName": "Intitulé d'étape", "purpose": "Les intitulés d'étape du déroulé (.exec__t), en Archivo 700." },
+      "lede": { "displayName": "Paragraphe d'attaque", "purpose": "Le paragraphe sous l'énoncé (.top__lede), mesuré à 54ch." },
+      "body": { "displayName": "Corps", "purpose": "Prose courante (.prose), mesurée à 68ch, en encre atténuée du feuillet, text-wrap: pretty." },
+      "typed": { "displayName": "Valeur remplie", "purpose": "Courier Prime, réservée aux valeurs, chiffres et mesures. Porte toujours le décalage de carbone et des chiffres tabulaires." },
+      "label": { "displayName": "Pré-imprimé", "purpose": "Capitales de 11 px au bleu de devis : intitulés de case, en-têtes de colonnes, légendes, repères temporels. Interlettrage de .1em à .16em selon le rôle." },
+      "stamp": { "displayName": "Pastille d'état", "purpose": "Capitales de 11 px en 700, encadrées de 2 px et inclinées, au rouge de tampon." }
+    },
+    "fonts": [
+      { "family": "Archivo", "weights": [400, 500, 600, 700], "styles": ["normal"], "hosting": "auto-hébergée, WOFF2, font-display: swap, sous-ensembles latin et latin-ext" },
+      { "family": "Archivo Black", "weights": [400], "styles": ["normal"], "hosting": "auto-hébergée, WOFF2, font-display: swap, sous-ensembles latin et latin-ext", "caveat": "Aucun italique dessiné : tout <em> doit être remis en font-style: normal et marqué autrement." },
+      { "family": "Courier Prime", "weights": [400, 700], "styles": ["normal"], "hosting": "auto-hébergée, WOFF2, font-display: swap, sous-ensembles latin et latin-ext" }
+    ],
+    "shadows": [
+      { "name": "aucune", "value": "none", "purpose": "Le système n'a aucune ombre d'élévation. La profondeur est l'empilement des feuillets, la perforation percée et les fonds crème translucides." },
+      { "name": "carbon-offset", "value": "text-shadow: .55px .55px 0 rgba(107, 104, 98, .3)", "purpose": "Le carbone d'une liasse ne retombe jamais tout à fait sur la frappe. Appliqué à toute valeur remplie, et à rien d'autre. Ce n'est pas une ombre portée et il ne doit jamais être grossi pour en devenir une." },
+      { "name": "field-invalid", "value": "box-shadow: inset 0 0 0 1px #8e2340", "purpose": "Liseré interne d'un champ en erreur, doublé d'une bordure portée à 2 px : la forme change, pas seulement la teinte." },
+      { "name": "field-focus", "value": "box-shadow: inset 0 -2px 0 #8e2340", "purpose": "Soulignement d'encre sous un champ au point, en plus de l'anneau de focus." }
+    ],
+    "motion": [
+      { "name": "strike", "value": "animation: strike .34s cubic-bezier(.2, .9, .25, 1)", "purpose": "L'unique animation de la page. Le total est tamponné dans sa case quand, et seulement quand, la valeur calculée change : arrivée à scale(1.055) rotate(-1.1deg) blur(1.6px) opacity(.45), pose à 55 % du parcours, puis repos. Le script mémorise la dernière valeur et ne rejoue rien si le total n'a pas bougé." },
+      { "name": "reduced-motion-guard", "value": "@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } html { scroll-behavior: auto; } }", "purpose": "Garde-fou global. Sous mouvement réduit, la valeur change sans coup de tampon et le défilement devient instantané ; rien d'autre n'est perdu." },
+      { "name": "state-transitions", "value": ".12s à .18s", "purpose": "Durées littérales des transitions d'état, non tokenisées dans le code : .12s (croix de case), .14s (survol de ligne de case), .15s (navigation, filet de champ, liens de pied), .16s (fond de bouton, soulignement de lien), .18s (cadre du bouton tamponné)." }
+    ],
+    "breakpoints": [
+      { "name": "520", "value": "520px", "purpose": "Le mot-symbole perd son lettrage et ne garde que la fiole ; l'action de navigation se resserre." },
+      { "name": "620", "value": "620px", "purpose": "Le formulaire de contact repasse sur une colonne." },
+      { "name": "720", "value": "720px", "purpose": "La colonne de temps du déroulé passe de 11 rem à 7,25 rem, sans jamais repasser au-dessus du titre." },
+      { "name": "760", "value": "760px", "purpose": "Le haut du pied repasse sur une colonne." },
+      { "name": "860", "value": "860px", "purpose": "Les grilles .head et .legal-grid repassent sur une colonne." },
+      { "name": "880", "value": "880px", "purpose": "Les ancres de section quittent la navigation ; le relevé sort entièrement du mode tabulaire ; .contact repasse sur une colonne." },
+      { "name": "900", "value": "900px", "purpose": "Les grilles .top et .calc repassent sur une colonne." },
+      { "name": "note", "value": "littéraux", "purpose": "Ces seuils sont écrits en clair dans les media queries : le projet ne déclare aucun jeton de point de rupture." }
+    ],
+    "browserSurfaces": [
+      { "name": "selection", "value": "::selection { background: #f0d24b; color: #16181a } ; .sheet--canari ::selection { background: #16181a; color: #f0d24b } ; .sheet--rose ::selection { background: #16181a; color: #efb8c0 } ; .pad-foot ::selection { background: #f0d24b; color: #16181a }", "purpose": "La sélection est inversée feuillet par feuillet." },
+      { "name": "caret", "value": "caret-color: #8e2340", "purpose": "Le curseur de saisie est au rouge de tampon." },
+      { "name": "scrollbar", "value": "scrollbar-color: #2c5aa0 #fcfbf7 ; scrollbar-width: thin ; ::-webkit-scrollbar { width: 12px; height: 12px } ; thumb: #2c5aa0 avec une bordure de 3px #fcfbf7 et border-radius: 0", "purpose": "La barre de défilement est un filet bleu de devis sur le papier." },
+      { "name": "focus-ring", "value": "outline: 2px solid #8e2340; outline-offset: 2px", "purpose": "Anneau de focus par défaut. Il passe au canari dans .pad-foot et à l'encre de frappe sur .sheet--canari, où le rouge tombe sous le seuil." },
+      { "name": "accent-color", "value": "accent-color: #8e2340", "purpose": "Sur la case de consentement, seule case native laissée visible." },
+      { "name": "theme-color", "value": "<meta name=\"theme-color\" content=\"#f0d24b\">", "purpose": "Le canari habille la barre du navigateur, sur les quatre pages." },
+      { "name": "scroll", "value": "scroll-behavior: smooth ; scroll-padding-top: 5.5rem", "purpose": "Compensation de l'en-tête collant : sans elle, une ancre dépose sa cible sous la barre." },
+      { "name": "tabular-numerals", "value": "font-variant-numeric: tabular-nums", "purpose": "Appliqué à .typed, .lines .qty, .total, .split__v et aux saisies d'hypothèses. L'utilitaire .num (tabular-nums lining-nums) est déclaré mais n'est référencé par aucun balisage." }
+    ],
+    "print": [
+      { "name": "print-sheet", "value": "@media print { .pad-head, .act-block, form, .assump__toggle { display: none } .sheet { background: #fff; color: #000; padding-block: 1.5rem } .perf { display: none } }", "purpose": "À l'impression, la liasse redevient un imprimé noir sur blanc : plus d'en-tête, plus d'actions, plus de formulaire, plus de perforations." }
+    ],
+    "accessibility": [
+      { "name": "contrast", "value": "≥ 4,5:1 pour tout texte", "purpose": "Mesuré sur la palette livrée. Les deux points les plus bas sont les textes atténués par opacité : .lines .desig span à .78 donne 4,53:1 sur canari, .scale à .75 donne 4,50:1 sur rose. Ces opacités sont sur le seuil et ne doivent pas être abaissées." },
+      { "name": "touch-targets", "value": "44 px minimum, 48 px pour boutons et champs", "purpose": "Tenus par .btn (48px), .f input/select/textarea (48px), .tick (44px), .assump__toggle (44px), .assump__body input (44px). Les liens de navigation sont étirés sur les 62 px de la barre." },
+      { "name": "aria-roles-on-table", "value": "role=\"table\" / rowgroup / row / columnheader / cell", "purpose": "Le relevé perd sa sémantique tabulaire sous 880 px, où table, caption et tbody passent en display: block. Les rôles explicites la rendent." },
+      { "name": "visually-hidden", "value": "position: absolute; width: 1px; height: 1px; clip-path: inset(50%)", "purpose": "Employé par .vh, .pot et .lines thead. Jamais left: -9999px, qui agrandit la largeur de défilement du document." },
+      { "name": "skip-link", "value": "transform: translateY(-120%) puis transform: none au focus", "purpose": "Le lien d'évitement est escamoté par translation, pour la même raison." },
+      { "name": "live-region", "value": "aria-live=\"polite\" sur le total, role=\"status\" sur le message d'envoi", "purpose": "Le résultat du calcul et l'issue du formulaire sont annoncés sans voler le focus." },
+      { "name": "disclosure", "value": "aria-expanded + aria-controls sur .assump__toggle, hidden sur le corps", "purpose": "Les hypothèses sont un volet déclaré, dont le signe + / − est un caractère typographique de Courier Prime, pas une icône." },
+      { "name": "error-state", "value": "aria-invalid=\"true\" → bordure 2 px + liseré interne 1 px au rouge de tampon", "purpose": "L'erreur est portée par l'épaisseur autant que par la couleur, et le premier champ fautif reçoit le focus." },
+      { "name": "colour-independence", "value": "aucune information portée par la seule couleur", "purpose": "Conséquence directe de la règle du tampon : cases cochées à la croix, états marqués d'un cadre incliné, erreurs épaissies." },
+      { "name": "ios-zoom-guard", "value": "font-size: 1rem sur tout champ de saisie", "purpose": "Sous 16 px, Safari iOS zoome de force à la mise au point." }
+    ],
+    "pitfalls": [
+      { "name": "nginx add_header", "value": "Un seul add_header dans un bloc location annule la totalité des add_header hérités du niveau server — pas seulement celui du même nom.", "purpose": "C'est pourquoi la mise en cache utilise la directive expires (expires 30d, expires -1) et non add_header Cache-Control. Sans cette précaution, CSP, HSTS et les autres en-têtes de sécurité disparaissent silencieusement de toutes les pages." },
+      { "name": "table nowrap", "value": "white-space: nowrap sur la première cellule d'un tableau impose sa largeur minimale à toute la page.", "purpose": "Mesuré à 847 px de largeur minimale ici, avec débordement de la page entière sous 900 px. La désignation doit se couper librement, et la coupure dure se règle sur la description par overflow-wrap: anywhere." },
+      { "name": "offscreen by left", "value": "Escamoter par left: -9999px agrandit la largeur de défilement du document.", "purpose": "Débordement horizontal sur tous les petits écrans. Employer clip-path: inset(50%) sur 1 px, ou une translation." },
+      { "name": "table display block", "value": "Un élément table garde sa disposition tabulaire même quand ses lignes passent en grille.", "purpose": "La largeur minimale du tableau s'impose alors au conteneur et déborde l'écran. Il faut sortir table, caption et tbody du mode tableau, escamoter thead, et rendre la sémantique par des rôles ARIA explicites." },
+      { "name": "archivo black italic", "value": "Archivo Black n'a pas d'italique dessiné : un <em> non neutralisé produit un faux italique.", "purpose": "Le navigateur synthétise un penché, qui est une faute de fabrication. Tout <em> en Archivo Black repasse en font-style: normal et reçoit sa marque au tampon." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Bouton principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "L'action pleine du carnet : encre de frappe sur crème, angle droit, 48 px de haut. Au survol elle passe au rouge de tampon.",
+      "html": "<button class=\"ds-btn\">Envoyer la demande</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .6em; min-height: 48px; padding: .85rem 1.5rem; background: var(--ink, #16181a); color: var(--ply-original, #fcfbf7); border: 2px solid var(--ink, #16181a); font-family: var(--pre, 'Archivo', system-ui, sans-serif); font-weight: 700; font-size: .9375rem; letter-spacing: .01em; cursor: pointer; border-radius: 0; text-align: center; transition: background .16s, border-color .16s, color .16s; } .ds-btn:hover { background: var(--stamp, #8e2340); border-color: var(--stamp, #8e2340); } .ds-btn:focus-visible { outline: 2px solid var(--stamp, #8e2340); outline-offset: 2px; } .ds-btn[disabled] { opacity: .5; cursor: not-allowed; } .ds-btn[disabled]:hover { background: var(--ink, #16181a); border-color: var(--ink, #16181a); }"
+    },
+    {
+      "name": "Bouton tamponné",
+      "kind": "button",
+      "refersTo": "button-stamp",
+      "description": "Le geste propre au carnet : un second cadre au rouge de tampon posé de travers autour du bouton, qui bascule de l'autre côté au survol. Un seul emploi par page, pour l'action principale du premier feuillet.",
+      "html": "<a class=\"ds-btn-stamp\" href=\"#\">Calculer ce que ça vous rendrait</a>",
+      "css": ".ds-btn-stamp { position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .85rem 1.5rem; margin: 9px; background: var(--ink, #16181a); color: var(--ply-original, #fcfbf7); border: 2px solid var(--ink, #16181a); font-family: var(--pre, 'Archivo', system-ui, sans-serif); font-weight: 700; font-size: .9375rem; letter-spacing: .01em; text-decoration: none; cursor: pointer; border-radius: 0; transition: background .16s, border-color .16s, color .16s; } .ds-btn-stamp::after { content: ''; position: absolute; inset: -7px; border: 2px solid var(--stamp, #8e2340); transform: rotate(-1.1deg); pointer-events: none; transition: transform .18s, border-color .18s; } .ds-btn-stamp:hover { background: var(--stamp, #8e2340); border-color: var(--stamp, #8e2340); } .ds-btn-stamp:hover::after { transform: rotate(.8deg); border-color: var(--ink, #16181a); } .ds-btn-stamp:focus-visible { outline: 2px solid var(--stamp, #8e2340); outline-offset: 2px; }"
+    },
+    {
+      "name": "Bouton discret",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "L'action secondaire : le même rectangle, vidé de son fond. Au survol il s'inverse et devient le bouton plein.",
+      "html": "<a class=\"ds-btn-quiet\" href=\"#\">Voir le déroulé d'une journée</a>",
+      "css": ".ds-btn-quiet { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .85rem 1.5rem; background: transparent; color: var(--ink, #16181a); border: 2px solid var(--ink, #16181a); font-family: var(--pre, 'Archivo', system-ui, sans-serif); font-weight: 700; font-size: .9375rem; letter-spacing: .01em; text-decoration: none; cursor: pointer; border-radius: 0; transition: background .16s, border-color .16s, color .16s; } .ds-btn-quiet:hover { background: var(--ink, #16181a); color: var(--ply-original, #fcfbf7); border-color: var(--ink, #16181a); } .ds-btn-quiet:focus-visible { outline: 2px solid var(--stamp, #8e2340); outline-offset: 2px; }"
+    },
+    {
+      "name": "Champ de saisie",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Le champ du pré-imprimé : fond crème quelle que soit la région, filet d'un pixel, angle droit, 48 px de haut, 1 rem de corps. Au point, il reçoit un soulignement d'encre au tampon en plus de son anneau de focus.",
+      "html": "<div class=\"ds-f\"><label for=\"ds-f-email\">Courriel professionnel</label><input id=\"ds-f-email\" type=\"email\" placeholder=\"nom@cabinet.fr\"></div>",
+      "css": ".ds-f { display: grid; font-family: var(--pre, 'Archivo', system-ui, sans-serif); } .ds-f label { font-size: .78rem; font-weight: 600; margin-bottom: .4rem; color: var(--ink, #16181a); } .ds-f input { width: 100%; min-height: 48px; padding: .7rem .8rem; border: 1px solid var(--rule-soft, #9db2d4); background: var(--ply-original, #fcfbf7); color: var(--ink, #16181a); border-radius: 0; font: inherit; font-size: 1rem; transition: border-color .15s, box-shadow .15s; } .ds-f input:hover { border-color: var(--rule, #2c5aa0); } .ds-f input:focus { border-color: var(--stamp, #8e2340); box-shadow: inset 0 -2px 0 var(--stamp, #8e2340); } .ds-f input:focus-visible { outline: 2px solid var(--stamp, #8e2340); outline-offset: 1px; } .ds-f input::placeholder { color: var(--carbon, #6b6862); } .ds-f input[aria-invalid=\"true\"] { border-color: var(--stamp, #8e2340); border-width: 2px; box-shadow: inset 0 0 0 1px var(--stamp, #8e2340); }"
+    },
+    {
+      "name": "Case à intitulé encoché",
+      "kind": "card",
+      "refersTo": "box",
+      "description": "Le seul conteneur de ce système avec la souche. Un cadre d'un pixel dont la légende est posée à cheval sur le trait supérieur, avec la couleur du feuillet en fond pour interrompre le filet. Aucune ombre, aucun rayon, fond transparent : le feuillet reste visible à travers.",
+      "html": "<div class=\"ds-box\"><p class=\"ds-box__cap\">Conditions</p><dl class=\"ds-terms\"><div><dt>Durée</dt><dd>1 journée</dd></div><div><dt>Suivi</dt><dd>Point à 30 jours</dd></div><div><dt>Tarif</dt><dd>Sur devis</dd></div></dl></div>",
+      "css": ".ds-box { position: relative; border: 1px solid var(--rule-soft, #9db2d4); padding: 1.5rem 1.35rem 1.4rem; background: transparent; font-family: var(--pre, 'Archivo', system-ui, sans-serif); color: var(--ink, #16181a); } .ds-box__cap { position: absolute; top: -.52em; left: 1rem; margin: 0; padding-inline: .5rem; background: var(--ply-original, #fcfbf7); font-size: .6875rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--rule, #2c5aa0); } .ds-terms { display: grid; gap: 0; margin: 0; } .ds-terms > div { display: grid; grid-template-columns: 1fr auto; gap: .9rem; align-items: baseline; padding-block: .62rem; border-bottom: 1px dotted var(--rule-soft, #9db2d4); font-size: .86rem; } .ds-terms > div:last-child { border-bottom: 0; } .ds-terms dt { color: var(--ink-2, #44474b); } .ds-terms dd { margin: 0; font-family: var(--type, 'Courier Prime', ui-monospace, monospace); text-align: right; font-weight: 700; text-shadow: .55px .55px 0 rgba(107, 104, 98, .3); }"
+    },
+    {
+      "name": "Pastille de tampon",
+      "kind": "chip",
+      "refersTo": "stamp",
+      "description": "La marque d'état. Capitales de 11 px en 700, cadre de 2 px, posée de travers de 1,6 degré et à 88 % d'opacité. C'est ainsi qu'un état se dit dans ce monde ; jamais par un changement de teinte.",
+      "html": "<span class=\"ds-stamp\">Sans engagement</span> <span class=\"ds-stamp ds-stamp--tilt-r\">Estimation</span>",
+      "css": ".ds-stamp { display: inline-block; font-family: var(--pre, 'Archivo', system-ui, sans-serif); font-size: .6875rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--stamp, #8e2340); border: 2px solid var(--stamp, #8e2340); border-radius: 0; padding: .34rem .6rem .28rem; transform: rotate(-1.6deg); opacity: .88; white-space: nowrap; } .ds-stamp--tilt-r { transform: rotate(1.4deg); }"
+    },
+    {
+      "name": "Ligne à cocher",
+      "kind": "input",
+      "refersTo": "tick",
+      "description": "La case de formulaire du calculateur : 44 px de haut, pointillée en bas, avec une case de 20 px qui reçoit une croix au tampon — deux traits de 2,5 px, jamais un aplat. La case native est masquée mais garde le focus, rendu par un anneau sur la case dessinée.",
+      "html": "<label class=\"ds-tick\"><input type=\"checkbox\" checked><span class=\"ds-tick__box\" aria-hidden=\"true\"></span><span class=\"ds-tick__name\">Rédaction &amp; correspondance</span><span class=\"ds-tick__rate\">1,2 h</span></label>",
+      "css": ".ds-tick { display: grid; grid-template-columns: 22px 1fr auto; align-items: center; gap: .8rem; padding: .62rem .2rem; min-height: 44px; cursor: pointer; border-bottom: 1px dotted rgba(77, 31, 39, .32); transition: background .14s; font-family: var(--pre, 'Archivo', system-ui, sans-serif); color: var(--on-rose, #4d1f27); } .ds-tick:hover { background: rgba(77, 31, 39, .06); } .ds-tick input { position: absolute; opacity: 0; pointer-events: none; } .ds-tick__box { width: 20px; height: 20px; border: 1.5px solid var(--on-rose, #4d1f27); border-radius: 0; position: relative; background: rgba(252, 251, 247, .55); } .ds-tick__box::before, .ds-tick__box::after { content: ''; position: absolute; left: 2px; right: 2px; top: 50%; height: 2.5px; background: var(--stamp, #8e2340); transform-origin: center; opacity: 0; transition: opacity .12s; } .ds-tick__box::before { transform: rotate(45deg); } .ds-tick__box::after { transform: rotate(-45deg); } .ds-tick input:checked + .ds-tick__box::before, .ds-tick input:checked + .ds-tick__box::after { opacity: 1; } .ds-tick input:focus-visible + .ds-tick__box { outline: 2px solid var(--stamp, #8e2340); outline-offset: 2px; } .ds-tick__name { font-size: .9rem; } .ds-tick__rate { font-family: var(--type, 'Courier Prime', ui-monospace, monospace); font-size: .8rem; font-weight: 700; white-space: nowrap; text-shadow: .55px .55px 0 rgba(107, 104, 98, .3); }"
+    },
+    {
+      "name": "La souche et son total",
+      "kind": "custom",
+      "refersTo": "stub",
+      "description": "Le talon conservé : bordure de 2 px à l'encre du pli, fond crème translucide, le total en Archivo Black à chiffres tabulaires. C'est le seul élément animé de la page — l'animation strike ne rejoue que si la valeur a changé, et le garde-fou de mouvement réduit la réduit à néant.",
+      "html": "<div class=\"ds-stub\"><p class=\"ds-stub__cap\">Temps rendu à votre activité, par an</p><p class=\"ds-total ds-total--struck\" aria-live=\"polite\">34 020 €</p><div class=\"ds-split\"><div><p class=\"ds-split__v\">756 h</p><p class=\"ds-split__l\">soit 108 journées de sept heures</p></div><div><p class=\"ds-split__v\">16,8 h</p><p class=\"ds-split__l\">récupérées chaque semaine dans l'équipe</p></div></div></div>",
+      "css": ".ds-stub { border: 2px solid var(--on-rose, #4d1f27); border-radius: 0; padding: 1.5rem 1.4rem 1.4rem; background: rgba(252, 251, 247, .42); font-family: var(--pre, 'Archivo', system-ui, sans-serif); color: var(--on-rose, #4d1f27); } .ds-stub__cap { margin: 0; font-size: .78rem; font-weight: 600; letter-spacing: .02em; color: var(--on-rose-2, #6d3a43); } .ds-total { font-family: var(--disp, 'Archivo Black', 'Archivo', system-ui, sans-serif); font-size: clamp(2.4rem, 5.6vw, 3.9rem); line-height: 1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; margin: .55rem 0 0; color: var(--ink, #16181a); } .ds-total--struck { animation: ds-strike .34s cubic-bezier(.2, .9, .25, 1); } @keyframes ds-strike { 0% { transform: scale(1.055) rotate(-1.1deg); filter: blur(1.6px); opacity: .45; } 55% { transform: scale(.996) rotate(.2deg); filter: blur(0); opacity: 1; } 100% { transform: none; } } @media (prefers-reduced-motion: reduce) { .ds-total--struck { animation-duration: .01ms; animation-iteration-count: 1; } } .ds-split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 8.5rem), 1fr)); gap: 1.1rem; margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(77, 31, 39, .34); } .ds-split__v { margin: 0; font-family: var(--type, 'Courier Prime', ui-monospace, monospace); font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; text-shadow: .55px .55px 0 rgba(107, 104, 98, .3); } .ds-split__l { margin: .2rem 0 0; font-size: .78rem; color: var(--on-rose-2, #6d3a43); }"
+    },
+    {
+      "name": "Barre du carnet",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "L'en-tête collant : fond crème, trait de 2 px à l'encre en bas, liens étirés sur les 62 px de la barre et séparés par un filet vertical. Le survol amène le feuillet suivant dans la barre ; seule l'action porte un fond au repos.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav__mark\" href=\"#\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"3.6 0.4 24.8 29.9\" width=\"17\" height=\"21\" fill=\"none\" aria-hidden=\"true\"><circle cx=\"17.4\" cy=\"2.1\" r=\"1.5\" fill=\"#16181a\"/><circle cx=\"14.2\" cy=\"4.6\" r=\"1.05\" fill=\"#16181a\"/><circle cx=\"17.0\" cy=\"6.9\" r=\"1.3\" fill=\"#16181a\"/><rect x=\"10.6\" y=\"8.6\" width=\"10.8\" height=\"2.1\" rx=\"0.7\" fill=\"#16181a\"/><clipPath id=\"ds-fiole\"><path d=\"M12.6 10.7 V15.6 L4.9 26.6 C4.2 27.6 4.9 29 6.1 29 H25.9 C27.1 29 27.8 27.6 27.1 26.6 L19.4 15.6 V10.7 Z\"/></clipPath><rect x=\"0\" y=\"21\" width=\"32\" height=\"12\" fill=\"#2c5aa0\" clip-path=\"url(#ds-fiole)\"/><path d=\"M12.6 10.7 V15.6 L4.9 26.6 C4.2 27.6 4.9 29 6.1 29 H25.9 C27.1 29 27.8 27.6 27.1 26.6 L19.4 15.6 V10.7 Z\" stroke=\"#16181a\" stroke-width=\"2.1\" stroke-linejoin=\"round\"/></svg><span>SERIOUS&nbsp;LABS</span></a><nav class=\"ds-nav__links\"><a href=\"#\">Vos heures</a><a href=\"#\">Le calcul</a><a class=\"ds-nav__lang\" href=\"#\">EN</a><a class=\"ds-nav__act\" href=\"#\">Demander un devis</a></nav></header>",
+      "css": ".ds-nav { display: flex; align-items: stretch; justify-content: space-between; gap: 1rem; min-height: 62px; background: var(--ply-original, #fcfbf7); border-bottom: 2px solid var(--ink, #16181a); font-family: var(--pre, 'Archivo', system-ui, sans-serif); } .ds-nav__mark { display: inline-flex; align-items: center; gap: .62rem; padding-block: .9rem; font-family: var(--disp, 'Archivo Black', 'Archivo', system-ui, sans-serif); font-size: .95rem; letter-spacing: .005em; white-space: nowrap; color: var(--ink, #16181a); text-decoration: none; } .ds-nav__links { display: flex; align-items: stretch; gap: 0; } .ds-nav__links a { display: inline-flex; align-items: center; padding-inline: clamp(.6rem, 1.3vw, 1.05rem); font-size: .8125rem; font-weight: 500; color: var(--ink-2, #44474b); text-decoration: none; border-left: 1px solid var(--rule-soft, #9db2d4); transition: background .15s, color .15s; } .ds-nav__links a:hover { background: var(--ply-canari, #f0d24b); color: var(--ink, #16181a); } .ds-nav__links a:focus-visible { outline: 2px solid var(--stamp, #8e2340); outline-offset: -2px; } .ds-nav__lang { font-family: var(--type, 'Courier Prime', ui-monospace, monospace); font-size: .75rem; letter-spacing: .06em; } .ds-nav__act { background: var(--ink, #16181a); color: var(--ply-original, #fcfbf7); font-weight: 700; letter-spacing: .02em; border-left: 0; } .ds-nav__links a.ds-nav__act:hover { background: var(--stamp, #8e2340); color: var(--ply-original, #fcfbf7); }"
+    },
+    {
+      "name": "Perforation",
+      "kind": "custom",
+      "refersTo": "perf",
+      "description": "La séparation obligatoire entre deux feuillets : de vrais trous percés de 6,8 px tous les 26 px, à travers lesquels on voit la couleur du pli du dessous, plus un filet d'un pixel qui donne l'épaisseur. Ce n'est jamais une bordure en pointillés. Les deux couleurs se règlent par --perf-above et --perf-below.",
+      "html": "<div class=\"ds-perf\" style=\"--perf-above:#fcfbf7;--perf-below:#f0d24b\" aria-hidden=\"true\"></div><div class=\"ds-perf\" style=\"--perf-above:#f0d24b;--perf-below:#efb8c0\" aria-hidden=\"true\"></div>",
+      "css": ".ds-perf { height: 26px; background-color: var(--perf-above, #fcfbf7); background-image: radial-gradient(circle 3.4px at 13px 13px, var(--perf-below, #f0d24b) 96%, transparent 100%); background-size: 26px 26px; background-repeat: repeat-x; background-position: center; position: relative; } .ds-perf::after { content: ''; position: absolute; inset: auto 0 0; height: 1px; background: rgba(22, 24, 26, .1); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Le carnet à souche",
+    "overview": "La page n'illustre pas un carnet de devis autocopiant : elle en est un. Trois feuillets de couleur occupent des régions entières, bord à bord, séparés par de vraies perforations percées à travers lesquelles on voit le feuillet du dessous. Ce qui est imprimé d'avance — intitulés, filets de cases, en-têtes de colonnes, bloc de référence — est au bleu de devis. Ce qui a été rempli — dates, quantités, totaux, montants — est en Courier Prime, avec le demi-pixel de décalage que le carbone d'une liasse a toujours sur la frappe. L'état ne se dit jamais par une teinte : il se dit par un tampon posé de travers.\n\nLe monde remplace une direction suisse noir et blanc, et il la refuse aussi fermement qu'il refuse le bandeau sombre à dégradé de la catégorie IA. La conséquence pratique est qu'il n'y a aucune carte dans ce système : les cases du formulaire — .box, .stub — sont les seuls conteneurs, et elles portent leur intitulé dans l'angle, à la manière d'une légende de fieldset, jamais en sur-titre au-dessus d'un titre. Il n'y a pas non plus d'ombre portée : la profondeur est l'épaisseur de la liasse elle-même.\n\nLa densité est celle d'un imprimé administratif : des filets fins, beaucoup de valeurs alignées à droite en chiffres tabulaires, des capitales à 11 px pour le pré-imprimé et des blocs de titre en Archivo Black très serré. L'ensemble est immobile : une seule animation existe dans toute la page.",
+    "keyCharacteristics": [
+      "Trois feuillets de couleur pleine largeur, jamais des cartes posées sur un fond.",
+      "Pré-imprimé bleu de devis / valeurs remplies en Courier Prime : deux mains distinctes, jamais interverties.",
+      "Encre secondaire teintée depuis le feuillet, jamais grise.",
+      "L'état se marque au tampon, il ne change pas de teinte.",
+      "Angle droit partout : aucun rayon de bordure dans tout le système.",
+      "Aucune ombre d'élévation ; la seule ombre est le décalage de carbone.",
+      "Une seule animation : le total frappé au tampon quand il change."
+    ],
+    "rules": [
+      { "name": "La règle de l'encre du pli", "body": "Toute encre secondaire est teintée depuis le feuillet sur lequel elle repose ; jamais du gris. Un gris posé sur le canari passe sous le seuil de contraste et salit la teinte : le carbone sur canari donne 3,71:1, là où l'encre moyenne du canari donne 5,44:1 pour un rôle identique. Tout nouveau feuillet de couleur arrive donc avec son couple d'encres, pas avec un gris.", "section": "colors" },
+      { "name": "La règle du tampon", "body": "L'état se marque, il ne se colore pas. Un élément qui change d'état reçoit une marque — un cadre incliné, une croix, un trait épaissi — et jamais un simple changement de teinte. Le corollaire d'accessibilité est direct : aucune information de ce système n'est portée par la seule couleur.", "section": "colors" },
+      { "name": "La règle du bleu qui ne parle pas", "body": "Le bleu de devis est la voix de l'imprimeur, pas celle de l'auteur. Il n'écrit que ce qui serait déjà sur le papier vierge : intitulés, filets, en-têtes. Un titre, une phrase ou une valeur en bleu est une faute de fabrication.", "section": "colors" },
+      { "name": "La règle du seuil dans le pied", "body": "Le rouge de tampon sur l'encre du pied tombe à 2,09:1 : dans .pad-foot, l'anneau de focus reprend le canari, et sur .sheet--canari il reprime l'encre de frappe. L'accent cède la place dès qu'il n'est plus lisible.", "section": "colors" },
+      { "name": "La règle des trois mains", "body": "Archivo Black titre, Archivo pré-imprime, Courier Prime remplit. Courier Prime est réservée aux valeurs, aux chiffres et aux mesures : dates, quantités du relevé, valeurs de conditions, sorties du calculateur, saisies d'hypothèses, numéros d'identification des mentions légales, code de langue de la navigation. Un mot qui n'est pas une valeur mesurée n'est jamais en Courier Prime ; une valeur mesurée n'est jamais autrement.", "section": "typography" },
+      { "name": "La règle du hors-registre", "body": "Toute valeur remplie porte text-shadow: .55px .55px 0 rgba(107, 104, 98, .3). C'est le carbone de la liasse, qui ne retombe jamais tout à fait sur la frappe. Un demi-pixel suffit à le dire ; davantage devient une ombre portée, que ce monde n'a pas.", "section": "typography" },
+      { "name": "La règle du faux italique", "body": "Archivo Black n'a pas d'italique dessiné. Tout <em> dans un titre doit repasser en font-style: normal et recevoir sa marque autrement — dans .statement em, un cadre au tampon incliné de -1,4°. Un <em> non neutralisé produit un penché synthétisé par le navigateur, qui est un défaut de fabrication.", "section": "typography" },
+      { "name": "La règle des chiffres alignés", "body": "Tout chiffre susceptible de changer sous les yeux du lecteur est en chiffres tabulaires : .typed, .lines .qty, .total, .split__v, les saisies d'hypothèses. Une colonne de chiffres ne doit jamais frémir latéralement quand sa valeur change.", "section": "typography" },
+      { "name": "La règle de la perforation", "body": "Deux régions de couleur ne se touchent jamais directement. Le passage d'un feuillet au suivant est un .perf de 26 px de haut, qui porte la couleur du feuillet du dessus et laisse voir, par des trous de 6,8 px percés tous les 26 px, la couleur du feuillet du dessous. Toute nouvelle section colorée arrive donc avec sa perforation.", "section": "layout" },
+      { "name": "La règle du papier plat", "body": "Aucune ombre portée, aucun flou, aucun dégradé de surface. Si un élément a besoin de se détacher, il reçoit un filet, une bordure de 2 px ou un fond crème translucide — jamais une élévation.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do teinter chaque encre secondaire depuis le feuillet qui la porte : un nouveau pli de couleur arrive avec son couple d'encres, comme on-canari / on-canari-2 et on-rose / on-rose-2.",
+      "Do réserver Courier Prime aux valeurs, aux chiffres et aux mesures, et leur donner des chiffres tabulaires.",
+      "Do appliquer text-shadow: .55px .55px 0 rgba(107, 104, 98, .3) à toute valeur remplie, et rien qu'à elle.",
+      "Do marquer un état par une marque — cadre incliné, croix, bordure épaissie — de sorte qu'aucune information ne repose sur la seule couleur.",
+      "Do séparer deux régions de couleur par un .perf, en réglant --perf-above et --perf-below sur les deux plis en présence ; les couples déjà nommés sont .perf--wc, --cw, --wr, --rw, --ci, et tout autre couple se déclare en ligne sur l'élément, comme le fait la page de mentions légales.",
+      "Do neutraliser font-style sur tout <em> composé en Archivo Black, et lui donner sa marque au tampon.",
+      "Do donner 44 px de haut au minimum à toute cible tactile, et 48 px aux boutons et aux champs de saisie — les valeurs tenues par .btn, .f input, .tick, .assump__toggle et .assump__body input.",
+      "Do escamoter un élément par clip-path: inset(50%) sur 1 px, ou par transform, comme le font .vh, .pot, .lines thead et .skip.",
+      "Do théminer les surfaces qui ne sont pas dessinées : ::selection inversée par feuillet, caret-color au rouge de tampon, scrollbar-color bleu de devis sur crème, accent-color au rouge de tampon, et theme-color au canari.",
+      "Do garder un repère temporel ou une légende dans sa propre colonne, à côté du titre, comme .exec__when, y compris quand la grille se resserre."
+    ],
+    "donts": [
+      "Don't écrire quoi que ce soit en gris sur un feuillet coloré.",
+      "Don't écrire un titre, une phrase ou une valeur au bleu de devis : cette encre ne sert qu'au pré-imprimé et aux filets.",
+      "Don't signaler un état par un simple changement de teinte.",
+      "Don't introduire de carte, de panneau surélevé ou d'ombre portée : les cases du formulaire sont les seuls conteneurs, et le papier est plat.",
+      "Don't arrondir un angle. Le système n'a qu'un seul jeton de forme, et il vaut zéro.",
+      "Don't poser rule-soft sous un texte ni sous la bordure d'une commande : à 2,08:1 sur le crème, cette encre n'est bonne que pour un filet décoratif. Un champ posé sur feuillet original doit recevoir un filet plus foncé.",
+      "Don't écrire white-space: nowrap sur la première cellule d'un tableau : la désignation doit se couper librement, faute de quoi elle impose au tableau une largeur minimale — mesurée à 847 px ici — qui fait déborder toute la page.",
+      "Don't escamoter par left: -9999px : ce décalage agrandit la largeur de défilement du document et crée un débordement horizontal sur tous les petits écrans.",
+      "Don't se contenter de passer les lignes d'un tableau en grille pour le rendre responsive : l'élément table conserve sa disposition tabulaire et sa largeur minimale s'impose au conteneur. Il faut sortir table, caption et tbody du mode tableau, et rendre la sémantique par des rôles ARIA explicites.",
+      "Don't descendre un champ de saisie sous font-size: 1rem : Safari iOS zoome de force à la mise au point.",
+      "Don't abaisser les opacités de .lines .desig span (.78) et de .scale (.75) : ces deux textes atténués sont mesurés à 4,53:1 et 4,50:1 sur leur feuillet, c'est-à-dire exactement sur le seuil.",
+      "Don't ajouter une seconde animation. La page en a une, et elle appartient au total."
+    ]
+  }
+}
