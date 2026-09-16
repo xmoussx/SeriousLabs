@@ -106,61 +106,6 @@
     });
   }
 
-  /* ------------------------------------------------------------ le plan -- */
-
-  /* Le poster est le premier état et il suffit. Le fichier n'est demandé qu'à
-     l'approche du cadre : sans ça, un visiteur qui ne descend jamais aurait
-     quand même payé les octets. En mouvement réduit rien n'est chargé du
-     tout — la préférence est respectée avant d'être une question d'animation.
-
-     Repris d'antidrones.seriouslabs.tech, avec la commande d'arrêt que la
-     règle WCAG 2.2.2 impose dès qu'une boucle dépasse cinq secondes. */
-
-  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var films = [].slice.call(document.querySelectorAll('video[data-film]'));
-  var arrete = false;
-
-  function charge(v) {
-    if (v.dataset.charge) return;
-    v.dataset.charge = '1';
-    v.src = v.dataset.film;
-  }
-
-  function joue(v) {
-    if (arrete || reduit.matches) return;
-    charge(v);
-    var p = v.play();
-    // Lecture refusée (économie d'énergie, onglet en arrière-plan) : le
-    // poster reste affiché, il n'y a rien à rattraper.
-    if (p && p.catch) p.catch(function () {});
-  }
-
-  if (films.length && !reduit.matches) {
-    if ('IntersectionObserver' in window) {
-      var veille = new IntersectionObserver(function (entrees) {
-        entrees.forEach(function (e) {
-          if (e.isIntersecting) joue(e.target);
-          else if (!e.target.paused) e.target.pause();
-        });
-      }, { rootMargin: '200px' });
-      films.forEach(function (v) { veille.observe(v); });
-    } else {
-      films.forEach(joue);
-    }
-
-    // La commande n'est posée que maintenant : si aucun plan ne joue, elle ne
-    // commanderait rien et un bouton qui ne fait rien est pire qu'absent.
-    Array.prototype.forEach.call(document.querySelectorAll('[data-arret]'), function (bouton) {
-      bouton.hidden = false;
-      bouton.addEventListener('click', function () {
-        arrete = !arrete;
-        films.forEach(function (v) { arrete ? v.pause() : joue(v); });
-        bouton.textContent = arrete ? bouton.dataset.arretRelance : bouton.dataset.arretStop;
-        bouton.setAttribute('aria-pressed', String(arrete));
-      });
-    });
-  }
-
   /* ------------------------------------------- mentions du pré-imprimé -- */
 
   var year = document.querySelector('[data-year]');

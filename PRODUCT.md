@@ -44,7 +44,6 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
 - Bilingue français et anglais, en deux pages statiques distinctes liées par des balises `hreflang`. Le français est la langue principale.
 - **Aucun calculateur.** Il a existé puis a été retiré : il demandait au visiteur de régler des curseurs et de lire des hypothèses avant de comprendre l'offre. Ne pas le réintroduire sans décision explicite.
 - Tarifs **non affichés** : devis sur mesure.
-- **Un seul plan filmé**, dans le premier feuillet : le feuillet client qui se détache de sa perforation et découvre la copie canari. Il nomme l'objet, il ne démontre rien. Filmer une intervention serait une preuve fabriquée, puisqu'aucune n'a eu lieu — voir Evidence on Hand. Le poster porte seul le plan quand le mouvement réduit est demandé, et le fichier n'est téléchargé qu'à l'approche du cadre : le premier écran reste sous 110 Ko.
 - Certification Qualiopi et déclaration d'activité d'organisme de formation **en cours d'obtention**. Tant qu'elles ne sont pas acquises, aucune prise en charge par un OPCO n'est possible et le site doit le dire explicitement.
 - Le code NAF déclaré est encore 58.21Z, édition de jeux électroniques, et ne correspond plus à l'activité.
 
@@ -67,8 +66,6 @@ Ce qui existe réellement et peut porter la démonstration :
 - le déroulé détaillé d'une intervention, qui vaut engagement ;
 - les mentions légales complètes et vérifiables sur l'annuaire des entreprises ;
 - l'aveu explicite que Qualiopi n'est pas obtenue, qui est en soi un signal de fiabilité.
-
-Le plan filmé du carnet n'est pas une preuve et ne doit jamais être présenté comme telle : c'est le décor du site rendu tangible. Toute future demande de « vidéo qui montre une intervention » se heurte à la même règle tant qu'aucune mission n'a eu lieu.
 
 Toute section de preuve sociale doit donc être absente, et la page doit tenir debout sans elle.
 
