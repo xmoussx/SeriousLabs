@@ -129,8 +129,8 @@
     var say = {
       sending: isEN ? 'Sending…' : 'Envoi en cours…',
       ok: isEN
-        ? 'Received. A confirmation is on its way, and a reply within one business day.'
-        : 'Reçu. Vous recevez un accusé de réception, et une réponse sous un jour ouvré.',
+        ? 'Received. We reply within one working day.'
+        : 'Reçu. Nous répondons sous un jour ouvré.',
       ko: isEN
         ? 'The message could not be sent. Please write to contact@seriouslabs.tech.'
         : "Le message n'a pas pu partir. Écrivez-nous à contact@seriouslabs.tech."
