@@ -46,12 +46,20 @@
 <main id="main">
 
   <!-- ================================================ 1. vue d'ouverture -->
-  <section class="open">
+  <section class="open open--film">
+    <img class="open__film" src="/assets/img/atelier-1600.jpg"
+         srcset="/assets/img/atelier-960.jpg 960w, /assets/img/atelier-1600.jpg 1600w"
+         sizes="100vw" width="1600" height="900" alt="" fetchpriority="high">
+    <span class="open__voile" aria-hidden="true"></span>
     <div class="wrap">
       <h1>Une journée chez vous. Les outils restent.</h1>
       <p class="lede">Personne, dans une structure de dix personnes, ne compte le temps passé à réécrire un courrier, à refaire un devis déjà fait, ou à chercher un document qui existe déjà. Ce temps-là ne se facture jamais.</p>
       <a class="cta" href="#devis">Demander un devis</a>
+    </div>
+  </section>
 
+  <section class="recap">
+    <div class="wrap">
       <div class="summary">
         <a href="#programme"><b>Le cadrage</b><span>Un appel pour récupérer vos vrais dossiers</span><em>45 min</em></a>
         <a href="#programme"><b>La journée</b><span>Atelier le matin, installation l'après-midi</span><em>7 h sur place</em></a>
@@ -59,6 +67,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- ============================================ 2. le programme, en table -->
   <section id="programme">

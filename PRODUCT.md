@@ -42,9 +42,16 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
 - Un seul point d'entrée dynamique : un script PHP qui traite le formulaire et envoie par SMTP authentifié chez OVH. L'extension mbstring n'est pas installée sur le serveur.
 - Aucun cookie, aucun traceur, aucune mesure d'audience. Cette absence est un choix assumé : elle supprime le bandeau de consentement et le risque associé.
 - Bilingue français et anglais, en deux pages statiques distinctes liées par des balises `hreflang`. Le français est la langue principale.
-- **Aucun plan filmé.** Un plan a été produit puis retiré à la demande du
-  client. Filmer une intervention serait de toute façon une preuve fabriquée
-  tant qu'aucune n'a eu lieu.
+- **Scènes de formation en images de synthèse, décidées par le client le
+  16.09.2026.** Une scène qui illustre l'intervention n'est pas une preuve
+  fabriquée : personne ne lit l'image d'accueil d'un site comme un reportage.
+  La ligne à ne pas franchir est ailleurs — aucune légende ne doit désigner un
+  client réel, nommer une entreprise ou tenir lieu de témoignage, et aucun
+  visage ne doit être le sujet du cadre. Le premier plan montre quatre
+  participants assis et une personne debout qui explique, ce qui rend
+  visuellement la limite des quatre.
+- **Un plan du carnet à souche a été produit puis retiré** à la demande du
+  client, avec le monde visuel qui le portait.
 - **Aucun calculateur.** Il a existé puis a été retiré : il demandait au visiteur de régler des curseurs et de lire des hypothèses avant de comprendre l'offre. Ne pas le réintroduire sans décision explicite.
 - Tarifs **non affichés** : devis sur mesure.
 - Certification Qualiopi et déclaration d'activité d'organisme de formation **en cours d'obtention**. Tant qu'elles ne sont pas acquises, aucune prise en charge par un OPCO n'est possible et le site doit le dire explicitement.
