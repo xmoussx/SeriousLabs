@@ -82,7 +82,8 @@ for chemin in / /en/ /mentions-legales.html /en/legal.html /robots.txt /sitemap.
               /googleb56e9726ff2adfff.html /assets/img/logo.svg \
               /assets/img/favicon.svg /assets/img/og-fr.png /assets/img/og-en.png \
               /assets/img/atelier-1600.jpg /assets/img/atelier-960.jpg \
-              /assets/img/salle-1200.jpg /assets/img/salle-760.jpg; do
+              /assets/img/salle-1200.jpg /assets/img/salle-760.jpg \
+              /assets/video/atelier.mp4 /assets/video/salle.mp4; do
   # En HTTPS : depuis la bascule, HTTP renvoie un 301 et masquerait une page
   # réellement cassée derrière un code de redirection.
   code=$(curl -sk -o /dev/null -w '%{http_code}' \

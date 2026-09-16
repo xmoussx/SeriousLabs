@@ -47,10 +47,13 @@
 
   <!-- ================================================ 1. vue d'ouverture -->
   <section class="open open--film">
-    <img class="open__film" src="/assets/img/atelier-1600.jpg"
-         srcset="/assets/img/atelier-960.jpg 960w, /assets/img/atelier-1600.jpg 1600w"
-         sizes="100vw" width="1600" height="900" alt="" fetchpriority="high">
+    <video class="open__film" muted loop playsinline preload="none"
+           poster="/assets/video/atelier.jpg"
+           data-film="/assets/video/atelier.mp4"
+           aria-hidden="true"></video>
     <span class="open__voile" aria-hidden="true"></span>
+    <button type="button" class="open__arret" hidden aria-pressed="false"
+            data-arret data-arret-stop="Stop" data-arret-relance="Play">Stop</button>
     <div class="wrap">
       <h1>One day at your office. The tools stay.</h1>
       <p class="lede">In a firm of ten people, nobody counts the time spent rewriting a letter, redoing a quote that already exists, or looking for a document that has already been written. That time is never billed.</p>
@@ -116,10 +119,10 @@
   <!-- ====================================== 3. bandeau — ce qui reste chez vous -->
   <section class="band" id="reste">
     <div class="band__media">
-      <img src="/assets/img/salle-1200.jpg"
-           srcset="/assets/img/salle-760.jpg 760w, /assets/img/salle-1200.jpg 1200w"
-           sizes="(max-width: 900px) 100vw, 50vw"
-           width="1200" height="675" alt="" loading="lazy" decoding="async">
+      <video class="band__video" muted loop playsinline preload="none"
+             poster="/assets/video/salle.jpg"
+             data-film="/assets/video/salle.mp4"
+             aria-hidden="true"></video>
       <p class="band__tag">In session</p>
     </div>
     <div class="band__body">

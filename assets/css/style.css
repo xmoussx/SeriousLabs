@@ -1062,3 +1062,7 @@ h1 {
   color: var(--accent);
 }
 .specs__h + .specs { margin-top: .75rem; }
+
+/* Le bandeau porte un plan filmé plutôt qu'une image fixe : même boîte,
+   même recouvrement. */
+.band__video { width: 100%; height: 100%; object-fit: cover; display: block; }

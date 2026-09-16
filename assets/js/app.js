@@ -15,8 +15,8 @@
   var isEN = (document.documentElement.lang || 'fr').slice(0, 2) === 'en';
 
   var form = document.querySelector('[data-contact-form]');
-  if (!form) return;
 
+  if (form) {
   var status = form.querySelector('[data-status]');
   var submit = form.querySelector('[type="submit"]');
   var submitLabel = submit ? submit.textContent : '';
@@ -91,6 +91,60 @@
         if (submit) { submit.disabled = false; submit.textContent = submitLabel; }
       });
   });
+  }
+
+  /* ------------------------------------------------------------ les plans -- */
+
+  /* Le poster est le premier état et il suffit. Le fichier n'est demandé qu'à
+     l'approche du cadre : sans ça, un visiteur qui ne descend jamais aurait
+     quand même payé les octets du second plan. En mouvement réduit rien n'est
+     chargé du tout — la préférence est respectée avant d'être une question
+     d'animation.
+
+     Repris d'antidrones.seriouslabs.tech, avec la commande d'arrêt que la
+     règle WCAG 2.2.2 impose dès qu'une boucle dépasse cinq secondes. */
+
+  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var films = [].slice.call(document.querySelectorAll('video[data-film]'));
+  var arrete = false;
+
+  function joue(v) {
+    if (arrete || reduit.matches) return;
+    if (!v.dataset.charge) {
+      v.dataset.charge = '1';
+      v.src = v.dataset.film;
+    }
+    var p = v.play();
+    // Lecture refusée (économie d'énergie, onglet en arrière-plan) : le poster
+    // reste affiché, il n'y a rien à rattraper.
+    if (p && p.catch) p.catch(function () {});
+  }
+
+  if (films.length && !reduit.matches) {
+    if ('IntersectionObserver' in window) {
+      var veille = new IntersectionObserver(function (entrees) {
+        entrees.forEach(function (e) {
+          if (e.isIntersecting) joue(e.target);
+          else if (!e.target.paused) e.target.pause();
+        });
+      }, { rootMargin: '250px' });
+      films.forEach(function (v) { veille.observe(v); });
+    } else {
+      films.forEach(joue);
+    }
+
+    // La commande n'est révélée que maintenant : si aucun plan ne joue, elle
+    // ne commanderait rien, et un bouton sans effet est pire qu'absent.
+    Array.prototype.forEach.call(document.querySelectorAll('[data-arret]'), function (b) {
+      b.hidden = false;
+      b.addEventListener('click', function () {
+        arrete = !arrete;
+        films.forEach(function (v) { arrete ? v.pause() : joue(v); });
+        b.textContent = arrete ? b.dataset.arretRelance : b.dataset.arretStop;
+        b.setAttribute('aria-pressed', String(arrete));
+      });
+    });
+  }
 
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
