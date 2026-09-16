@@ -807,6 +807,114 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 }
 .doc__body dd { margin: .25rem 0 0; color: var(--ink-2); font-size: .95rem; }
 
+/* ------------------------------------------------------------- le plan -- */
+
+/* Un seul plan filmé, dans le premier feuillet : le feuillet qu'on détache.
+   Il ne démontre rien et ne prétend rien, il nomme l'objet — le visiteur
+   reconnaît le carnet à souche avant d'avoir lu une ligne.
+
+   Le traitement vient d'antidrones.seriouslabs.tech, où la source sortait
+   trop claire et trop bleue et où .film l'assombrissait et la vidait de sa
+   couleur. Ici la source est du papier : elle n'a besoin ni d'être assombrie
+   ni d'être désaturée, le canari EST le sujet. Ce qui est repris, c'est la
+   méthode — l'image fixe comme premier état, le fichier demandé seulement à
+   l'approche du cadre, et le mouvement qui ne démarre jamais tout seul quand
+   on ne l'a pas voulu. */
+
+.plan {
+  position: relative;
+  margin-top: clamp(1.5rem, 3vw, 2.4rem);
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  background: var(--ply-canari);
+  border: 2px solid var(--ink);
+}
+
+.plan__film {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Le grain du papier et la perforation sont le sujet : on tient le
+     contraste plutôt que de le creuser. */
+  filter: saturate(1.04) contrast(.96);
+}
+
+/* Les coins d'amorce du repérage d'imprimerie, repris du même site. Ils
+   disent « cadre » sans écrire le mot. */
+.plan__coins {
+  position: absolute;
+  inset: .55rem;
+  pointer-events: none;
+  opacity: .55;
+  background:
+    linear-gradient(var(--ink), var(--ink)) 0 0 / 14px 2px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 0 0 / 2px 14px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 100% 0 / 14px 2px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 100% 0 / 2px 14px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 0 100% / 14px 2px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 0 100% / 2px 14px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 100% 100% / 14px 2px no-repeat,
+    linear-gradient(var(--ink), var(--ink)) 100% 100% / 2px 14px no-repeat;
+}
+
+.plan__legende {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  padding: .4rem .7rem;
+  background: var(--ink);
+  color: var(--ply-original);
+  font-family: var(--type);
+  font-size: .6875rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* La commande d'arrêt. WCAG 2.2.2 : tout mouvement automatique de plus de
+   cinq secondes doit pouvoir être arrêté, et la boucle tourne indéfiniment.
+   Elle n'apparaît que si le script a trouvé un plan à jouer — sans lui, elle
+   ne commanderait rien. */
+.plan__arret {
+  position: absolute;
+  right: .55rem;
+  top: .55rem;
+  /* 44 px de haut au minimum. Le contrôle local mesurait 33 px : une cible
+     tactile sous ce seuil se rate au doigt, et c'est précisément le défaut
+     qu'antidrones.seriouslabs.tech n'avait vu qu'en production. */
+  min-height: 44px;
+  min-width: 44px;
+  padding: .35rem .7rem;
+  border: 2px solid var(--ink);
+  background: var(--ply-original);
+  color: var(--ink);
+  font-family: var(--type);
+  font-size: .6875rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.plan__arret:hover { background: var(--ply-canari); }
+.plan__arret:focus-visible { outline: 3px solid var(--stamp); outline-offset: 2px; }
+
+@media (max-width: 640px) {
+  .plan { aspect-ratio: 4 / 3; }
+}
+
+/* Mouvement réduit : le poster porte seul le plan. Le fichier n'est même pas
+   demandé, ce qui économise aussi les octets à qui a réglé cette préférence. */
+@media (prefers-reduced-motion: reduce) {
+  .plan__arret { display: none; }
+}
+
+/* À l'impression, un cadre vide ne dit rien : le poster s'imprime, pas la
+   bordure ni les commandes. */
+@media print {
+  .plan { border: 0; aspect-ratio: auto; }
+  .plan__coins, .plan__arret, .plan__legende { display: none; }
+}
+
 /* --------------------------------------------------------- impression -- */
 
 @media print {
