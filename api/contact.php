@@ -4,9 +4,17 @@ declare(strict_types=1);
 /**
  * Réception du formulaire de contact.
  *
- * Deux courriels partent : la demande vers la boîte interne, et un accusé de
- * réception vers le prospect. Le second échoue sans faire échouer le premier —
- * perdre la demande parce que l'accusé n'est pas passé serait absurde.
+ * UN SEUL courriel part, vers la boîte interne. Il n'y a délibérément aucun
+ * accusé de réception.
+ *
+ * Un accusé part par construction vers l'adresse que le visiteur a tapée, et
+ * la version précédente y recopiait son message. N'importe qui pouvait donc
+ * faire envoyer un texte de son choix à un destinataire de son choix, depuis
+ * contact@seriouslabs.tech, authentifié chez OVH et validé par le SPF du
+ * domaine. Ce n'est pas une faille du serveur : c'est la réputation du domaine
+ * et de la boîte qu'on met en jeu, et une mise en liste noire couperait le
+ * courrier de l'entreprise. Le formulaire n'expédie donc plus rien vers
+ * l'extérieur, et la confirmation se fait à l'écran.
  */
 
 require __DIR__ . '/lib/smtp.php';
@@ -16,6 +24,7 @@ const SMTP_HOST     = 'ssl0.ovh.net';
 const SMTP_PORT     = 465;
 const MIN_SECONDS   = 3;     // en deçà, c'est un robot
 const MAX_PER_HOUR  = 5;     // par adresse IP
+const MAX_PER_HOUR_TOTAL = 20; // toutes adresses confondues
 const CONFIG_PATHS  = ['/etc/seriouslabs/smtp.env', __DIR__ . '/../.env'];
 
 /* ------------------------------------------------------------- sortie -- */
@@ -101,9 +110,18 @@ if (($_POST['site_web'] ?? '') !== '') {
     reply(200, ['ok' => true]);
 }
 
-// Un formulaire rempli en moins de trois secondes n'a pas été lu.
+// Le champ d'horodatage est POSÉ PAR LE NAVIGATEUR. Son absence n'est donc
+// pas un cas limite à tolérer : c'est la signature d'un client qui n'a pas
+// exécuté la page. L'ancienne rédaction ne testait le délai que si le champ
+// était présent, ce qui suffisait à contourner tout le contrôle en l'omettant.
 $ts = (int) ($_POST['ts'] ?? 0);
-if ($ts > 0 && (microtime(true) * 1000 - $ts) < MIN_SECONDS * 1000) {
+if ($ts <= 0 || (microtime(true) * 1000 - $ts) < MIN_SECONDS * 1000) {
+    reply(200, ['ok' => true]);
+}
+
+// Un navigateur parlant à un serveur HTTP/2 n'émet jamais de HTTP/1.0. Les deux
+// robots reçus le faisaient, tout en annonçant Chrome dans leur signature.
+if (($_SERVER['SERVER_PROTOCOL'] ?? '') === 'HTTP/1.0') {
     reply(200, ['ok' => true]);
 }
 
@@ -156,6 +174,23 @@ if (count($hits) >= MAX_PER_HOUR) {
 $hits[] = $now;
 @file_put_contents($bucket, json_encode($hits), LOCK_EX);
 
+// Plafond global. Le plafond par adresse ne vaut rien contre un robot qui
+// change d'IP à chaque envoi, ce que les deux premiers reçus faisaient.
+$global = $stateDir . '/rl-global.json';
+$tous = [];
+if (is_file($global)) {
+    $d = json_decode((string) @file_get_contents($global), true);
+    if (is_array($d)) {
+        $tous = array_values(array_filter($d, static fn($t): bool => is_int($t) && $t > $now - 3600));
+    }
+}
+if (count($tous) >= MAX_PER_HOUR_TOTAL) {
+    error_log('[seriouslabs] plafond horaire global atteint');
+    fail(say('flood'), 429);
+}
+$tous[] = $now;
+@file_put_contents($global, json_encode($tous), LOCK_EX);
+
 /* ------------------------------------------------------------- réglages -- */
 
 $config = [];
@@ -199,63 +234,6 @@ Besoin exprimé
 Reçu le {$recu} — IP {$ip}
 TXT;
 
-$accuseFR = <<<TXT
-Bonjour {$nom},
-
-Nous avons bien reçu votre message et nous y répondons sous un jour ouvré.
-
-Voici ce que vous nous avez écrit :
-
-{$message}
-
-En attendant, deux choses qui répondent souvent aux premières questions.
-
-Nous intervenons une journée dans vos locaux : nous formons vos équipes le
-matin, nous installons les outils l'après-midi, et nous revenons faire un point
-à trente jours. Les outils restent chez vous.
-
-Et le principe qui guide tout ce que nous installons : l'IA ne produit jamais
-le livrable à votre place. Elle prépare, elle cherche, elle met en forme — vos
-experts décident, relisent et signent. Rien ne part de chez vous sans qu'une
-personne de votre équipe l'ait assumé.
-
-À très vite,
-
-Serious Labs
-12 rue Juliette Dodu, 75010 Paris
-contact@seriouslabs.tech — https://seriouslabs.tech
-TXT;
-
-$accuseEN = <<<TXT
-Hello {$nom},
-
-We have received your message and we will reply within one business day.
-
-Here is what you wrote to us:
-
-{$message}
-
-In the meantime, two things that usually answer the first questions.
-
-We spend one day at your offices: we train your team in the morning, we install
-the tools in the afternoon, and we come back for a review after thirty days.
-The tools stay with you.
-
-And the principle behind everything we install: AI never produces the
-deliverable in your place. It prepares, it searches, it formats — your experts
-decide, review and sign. Nothing leaves your firm without someone on your team
-standing behind it.
-
-Speak soon,
-
-Serious Labs
-12 rue Juliette Dodu, 75010 Paris, France
-contact@seriouslabs.tech — https://seriouslabs.tech
-TXT;
-
-$accuse  = $lang === 'en' ? $accuseEN : $accuseFR;
-$sujetOK = $lang === 'en' ? 'Your message to Serious Labs' : 'Votre message à Serious Labs';
-
 try {
     $smtp = new Smtp(SMTP_HOST, SMTP_PORT, $smtpUser, $smtpPass);
 
@@ -270,21 +248,6 @@ try {
 } catch (Throwable $e) {
     error_log('[seriouslabs] envoi interne impossible : ' . $e->getMessage());
     fail(say('failed'), 502);
-}
-
-try {
-    $ack = new Smtp(SMTP_HOST, SMTP_PORT, $smtpUser, $smtpPass);
-    $ack->send(
-        from:    [MAILBOX, 'Serious Labs'],
-        to:      [$email, $nom],
-        subject: $sujetOK,
-        body:    $accuse,
-        replyTo: [MAILBOX, 'Serious Labs'],
-        extraHeaders: ['Auto-Submitted' => 'auto-replied']
-    );
-} catch (Throwable $e) {
-    // La demande est passée : on ne signale pas d'échec au visiteur.
-    error_log('[seriouslabs] accusé de réception impossible : ' . $e->getMessage());
 }
 
 reply(200, ['ok' => true]);
