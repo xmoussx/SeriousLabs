@@ -39,6 +39,18 @@ for item in "${CONTENU[@]}"; do
   fi
 done
 
+# Sauvegarde de la version en ligne avant de la remplacer : sans elle, un
+# déploiement fautif ne se rattrape qu'en reconstruisant depuis le dépôt.
+if [[ -d "$TARGET" ]]; then
+  SAUVE="/var/backups/seriouslabs"
+  sudo mkdir -p "$SAUVE"
+  HORO="$(date +%Y%m%d-%H%M%S)"
+  sudo tar czf "$SAUVE/site-$HORO.tar.gz" -C "$TARGET" . 2>/dev/null \
+    && echo "Sauvegarde : $SAUVE/site-$HORO.tar.gz"
+  # On garde les dix dernières.
+  sudo sh -c "ls -1t '$SAUVE'/site-*.tar.gz 2>/dev/null | tail -n +11 | xargs -r rm -f"
+fi
+
 echo "Déploiement de $SOURCE vers $TARGET"
 
 sudo mkdir -p "$TARGET"

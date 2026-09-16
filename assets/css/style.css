@@ -183,7 +183,7 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 .sheet--canari .f input::placeholder,
 .sheet--canari .f textarea::placeholder { color: #7d6a2a; }
 .sheet--canari .consent { color: var(--on-canari-2); }
-.sheet--canari .coords div { border-bottom-color: rgba(69, 56, 4, .34); }
+.sheet--canari .coords div { border-bottom-color: rgba(69, 56, 4, .6); }
 .sheet--canari .coords dt { color: var(--on-canari-2); }
 .sheet--canari .f select {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='7'><path d='M1 1l4.5 4.5L10 1' fill='none' stroke='%235f4e06' stroke-width='1.5'/></svg>");
@@ -513,7 +513,9 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 }
 .jobs li {
   padding-block: 1.05rem;
-  border-bottom: 1px solid rgba(69, 56, 4, .32);
+  /* Mesuré : à .32 d'opacité le filet donnait 1,23:1 sur le canari, sous le
+     seuil de 1,4 en dessous duquel une séparation cesse d'exister à l'écran. */
+  border-bottom: 1px solid rgba(69, 56, 4, .62);
   font-size: clamp(1rem, 1.5vw, 1.12rem);
   font-weight: 600;
   letter-spacing: -.012em;
@@ -615,7 +617,7 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 @media (max-width: 880px) { .contact { grid-template-columns: 1fr; } }
 
 .coords { display: grid; gap: 0; }
-.coords div { padding-block: .85rem; border-bottom: 1px dotted var(--rule-soft); }
+.coords div { padding-block: .85rem; border-bottom: 1px dotted var(--rule); }
 .coords div:last-child { border-bottom: 0; }
 .coords dt {
   font-size: .6875rem;
