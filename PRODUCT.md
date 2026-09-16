@@ -42,6 +42,9 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
 - Un seul point d'entrée dynamique : un script PHP qui traite le formulaire et envoie par SMTP authentifié chez OVH. L'extension mbstring n'est pas installée sur le serveur.
 - Aucun cookie, aucun traceur, aucune mesure d'audience. Cette absence est un choix assumé : elle supprime le bandeau de consentement et le risque associé.
 - Bilingue français et anglais, en deux pages statiques distinctes liées par des balises `hreflang`. Le français est la langue principale.
+- **Aucun plan filmé.** Un plan a été produit puis retiré à la demande du
+  client. Filmer une intervention serait de toute façon une preuve fabriquée
+  tant qu'aucune n'a eu lieu.
 - **Aucun calculateur.** Il a existé puis a été retiré : il demandait au visiteur de régler des curseurs et de lire des hypothèses avant de comprendre l'offre. Ne pas le réintroduire sans décision explicite.
 - Tarifs **non affichés** : devis sur mesure.
 - Certification Qualiopi et déclaration d'activité d'organisme de formation **en cours d'obtention**. Tant qu'elles ne sont pas acquises, aucune prise en charge par un OPCO n'est possible et le site doit le dire explicitement.
@@ -50,6 +53,12 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
 ## Brand Commitments
 
 Nom : Serious Labs. Forme juridique : SAS, siège au 12 rue Juliette Dodu, 75010 Paris. Le siège figurant dans les mentions légales doit rester l'adresse réellement immatriculée.
+
+Monde visuel : **« La journée »** — la page est l'emploi du temps de la journée
+vendue. Il remplace « le carnet à souche », abandonné le 16 septembre 2026 :
+celui-ci avait dérivé de la demande d'origine, ultra moderne et hyper dépouillé,
+vers un imprimé rétro et dense, et il déguisait en paperasse un service qui vend
+la sortie de la paperasse. Voir `DESIGN.md`.
 
 Symbole : le logo d'origine, vectorisé fidèlement par tracé de son fichier — fiole de laboratoire contenant une croix directionnelle et des boutons de manette. Des redessins ont été proposés et écartés par le client : ce sont ses contours qui font foi, manette comprise. L'original est versionné dans `assets/brand/`, il n'existe nulle part ailleurs.
 
