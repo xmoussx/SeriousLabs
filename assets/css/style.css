@@ -375,28 +375,19 @@ section + section { border-top: 1px solid var(--rule); }
    lignes sont de même nature et de même poids, les mettre en blocs leur
    donnerait une hiérarchie qu'elles n'ont pas. */
 .jobs {
-  counter-reset: job;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 0 clamp(1.5rem, 4vw, 3rem);
   margin-top: clamp(2rem, 4vw, 3rem);
 }
 .jobs li {
-  display: grid;
-  grid-template-columns: 1.9rem 1fr;
-  align-items: baseline;
   padding: .9rem 0;
   border-bottom: 1px solid var(--rule);
   font-size: 1.0625rem;
 }
-.jobs li::before {
-  content: counter(job, decimal-leading-zero);
-  counter-increment: job;
-  font-size: .75rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  color: var(--accent);
-}
+/* La numérotation 01–08 a été retirée : l'ordre de cette liste ne porte
+   aucune information, et un numéro qui ne compte rien est un costume. Le
+   filet seul sépare, comme partout ailleurs dans la page. */
 
 /* ----------------------------------------------------------- la ligne -- */
 
@@ -574,12 +565,14 @@ section + section { border-top: 1px solid var(--rule); }
 .doc__body p { margin-top: .9rem; color: var(--ink-2); }
 .doc__body a { color: var(--ink); text-underline-offset: .2em; text-decoration-color: var(--accent); }
 .doc__body dl { margin-top: 1rem; }
+/* Pas de capitales ici : certains intitulés juridiques dépassent trente
+   caractères, et la casse haute supprime la silhouette des mots au-delà
+   d'une étiquette courte. Le poids et la teinte suffisent à les distinguer. */
 .doc__body dt {
-  margin-top: 1rem;
-  font-size: .75rem;
+  margin-top: 1.1rem;
+  font-size: .8125rem;
   font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  letter-spacing: .01em;
   color: var(--ink-2);
 }
 .doc__body dd { margin: .25rem 0 0; }
@@ -851,3 +844,113 @@ section + section { border-top: 1px solid var(--rule); }
 .band__media .specs > div { border-bottom-color: var(--rule-ink); }
 .band__media .specs dt { color: var(--on-ink); }
 .band__media .specs dd { color: var(--page); }
+
+/* ======================================================================
+   PLANCHER DE QUALITÉ
+
+   Passe du 16.09.2026. Le site avait été refait sans elle, et le client le
+   trouvait « toujours pas joli ». Ce qui suit corrige ce qu'aucune mesure de
+   contraste ou de débordement n'attrape.
+   ====================================================================== */
+
+/* ------------------------------------------- les surfaces du navigateur -- */
+
+/* Sélection, curseur, soulignement, ancres : ces surfaces-là arrivent avec
+   les valeurs par défaut du navigateur, qui n'appartiennent à aucun système.
+   Les habiller est le signal le moins cher qu'une page a été dessinée plutôt
+   qu'assemblée, et c'est celui qu'on saute le plus souvent. */
+
+::selection { background: var(--accent); color: var(--page); }
+.ink ::selection, .foot ::selection, .band__media ::selection {
+  background: var(--page);
+  color: var(--ink);
+}
+
+input, textarea, select { caret-color: var(--accent); }
+
+a { text-decoration-thickness: 1px; text-underline-offset: .22em; }
+a:hover { text-decoration-color: var(--accent); }
+
+/* Le marqueur de puce et la marge d'ancre sur un titre ciblé par une ancre :
+   sans `scroll-margin`, l'entête collante mange la première ligne. */
+:target { scroll-margin-top: calc(var(--head-h) + 2rem); }
+
+/* --------------------------------------------------- la durée, en barre -- */
+
+/* La journée est le sujet du site. Ses proportions doivent donc se voir :
+   45 minutes contre 3 h 30, c'est un rapport de 1 à 4,7 qu'un chiffre seul
+   ne donne pas à sentir. C'est la seule donnée du site qui soit représentée
+   plutôt qu'écrite, et le seul endroit où quelque chose bouge. */
+
+.dur { display: block; position: relative; padding-bottom: .55rem; }
+.dur::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 3px;
+  background: var(--accent);
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+}
+.dur--21  { --p: .214; }   /* 45 min sur 3 h 30 */
+.dur--100 { --p: 1; }
+.dur--off::after { display: none; }  /* 30 jours n'est pas dans la même unité */
+
+/* L'unique moment de mouvement du site : les barres se remplissent quand la
+   ligne entre dans le cadre. Détente exponentielle, depuis un état déjà
+   lisible — sans animation, la barre est simplement à sa longueur. */
+@media (prefers-reduced-motion: no-preference) {
+  .dur::after {
+    animation: dur-remplit 1100ms cubic-bezier(.16, 1, .3, 1) both;
+    animation-timeline: view();
+    animation-range: entry 15% cover 35%;
+  }
+}
+@keyframes dur-remplit {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(var(--p, 0)); }
+}
+
+/* La colonne de durée cesse d'être alignée à droite : une barre qui part de
+   la droite se lirait à l'envers du sens de lecture. */
+.data td:last-child { text-align: left; padding-right: 0; min-width: 6.5rem; }
+.data thead th:last-child { text-align: left; }
+.data tfoot td:last-child { min-width: 0; }
+
+/* ------------------------------------------------------- l'énoncé, plein -- */
+
+/* Le titre était tenu à 4,75rem et -0,025em. Le plancher autorise 6rem et
+   descend jusqu'à -0,04em : le retenir en deçà, c'était de la timidité. */
+h1 {
+  font-size: clamp(2.5rem, 7.2vw, 5.75rem);
+  letter-spacing: -.042em;
+  line-height: .98;
+  text-wrap: balance;
+  max-width: 14ch;
+}
+.sect-h { letter-spacing: -.035em; text-wrap: balance; }
+.claim  { letter-spacing: -.038em; text-wrap: balance; }
+
+/* Plus d'air au-dessus d'un titre qu'en dessous : c'est ce qui rattache le
+   chapô à son titre plutôt qu'à la section précédente. */
+.sect-l { margin-top: .85rem; }
+.two > div > .sect-h + .sect-l { margin-top: .85rem; }
+
+/* ------------------------------------------------- correctifs du détecteur -- */
+
+/* Une bordure de couleur de plus d'un pixel sur le flanc d'un bloc est le
+   costume d'un système qui n'en a pas. Ici la réponse du formulaire se
+   distingue par son aplat et son filet d'encre, comme le reste de la page. */
+.reply {
+  border-left: 0;
+  border-top: 2px solid var(--accent);
+  background: #fdf4f2;
+  padding: 1rem 1.2rem;
+}
+.reply--ok { border-top-color: var(--ink); background: #f4f5f7; }
+
+/* La moitié sombre du bandeau n'avait aucune respiration : son étiquette
+   était collée dans l'angle, à même la coupe. */
+.band__media { padding: clamp(1.15rem, 3vw, 2rem); }
+.band__tag { left: clamp(1.15rem, 3vw, 2rem); top: clamp(1.15rem, 3vw, 2rem); }
+.band__hold { padding: 3.5rem 0 0; }
