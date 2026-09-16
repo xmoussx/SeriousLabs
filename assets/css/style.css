@@ -548,6 +548,23 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
 .lines .desig { width: auto; }
 .lines .desig b { font-weight: 700; display: block; }
 .lines .desig span { display: block; font-size: .875rem; opacity: .78; margin-top: .2rem; max-width: 62ch; overflow-wrap: anywhere; }
+/* Les capitales appartiennent au libellé, pas à la cellule : sinon le
+   sous-texte en casse normale les annule en cascade, ce qui est juste à l'œil
+   et faux dans la structure. */
+.lines thead .qty { text-transform: none; }
+.lines .th-lab {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.lines thead .qty {
+  text-align: right;
+  font-weight: 700;
+  line-height: 1.3;
+  max-width: 11rem;
+  white-space: normal;
+}
+
 .lines .qty {
   border-left: 1px solid currentColor;
   padding-left: 1.1rem;
@@ -558,15 +575,31 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
   white-space: nowrap;
   padding-right: 0;
 }
-.lines .unit {
-  font-size: .6875rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--ink-2);
+/* L'unité s'écrit une fois, sous le libellé de colonne : un relevé ne répète
+   pas son unité à chaque ligne. Elle ne redescend dans les cellules que là où
+   le mode empilé supprime l'en-tête. */
+.lines .th-unit {
+  display: block;
+  font-family: var(--pre);
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: .22rem;
   white-space: nowrap;
-  padding-right: 0;
 }
-.sheet--canari .lines .unit { color: var(--on-canari-2); }
+.lines .per {
+  display: none;
+  font-family: var(--pre);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-2);
+  margin-top: .2rem;
+  white-space: nowrap;
+}
+.sheet--canari .lines .per { color: var(--on-canari-2); }
 
 @media (max-width: 880px) {
   /* Passer les lignes en grille ne suffit pas : l'élément table conserve sa
@@ -583,15 +616,32 @@ button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
   }
   .lines tbody tr {
     display: grid;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto 1fr;
     column-gap: .5rem;
     padding-block: .65rem;
     border-bottom: 1px solid rgba(69, 56, 4, .3);
   }
   .lines td { border-bottom: 0; padding: .15rem 0; display: block; }
   .lines .desig { grid-column: 1 / -1; width: auto; white-space: normal; }
-  .lines .qty { grid-column: 1; text-align: left; }
-  .lines .unit { grid-column: 2; }
+  .lines .qty {
+    grid-column: 1 / -1;
+    text-align: left;
+    border-left: 0;
+    padding-left: 0;
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+    flex-wrap: wrap;
+  }
+  .lines .per {
+    display: inline;
+    font-family: var(--pre);
+    font-size: .75rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--on-canari-2);
+  }
 }
 
 /* ------------------------------------------------------------ le titre -- */
@@ -987,10 +1037,9 @@ input[type="range"]::-moz-range-thumb {
 /* La souche : le talon qui reste dans le carnet une fois le feuillet détaché.
    C'est elle qui porte l'identité légale — la part que le vendeur garde. */
 .souche {
-  font-size: .6875rem;
+  font-size: .8125rem;
   font-weight: 600;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .02em;
   color: var(--ply-canari);
   margin-bottom: 1.6rem;
 }
@@ -1005,10 +1054,9 @@ input[type="range"]::-moz-range-thumb {
 @media (max-width: 760px) { /* La souche : le talon qui reste dans le carnet une fois le feuillet détaché.
    C'est elle qui porte l'identité légale — la part que le vendeur garde. */
 .souche {
-  font-size: .6875rem;
+  font-size: .8125rem;
   font-weight: 600;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+  letter-spacing: .02em;
   color: var(--ply-canari);
   margin-bottom: 1.6rem;
 }
