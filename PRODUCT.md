@@ -16,7 +16,9 @@ Le décideur est presque toujours le propriétaire de l'entreprise. Il paie de s
 
 ## Product Purpose
 
-Une intervention d'une journée en présentiel dans les locaux du client : formation de toute l'équipe le matin, installation et configuration des outils l'après-midi, puis un point de contrôle à trente jours inclus.
+Une intervention d'une journée en présentiel dans les locaux du client : formation d'un groupe le matin, installation et configuration des outils l'après-midi, puis un point de contrôle à trente jours inclus.
+
+**Quatre participants au maximum par journée.** C'est une contrainte de fond, pas un détail de planning : une structure de vingt personnes suppose donc plusieurs journées. Toute formulation du type « toute l'équipe formée en même temps » contredit cette limite et ne doit pas réapparaître.
 
 Le succès se mesure à une chose : trente jours après, les outils sont encore utilisés. Ce qui ne l'est pas est corrigé ou retiré.
 
@@ -40,7 +42,7 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
 - Un seul point d'entrée dynamique : un script PHP qui traite le formulaire et envoie par SMTP authentifié chez OVH. L'extension mbstring n'est pas installée sur le serveur.
 - Aucun cookie, aucun traceur, aucune mesure d'audience. Cette absence est un choix assumé : elle supprime le bandeau de consentement et le risque associé.
 - Bilingue français et anglais, en deux pages statiques distinctes liées par des balises `hreflang`. Le français est la langue principale.
-- Un calculateur d'économies interactif dont toutes les hypothèses sont affichées et modifiables par le visiteur.
+- **Aucun calculateur.** Il a existé puis a été retiré : il demandait au visiteur de régler des curseurs et de lire des hypothèses avant de comprendre l'offre. Ne pas le réintroduire sans décision explicite.
 - Tarifs **non affichés** : devis sur mesure.
 - Certification Qualiopi et déclaration d'activité d'organisme de formation **en cours d'obtention**. Tant qu'elles ne sont pas acquises, aucune prise en charge par un OPCO n'est possible et le site doit le dire explicitement.
 - Le code NAF déclaré est encore 58.21Z, édition de jeux électroniques, et ne correspond plus à l'activité.
@@ -49,7 +51,9 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
 
 Nom : Serious Labs. Forme juridique : SAS, siège au 12 rue Juliette Dodu, 75010 Paris. Le siège figurant dans les mentions légales doit rester l'adresse réellement immatriculée.
 
-Symbole : une fiole de laboratoire, héritée du logo d'origine, en SVG. Elle a été délibérément débarrassée de l'iconographie de jeu vidéo qu'elle contenait. Le nom et la fiole sont les seuls éléments d'identité que le client a rendus contraignants.
+Symbole : le logo d'origine, vectorisé fidèlement par tracé de son fichier — fiole de laboratoire contenant une croix directionnelle et des boutons de manette. Des redessins ont été proposés et écartés par le client : ce sont ses contours qui font foi, manette comprise. L'original est versionné dans `assets/brand/`, il n'existe nulle part ailleurs.
+
+La manette évoque le jeu vidéo, ce que l'activité n'est plus. Le client le sait et a tranché en connaissance de cause.
 
 Voix : directe et concrète, sans jargon technologique, tutoyant le problème plutôt que le produit. Le site dit ce qui n'est pas encore acquis plutôt que de le laisser deviner.
 
@@ -59,7 +63,6 @@ Voix : directe et concrète, sans jargon technologique, tutoyant le problème pl
 
 Ce qui existe réellement et peut porter la démonstration :
 
-- le calculateur et ses hypothèses ouvertes, contestables par le visiteur ;
 - le déroulé détaillé d'une intervention, qui vaut engagement ;
 - les mentions légales complètes et vérifiables sur l'annuaire des entreprises ;
 - l'aveu explicite que Qualiopi n'est pas obtenue, qui est en soi un signal de fiabilité.
@@ -69,8 +72,8 @@ Toute section de preuve sociale doit donc être absente, et la page doit tenir d
 ## Product Principles
 
 1. **L'humain garde la main.** Ce principe irrigue chaque section plutôt que d'occuper un bloc dédié — le client l'a explicitement demandé ainsi.
-2. **Montrer l'argent partout**, sans jamais le promettre. Chaque estimation s'accompagne de ses hypothèses et du mot « estimation ».
-3. **Dire ce qui n'est pas acquis.** Qualiopi en cours, pas de prise en charge OPCO, estimations non contractuelles. La transparence remplace la preuve sociale absente.
+2. **Ne rien avancer qu'on ne puisse défendre.** Aucun chiffre de gain n'est affiché : ceux qui l'étaient reposaient sur des hypothèses que le visiteur devait lire pour les comprendre, et un au moins n'était étayé par rien.
+3. **Dire ce qui n'est pas acquis.** Qualiopi en cours, pas de prise en charge OPCO, quatre participants au maximum. La transparence remplace la preuve sociale absente.
 4. **Rien ne dépend d'un tiers.** Ni plateforme louée côté client, ni service externe côté site : pas de traceur, pas de captcha, pas de dépendance de rendu.
 5. **Le temps, pas la technologie.** L'unité de valeur est l'heure récupérée, jamais la fonctionnalité.
 
