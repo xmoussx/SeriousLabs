@@ -66,4 +66,19 @@ peut être annoncée.
 
 ## EXCEPTIONS
 
-Aucune à ce jour.
+**La barre de durée est conservée malgré `side-tab`.** Le détecteur signale
+`.dur::after` comme un bandeau décoratif de 3 px. Il ne l'est pas : sa longueur
+est proportionnelle à la durée qu'elle accompagne — 0,214 pour 45 minutes
+contre 1 pour 3 h 30 — et c'est la seule donnée du site qui soit représentée
+plutôt qu'écrite. L'interdit du plancher vise les bordures de flanc colorées
+sur des cartes et des encarts, pas une marque de donnée dans un tableau.
+
+**L'interlignage de l'affichage reste sous 1,3.** Le détecteur applique un
+seuil de lisibilité de corps de texte à des titres de 48 à 76 px, où un
+interlignage serré est au contraire ce qu'il faut.
+
+**Les constats `cramped-padding` et `low-contrast` sont des faux positifs.**
+Vérifiés en navigateur le 16.09.2026 : les six « texte noir sur fond sombre »
+visent `<html>`, `<head>` et `<title>` ; vingt et un des vingt-deux
+« cramped-padding » visent des sections qui portent bien leur `padding-block`.
+Le vingt-deuxième était réel — la moitié sombre du bandeau — et a été corrigé.
