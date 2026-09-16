@@ -610,3 +610,244 @@ section + section { border-top: 1px solid var(--rule); }
   section { padding-block: 1.5rem; border-top: 1px solid #000; }
   .moment { break-inside: avoid; }
 }
+
+/* ======================================================================
+   DENSITÉ
+
+   Ajouts du 16.09.2026, après comparaison chiffrée avec LEVELUM : 43 % de
+   son cadre est de l'image contre 0 % ici, 22 valeurs chiffrées contre 4,
+   34 lignes de donnée alignées contre 5. Et ses trois bandeaux produit ont
+   trois structures différentes, délibérément — le même gabarit répété était
+   sa première cause de « moche ». Ce site en avait six identiques.
+
+   Ces blocs donnent au site ce qu'il n'avait pas : de la donnée alignée, et
+   trois formes de section au lieu d'une.
+   ====================================================================== */
+
+/* ------------------------------------------------- le sommaire d'ouverture -- */
+
+/* Le bandeau d'accueil de LEVELUM porte un sommaire de trois lignes : nom,
+   bénéfice, prix. Il donne l'offre entière avant tout défilement. */
+.summary { margin-top: clamp(2.5rem, 5vw, 3.75rem); border-top: 2px solid var(--ink); }
+
+.summary a,
+.summary > div {
+  display: grid;
+  grid-template-columns: minmax(8rem, 13rem) 1fr auto;
+  gap: .4rem 1.5rem;
+  align-items: baseline;
+  padding: 1.05rem 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+}
+.summary b {
+  font-family: var(--disp);
+  font-size: 1.0625rem;
+  letter-spacing: -.01em;
+}
+.summary span { color: var(--ink-2); font-size: .9375rem; }
+.summary em {
+  font-style: normal;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+  .summary a, .summary > div { grid-template-columns: 1fr auto; }
+  .summary span { grid-column: 1 / -1; }
+}
+
+/* ------------------------------------------------------- tableau de donnée -- */
+
+/* L'équivalent du journal horodaté de LEVELUM : une vraie table, pleine
+   largeur, en chiffres tabulaires. C'est elle qui porte le programme de la
+   journée, qu'un organisme de formation doit de toute façon établir. */
+.data {
+  width: 100%;
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.data caption {
+  text-align: left;
+  padding-bottom: .9rem;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.data th, .data td {
+  padding: .85rem 1rem .85rem 0;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: baseline;
+}
+.data thead th {
+  border-bottom: 2px solid var(--ink);
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.data td:first-child, .data thead th:first-child { width: 8.5rem; font-weight: 600; }
+.data td:last-child, .data thead th:last-child { text-align: right; padding-right: 0; white-space: nowrap; }
+.data tbody tr:last-child td { border-bottom: 2px solid var(--ink); }
+.data tfoot td {
+  border-bottom: 0;
+  padding-top: 1rem;
+  font-family: var(--disp);
+  font-size: 1.0625rem;
+  letter-spacing: -.01em;
+}
+.data .sub { display: block; margin-top: .3rem; color: var(--ink-2); font-size: .9375rem; font-weight: 400; }
+
+/* Sous 640 px une table de quatre colonnes ne tient pas. Les lignes passent
+   en blocs et chaque cellule porte son intitulé, repris de `data-col`. */
+@media (max-width: 640px) {
+  .data, .data tbody, .data tfoot, .data tr, .data td { display: block; width: auto; }
+  .data thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .data tbody tr { padding: .9rem 0; border-bottom: 1px solid var(--rule); }
+  .data tbody tr:last-child { border-bottom: 2px solid var(--ink); }
+  .data td { padding: .2rem 0; border: 0; }
+  .data td:last-child { text-align: left; }
+  .data td[data-col]::before {
+    content: attr(data-col) ' ';
+    display: block;
+    font-size: .6875rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .data td:first-child { width: auto; }
+}
+
+/* -------------------------------------------------------- bandeau à média -- */
+
+/* La forme des bandeaux produit de LEVELUM : le média occupe la moitié du
+   cadre, bord à bord, la donnée occupe l'autre. Une section sur deux
+   s'inverse pour que le gabarit ne se répète pas à l'identique. */
+.band {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  border-top: 1px solid var(--rule);
+}
+.band__media {
+  position: relative;
+  min-height: 24rem;
+  background: var(--ink);
+  overflow: hidden;
+}
+.band__media img { width: 100%; height: 100%; object-fit: cover; }
+.band__tag {
+  position: absolute;
+  left: 0; top: 0;
+  margin: 0;
+  padding: .4rem .7rem;
+  background: var(--ink);
+  color: var(--page);
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.band__body { padding: var(--band) clamp(1.15rem, 4vw, 3.5rem); }
+.band--flip .band__media { order: 2; }
+
+/* En attendant les captures : le cadre porte la donnée plutôt que du vide.
+   Un cadre vide serait pire qu'une section en moins. */
+.band__hold {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+  color: var(--on-ink);
+  font-size: .9375rem;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .band { grid-template-columns: 1fr; }
+  .band--flip .band__media { order: 0; }
+  .band__media { min-height: 16rem; }
+  .band__body { padding-inline: var(--gutter); }
+}
+
+/* --------------------------------------------------------- lignes de cote -- */
+
+/* Les cotes de LEVELUM : intitulé à gauche, valeur alignée à droite, filet
+   entre les deux. C'est ce qui fait qu'une fiche produit se lit comme une
+   fiche produit. */
+.specs { margin-top: clamp(1.5rem, 3vw, 2.25rem); border-top: 2px solid var(--ink); }
+.specs > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.specs dt {
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.specs dd {
+  margin: 0;
+  text-align: right;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sur fond d'encre, les mêmes cotes. */
+.ink .specs { border-top-color: var(--rule-ink); }
+.ink .specs > div { border-bottom-color: var(--rule-ink); }
+.ink .specs dt { color: var(--on-ink); }
+
+/* ----------------------------------------------------------- section deux -- */
+
+/* Troisième forme : énoncé à gauche, contenu à droite. Elle empêche « Où
+   passent vos heures » d'avoir la même silhouette que les autres. */
+.two {
+  display: grid;
+  grid-template-columns: minmax(0, 24rem) minmax(0, 1fr);
+  gap: clamp(1.75rem, 5vw, 4.5rem);
+  align-items: start;
+}
+.two .jobs { margin-top: 0; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
+@media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
+
+/* ------------------------------------------------------------ le montant -- */
+
+.price { margin-top: clamp(2rem, 4vw, 3rem); padding-top: 1.25rem; border-top: 2px solid var(--ink); }
+.price__n {
+  font-family: var(--disp);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  letter-spacing: -.03em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.price__c {
+  margin-top: .6rem;
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.band__specs { width: 100%; }
+
+/* Les cotes posées dans la moitié sombre d'un bandeau : sans cette reprise,
+   leurs filets sont tracés à l'encre sur l'encre, donc invisibles. */
+.band__media .specs { border-top-color: var(--rule-ink); }
+.band__media .specs > div { border-bottom-color: var(--rule-ink); }
+.band__media .specs dt { color: var(--on-ink); }
+.band__media .specs dd { color: var(--page); }
