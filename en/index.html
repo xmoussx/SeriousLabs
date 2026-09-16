@@ -46,12 +46,20 @@
 <main id="main">
 
   <!-- ================================================ 1. vue d'ouverture -->
-  <section class="open">
+  <section class="open open--film">
+    <img class="open__film" src="/assets/img/atelier-1600.jpg"
+         srcset="/assets/img/atelier-960.jpg 960w, /assets/img/atelier-1600.jpg 1600w"
+         sizes="100vw" width="1600" height="900" alt="" fetchpriority="high">
+    <span class="open__voile" aria-hidden="true"></span>
     <div class="wrap">
       <h1>One day at your office. The tools stay.</h1>
       <p class="lede">In a firm of ten people, nobody counts the time spent rewriting a letter, redoing a quote that already exists, or looking for a document that has already been written. That time is never billed.</p>
       <a class="cta" href="#devis">Request a quote</a>
+    </div>
+  </section>
 
+  <section class="recap">
+    <div class="wrap">
       <div class="summary">
         <a href="#programme"><b>The briefing</b><span>A call to collect your real working files</span><em>45 min</em></a>
         <a href="#programme"><b>The day</b><span>Workshop in the morning, install in the afternoon</span><em>7 h on site</em></a>
@@ -59,6 +67,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- ============================================ 2. le programme, en table -->
   <section id="programme">

@@ -954,3 +954,95 @@ h1 {
 .band__media { padding: clamp(1.15rem, 3vw, 2rem); }
 .band__tag { left: clamp(1.15rem, 3vw, 2rem); top: clamp(1.15rem, 3vw, 2rem); }
 .band__hold { padding: 3.5rem 0 0; }
+
+/* ======================================================================
+   L'ACCUEIL PLEIN CADRE
+
+   Le geste d'antidrones.seriouslabs.tech : le plan occupe tout le premier
+   écran et le titre se pose dessus, plutôt qu'une vignette posée à côté du
+   texte. C'est ce qui fait passer la surface d'image de 0 à ~40 %.
+   ====================================================================== */
+
+.open--film {
+  position: relative;
+  min-height: min(84vh, 46rem);
+  display: flex;
+  align-items: flex-end;
+  padding-block: clamp(3rem, 8vw, 6rem);
+  background: var(--ink);
+  color: var(--page);
+  overflow: hidden;
+}
+
+.open__film {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* La scène est de la lumière de bureau ordinaire ; on la calme pour que la
+     typographie reste le sujet, sans la vider comme LEVELUM vide la sienne —
+     sa source sortait bleue, celle-ci est déjà neutre. */
+  filter: saturate(.55) contrast(1.02) brightness(.72);
+}
+
+/* Le voile. Sans lui, le contraste du titre dépend de ce que le modèle a
+   rendu dans ce coin de l'image, ce qui n'est pas un réglage mais un pari.
+   Dégradé vertical : l'image reste lisible en haut, le texte est garanti en
+   bas. */
+.open__voile {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+              rgba(16, 17, 20, .28) 0%,
+              rgba(16, 17, 20, .62) 46%,
+              rgba(16, 17, 20, .88) 100%);
+}
+
+.open--film .wrap { position: relative; }
+.open--film h1 { color: var(--page); }
+.open--film .lede { color: #d3d8de; }        /* 11,2:1 sur l'encre */
+
+/* Sur l'image, l'action s'inverse : le vermillon sur une photo assombrie
+   perd sa fonction de signal, le blanc plein la garde. */
+.open--film .cta { background: var(--page); color: var(--ink); }
+.open--film .cta:hover { background: var(--accent); color: var(--page); }
+
+/* Le sommaire quitte l'accueil et devient la première bande de la page
+   blanche : posé sur l'image, il exigerait un second voile et la photo
+   ne servirait plus à rien. */
+.recap { padding-block: clamp(2rem, 4vw, 3rem); border-bottom: 1px solid var(--rule); }
+.recap .summary { margin-top: 0; }
+
+/* La commande d'arrêt. WCAG 2.2.2 : un mouvement automatique de plus de cinq
+   secondes doit pouvoir être arrêté, et la boucle tourne indéfiniment. */
+.open__arret {
+  position: absolute;
+  right: clamp(1.15rem, 4vw, 3.5rem);
+  top: clamp(1.15rem, 4vw, 2.5rem);
+  min-height: 44px;
+  padding: .5rem 1rem;
+  background: rgba(16, 17, 20, .55);
+  border: 1px solid rgba(255, 255, 255, .45);
+  color: var(--page);
+  font-family: inherit;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+.open__arret:hover { background: var(--accent); border-color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) { .open__arret { display: none; } }
+
+@media (max-width: 720px) {
+  .open--film { min-height: min(78vh, 36rem); }
+}
+
+@media print {
+  .open--film { min-height: 0; background: #fff; color: #000; }
+  .open__film, .open__voile, .open__arret { display: none; }
+  .open--film h1, .open--film .lede { color: #000; }
+}
