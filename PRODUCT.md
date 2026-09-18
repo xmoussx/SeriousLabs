@@ -59,10 +59,20 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
 
   Le choix du sujet n'est pas esthétique, il est technique **et** éditorial. Ce
   qui rend antidrones.seriouslabs.tech cinématographique n'est pas sa
-  définition, c'est que ses plans montrent des objets et non des gens. Et le
-  modèle local casse tout ce qui est petit, structuré et proche de la caméra :
-  les doigts, les touches d'un clavier, la reliure d'un carnet en gros plan.
-  Un plan large d'objets simples passe ; un gros plan de mécanisme ne passe pas.
+  définition, c'est que ses plans montrent des objets et non des gens.
+
+  **Ce que le modèle local ne sait pas rendre**, établi par échecs successifs et
+  non par principe : les mains et les doigts, les touches d'un clavier vues de
+  près, et **le contenu d'un écran d'ordinateur** — il produit soit des glyphes
+  illisibles, soit un bureau de système saturé. Trois régénérations l'ont
+  confirmé. La règle générale : tout ce qui est petit, structuré et proche de la
+  caméra casse. Un plan large d'objets simples passe.
+
+  Le plan du bandeau porte un clavier fondu au premier plan. **C'est un défaut
+  connu et assumé par le client**, qui l'a validé après qu'on le lui a signalé.
+  Une tentative de correction par recadrage a été faite sans qu'il la demande :
+  elle a supprimé un défaut et en a créé trois, et a été révoquée. Ne pas
+  « améliorer » un plan validé.
 
   Le carnet et le stylo ne décorent pas : ils rendent visible la phrase centrale
   du site, qu'aucun document ne sort sans qu'une personne de l'équipe l'ait relu
