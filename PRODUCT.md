@@ -54,13 +54,23 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
   client, avec le monde visuel qui le portait.
 - **Les deux plans en ligne sont des travellings calculés sur les images
   fixes, et le client les a validés le 18.09.2026.** Ils ne coûtent rien et se
-  refabriquent avec `outils/plan-anime.py`. La génération de mouvement réel a
-  été écartée sur mesures : le modèle local (LTX 2B distillé, 8 étapes, sur
-  M1 Pro) rend une image immobile — 1,1 sur 255 d'écart entre la première
-  image et le milieu du plan, contre 16,9 pour un travelling, soit quinze fois
-  moins. La cause est le plafond du modèle, pas un réglage. Le cloud le ferait
-  (Kling 3.0 Pro, environ 1 $ les cinq secondes) mais n'a pas été retenu.
-  Ne pas rouvrir sans décision explicite du client.
+  refabriquent avec `outils/plan-anime.py`.
+
+  Une première conclusion écrite ici était fausse et a été corrigée le
+  18.09.2026 : j'avais consigné que le modèle local ne produisait aucun
+  mouvement de scène. C'est vrai du **texte vers vidéo** seulement, où le
+  mouvement est imprévisible — 0,064 d'écart image à image sur un plan, 0,926
+  sur un autre, quinze fois d'écart sans qu'on sache lequel à l'avance. En
+  **image vers vidéo**, à partir d'une image fixe, la même machine et le même
+  modèle donnent 55 % de pixels actifs dont seulement 10 % imputables à la
+  caméra : la scène bouge réellement.
+
+  Ce qui reste non testé, et qui seul compte ici : ces deux plans montrent cinq
+  personnes autour d'une table, et les personnages sont précisément là où ces
+  modèles échouent. Tant que ce test n'a pas eu lieu, ne rien affirmer.
+
+  Le cloud le ferait à coup sûr (Kling 3.0 Pro, environ 1 $ les cinq secondes)
+  mais n'a pas été retenu.
 - **Aucun calculateur.** Il a existé puis a été retiré : il demandait au visiteur de régler des curseurs et de lire des hypothèses avant de comprendre l'offre. Ne pas le réintroduire sans décision explicite.
 - Tarifs **non affichés** : devis sur mesure.
 - Certification Qualiopi et déclaration d'activité d'organisme de formation **en cours d'obtention**. Tant qu'elles ne sont pas acquises, aucune prise en charge par un OPCO n'est possible et le site doit le dire explicitement.

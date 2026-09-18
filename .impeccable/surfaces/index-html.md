@@ -41,9 +41,10 @@ pixel, jamais encadrées.
   déguisait en paperasse un service qui vend la sortie de la paperasse. Ne pas
   le réintroduire.
 - **Deux plans filmés, validés le 18.09.2026.** Ce sont des travellings
-  calculés sur les images fixes, pas du mouvement généré. La génération locale
-  a été testée et écartée sur mesures : quinze fois moins de mouvement qu'un
-  travelling. Ne pas remplacer sans décision explicite.
+  calculés sur les images fixes, pas du mouvement généré. Le texte vers vidéo
+  local a été écarté sur mesures ; l'image vers vidéo, lui, produit bien du
+  mouvement de scène et n'a pas été essayé sur ces deux plans, qui montrent des
+  personnes. Ne pas remplacer sans décision explicite.
 - **Aucun calculateur.**
 - **Quatre participants au maximum.** Toute formulation du type « toute
   l'équipe formée en même temps » contredit cette limite.
