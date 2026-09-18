@@ -52,6 +52,15 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
   visuellement la limite des quatre.
 - **Un plan du carnet à souche a été produit puis retiré** à la demande du
   client, avec le monde visuel qui le portait.
+- **Les deux plans en ligne sont des travellings calculés sur les images
+  fixes, et le client les a validés le 18.09.2026.** Ils ne coûtent rien et se
+  refabriquent avec `outils/plan-anime.py`. La génération de mouvement réel a
+  été écartée sur mesures : le modèle local (LTX 2B distillé, 8 étapes, sur
+  M1 Pro) rend une image immobile — 1,1 sur 255 d'écart entre la première
+  image et le milieu du plan, contre 16,9 pour un travelling, soit quinze fois
+  moins. La cause est le plafond du modèle, pas un réglage. Le cloud le ferait
+  (Kling 3.0 Pro, environ 1 $ les cinq secondes) mais n'a pas été retenu.
+  Ne pas rouvrir sans décision explicite du client.
 - **Aucun calculateur.** Il a existé puis a été retiré : il demandait au visiteur de régler des curseurs et de lire des hypothèses avant de comprendre l'offre. Ne pas le réintroduire sans décision explicite.
 - Tarifs **non affichés** : devis sur mesure.
 - Certification Qualiopi et déclaration d'activité d'organisme de formation **en cours d'obtention**. Tant qu'elles ne sont pas acquises, aucune prise en charge par un OPCO n'est possible et le site doit le dire explicitement.

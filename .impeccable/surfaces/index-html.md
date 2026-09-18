@@ -40,8 +40,10 @@ pixel, jamais encadrées.
   — ultra moderne, hyper dépouillé — vers un imprimé rétro et dense, et il
   déguisait en paperasse un service qui vend la sortie de la paperasse. Ne pas
   le réintroduire.
-- **Aucun plan filmé.** Une tentative a été faite et retirée. Filmer une
-  intervention serait une preuve fabriquée tant qu'aucune n'a eu lieu.
+- **Deux plans filmés, validés le 18.09.2026.** Ce sont des travellings
+  calculés sur les images fixes, pas du mouvement généré. La génération locale
+  a été testée et écartée sur mesures : quinze fois moins de mouvement qu'un
+  travelling. Ne pas remplacer sans décision explicite.
 - **Aucun calculateur.**
 - **Quatre participants au maximum.** Toute formulation du type « toute
   l'équipe formée en même temps » contredit cette limite.
