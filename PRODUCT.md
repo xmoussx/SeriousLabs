@@ -52,25 +52,23 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
   visuellement la limite des quatre.
 - **Un plan du carnet à souche a été produit puis retiré** à la demande du
   client, avec le monde visuel qui le portait.
-- **Les deux plans en ligne sont des travellings calculés sur les images
-  fixes, et le client les a validés le 18.09.2026.** Ils ne coûtent rien et se
-  refabriquent avec `outils/plan-anime.py`.
+- **Les deux plans en ligne sont générés en image vers vidéo sur le Mac du
+  client, depuis les images fixes, et il a tranché le 18.09.2026 après avoir vu
+  le défaut.** La scène bouge réellement : 54 % de pixels actifs, dont 8 %
+  seulement imputables à la caméra.
 
-  Une première conclusion écrite ici était fausse et a été corrigée le
-  18.09.2026 : j'avais consigné que le modèle local ne produisait aucun
-  mouvement de scène. C'est vrai du **texte vers vidéo** seulement, où le
-  mouvement est imprévisible — 0,064 d'écart image à image sur un plan, 0,926
-  sur un autre, quinze fois d'écart sans qu'on sache lequel à l'avance. En
-  **image vers vidéo**, à partir d'une image fixe, la même machine et le même
-  modèle donnent 55 % de pixels actifs dont seulement 10 % imputables à la
-  caméra : la scène bouge réellement.
+  Ce que ce choix coûte, mesuré et assumé : la définition passe de 1600 × 900 à
+  1024 × 576, la boucle de 10 secondes à 3,4, et **les mains se déforment** — la
+  main qui pointe perd ses doigts en une demi-seconde. Les visages, eux, tiennent
+  parfaitement. Augmenter la définition aggrave : à 1280 × 704, un avant-bras
+  entier disparaît.
 
-  Ce qui reste non testé, et qui seul compte ici : ces deux plans montrent cinq
-  personnes autour d'une table, et les personnages sont précisément là où ces
-  modèles échouent. Tant que ce test n'a pas eu lieu, ne rien affirmer.
+  Les travellings précédents, propres et sans artefact, sont conservés dans
+  `assets/video/travellings-ecartes/` avec la commande de retour en arrière. Ils
+  ne sont pas déployés. Se refabriquent avec `outils/plan-anime.py`.
 
-  Le cloud le ferait à coup sûr (Kling 3.0 Pro, environ 1 $ les cinq secondes)
-  mais n'a pas été retenu.
+  Le cloud ferait mieux que les deux (Kling 3.0 Pro, environ 1 $ les cinq
+  secondes) mais n'a pas été retenu.
 - **Aucun calculateur.** Il a existé puis a été retiré : il demandait au visiteur de régler des curseurs et de lire des hypothèses avant de comprendre l'offre. Ne pas le réintroduire sans décision explicite.
 - Tarifs **non affichés** : devis sur mesure.
 - Certification Qualiopi et déclaration d'activité d'organisme de formation **en cours d'obtention**. Tant qu'elles ne sont pas acquises, aucune prise en charge par un OPCO n'est possible et le site doit le dire explicitement.

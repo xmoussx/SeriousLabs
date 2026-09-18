@@ -68,6 +68,10 @@ for item in "${CONTENU[@]}"; do
 done
 rm -f "$STAGING/.env"
 
+# Les plans écartés sont conservés dans le dépôt pour pouvoir revenir en
+# arrière, mais n'ont rien à faire en ligne : ils doubleraient le poids servi.
+rm -rf "$STAGING/assets/video/travellings-ecartes"
+
 sudo rsync -a --delete "$STAGING/" "$TARGET/"
 
 sudo chown -R www-data:www-data "$TARGET"
