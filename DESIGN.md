@@ -1,7 +1,16 @@
 # Design — Serious Labs
 
-Monde visuel : **« La journée »**. Cette note remplace celle du carnet à souche,
-abandonné le 16 septembre 2026.
+Monde visuel : **« La journée », en sombre**. Cette note remplace celle du
+carnet à souche, abandonné le 16 septembre 2026.
+
+Le passage au sombre date du 18 septembre 2026. Le client a choisi cette
+direction parmi trois premiers écrans construits et présentés côte à côte, après
+avoir rejeté deux versions claires. Le décalage tenait à ça depuis le début : il
+admirait antidrones.seriouslabs.tech, qui est sombre et cinématographique,
+pendant qu'on lui construisait des pages blanches.
+
+La structure n'a pas changé — l'emploi du temps de la journée, la colonne de
+moments, la table du programme, les bandeaux à média. Seul le monde a changé.
 
 ## Pourquoi ce monde
 
@@ -28,18 +37,26 @@ intention.
 
 | Jeton | Valeur | Rôle | Contraste |
 |---|---|---|---|
-| `--page` | `#ffffff` | fond | — |
-| `--ink` | `#101114` | texte, et fond des sections pleines | 18,88:1 sur la page |
-| `--ink-2` | `#5c626b` | texte secondaire | 6,15:1 |
-| `--rule` | `#e6e8ec` | filets | 1,23:1 — décoratif, ne porte jamais d'information |
-| `--accent` | `#d92b00` | action, repère de temps, signal | 4,89:1 sur blanc, et 4,89:1 en blanc dessus |
-| `--accent-ink` | `#ef5a33` | le même rôle, mais sur fond d'encre | 5,56:1 sur `--ink` |
-| `--on-ink` | `#b9bfc7` | texte secondaire sur l'encre | 8,1:1 |
-| `--rule-ink` | `#2a2d33` | filets sur l'encre | — |
+| `--page` | `#07090b` | le fond, désormais l'encre | — |
+| `--ink` | `#eef1f4` | texte principal | 17,59:1 sur le fond |
+| `--ink-2` | `#9fa9b3` | texte secondaire | 8,36:1 |
+| `--rule` | `#1b2026` | filets | 1,22:1 — décoratif, ne porte jamais d'information |
+| `--accent` | `#ff5c2b` | action, repère de temps, signal | 6,47:1 sur le fond, et 6,47:1 en noir dessus |
+| `--surface` | `#151c25` | panneaux de texte | 1,16:1 d'écart avec le fond |
+| `--on-ink` | `#7f8b96` | plancher du texte secondaire sur surface | 5,73:1 |
+| `--rule-ink` | `#242c36` | filets sur surface | — |
 
-`--accent` tombe à 3,86:1 sur `--ink` : suffisant pour un aplat, insuffisant
-pour du texte de 12 px. D'où `--accent-ink`. La faute a été commise puis
-mesurée puis corrigée ; elle est notée ici pour ne pas être refaite.
+**L'accent reste le vermillon, pas le cyan de LEVELUM.** C'est déjà la couleur de
+la marque ; lui emprunter le sien ferait de ce site une copie au lieu d'une
+famille. Éclairci de `#D92B00` à `#FF5C2B`, ce qui le fait passer de 4,08:1 à
+6,47:1 sur le fond.
+
+`#6b7680` a été écarté comme plancher de texte secondaire : mesuré à 4,30:1, il
+échoue au seuil de 4,5. Le plancher est `#7f8b96`.
+
+L'écart de la surface au fond est tenu à 1,16:1, la même valeur
+qu'antidrones.seriouslabs.tech : assez pour séparer un panneau, trop peu pour le
+découper.
 
 ## Typographie
 
@@ -95,3 +112,19 @@ Plus aucun script ni style en ligne dans les quatre pages : l'horodatage
 anti-robot est posé par `app.js` et non par une balise `<script>` en fin de
 page. La directive `script-src` de la CSP est donc passée de
 `'self' 'unsafe-inline'` à `'self'`.
+
+
+## Deux défauts que la mesure de contraste ne voit pas
+
+Le passage au sombre en a produit deux, qu'aucun calcul automatique ne
+signalait, parce qu'ils ne portent pas sur du texte.
+
+**Le logo devenait invisible.** Son tracé porte sa couleur en dur — `#16181a` —
+parce qu'il a été vectorisé depuis le fichier d'origine du client et que ses
+contours ne se retouchent pas. Servi par une balise `<img>`, aucune règle CSS ne
+peut l'atteindre. Il est donc inversé par `filter: invert(1)` : monochrome, il
+devient exactement aussi clair qu'il était sombre, sans que le fichier bouge.
+
+**Le bouton d'arrêt du plan portait du texte noir sur un voile noir.** Sa
+couleur était `var(--page)`, qui désignait le blanc et désigne désormais le
+fond. Tout jeton employé à l'envers d'un monde se retourne avec lui.

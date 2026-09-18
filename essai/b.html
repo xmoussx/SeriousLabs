@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B — Grille Bauhaus</title>
+<link rel="stylesheet" href="/essai/base.css">
+<style>
+:root{--ink:#111;--page:#f4f2ee;--accent:#2b4cf0;--gutter:0;--measure:100%}
+body{background:var(--page);color:var(--ink);font-family:'Outfit',system-ui,sans-serif}
+/* Le parti du style : la grille est visible, les blocs sont pleins, rien n'est arrondi. */
+.g{min-height:100svh;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(0,auto);
+   border-top:2px solid var(--ink)}
+.c{border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:clamp(1.25rem,2.6vw,2.4rem)}
+.c--t{grid-column:1/span 8;display:flex;align-items:flex-end;min-height:56svh}
+.c--k{grid-column:9/span 4;background:var(--accent);color:#fff;display:flex;flex-direction:column;justify-content:space-between}
+.c--l{grid-column:1/span 5}
+.c--f{grid-column:6/span 7;display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:0}
+.c--f div{padding:clamp(1rem,2vw,1.6rem);border-right:2px solid var(--ink)}
+.c--f div:last-child{border-right:0}
+h1{font-weight:900;font-size:clamp(2.4rem,7.4vw,6.4rem);line-height:.92;letter-spacing:-.045em;text-transform:uppercase}
+.k{font-weight:700;font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase}
+.go{display:block;margin-top:auto;font-weight:900;font-size:clamp(1.1rem,2vw,1.6rem);text-decoration:none;text-transform:uppercase;letter-spacing:-.02em}
+.lede{font-size:1.0625rem;line-height:1.6;max-width:42ch}
+dt{font-size:.6875rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6c6f76}
+dd{margin-top:.4rem;font-weight:900;font-size:1.15rem;letter-spacing:-.02em}
+@media(max-width:760px){.c--t,.c--k,.c--l{grid-column:1/-1}.c--f{grid-column:1/-1;grid-template-columns:repeat(2,1fr)}
+ .c--f div:nth-child(2){border-right:0}}
+</style></head><body>
+<div class="g">
+<div class="c c--t"><h1>Une journée chez vous. Les outils restent.</h1></div>
+<div class="c c--k"><p class="k">Formation &amp; installation sur site</p><a class="go" href="#">Demander<br>un devis →</a></div>
+<div class="c c--l"><p class="lede">Personne, dans une structure de dix personnes, ne compte le temps passé à réécrire un courrier, à refaire un devis déjà fait, ou à chercher un document qui existe déjà.</p></div>
+<div class="c c--f">
+<div><dt>Durée</dt><dd>1 journée</dd></div><div><dt>Participants</dt><dd>4 au plus</dd></div>
+<div><dt>Lieu</dt><dd>Vos locaux</dd></div><div><dt>Suivi</dt><dd>30 jours</dd></div>
+</div></div>
+<p class="tag">B — grille bauhaus</p></body></html>

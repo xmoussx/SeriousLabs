@@ -78,8 +78,10 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
 
 Nom : Serious Labs. Forme juridique : SAS, siège au 12 rue Juliette Dodu, 75010 Paris. Le siège figurant dans les mentions légales doit rester l'adresse réellement immatriculée.
 
-Monde visuel : **« La journée »** — la page est l'emploi du temps de la journée
-vendue. Il remplace « le carnet à souche », abandonné le 16 septembre 2026 :
+Monde visuel : **« La journée », en sombre** — la page est l'emploi du temps de
+la journée vendue, sur fond presque noir, le plan filmé occupant le premier
+écran. Direction choisie par le client le 18 septembre 2026 parmi trois premiers
+écrans construits, après deux versions claires rejetées. Il remplace « le carnet à souche », abandonné le 16 septembre 2026 :
 celui-ci avait dérivé de la demande d'origine, ultra moderne et hyper dépouillé,
 vers un imprimé rétro et dense, et il déguisait en paperasse un service qui vend
 la sortie de la paperasse. Voir `DESIGN.md`.

@@ -1,47 +1,52 @@
 /* ==========================================================================
-   SERIOUS LABS — « La journée »
+   SERIOUS LABS — « La journée », monde sombre
 
-   La page est l'emploi du temps de la journée vendue. Le temps n'est pas un
-   ornement : c'est la structure. Une colonne de moments descend le long de la
-   page, une règle verticale la longe sans interruption, et chaque chose dite
-   est accrochée à un moment.
+   Le client a choisi cette direction le 18.09.2026, après trois essais
+   présentés côte à côte. Le décalage tenait à ça depuis le début : il
+   admirait antidrones.seriouslabs.tech, qui est sombre et cinématographique,
+   pendant qu'on lui construisait des pages blanches.
 
-   Ce monde remplace « le carnet à souche », qui avait dérivé de la demande
-   d'origine — ultra moderne, hyper dépouillé — vers un imprimé administratif
-   dense et rétro. Il refuse aussi les deux arrangements de la catégorie : le
-   bandeau sombre à dégradé de l'IA, et la grille de cartes à ombre portée.
+   La structure ne change pas — l'emploi du temps de la journée, la colonne
+   de moments, la table du programme, les bandeaux à média. Seul le monde
+   change : le plan occupe le premier écran, la typographie s'y pose, et la
+   page descend ensuite dans le noir plutôt que dans le blanc.
 
-   Règles du système, sans exception :
+   L'accent reste le vermillon, pas le cyan de LEVELUM. C'est déjà la couleur
+   de la marque, et lui emprunter le sien ferait de ce site une copie au lieu
+   d'une famille. Éclairci de #D92B00 à #FF5C2B, qui passe de 4,08:1 à
+   6,47:1 sur le fond.
+
+   Règles du système, inchangées :
      - aucune carte, aucune ombre d'élévation, aucun rayon de bordure ;
-     - une seule couleur d'accent, le vermillon, réservée à l'action, au
-       repère de temps et au signal — jamais décorative ;
-     - la profondeur se fait par pleine largeur d'encre, pas par empilement ;
-     - les valeurs chiffrées sont tabulaires, elles doivent s'aligner.
+     - un seul accent, jamais décoratif ;
+     - la profondeur se fait par surface pleine, pas par empilement ;
+     - les valeurs chiffrées sont tabulaires.
    ========================================================================== */
 
 :root {
-  --page:   #ffffff;
-  --ink:    #101114;   /* 18,88:1 sur la page */
-  --ink-2:  #5c626b;   /*  6,15:1 */
-  --rule:   #e6e8ec;   /*  1,23:1 — décoratif, ne porte jamais d'information */
-  --accent: #d92b00;   /*  4,89:1 sur blanc, et 4,89:1 en blanc dessus */
+  --page:   #07090b;   /* le fond, désormais l'encre */
+  --ink:    #eef1f4;   /* 17,59:1 sur le fond */
+  --ink-2:  #9fa9b3;   /*  8,36:1 */
+  --rule:   #1b2026;   /*  1,22:1 — décoratif, ne porte jamais d'information */
+  --accent: #ff5c2b;   /*  6,47:1 sur le fond, et 6,47:1 en noir dessus */
 
-  --on-ink:   #b9bfc7; /*  8,1:1 sur l'encre */
-  /* Le vermillon de la page tombe à 3,86:1 sur l'encre : au-dessus du seuil
-     d'un aplat, en dessous de celui d'un texte de 12 px. Sur fond sombre on
-     emploie donc cette variante éclaircie, à 5,56:1. */
-  --accent-ink: #ef5a33;
-  --rule-ink: #2a2d33;
+  /* La surface des panneaux : 1,16:1 d'écart avec le fond, comme
+     antidrones.seriouslabs.tech. Assez pour séparer, trop peu pour découper. */
+  --surface: #151c25;
+  --on-ink:   #7f8b96; /*  5,73:1 — plancher du texte secondaire sur surface */
+  --rule-ink: #242c36;
+  --accent-ink: #ff5c2b;
 
   --pre:  'Archivo', system-ui, -apple-system, sans-serif;
   --disp: 'Archivo Black', 'Archivo', system-ui, sans-serif;
 
-  --measure: 1100px;
+  --measure: 1180px;
   --gutter:  clamp(1.15rem, 4vw, 3.5rem);
-  --rail:    clamp(5.5rem, 12vw, 11rem);   /* la colonne des moments */
+  --rail:    clamp(5.5rem, 12vw, 11rem);
   --head-h:  4.25rem;
-  --band:    clamp(3.5rem, 8vw, 7rem);     /* respiration entre les sections */
+  --band:    clamp(3.5rem, 8vw, 7rem);
 }
+
 
 /* --------------------------------------------------------------- socle -- */
 
@@ -117,7 +122,8 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--page);
+  background: rgba(7, 9, 11, .88);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--rule);
 }
 
@@ -140,7 +146,14 @@ a { color: inherit; }
   font-family: var(--disp);
   font-size: .9rem;
 }
-.mark img { width: 15px; height: 21px; }
+.mark img {
+  width: 15px;
+  height: 21px;
+  /* Le tracé est monochrome et sa couleur est dans le fichier, qu'on ne
+     retouche pas : c'est le logo d'origine du client, vectorisé. L'inversion
+     le rend clair sans altérer ses contours. */
+  filter: invert(1);
+}
 
 .nav {
   display: flex;
@@ -192,15 +205,15 @@ a { color: inherit; }
   cursor: pointer;
   transition: background .15s ease;
 }
-.cta:hover { background: var(--ink); }
+.cta:hover { background: var(--ink); color: var(--page); }
 .cta[disabled] { opacity: .55; cursor: default; }
 
 .cta--sm { min-height: 44px; padding: .5rem 1rem; font-size: .875rem; }
 
 /* Sur l'encre pleine, le vermillon tombe à 3,86:1 : assez pour un aplat, pas
    pour du texte fin. On inverse donc plutôt que d'y poser du vermillon. */
-.ink .cta { background: var(--page); color: var(--ink); }
-.ink .cta:hover { background: var(--accent); color: var(--page); }
+.ink .cta { background: var(--accent); color: var(--page); }
+.ink .cta:hover { background: var(--ink); color: var(--page); }
 
 /* ---------------------------------------------------- vue d'ouverture -- */
 
@@ -393,7 +406,7 @@ section + section { border-top: 1px solid var(--rule); }
 
 /* L'IA ne produit pas le livrable. C'est la seule affirmation du site qui
    mérite d'occuper toute la largeur d'encre. */
-.ink { background: var(--ink); color: var(--page); }
+.ink { background: var(--surface); color: var(--ink); }
 .ink .sect-l { color: var(--on-ink); }
 
 .claim {
@@ -418,7 +431,7 @@ section + section { border-top: 1px solid var(--rule); }
   background: var(--rule-ink);
   border-block: 1px solid var(--rule-ink);
 }
-.split > div { background: var(--ink); padding: 1.4rem 1.5rem 1.5rem 0; }
+.split > div { background: var(--surface); padding: 1.4rem 1.5rem 1.5rem 0; }
 .split h3 {
   font-size: .75rem;
   font-weight: 700;
@@ -517,12 +530,12 @@ section + section { border-top: 1px solid var(--rule); }
 /* -------------------------------------------------------- pied de page -- */
 
 .foot {
-  background: var(--ink);
+  background: var(--surface);
   color: var(--on-ink);
   padding-block: clamp(2.5rem, 5vw, 4rem);
   font-size: .875rem;
 }
-.foot .mark, .foot a { color: var(--page); }
+.foot .mark, .foot a { color: var(--ink); }
 .foot__top {
   display: flex;
   flex-wrap: wrap;
@@ -597,9 +610,13 @@ section + section { border-top: 1px solid var(--rule); }
 
 @media print {
   .head, .cta, .form, .skip { display: none; }
+  /* Le monde est sombre à l'écran ; sur papier il redevient noir sur blanc,
+     sans quoi l'impression viderait une cartouche entière. */
   body { color: #000; background: #fff; }
-  .ink, .foot { background: #fff; color: #000; }
-  .ink .sect-l, .split p, .foot, .foot a { color: #000; }
+  .ink, .foot, .surface, .split > div, .band__media { background: #fff; color: #000; }
+  .ink .sect-l, .split p, .split h3, .foot, .foot a, .sect-l, .lede, .jobs li,
+  .specs dt, .specs dd, .data td, .data th, .note { color: #000; }
+  .data th, .data td, .specs > div { border-color: #999; }
   section { padding-block: 1.5rem; border-top: 1px solid #000; }
   .moment { break-inside: avoid; }
 }
@@ -732,7 +749,7 @@ section + section { border-top: 1px solid var(--rule); }
 .band__media {
   position: relative;
   min-height: 24rem;
-  background: var(--ink);
+  background: var(--surface);
   overflow: hidden;
 }
 .band__media img { width: 100%; height: 100%; object-fit: cover; }
@@ -741,8 +758,8 @@ section + section { border-top: 1px solid var(--rule); }
   left: 0; top: 0;
   margin: 0;
   padding: .4rem .7rem;
-  background: var(--ink);
-  color: var(--page);
+  background: var(--page);
+  color: var(--ink);
   font-size: .6875rem;
   font-weight: 600;
   letter-spacing: .08em;
@@ -843,7 +860,7 @@ section + section { border-top: 1px solid var(--rule); }
 .band__media .specs { border-top-color: var(--rule-ink); }
 .band__media .specs > div { border-bottom-color: var(--rule-ink); }
 .band__media .specs dt { color: var(--on-ink); }
-.band__media .specs dd { color: var(--page); }
+.band__media .specs dd { color: var(--ink); }
 
 /* ======================================================================
    PLANCHER DE QUALITÉ
@@ -862,8 +879,8 @@ section + section { border-top: 1px solid var(--rule); }
 
 ::selection { background: var(--accent); color: var(--page); }
 .ink ::selection, .foot ::selection, .band__media ::selection {
-  background: var(--page);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--page);
 }
 
 input, textarea, select { caret-color: var(--accent); }
@@ -944,10 +961,10 @@ h1 {
 .reply {
   border-left: 0;
   border-top: 2px solid var(--accent);
-  background: #fdf4f2;
+  background: rgba(255, 92, 43, .10);
   padding: 1rem 1.2rem;
 }
-.reply--ok { border-top-color: var(--ink); background: #f4f5f7; }
+.reply--ok { border-top-color: var(--ink); background: var(--surface); }
 
 /* La moitié sombre du bandeau n'avait aucune respiration : son étiquette
    était collée dans l'angle, à même la coupe. */
@@ -969,8 +986,8 @@ h1 {
   display: flex;
   align-items: flex-end;
   padding-block: clamp(3rem, 8vw, 6rem);
-  background: var(--ink);
-  color: var(--page);
+  background: var(--page);
+  color: var(--ink);
   overflow: hidden;
 }
 
@@ -983,7 +1000,7 @@ h1 {
   /* La scène est de la lumière de bureau ordinaire ; on la calme pour que la
      typographie reste le sujet, sans la vider comme LEVELUM vide la sienne —
      sa source sortait bleue, celle-ci est déjà neutre. */
-  filter: saturate(.55) contrast(1.02) brightness(.72);
+  filter: saturate(.38) contrast(1.06) brightness(.62);
 }
 
 /* Le voile. Sans lui, le contraste du titre dépend de ce que le modèle a
@@ -994,19 +1011,19 @@ h1 {
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom,
-              rgba(16, 17, 20, .28) 0%,
-              rgba(16, 17, 20, .62) 46%,
-              rgba(16, 17, 20, .88) 100%);
+              rgba(7, 9, 11, .30) 0%,
+              rgba(7, 9, 11, .68) 46%,
+              rgba(7, 9, 11, 1) 100%);
 }
 
 .open--film .wrap { position: relative; }
-.open--film h1 { color: var(--page); }
-.open--film .lede { color: #d3d8de; }        /* 11,2:1 sur l'encre */
+.open--film h1 { color: var(--ink); }
+.open--film .lede { color: #b7c0c9; }        /* 11,2:1 sur l'encre */
 
 /* Sur l'image, l'action s'inverse : le vermillon sur une photo assombrie
    perd sa fonction de signal, le blanc plein la garde. */
-.open--film .cta { background: var(--page); color: var(--ink); }
-.open--film .cta:hover { background: var(--accent); color: var(--page); }
+.open--film .cta { background: var(--accent); color: var(--page); }
+.open--film .cta:hover { background: var(--ink); color: var(--page); }
 
 /* Le sommaire quitte l'accueil et devient la première bande de la page
    blanche : posé sur l'image, il exigerait un second voile et la photo
@@ -1022,9 +1039,9 @@ h1 {
   top: clamp(1.15rem, 4vw, 2.5rem);
   min-height: 44px;
   padding: .5rem 1rem;
-  background: rgba(16, 17, 20, .55);
-  border: 1px solid rgba(255, 255, 255, .45);
-  color: var(--page);
+  background: rgba(7, 9, 11, .62);
+  border: 1px solid rgba(238, 241, 244, .38);
+  color: var(--ink);
   font-family: inherit;
   font-size: .75rem;
   font-weight: 600;
@@ -1033,7 +1050,7 @@ h1 {
   cursor: pointer;
   backdrop-filter: blur(6px);
 }
-.open__arret:hover { background: var(--accent); border-color: var(--accent); }
+.open__arret:hover { background: var(--accent); border-color: var(--accent); color: var(--page); }
 
 @media (prefers-reduced-motion: reduce) { .open__arret { display: none; } }
 
