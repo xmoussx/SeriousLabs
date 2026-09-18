@@ -52,23 +52,29 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
   visuellement la limite des quatre.
 - **Un plan du carnet à souche a été produit puis retiré** à la demande du
   client, avec le monde visuel qui le portait.
-- **Les deux plans en ligne sont générés en image vers vidéo sur le Mac du
-  client, depuis les images fixes, et il a tranché le 18.09.2026 après avoir vu
-  le défaut.** La scène bouge réellement : 54 % de pixels actifs, dont 8 %
-  seulement imputables à la caméra.
+- **Les deux plans en ligne sont générés sur le Mac du client, en local, sans
+  aucun crédit.** Ce sont des plans d'objets à l'heure bleue, sans personne :
+  une salle de réunion vide au crépuscule pour l'accueil, un carnet ouvert et un
+  stylo sous la lueur d'un écran hors champ pour le bandeau.
 
-  Ce que ce choix coûte, mesuré et assumé : la définition passe de 1600 × 900 à
-  1024 × 576, la boucle de 10 secondes à 3,4, et **les mains se déforment** — la
-  main qui pointe perd ses doigts en une demi-seconde. Les visages, eux, tiennent
-  parfaitement. Augmenter la définition aggrave : à 1280 × 704, un avant-bras
-  entier disparaît.
+  Le choix du sujet n'est pas esthétique, il est technique **et** éditorial. Ce
+  qui rend antidrones.seriouslabs.tech cinématographique n'est pas sa
+  définition, c'est que ses plans montrent des objets et non des gens. Et le
+  modèle local casse tout ce qui est petit, structuré et proche de la caméra :
+  les doigts, les touches d'un clavier, la reliure d'un carnet en gros plan.
+  Un plan large d'objets simples passe ; un gros plan de mécanisme ne passe pas.
 
-  Les travellings précédents, propres et sans artefact, sont conservés dans
-  `assets/video/travellings-ecartes/` avec la commande de retour en arrière. Ils
-  ne sont pas déployés. Se refabriquent avec `outils/plan-anime.py`.
+  Le carnet et le stylo ne décorent pas : ils rendent visible la phrase centrale
+  du site, qu'aucun document ne sort sans qu'une personne de l'équipe l'ait relu
+  et signé.
 
-  Le cloud ferait mieux que les deux (Kling 3.0 Pro, environ 1 $ les cinq
-  secondes) mais n'a pas été retenu.
+  Plafond mesuré : environ 5 300 jetons de latent. En 1280 × 704 cela plafonne à
+  41 images, soit 1,71 s, doublées à 3,42 s par montage inverse. Il faut choisir
+  entre la définition et la durée.
+
+  Les versions précédentes — travellings sur images fixes, puis plans animés
+  avec des personnes — sont dans `assets/video/travellings-ecartes/`, non
+  déployées.
 - **Aucun calculateur.** Il a existé puis a été retiré : il demandait au visiteur de régler des curseurs et de lire des hypothèses avant de comprendre l'offre. Ne pas le réintroduire sans décision explicite.
 - Tarifs **non affichés** : devis sur mesure.
 - Certification Qualiopi et déclaration d'activité d'organisme de formation **en cours d'obtention**. Tant qu'elles ne sont pas acquises, aucune prise en charge par un OPCO n'est possible et le site doit le dire explicitement.
