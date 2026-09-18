@@ -743,14 +743,21 @@ section + section { border-top: 1px solid var(--rule); }
 .band {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: stretch;
+  /* Aligné en haut, pas étiré. La moitié média prenait sinon toute la hauteur
+     du texte, et un plan 16:9 dans une boîte haute se recadre jusqu'à ne plus
+     montrer qu'un aplat : le sujet sort du cadre par le haut et par le bas. */
+  align-items: start;
   border-top: 1px solid var(--rule);
 }
 .band__media {
   position: relative;
-  min-height: 24rem;
+  aspect-ratio: 16 / 9;
   background: var(--surface);
   overflow: hidden;
+  /* Le plan reste en vue pendant qu'on lit les cotes à côté. Sans cela il
+     disparaîtrait dès la troisième ligne du tableau. */
+  position: sticky;
+  top: var(--head-h);
 }
 .band__media img { width: 100%; height: 100%; object-fit: cover; }
 .band__tag {
@@ -784,7 +791,8 @@ section + section { border-top: 1px solid var(--rule); }
 @media (max-width: 900px) {
   .band { grid-template-columns: 1fr; }
   .band--flip .band__media { order: 0; }
-  .band__media { min-height: 16rem; }
+  /* Collant sur une colonne unique, le plan resterait devant le texte. */
+  .band__media { position: relative; top: auto; }
   .band__body { padding-inline: var(--gutter); }
 }
 
@@ -1082,12 +1090,4 @@ h1 {
 
 /* Le bandeau porte un plan filmé plutôt qu'une image fixe : même boîte,
    même recouvrement. */
-/* Le sujet du plan est dans le tiers bas du cadre : sans ce décalage, le
-   recouvrement ne montrerait que le noir du haut. */
-.band__video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 72%;
-  display: block;
-}
+.band__video { width: 100%; height: 100%; object-fit: cover; display: block; }
