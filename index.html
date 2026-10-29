@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Serious Labs — on installe l'IA chez vous, vous gardez les clés</title>
-<meta name="description" content="Une journée dans vos locaux : le matin, jusqu'à quatre personnes de votre équipe apprennent sur leurs vrais dossiers ; l'après-midi, les outils sont installés sur vos postes. Ils restent à vous.">
+<title>Serious Labs — former, conseiller, construire</title>
+<meta name="description" content="Serious Labs forme les petites équipes à l'IA, conseille les opérateurs de jeux d'argent en ligne et construit ses propres outils : sites, wikis, vidéos, applications.">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://seriouslabs.tech/">
@@ -16,9 +16,9 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://seriouslabs.tech/">
 <meta property="og:site_name" content="Serious Labs">
-<meta property="og:title" content="On installe. Vous gardez les clés.">
-<meta property="og:description" content="Une journée dans vos locaux, quatre personnes au plus, sur vos vrais dossiers. Les outils sont installés sur vos postes et restent à vous.">
-<meta property="og:image" content="https://seriouslabs.tech/assets/img/og-fr.png">
+<meta property="og:title" content="Serious Labs — former, conseiller, construire">
+<meta property="og:description" content="Formation à l'IA pour les petites équipes, conseil aux opérateurs de jeux d'argent, et le registre de tout ce que Serious Labs a construit.">
+<meta property="og:image" content="https://seriouslabs.tech/assets/img/og-accueil-fr.png">
 <meta name="theme-color" content="#1b1e22">
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -26,302 +26,233 @@
 
 <link rel="stylesheet" href="/assets/css/fonts.css">
 <link rel="stylesheet" href="/assets/css/style.css">
-<script src="/assets/js/app.js" defer></script>
+<link rel="stylesheet" href="/assets/css/accueil.css">
+<script src="/assets/js/accueil.js" defer></script>
 </head>
 
-<body>
+<body class="accueil">
 <a class="skip" href="#main">Aller au contenu</a>
 
 <header class="head">
   <div class="wrap bar">
-    <a class="mark" href="/" aria-label="Serious Labs, accueil"><img src="/assets/img/logo.svg" alt="" width="15" height="21"><span>Serious Labs</span></a>
+    <a class="mark" href="/" aria-current="page" aria-label="Serious Labs, accueil"><img src="/assets/img/logo.svg" alt="" width="15" height="21"><span>Serious Labs</span></a>
     <nav class="nav" aria-label="Navigation principale">
-      <a class="sect" href="#exemple">Exemple</a>
-      <a class="sect" href="#journee">La journée</a>
-      <a class="sect" href="#budget">Budget</a>
+      <a class="sect" href="/formation/">Formation</a>
+      <a class="sect" href="https://seriouslabs-consulting.com/">Conseil</a>
+      <a class="sect" href="#registre">Réalisations</a>
       <a class="lang" href="/en/" hreflang="en" lang="en">EN</a>
-      <a class="cta cta--sm" href="#devis">Demander<span class="cta__more">&nbsp;une journée</span></a>
     </nav>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- ====================================================== l'armoire -->
-  <section class="open" id="cles">
-    <div class="wrap open__grid">
-      <div class="open__text">
-        <h1>On installe.<br>Vous gardez <span class="nobr">les clés.</span></h1>
-        <p class="lede">Une journée dans vos locaux. Le matin, jusqu'à quatre personnes de votre équipe apprennent sur leurs vrais dossiers. L'après-midi, les outils sont installés sur vos postes, et ils restent à vous.</p>
-        <ul class="facts" aria-label="L'offre en bref">
-          <li><b>1</b> journée sur place</li>
-          <li><b>4</b> personnes au plus</li>
-          <li><b>30</b> jours, puis un point</li>
-          <li>Sur devis</li>
-        </ul>
-      </div>
-
-      <div class="board" data-board>
-        <p class="board__q" id="board-q">Qu'est-ce qui vous prend le plus de temps&nbsp;?</p>
-        <p class="board__h">Décrochez les clés qui vous coûtent des heures. On partira de là.</p>
-        <ul class="hooks" aria-labelledby="board-q">
-          <li><button type="button" class="key key--rouge" aria-pressed="false" data-key="01"><span class="key__n">01</span><span class="key__l">Lettres et courriels</span></button></li>
-          <li><button type="button" class="key key--jaune" aria-pressed="false" data-key="02"><span class="key__n">02</span><span class="key__l">Devis et propositions</span></button></li>
-          <li><button type="button" class="key key--vert" aria-pressed="false" data-key="03"><span class="key__n">03</span><span class="key__l">Factures et relances</span></button></li>
-          <li><button type="button" class="key key--bleu" aria-pressed="false" data-key="04"><span class="key__n">04</span><span class="key__l">Recherche et synthèse</span></button></li>
-          <li><button type="button" class="key key--orange" aria-pressed="false" data-key="05"><span class="key__n">05</span><span class="key__l">Contrats et documents types</span></button></li>
-          <li><button type="button" class="key key--violet" aria-pressed="false" data-key="06"><span class="key__n">06</span><span class="key__l">Tableaux de bord</span></button></li>
-          <li><button type="button" class="key key--blanc" aria-pressed="false" data-key="07"><span class="key__n">07</span><span class="key__l">Réponses qui reviennent</span></button></li>
-          <li><button type="button" class="key key--turquoise" aria-pressed="false" data-key="08"><span class="key__n">08</span><span class="key__l">Traduction</span></button></li>
-        </ul>
-        <div class="ring" data-ring>
-          <div class="ring__hang" aria-hidden="true">
-            <svg class="ring__svg" viewBox="0 0 48 48"><circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" stroke-width="3.5"/></svg>
-            <ul class="ring__keys" data-ring-keys></ul>
-          </div>
-          <p class="ring__count" aria-live="polite" data-ring-count>Votre trousseau est vide.</p>
-          <a class="cta" href="#devis" data-ring-cta data-cta-zero="Demander une journée" data-cta-one="Demander cette clé" data-cta-many="Demander ces {n} clés">Demander une journée</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================ ce que fait une clé -->
-  <section class="demo" id="exemple">
+  <section class="hall" aria-labelledby="titre">
     <div class="wrap">
-      <h2 class="sect-h">Rien ne part sans votre relecture.</h2>
-      <p class="sect-l">Chaque clé installée fait le premier jet à partir de vos propres documents. Il arrive qu'elle se trompe : c'est une personne de votre équipe qui corrige et qui valide. Essayez.</p>
+      <h1 id="titre">Former, conseiller, construire.</h1>
+      <p class="hall__l">Serious Labs est une société parisienne. Elle forme les petites équipes à l'IA, conseille les opérateurs de jeux d'argent en ligne, et construit ses propres outils. Ses réalisations sont inscrites ici.</p>
 
-      <div class="sheet" data-demo>
-        <div class="sheet__pick" role="tablist" aria-label="Choisir une clé">
-          <button type="button" role="tab" class="pick key--rouge" aria-selected="false" data-demo-key="01">01</button>
-          <button type="button" role="tab" class="pick key--jaune" aria-selected="false" data-demo-key="02">02</button>
-          <button type="button" role="tab" class="pick key--vert" aria-selected="true" data-demo-key="03">03</button>
-          <button type="button" role="tab" class="pick key--bleu" aria-selected="false" data-demo-key="04">04</button>
-          <button type="button" role="tab" class="pick key--orange" aria-selected="false" data-demo-key="05">05</button>
-          <button type="button" role="tab" class="pick key--violet" aria-selected="false" data-demo-key="06">06</button>
-          <button type="button" role="tab" class="pick key--blanc" aria-selected="false" data-demo-key="07">07</button>
-          <button type="button" role="tab" class="pick key--turquoise" aria-selected="false" data-demo-key="08">08</button>
-        </div>
-
-        <div class="sheet__body" role="tabpanel" aria-live="polite">
-          <h3 class="sheet__t" data-demo-title>Factures et relances</h3>
-          <p class="sheet__ex">Exemple fictif</p>
-          <div class="sheet__cols">
-            <div>
-              <p class="sheet__k">Vous donnez</p>
-              <p class="sheet__in" data-demo-in>La liste des factures échues depuis plus de trente jours.</p>
-            </div>
-            <div>
-              <p class="sheet__k">L'outil prépare, vous corrigez</p>
-              <p class="sheet__draft" data-demo-draft>Madame, sauf erreur de notre part, la facture n° 2026-118 du 14 septembre reste impayée. Nous vous remercions d'en effectuer le règlement <del>sous huitaine</del> <ins>avant le 15 novembre</ins>.</p>
-            </div>
+      <ol class="acts">
+        <li class="act">
+          <p class="act__date">Depuis <span class="sten">2026</span></p>
+          <div class="act__body">
+            <h2 class="act__name"><a href="/formation/">Formation IA</a></h2>
+            <p class="act__line">Une journée dans vos locaux, quatre personnes au plus. On forme le matin, on installe les outils l'après-midi, et ils restent à vous.</p>
           </div>
-          <div class="sheet__sign">
-            <label class="check"><input type="checkbox" data-demo-check> <span>J'ai relu et corrigé</span></label>
-            <button type="button" class="send" disabled data-demo-send data-sent="Validé par vous : il peut partir." data-fix="Un passage est faux. Touchez-le pour le corriger." data-fixed="Corrigé. Relisez, cochez, puis validez.">Valider</button>
-            <p class="sheet__state" data-demo-state aria-live="polite">En attente de votre relecture.</p>
+          <ul class="act__facts">
+            <li>Paris et Île-de-France</li>
+            <li>Budget interne, sans OPCO</li>
+            <li>Qualiopi en cours</li>
+          </ul>
+          <span class="cta act__go" aria-hidden="true">Voir la formation</span>
+        </li>
+        <li class="act">
+          <p class="act__date">Métier depuis <span class="sten">2010</span></p>
+          <div class="act__body">
+            <h2 class="act__name"><a href="https://seriouslabs-consulting.com/">Conseil iGaming</a></h2>
+            <p class="act__line">Stratégie, réglementation et intégrité du jeu pour les opérateurs de jeux d'argent, par Antoine Dugast : participation aux lancements de PokerStars.fr et .es, internalisation du poker chez Betclic.</p>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Les huit exemples, lus par le script. Sans lui, l'exemple 03 reste affiché. -->
-    <template data-demo-data>
-      <div data-k="01" data-t="Lettres et courriels" data-in="Le message d'une cliente mécontente et trois mots : on s'excuse, on rembourse le port.">Madame, nous avons bien reçu votre message du 12 et regrettons ce retard de livraison. <del>Nous vous offrons un bon d'achat de 10 %</del> <ins>Nous vous remboursons les frais de port</ins>, qui figureront sur votre prochain relevé.</div>
-      <div data-k="02" data-t="Devis et propositions" data-in="Le devis de mars pour le même client, et la nouvelle surface : 140 m² au lieu de 95.">Reprise du devis de mars, surface portée à 140 m². Délai d'exécution : <del>trois semaines</del> <ins>cinq semaines</ins>, compte tenu de la surface. Les autres conditions sont inchangées.</div>
-      <div data-k="03" data-t="Factures et relances" data-in="La liste des factures échues depuis plus de trente jours.">Madame, sauf erreur de notre part, la facture n° 2026-118 du 14 septembre reste impayée. Nous vous remercions d'en effectuer le règlement <del>sous huitaine</del> <ins>avant le 15 novembre</ins>.</div>
-      <div data-k="04" data-t="Recherche et synthèse" data-in="Quarante pages de comptes rendus de chantier, et une question : qu'est-ce qui bloque ?">Trois points bloquent : la livraison des menuiseries, prévue semaine 46 ; l'avis du bureau de contrôle sur la dalle ; <del>le permis modificatif</del> <ins>la validation de la teinte par le client</ins>.</div>
-      <div data-k="05" data-t="Contrats et documents types" data-in="Votre modèle de lettre de mission et la fiche du nouveau client.">Lettre de mission. Honoraires annuels selon le barème du cabinet, payables par mensualités. Durée : <del>trois ans</del> <ins>un an, renouvelable par tacite reconduction</ins>.</div>
-      <div data-k="06" data-t="Tableaux de bord" data-in="L'export du logiciel de facturation pour octobre.">Octobre : 41 factures émises, dont 6 en retard de plus de trente jours <del>et 2 en litige</del> <ins>et 1 en litige</ins>. Le retard moyen baisse par rapport à septembre.</div>
-      <div data-k="07" data-t="Réponses qui reviennent" data-in="La question posée dix fois par semaine : quelles pièces pour la déclaration ?">Bonjour, pour votre déclaration, il nous faut vos relevés bancaires de l'année, <del>votre avis d'imposition</del> <ins>votre dernier avis d'imposition</ins> et les justificatifs de vos frais.</div>
-      <div data-k="08" data-t="Traduction" data-in="La présentation du cabinet, pour un prospect installé à Londres.">Dear Ms Becker, please find attached <del>our tariffs</del> <ins>our fee schedule</ins> for 2027, together with a short presentation of the firm.</div>
-    </template>
-  </section>
-
-  <!-- ===================================================== la journée -->
-  <section class="day" id="journee">
-    <div class="wrap">
-      <h2 class="sect-h">La remise des clés, en une journée.</h2>
-      <p class="sect-l">C'est le programme qu'un organisme de formation établit avant toute intervention. Le voici, pour que vous sachiez à quoi vous vous engagez avant d'écrire.</p>
-    </div>
-
-    <figure class="day__film">
-      <video class="film" muted loop playsinline preload="none"
-             poster="/assets/video/matin-table.jpg"
-             data-film="/assets/video/matin-table.mp4"
-             aria-hidden="true"></video>
-      <figcaption class="wrap">La formation : quatre participants, une personne qui explique. Scène de synthèse.</figcaption>
-      <button type="button" class="film__stop" hidden aria-pressed="false"
-              data-arret data-arret-stop="Arrêter la vidéo" data-arret-relance="Relancer la vidéo">Arrêter la vidéo</button>
-    </figure>
-
-    <div class="wrap">
-      <ol class="steps">
-        <li>
-          <p class="steps__when">Avant <span>45 min, à distance</span></p>
-          <h3>On prend les mesures</h3>
-          <p>Un appel pour repérer ce qui vous prend du temps et récupérer vos documents de travail. Sans eux, la journée se passerait sur des exemples.</p>
-        </li>
-        <li>
-          <p class="steps__when">Le matin <span>3 h 30, chez vous</span></p>
-          <h3>On apprend à se servir des outils</h3>
-          <p>Quatre personnes au maximum, sur les dossiers en cours, sans prérequis technique. Au-delà de quatre, on répartit sur plusieurs journées.</p>
-        </li>
-        <li>
-          <p class="steps__when">L'après-midi <span>3 h 30, chez vous</span></p>
-          <h3>On taille vos clés</h3>
-          <p>Les outils sont installés et configurés sur vos postes, branchés sur vos dossiers et vos modèles. Aucun n'envoie quoi que ce soit tout seul.</p>
-        </li>
-        <li>
-          <p class="steps__when">À trente jours <span>à distance</span></p>
-          <h3>On lève les réserves</h3>
-          <p>On regarde ce qui sert encore. Un outil qui ne sert à personne est repris, ou retiré.</p>
+          <ul class="act__facts">
+            <li>Licences et conformité</li>
+            <li>KYC et LBC-FT</li>
+            <li>Intégrité du jeu</li>
+          </ul>
+          <span class="cta act__go" aria-hidden="true">Voir le conseil<svg class="ico" aria-hidden="true"><use href="/assets/img/poincons.svg#sortie"/></svg></span>
         </li>
       </ol>
-      <p class="steps__total">Total sur place : <b>7 h</b></p>
     </div>
   </section>
 
-  <!-- ===================================================== à vous -->
-  <section class="own" id="a-vous">
+  <section class="reg" id="registre" aria-labelledby="registre-h">
     <div class="wrap">
-      <h2 class="claim">Aucun document ne sort de chez vous sans qu'une personne de votre équipe l'ait relu et signé.</h2>
-      <div class="own__grid">
-        <div>
-          <h3 class="own__h">Les clés sont à vous.</h3>
-          <p class="own__p">Les outils restent sur vos postes, branchés sur vos dossiers. Ni plateforme à louer, ni consultant qui revient tous les mardis.</p>
-        </div>
-        <div>
-          <dl class="specs">
-            <div><dt>Propriété des outils</dt><dd>Vous</dd></div>
-            <div><dt>Abonnement chez nous</dt><dd>Aucun</dd></div>
-            <div><dt>Document envoyé sans relecture</dt><dd>Aucun</dd></div>
-            <div><dt>Convention et programme</dt><dd>Avant</dd></div>
-            <div><dt>Feuille d'émargement</dt><dd>Le jour même</dd></div>
-            <div><dt>Attestation de fin</dt><dd>À l'issue</dd></div>
-          </dl>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================== budget -->
-  <section id="budget">
-    <div class="wrap two">
-      <div>
-        <h2 class="sect-h">Ça entre dans votre budget formation.</h2>
-        <p class="sect-l">L'intervention prend la forme d'une journée de formation professionnelle, dans vos locaux, sur vos dossiers. Elle se règle sur votre budget formation interne.</p>
-      </div>
-      <div>
-        <dl class="specs">
-          <div><dt>Nature</dt><dd>Action de formation</dd></div>
-          <div><dt>Modalité</dt><dd>Présentiel, intra-entreprise</dd></div>
-          <div><dt>Durée retenue</dt><dd>7 h</dd></div>
-          <div><dt>Qualiopi</dt><dd>En cours</dd></div>
-          <div><dt>Déclaration d'activité</dt><dd>En cours</dd></div>
-          <div><dt>Prise en charge OPCO</dt><dd>Pas à ce jour</dd></div>
-        </dl>
-        <p class="note">Tant que la certification et la déclaration ne sont pas acquises, aucune prise en charge par un OPCO n'est possible. Le dire ici vous évite de le découvrir au moment de monter le dossier.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================= demande -->
-  <section id="devis" class="ask">
-    <div class="wrap two">
-      <div>
-        <h2 class="sect-h">Dites-nous ce qui vous prend du temps.</h2>
-        <p class="sect-l">Réponse sous un jour ouvré, par la personne qui viendra. Pas de rendez-vous commercial obligatoire.</p>
-        <dl class="specs specs--price">
-          <div><dt>La journée</dt><dd>Sur devis</dd></div>
-          <div><dt>Compris</dt><dd>Cadrage et point à 30 jours</dd></div>
-        </dl>
+      <div class="reg__head">
+        <h2 class="sect-h" id="registre-h">Réalisations</h2>
+        <p class="sect-l">Ce que Serious Labs a construit, du plus récent au plus ancien. Trois réalisations ne sont pas publiques : elles sont décrites ici, pas ouvertes.</p>
       </div>
 
-      <form class="form" data-contact-form action="/api/contact.php" method="post" novalidate>
-        <div class="f f--wide">
-          <label for="f-nom">Votre nom <span class="req" aria-hidden="true">*</span></label>
-          <input type="text" id="f-nom" name="nom" required autocomplete="name" maxlength="120">
-        </div>
-        <div class="f f--wide">
-          <label for="f-societe">Votre structure <span class="req" aria-hidden="true">*</span></label>
-          <input type="text" id="f-societe" name="societe" required autocomplete="organization" maxlength="160">
-        </div>
-        <div class="f f--wide">
-          <label for="f-email">Courriel professionnel <span class="req" aria-hidden="true">*</span></label>
-          <input type="email" id="f-email" name="email" required autocomplete="email" maxlength="200">
-        </div>
-        <div class="f">
-          <label for="f-tel">Téléphone, facultatif</label>
-          <input type="tel" id="f-tel" name="telephone" autocomplete="tel" maxlength="40">
-        </div>
-        <div class="f">
-          <label for="f-effectif">Effectif</label>
-          <input type="number" id="f-effectif" name="effectif" min="1" max="2000" value="8" inputmode="numeric">
-        </div>
-        <div class="f f--wide">
-          <label for="f-secteur">Votre secteur</label>
-          <select id="f-secteur" name="secteur">
-            <option value="">Choisir…</option>
-            <option>Expertise comptable</option>
-            <option>Avocats et juridique</option>
-            <option>Agence et communication</option>
-            <option>Bureau d'études et ingénierie</option>
-            <option>Artisanat et bâtiment</option>
-            <option>Commerce et distribution</option>
-            <option>Santé et professions libérales</option>
-            <option>Autre</option>
-          </select>
-        </div>
-        <div class="f f--wide">
-          <label for="f-message">Ce qui vous prend le plus de temps aujourd'hui <span class="req" aria-hidden="true">*</span></label>
-          <p class="f__keys" data-form-keys hidden></p>
-          <textarea id="f-message" name="message" required maxlength="4000" placeholder="Par exemple : on relance les impayés au coup par coup, ou il faut deux heures pour sortir un compte rendu de réunion."></textarea>
-        </div>
+      <div class="reg__grid">
+        <ol class="entries" data-entries>
 
-        <div class="pot" aria-hidden="true">
-          <label for="f-site">Ne pas remplir ce champ</label>
-          <input type="text" id="f-site" name="site_web" tabindex="-1" autocomplete="off">
-        </div>
-        <input type="hidden" name="ts" value="">
+          <li class="entry" data-shot="/assets/img/registre/breakout-hebdo.webp" data-mark="breakout">
+            <time class="entry__date" datetime="2026-10">10.2026</time>
+            <svg class="entry__mark" aria-hidden="true"><use href="/assets/img/poincons.svg#breakout"/></svg>
+            <div class="entry__body">
+              <h3 class="entry__name">Breakout Hebdo</h3>
+              <p class="entry__what">Chaque semaine, les vidéos YouTube francophones qui ont fait nettement mieux que d'habitude pour leur chaîne, et pourquoi. Présentée par une voix de synthèse.</p>
+              <img class="entry__shot" src="/assets/img/registre/breakout-hebdo.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+            </div>
+            <p class="entry__kind">Chaîne YouTube</p>
+            <a class="entry__go" href="https://www.youtube.com/@BreakoutHebdo" rel="noopener">Ouvrir<span class="pot"> Breakout Hebdo sur YouTube</span><svg class="ico" aria-hidden="true"><use href="/assets/img/poincons.svg#sortie"/></svg></a>
+          </li>
 
-        <label class="consent f--wide">
-          <input type="checkbox" name="consentement" required>
-          <span>J'accepte que ces informations soient utilisées pour me recontacter. Elles ne sont ni revendues ni transmises à un tiers. <a href="/mentions-legales.html">En savoir plus</a></span>
-        </label>
+          <li class="entry" data-shot="/assets/img/registre/cartographie.webp" data-mark="cartographie">
+            <time class="entry__date" datetime="2026-10">10.2026</time>
+            <svg class="entry__mark" aria-hidden="true"><use href="/assets/img/poincons.svg#cartographie"/></svg>
+            <div class="entry__body">
+              <h3 class="entry__name">Cartographie des jeux d'argent en ligne</h3>
+              <p class="entry__what">Opérateurs, sites, moyens de paiement et réseaux d'affiliation des jeux d'argent en ligne en France, chaque donnée rattachée à sa source. Réalisée pour les-enjeux.com.</p>
+              <img class="entry__shot" src="/assets/img/registre/cartographie.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+            </div>
+            <p class="entry__kind">Wiki documentaire</p>
+            <a class="entry__go" href="https://regtech.seriouslabs.tech/">Ouvrir<span class="pot"> la Cartographie des jeux d'argent en ligne</span><svg class="ico" aria-hidden="true"><use href="/assets/img/poincons.svg#sortie"/></svg></a>
+          </li>
 
-        <div class="f f--wide">
-          <button class="cta" type="submit">Envoyer la demande</button>
-        </div>
-        <p class="reply f--wide" data-status role="status" hidden></p>
-      </form>
+          <li class="entry" data-shot="/assets/img/registre/transpo.webp" data-mark="transpo">
+            <time class="entry__date" datetime="2026-09">09.2026</time>
+            <svg class="entry__mark" aria-hidden="true"><use href="/assets/img/poincons.svg#transpo"/></svg>
+            <div class="entry__body">
+              <h3 class="entry__name">transpo</h3>
+              <p class="entry__what">Transpose une partition PDF dans une autre tonalité. Gravée, elle garde sa mise en page ; numérisée, elle est relue puis regravée.</p>
+              <img class="entry__shot" src="/assets/img/registre/transpo.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+            </div>
+            <p class="entry__kind">Outil en ligne</p>
+            <a class="entry__go" href="https://transpose.seriouslabs.tech/">Ouvrir<span class="pot"> transpo</span><svg class="ico" aria-hidden="true"><use href="/assets/img/poincons.svg#sortie"/></svg></a>
+          </li>
+
+          <li class="entry" data-shot="/assets/img/registre/levelum.webp" data-mark="levelum">
+            <time class="entry__date" datetime="2026-09">09.2026</time>
+            <svg class="entry__mark" aria-hidden="true"><use href="/assets/img/poincons.svg#levelum"/></svg>
+            <div class="entry__body">
+              <h3 class="entry__name">LEVELUM</h3>
+              <p class="entry__what">Le site d'une boutique de protection du domicile contre le survol de drones : filet tendu, toile occultante, station de veille.</p>
+              <img class="entry__shot" src="/assets/img/registre/levelum.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+            </div>
+            <p class="entry__kind">Site marchand</p>
+            <a class="entry__go" href="https://antidrones.seriouslabs.tech/">Ouvrir<span class="pot"> le site LEVELUM</span><svg class="ico" aria-hidden="true"><use href="/assets/img/poincons.svg#sortie"/></svg></a>
+          </li>
+
+          <li class="entry" data-shot="/assets/img/registre/lovecraft.webp" data-mark="lovecraft">
+            <time class="entry__date" datetime="2026-09">09.2026</time>
+            <svg class="entry__mark" aria-hidden="true"><use href="/assets/img/poincons.svg#lovecraft"/></svg>
+            <div class="entry__body">
+              <h3 class="entry__name">Wiki Lovecraft</h3>
+              <p class="entry__what">Le recoupement de l'œuvre de H. P. Lovecraft, adossé au texte intégral : une fiche par créature, lieu, livre et personnage.</p>
+              <img class="entry__shot" src="/assets/img/registre/lovecraft.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+            </div>
+            <p class="entry__kind">Wiki</p>
+            <a class="entry__go" href="https://lovecraft.seriouslabs.tech/">Ouvrir<span class="pot"> le Wiki Lovecraft</span><svg class="ico" aria-hidden="true"><use href="/assets/img/poincons.svg#sortie"/></svg></a>
+          </li>
+
+          <li class="entry entry--private" data-mark="scanpoker">
+            <time class="entry__date" datetime="2026-09">09.2026</time>
+            <svg class="entry__mark" aria-hidden="true"><use href="/assets/img/poincons.svg#scanpoker"/></svg>
+            <div class="entry__body">
+              <h3 class="entry__name">ScanPoker</h3>
+              <p class="entry__what">Le calendrier des tournois de poker francophones, live et en ligne, relevé sur les sources officielles.</p>
+            </div>
+            <p class="entry__kind">Outil en ligne</p>
+            <p class="entry__go entry__go--off">Accès privé</p>
+          </li>
+
+          <li class="entry entry--private" data-mark="soldout">
+            <time class="entry__date" datetime="2026-08">08.2026</time>
+            <svg class="entry__mark" aria-hidden="true"><use href="/assets/img/poincons.svg#soldout"/></svg>
+            <div class="entry__body">
+              <h3 class="entry__name">Sold-Out Tracker</h3>
+              <p class="entry__what">Un outil de repérage d'artistes : il suit, événement par événement, le moment où chaque catégorie de billets s'épuise.</p>
+            </div>
+            <p class="entry__kind">Outil interne</p>
+            <p class="entry__go entry__go--off">Accès privé</p>
+          </li>
+
+          <li class="entry" data-shot="/assets/img/registre/architectes.webp" data-mark="architectes">
+            <time class="entry__date" datetime="2026-08">08.2026</time>
+            <svg class="entry__mark" aria-hidden="true"><use href="/assets/img/poincons.svg#architectes"/></svg>
+            <div class="entry__body">
+              <h3 class="entry__name">Dictionnaire des architectes de Paris</h3>
+              <p class="entry__what">Le dépouillement des permis de construire parisiens par Anne Dugast et Isabelle Parizet, mis en ligne : 3 224 architectes et 17 720 adresses sur la carte.</p>
+              <img class="entry__shot" src="/assets/img/registre/architectes.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+            </div>
+            <p class="entry__kind">Édition en ligne</p>
+            <a class="entry__go" href="https://archi.seriouslabs.tech/">Ouvrir<span class="pot"> le Dictionnaire des architectes de Paris</span><svg class="ico" aria-hidden="true"><use href="/assets/img/poincons.svg#sortie"/></svg></a>
+          </li>
+
+          <li class="entry" data-shot="/assets/img/registre/journal.webp" data-mark="journal">
+            <time class="entry__date" datetime="2026-08">08.2026</time>
+            <svg class="entry__mark" aria-hidden="true"><use href="/assets/img/poincons.svg#journal"/></svg>
+            <div class="entry__body">
+              <h3 class="entry__name">Journal d'Andrée Potier</h3>
+              <p class="entry__what">Le journal tenu par Andrée Potier de 1917 à 1954 en Vendée, retranscrit par sa fille, l'historienne Anne Dugast, en édition numérique.</p>
+              <img class="entry__shot" src="/assets/img/registre/journal.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+            </div>
+            <p class="entry__kind">Édition en ligne</p>
+            <a class="entry__go" href="https://journal.seriouslabs.tech/">Ouvrir<span class="pot"> le Journal d'Andrée Potier</span><svg class="ico" aria-hidden="true"><use href="/assets/img/poincons.svg#sortie"/></svg></a>
+          </li>
+
+          <li class="entry" data-shot="/assets/img/registre/tableau.webp" data-mark="tableau">
+            <time class="entry__date" datetime="2026-03">03.2026</time>
+            <svg class="entry__mark" aria-hidden="true"><use href="/assets/img/poincons.svg#tableau"/></svg>
+            <div class="entry__body">
+              <h3 class="entry__name">Tableau de bord du jeu en ligne</h3>
+              <p class="entry__what">Le marché français des jeux en ligne d'après les données publiques de l'ANJ : produit brut des jeux, mises, joueurs actifs, interdictions volontaires, par segment et par département.</p>
+              <img class="entry__shot" src="/assets/img/registre/tableau.webp" alt="" width="960" height="600" loading="lazy" decoding="async">
+            </div>
+            <p class="entry__kind">Données</p>
+            <a class="entry__go" href="https://data.seriouslabs-consulting.com/">Ouvrir<span class="pot"> le Tableau de bord du jeu en ligne</span><svg class="ico" aria-hidden="true"><use href="/assets/img/poincons.svg#sortie"/></svg></a>
+          </li>
+
+          <li class="entry entry--private" data-mark="alphadash">
+            <time class="entry__date" datetime="2026-03">03.2026</time>
+            <svg class="entry__mark" aria-hidden="true"><use href="/assets/img/poincons.svg#alphadash"/></svg>
+            <div class="entry__body">
+              <h3 class="entry__name">AlphaDash</h3>
+              <p class="entry__what">Un jeu de lettres pour mobile, en multijoueur asynchrone : défis entre amis, mode zen et puzzles.</p>
+            </div>
+            <p class="entry__kind">Jeu mobile</p>
+            <p class="entry__go entry__go--off">Pas de lien public</p>
+          </li>
+
+        </ol>
+
+        <figure class="peek" data-peek aria-hidden="true">
+          <div class="peek__screen">
+            <img class="peek__img" data-peek-img src="/assets/img/registre/breakout-hebdo.webp" alt="" width="960" height="600">
+            <svg class="peek__mark" data-peek-mark><use href="/assets/img/poincons.svg#breakout"/></svg>
+          </div>
+          <figcaption class="peek__cap"><span data-peek-name>Breakout Hebdo</span><span class="peek__note" data-peek-note></span></figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
 </main>
-
-<div class="dock" data-dock hidden>
-  <p data-dock-count></p>
-  <a class="cta cta--sm" href="#devis" data-dock-cta>Demander</a>
-</div>
 
 <footer class="foot">
   <div class="wrap">
     <div class="foot__top">
       <div>
         <a class="mark" href="/" aria-label="Serious Labs, accueil"><img src="/assets/img/logo.svg" alt="" width="15" height="21"><span>Serious Labs</span></a>
-        <p class="foot__claim">Tout ce qu'on installe reste chez vous.</p>
+        <p class="foot__claim">Former, conseiller, construire.</p>
       </div>
       <nav class="foot__links" aria-label="Liens de pied de page">
-        <a href="#journee">La journée</a>
-        <a href="#devis">Demander une journée</a>
+        <a href="/formation/">Formation IA</a>
+        <a href="https://seriouslabs-consulting.com/">Conseil iGaming</a>
         <a href="/mentions-legales.html">Mentions légales</a>
         <a href="/en/" hreflang="en" lang="en">English</a>
       </nav>
     </div>
     <div class="foot__bar">
-      <p>© <span data-year>2026</span> SERIOUS LABS SAS, 12 rue Juliette Dodu, 75010 Paris</p>
+      <p>© 2026 SERIOUS LABS SAS, 12 rue Juliette Dodu, 75010 Paris</p>
       <p>SIRET <span class="typed">988 917 209 00013</span> · <a href="mailto:contact@seriouslabs.tech">contact@seriouslabs.tech</a> · Aucun cookie, aucun traceur.</p>
     </div>
   </div>

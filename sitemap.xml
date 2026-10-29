@@ -15,6 +15,20 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://seriouslabs.tech/formation/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://seriouslabs.tech/formation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seriouslabs.tech/en/training/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://seriouslabs.tech/en/training/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://seriouslabs.tech/formation/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seriouslabs.tech/en/training/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url><loc>https://seriouslabs.tech/mentions-legales.html</loc><priority>0.2</priority></url>
   <url><loc>https://seriouslabs.tech/en/legal.html</loc><priority>0.2</priority></url>
 </urlset>

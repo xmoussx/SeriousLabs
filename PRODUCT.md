@@ -36,6 +36,26 @@ Zone d'intervention affichée : Paris et Île-de-France en présentiel, le reste
 
 Le premier contact se fait par un formulaire ou par courriel. La promesse de réponse est d'un jour ouvré, sans rendez-vous commercial obligatoire.
 
+## Site Map
+
+Depuis le 29.10.2026, la racine de seriouslabs.tech est la **page d'accueil
+de la société**, au-dessus de ses activités, dans l'ordre voulu par le client :
+la formation (déplacée à `/formation/` et `/en/training/`, les anciennes ancres
+`/#devis` y sont renvoyées), puis le conseil iGaming
+(seriouslabs-consulting.com), puis le registre des réalisations.
+
+Réalisations validées par le client : Breakout Hebdo, Cartographie des jeux
+d'argent en ligne, Tableau de bord du jeu en ligne, transpo, Wiki Lovecraft,
+Dictionnaire des architectes de Paris, Journal d'Andrée Potier, AlphaDash,
+ScanPoker, Sold-Out Tracker, LEVELUM. **Sans lien** : AlphaDash, ScanPoker,
+Sold-Out Tracker. **Exclus** : Game of Rôles (pas d'accord des ayants droit),
+Filigrane (abandonné), les-enjeux.com (média dont Antoine est auteur, pas un
+projet Serious Labs). Aucune audience affichée.
+
+L'expérience du conseil (PokerStars 2010 et 2013, Betclic 2024) est celle
+d'Antoine Dugast, pas de la SAS, récente : la page dit « participation aux
+lancements » et l'attribue à lui.
+
 ## Capabilities and Constraints
 
 - Site statique, sans étape de compilation : HTML, CSS et JavaScript écrits à la main, servis par nginx depuis un VPS dont le client est propriétaire.

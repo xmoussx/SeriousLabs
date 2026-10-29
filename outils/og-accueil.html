@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Image de partage de l'accueil</title>
+<!-- Rendu en 1200 × 630 par outils/og.py pour produire assets/img/og-accueil-*.png.
+     Non déployé : sert uniquement à fabriquer les images de partage. -->
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/accueil.css">
+<style>
+  body { width: 1200px; height: 630px; overflow: hidden; }
+  .og { display: flex; flex-direction: column; justify-content: center; height: 630px; padding: 0 80px; }
+  .og .mark { margin-bottom: 44px; }
+  .og h1 { font-size: 112px; line-height: 1.06; max-width: none; }
+  .og p { margin-top: 28px; color: var(--ink-2); font-size: 26px; line-height: 1.35; max-width: 44ch; }
+  .og ul { display: flex; gap: 14px; margin-top: 52px; padding-top: 28px; border-top: 2px solid var(--brass); }
+  .og li svg { width: 64px; height: 64px; padding: 11px; border: 1px solid var(--rule); color: var(--brass); }
+</style>
+</head>
+<body>
+<div class="og">
+  <span class="mark"><img src="/assets/img/logo.svg" alt="" width="20" height="28"><span>Serious Labs</span></span>
+  <h1 data-t></h1>
+  <p data-p></p>
+  <ul>
+    <li><svg><use href="/assets/img/poincons.svg#breakout"/></svg></li>
+    <li><svg><use href="/assets/img/poincons.svg#cartographie"/></svg></li>
+    <li><svg><use href="/assets/img/poincons.svg#transpo"/></svg></li>
+    <li><svg><use href="/assets/img/poincons.svg#levelum"/></svg></li>
+    <li><svg><use href="/assets/img/poincons.svg#lovecraft"/></svg></li>
+    <li><svg><use href="/assets/img/poincons.svg#scanpoker"/></svg></li>
+    <li><svg><use href="/assets/img/poincons.svg#soldout"/></svg></li>
+    <li><svg><use href="/assets/img/poincons.svg#architectes"/></svg></li>
+    <li><svg><use href="/assets/img/poincons.svg#journal"/></svg></li>
+    <li><svg><use href="/assets/img/poincons.svg#tableau"/></svg></li>
+    <li><svg><use href="/assets/img/poincons.svg#alphadash"/></svg></li>
+  </ul>
+</div>
+</body>
+</html>

@@ -18,6 +18,7 @@ TARGET="/var/www/seriouslabs"
 # Tout ce qui compose le site, et rien d'autre.
 CONTENU=(
   index.html
+  formation
   mentions-legales.html
   robots.txt
   sitemap.xml
@@ -82,9 +83,11 @@ sudo nginx -t
 sudo systemctl reload nginx
 
 echo "Déployé. Vérification :"
-for chemin in / /en/ /mentions-legales.html /en/legal.html /robots.txt /sitemap.xml \
+for chemin in / /en/ /formation/ /en/training/ /mentions-legales.html /en/legal.html /robots.txt /sitemap.xml \
               /googleb56e9726ff2adfff.html /assets/img/logo.svg \
               /assets/img/favicon.svg /assets/img/og-fr.png /assets/img/og-en.png \
+              /assets/img/og-accueil-fr.png /assets/img/poincons.svg \
+              /assets/img/registre/transpo.webp /assets/js/accueil.js \
               /assets/video/matin-table.jpg /assets/video/matin-table.mp4 \
               /assets/fonts/big-shoulders-latin.woff2 /assets/fonts/atkinson-latin.woff2 \
               /api/contact.php; do

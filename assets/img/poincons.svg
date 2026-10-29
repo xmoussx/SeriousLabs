@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<!-- Les poinçons du registre : un pictogramme par réalisation, au trait,
+     dans une seule grammaire (grille de 48, trait 2,4, bouts ronds).
+     Attributs de présentation plutôt que <style> : la politique de sécurité
+     du site refuse les styles en ligne.
+     LEVELUM garde le tracé de sa propre marque, redessiné à cette échelle. -->
+<symbol id="breakout" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M30 15H7v24h26V25"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 33l7-7 5 4 17-19"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M32 11h9v9"/>
+</symbol>
+
+<symbol id="cartographie" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 12l12-5 12 5 12-5v29l-12 5-12-5-12 5z"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M18 7v29M30 12v29"/>
+</symbol>
+
+<symbol id="tableau" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M7 7v34h34"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M15 34v-8M23 34V18M31 34V12M39 34v-5"/>
+</symbol>
+
+<symbol id="transpo" viewBox="0 0 48 48">
+  <ellipse fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" cx="15" cy="35" rx="6" ry="4.4" transform="rotate(-20 15 35)"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M20.6 33.4V8c3 4 8 5 8 11"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M37 8v13M32.5 12.5L37 8l4.5 4.5M37 27v13M32.5 35.5L37 40l4.5-4.5"/>
+</symbol>
+
+<symbol id="lovecraft" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M9 42c-1-13 6-25 18-29 8-3 14 2 13 8-1 5-7 7-10 4-3-2-1-6 2-5"/>
+  <circle fill="currentColor" cx="15.5" cy="32" r="1.7"/>
+  <circle fill="currentColor" cx="20" cy="23.5" r="1.7"/>
+  <circle fill="currentColor" cx="27.5" cy="18.5" r="1.7"/>
+</symbol>
+
+<symbol id="architectes" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 17L24 7l18 10z"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M11 21v15M19 21v15M29 21v15M37 21v15M6 40h36"/>
+</symbol>
+
+<symbol id="journal" viewBox="0 0 48 48">
+  <rect fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" x="10" y="6" width="27" height="36" rx="1.5"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M16 6v36M22 15h10M22 21h10M22 27h6"/>
+</symbol>
+
+<symbol id="alphadash" viewBox="0 0 48 48">
+  <rect fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" x="6" y="6" width="16" height="16" rx="2"/>
+  <rect fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" x="26" y="6" width="16" height="16" rx="2"/>
+  <rect fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" x="6" y="26" width="16" height="16" rx="2"/>
+  <rect fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" x="26" y="26" width="16" height="16" rx="2"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M10.5 18.5L14 9.5l3.5 9M11.8 15.2h4.4"/>
+</symbol>
+
+<symbol id="scanpoker" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M24 7c-4 7-14 12-14 20 0 5 6 8 11 4l-2 9h10l-2-9c5 4 11 1 11-4 0-8-10-13-14-20z"/>
+</symbol>
+
+<symbol id="soldout" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M6 14h36v6a4 4 0 000 8v6H6v-6a4 4 0 000-8z"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M31 14v3M31 22.5v3M31 31v3"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 24.5l3.5 3.5L23 20"/>
+</symbol>
+
+<symbol id="levelum" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M24 5l19 19-19 19L5 24z"/>
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M14.5 14.5l19 19M33.5 14.5l-19 19"/>
+  <circle fill="currentColor" cx="24" cy="5" r="2.3"/><circle fill="currentColor" cx="43" cy="24" r="2.3"/>
+  <circle fill="currentColor" cx="24" cy="43" r="2.3"/><circle fill="currentColor" cx="5" cy="24" r="2.3"/>
+  <circle fill="currentColor" cx="33.5" cy="14.5" r="2.3"/><circle fill="currentColor" cx="33.5" cy="33.5" r="2.3"/>
+  <circle fill="currentColor" cx="14.5" cy="33.5" r="2.3"/><circle fill="currentColor" cx="14.5" cy="14.5" r="2.3"/>
+</symbol>
+
+<symbol id="sortie" viewBox="0 0 48 48">
+  <path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M14 34L34 14M19 14h15v15"/>
+</symbol>
+</svg>

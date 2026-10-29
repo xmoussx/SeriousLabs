@@ -1,42 +1,246 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-29T09:10:00Z",
+  "generatedAt": "2026-10-29T14:43:45Z",
   "title": "Design System: Serious Labs",
   "extensions": {
     "colorMeta": {
-      "steel": { "role": "neutral", "displayName": "Acier émaillé", "tonalRamp": ["#131518", "#1b1e22", "#23272c", "#353b42"] },
-      "brass": { "role": "primary", "displayName": "Laiton", "tonalRamp": ["#a77f2f", "#d4a64a", "#e7c37a"] },
-      "paper": { "role": "neutral", "displayName": "Papier d'étiquette" },
-      "rouge": { "role": "tertiary", "displayName": "Plastique rouge" },
-      "jaune": { "role": "tertiary", "displayName": "Plastique jaune" },
-      "vert": { "role": "tertiary", "displayName": "Plastique vert" },
-      "bleu": { "role": "tertiary", "displayName": "Plastique bleu" },
-      "orange": { "role": "tertiary", "displayName": "Plastique orange" },
-      "violet": { "role": "tertiary", "displayName": "Plastique violet" },
-      "turquoise": { "role": "tertiary", "displayName": "Plastique turquoise" },
-      "blanc": { "role": "tertiary", "displayName": "Plastique blanc" }
+      "brass": {
+        "role": "primary",
+        "displayName": "Laiton",
+        "tonalRamp": [
+          "#a77f2f",
+          "#d4a64a",
+          "#e7c37a"
+        ]
+      },
+      "brass-2": {
+        "role": "primary",
+        "displayName": "Laiton poli"
+      },
+      "steel": {
+        "role": "neutral",
+        "displayName": "Acier émaillé",
+        "tonalRamp": [
+          "#131518",
+          "#1b1e22",
+          "#23272c",
+          "#353b42"
+        ]
+      },
+      "steel-2": {
+        "role": "neutral",
+        "displayName": "Tôle perforée"
+      },
+      "steel-0": {
+        "role": "neutral",
+        "displayName": "Ombre de l'armoire"
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Filet d'acier"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Encre claire"
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Encre secondaire"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papier d'étiquette"
+      },
+      "paper-2": {
+        "role": "neutral",
+        "displayName": "Encre sur papier"
+      },
+      "rouge": {
+        "role": "tertiary",
+        "displayName": "Plastique rouge"
+      },
+      "jaune": {
+        "role": "tertiary",
+        "displayName": "Plastique jaune"
+      },
+      "vert": {
+        "role": "tertiary",
+        "displayName": "Plastique vert"
+      },
+      "bleu": {
+        "role": "tertiary",
+        "displayName": "Plastique bleu"
+      },
+      "orange": {
+        "role": "tertiary",
+        "displayName": "Plastique orange"
+      },
+      "violet": {
+        "role": "tertiary",
+        "displayName": "Plastique violet"
+      },
+      "turquoise": {
+        "role": "tertiary",
+        "displayName": "Plastique turquoise"
+      },
+      "blanc": {
+        "role": "tertiary",
+        "displayName": "Plastique blanc"
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Titre frappé", "purpose": "Titre d'ouverture, en capitales condensées." },
-      "heading": { "displayName": "Titre de section", "purpose": "Titres de section, en capitales." },
-      "stamp": { "displayName": "Numéro au pochoir", "purpose": "Numéros des étiquettes et chiffres des faits." },
-      "body": { "displayName": "Corps", "purpose": "Prose, lisible sur téléphone." },
-      "label": { "displayName": "Libellé d'étiquette", "purpose": "Fenêtre de papier des étiquettes." }
+      "display": {
+        "displayName": "Titre frappé",
+        "purpose": "Titre d'ouverture de la formation, en capitales condensées."
+      },
+      "display-hall": {
+        "displayName": "Titre d'accueil",
+        "purpose": "Les trois verbes de l'accueil, sur une ligne au-delà de 64rem ; interligne 1,06 pour que la virgule ne tombe pas sur la ligne suivante."
+      },
+      "activity": {
+        "displayName": "Nom d'activité",
+        "purpose": "Le nom d'une activité ouverte, porteur du lien."
+      },
+      "heading": {
+        "displayName": "Titre de section",
+        "purpose": "Titres de section, en capitales."
+      },
+      "entry-title": {
+        "displayName": "Nom de réalisation",
+        "purpose": "Le nom inscrit sur une ligne du registre."
+      },
+      "stamp": {
+        "displayName": "Numéro au pochoir",
+        "purpose": "Numéros des étiquettes et chiffres des faits."
+      },
+      "date": {
+        "displayName": "Date au pochoir",
+        "purpose": "Date d'une réalisation, en laiton et chiffres tabulaires."
+      },
+      "lede": {
+        "displayName": "Chapeau",
+        "purpose": "Sous un titre d'accueil ou de section, 54 à 58ch."
+      },
+      "body": {
+        "displayName": "Corps",
+        "purpose": "Prose, lisible sur téléphone."
+      },
+      "body-sm": {
+        "displayName": "Petit corps",
+        "purpose": "Descriptions de réalisation, faits, liens du registre, navigation, pied de page."
+      },
+      "caption": {
+        "displayName": "Légende",
+        "purpose": "Légende de l'aperçu et de la vidéo, barre du pied de page."
+      },
+      "meta": {
+        "displayName": "Mention",
+        "purpose": "Ligne de date d'une activité, nature d'une réalisation, « Accès privé »."
+      },
+      "label": {
+        "displayName": "Libellé d'étiquette",
+        "purpose": "Fenêtre de papier des étiquettes."
+      }
     },
     "shadows": [
-      { "name": "tag", "value": "0 10px 18px -6px rgb(0 0 0 / .6)", "purpose": "L'étiquette qui pend, seul objet avec une ombre." },
-      { "name": "hook", "value": "0 2px 3px rgb(0 0 0 / .45)", "purpose": "Le crochet de laiton." }
+      {
+        "name": "tag",
+        "value": "0 10px 18px -6px rgb(0 0 0 / .6)",
+        "purpose": "L'étiquette qui pend, seul objet avec une ombre."
+      },
+      {
+        "name": "hook",
+        "value": "0 2px 3px rgb(0 0 0 / .45)",
+        "purpose": "Le crochet de laiton."
+      }
     ],
     "motion": [
-      { "name": "ease", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Toutes les transitions, sortie exponentielle." },
-      { "name": "vol", "value": "720ms", "purpose": "Le vol de l'étiquette du crochet à l'anneau." },
-      { "name": "balance", "value": "1s", "purpose": "L'étiquette raccrochée qui balance." }
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Toutes les transitions, sortie exponentielle."
+      },
+      {
+        "name": "vol",
+        "value": "720ms",
+        "purpose": "Le vol de l'étiquette du crochet à l'anneau."
+      },
+      {
+        "name": "balance",
+        "value": "1s",
+        "purpose": "L'étiquette raccrochée qui balance."
+      },
+      {
+        "name": "trace",
+        "value": "1.1s",
+        "purpose": "Le filet de laiton d'une activité qui se trace au chargement (retards .15s et .35s)."
+      },
+      {
+        "name": "filet-actif",
+        "value": ".6s",
+        "purpose": "Le filet de laiton qui se trace sous une réalisation active."
+      },
+      {
+        "name": "deroule",
+        "value": ".7s",
+        "purpose": "L'écran de l'aperçu qui se déroule de haut en bas (clip-path)."
+      },
+      {
+        "name": "frappe",
+        "value": ".5s",
+        "purpose": "Le poinçon frappé en grand dans l'aperçu d'un outil privé."
+      }
     ],
     "breakpoints": [
-      { "name": "phone", "value": "40rem" },
-      { "name": "sheet", "value": "52rem" },
-      { "name": "two-columns", "value": "64rem" }
-    ]
+      {
+        "name": "nav-short",
+        "value": "30rem"
+      },
+      {
+        "name": "phone",
+        "value": "40rem"
+      },
+      {
+        "name": "sheet",
+        "value": "52rem"
+      },
+      {
+        "name": "two-sections",
+        "value": "56rem"
+      },
+      {
+        "name": "two-columns",
+        "value": "64rem"
+      },
+      {
+        "name": "peek",
+        "value": "72rem"
+      },
+      {
+        "name": "activity-wide",
+        "value": "75rem"
+      },
+      {
+        "name": "nav-compact",
+        "value": "760px"
+      }
+    ],
+    "focus": [
+      {
+        "name": "row-ring",
+        "value": "outline: 3px solid #d4a64a; outline-offset: 4px (activité) / 2px (entrée), sur la ligne via :has(a:focus-visible) ; sans :has(), sur le lien avec un décalage de 3px.",
+        "purpose": "Le focus d'un lien étendu à toute sa ligne."
+      }
+    ],
+    "pictograms": {
+      "sprite": "assets/img/poincons.svg",
+      "viewBox": "0 0 48 48",
+      "strokeWidth": 2.4,
+      "linecap": "round",
+      "linejoin": "round",
+      "color": "currentColor",
+      "note": "Attributs de présentation, jamais de <style> : la politique de sécurité refuse les styles en ligne. LEVELUM garde sa propre marque, redessinée."
+    }
   },
   "components": [
     {
@@ -62,18 +266,94 @@
       "description": "Champ de formulaire sur acier, bas laiton au focus.",
       "html": "<input class=\"ds-input\" placeholder=\"Votre structure\">",
       "css": ".ds-input { width: 100%; min-height: 3rem; padding: .7rem .8rem; border: 1px solid #353b42; border-bottom: 2px solid #59616a; border-radius: 0; background: #1b1e22; color: #eef0f2; font: 400 1.0625rem 'Atkinson Hyperlegible Next', sans-serif; } .ds-input:focus { outline: none; border-bottom-color: #d4a64a; background: #202428; }"
+    },
+    {
+      "name": "Ligne d'activité",
+      "kind": "custom",
+      "refersTo": "activity-row",
+      "description": "Une activité ouverte sous son filet de laiton de 2 px ; toute la ligne est la cible.",
+      "html": "<div class=\"ds-act\"><p class=\"ds-act__date\">Depuis <span class=\"ds-sten\">2026</span></p><div><h2 class=\"ds-act__name\"><a href=\"#\">Formation IA</a></h2><p class=\"ds-act__line\">Une journée dans vos locaux, quatre personnes au plus.</p></div><ul class=\"ds-act__facts\"><li>Paris et Île-de-France</li><li>Qualiopi en cours</li></ul><span class=\"ds-act__go\" aria-hidden=\"true\">Voir la formation</span></div>",
+      "css": ".ds-act { position: relative; display: grid; grid-template-columns: 6rem minmax(0,1fr) auto; gap: 1rem 1.5rem; padding: 1.6rem 0; background: #1b1e22; color: #eef0f2; font: 400 1.0625rem/1.6 'Atkinson Hyperlegible Next', system-ui, sans-serif; } .ds-act::before { content: ''; position: absolute; inset: 0 0 auto; height: 2px; background: #d4a64a; transform-origin: left; animation: ds-trace 1.1s cubic-bezier(.16,1,.3,1) .15s both; } @keyframes ds-trace { from { transform: scaleX(0); } } .ds-act__date { color: #aab2ba; font-size: .8125rem; line-height: 1.3; margin: 0; } .ds-sten { display: block; margin-top: .2rem; color: #d4a64a; font: 800 2rem/1 'Big Shoulders Stencil', 'Big Shoulders', sans-serif; letter-spacing: .02em; } .ds-act__name { margin: 0; font: 900 clamp(2.6rem, 6.4vw, 4.6rem)/.88 'Big Shoulders', 'Arial Narrow', sans-serif; text-transform: uppercase; } .ds-act__name a { color: inherit; text-decoration: none; transition: color .25s cubic-bezier(.16,1,.3,1); } .ds-act__name a::after { content: ''; position: absolute; inset: 0; } .ds-act__name a:focus-visible { outline: none; } .ds-act:has(a:focus-visible) { outline: 3px solid #d4a64a; outline-offset: 4px; } .ds-act:hover .ds-act__name a { color: #e7c37a; } .ds-act__line { margin: .9rem 0 0; max-width: 54ch; color: #aab2ba; } .ds-act__facts { grid-column: 2; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: 0; padding: 0; list-style: none; font-size: .9375rem; } .ds-act__facts li::before { content: ''; display: inline-block; width: .5rem; height: 2px; margin-right: .45rem; vertical-align: middle; background: #d4a64a; } .ds-act__go { grid-column: 3; grid-row: 1 / span 2; align-self: start; display: inline-flex; align-items: center; min-height: 3rem; padding: .75rem 1.4rem; background: #d4a64a; color: #1b1e22; font-weight: 700; pointer-events: none; white-space: nowrap; transition: background-color .2s cubic-bezier(.16,1,.3,1); } .ds-act:hover .ds-act__go { background: #e7c37a; }"
+    },
+    {
+      "name": "Entrée du registre",
+      "kind": "custom",
+      "refersTo": "registre-entry",
+      "description": "Une réalisation inscrite : date au pochoir, poinçon, nom, phrase, lien étendu à la ligne ; active, son filet passe au laiton.",
+      "html": "<ol class=\"ds-entries\"><li class=\"ds-entry is-on\"><time class=\"ds-entry__date\">10.2026</time><span class=\"ds-entry__mark\"><svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6 12l12-5 12 5 12-5v29l-12 5-12-5-12 5z\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M18 7v29M30 12v29\"/></svg></span><div class=\"ds-entry__body\"><h3 class=\"ds-entry__name\">Cartographie des jeux d'argent en ligne</h3><p class=\"ds-entry__what\">Opérateurs, sites, moyens de paiement et réseaux d'affiliation, chaque donnée rattachée à sa source.</p></div><p class=\"ds-entry__kind\">Wiki documentaire</p><a class=\"ds-entry__go\" href=\"#\">Ouvrir<svg class=\"ds-ico\" viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M14 34L34 14M19 14h15v15\"/></svg></a></li></ol>",
+      "css": ".ds-entries { margin: 0; padding: 0; list-style: none; border-top: 1px solid #353b42; background: #1b1e22; color: #eef0f2; font: 400 1.0625rem/1.6 'Atkinson Hyperlegible Next', system-ui, sans-serif; } .ds-entry { position: relative; display: grid; grid-template-columns: 6.5rem 2.75rem minmax(0,1fr) auto; grid-template-areas: 'date mark body go' 'kind mark body go'; grid-template-rows: auto 1fr; gap: .3rem 1.25rem; padding: 1.35rem 0; border-bottom: 1px solid #353b42; } .ds-entry::after { content: ''; position: absolute; inset: auto 0 -1px; height: 1px; background: #d4a64a; transform: scaleX(0); transform-origin: left; transition: transform .6s cubic-bezier(.16,1,.3,1); } .ds-entry.is-on::after, .ds-entry:hover::after { transform: scaleX(1); } .ds-entry__date { grid-area: date; color: #d4a64a; font: 800 1.3rem/1.1 'Big Shoulders Stencil', 'Big Shoulders', sans-serif; letter-spacing: .02em; font-variant-numeric: tabular-nums; } .ds-entry__kind { grid-area: kind; margin: 0; color: #aab2ba; font-size: .8125rem; line-height: 1.3; } .ds-entry__mark { grid-area: mark; display: block; width: 2.75rem; height: 2.75rem; padding: .45rem; box-sizing: border-box; border: 1px solid #353b42; color: #d4a64a; transition: border-color .3s cubic-bezier(.16,1,.3,1), background-color .3s cubic-bezier(.16,1,.3,1); } .ds-entry__mark svg { display: block; width: 100%; height: 100%; } .ds-entry.is-on .ds-entry__mark, .ds-entry:hover .ds-entry__mark { border-color: #d4a64a; background: rgb(212 166 74 / .08); } .ds-entry__body { grid-area: body; } .ds-entry__name { margin: 0; font: 900 1.5rem/1.05 'Big Shoulders', 'Arial Narrow', sans-serif; text-transform: uppercase; } .ds-entry__what { margin: .4rem 0 0; max-width: 62ch; color: #aab2ba; font-size: .9375rem; } .ds-entry__go { grid-area: go; align-self: start; display: inline-flex; align-items: center; gap: .4rem; min-height: 2.75rem; color: #eef0f2; font-size: .9375rem; font-weight: 700; text-decoration: underline; text-decoration-color: #d4a64a; text-underline-offset: .22em; white-space: nowrap; } .ds-entry__go::before { content: ''; position: absolute; inset: 0; } .ds-entry__go:hover { color: #e7c37a; } .ds-entry__go:focus-visible { outline: none; } .ds-entry:has(a:focus-visible) { outline: 3px solid #d4a64a; outline-offset: 2px; } .ds-ico { width: 1em; height: 1em; }"
+    },
+    {
+      "name": "Poinçon",
+      "kind": "custom",
+      "refersTo": "poincon",
+      "description": "Le pictogramme d'une réalisation : grille de 48, trait 2,4 aux bouts ronds, en laiton dans un carré d'acier de 1 px.",
+      "html": "<span class=\"ds-poincon\"><svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6 12l12-5 12 5 12-5v29l-12 5-12-5-12 5z\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M18 7v29M30 12v29\"/></svg></span><span class=\"ds-poincon ds-poincon--on\"><svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6 14h36v6a4 4 0 000 8v6H6v-6a4 4 0 000-8z\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M31 14v3M31 22.5v3M31 31v3\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 24.5l3.5 3.5L23 20\"/></svg></span>",
+      "css": ".ds-poincon { display: inline-block; width: 2.75rem; height: 2.75rem; padding: .45rem; margin-right: 1rem; box-sizing: border-box; border: 1px solid #353b42; background: #1b1e22; color: #d4a64a; transition: border-color .3s cubic-bezier(.16,1,.3,1), background-color .3s cubic-bezier(.16,1,.3,1); } .ds-poincon svg { display: block; width: 100%; height: 100%; } .ds-poincon--on, .ds-poincon:hover { border-color: #d4a64a; background: rgb(212 166 74 / .08); }"
+    },
+    {
+      "name": "Aperçu",
+      "kind": "custom",
+      "refersTo": "peek",
+      "description": "L'écran de la réalisation active, collant au-delà de 72rem ; pour un outil privé, la tôle perforée et le poinçon en grand.",
+      "html": "<figure class=\"ds-peek\"><div class=\"ds-peek__screen\"><span class=\"ds-peek__mark\"><svg viewBox=\"0 0 48 48\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6 14h36v6a4 4 0 000 8v6H6v-6a4 4 0 000-8z\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M31 14v3M31 22.5v3M31 31v3\"/><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 24.5l3.5 3.5L23 20\"/></svg></span></div><figcaption class=\"ds-peek__cap\"><span>Sold-Out Tracker</span><span>Accès privé</span></figcaption></figure>",
+      "css": ".ds-peek { margin: 0; width: 27rem; max-width: 100%; font: 400 .875rem/1.6 'Atkinson Hyperlegible Next', system-ui, sans-serif; } .ds-peek__screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid #353b42; background-color: #23272c; background-image: radial-gradient(circle, #131518 1.6px, transparent 1.7px); background-size: 18px 18px; } .ds-peek__mark { position: absolute; inset: 50% auto auto 50%; display: block; width: 7rem; height: 7rem; padding: 1.2rem; box-sizing: border-box; border: 1px solid #d4a64a; background: #1b1e22; color: #d4a64a; transform: translate(-50%, -50%); animation: ds-frappe .5s cubic-bezier(.16,1,.3,1) both; } .ds-peek__mark svg { display: block; width: 100%; height: 100%; } @keyframes ds-frappe { from { opacity: 0; transform: translate(-50%, -50%) scale(.92); } } .ds-peek__cap { display: flex; justify-content: space-between; gap: 1rem; margin-top: .9rem; color: #aab2ba; } .ds-peek__cap span:first-child { color: #eef0f2; font-weight: 700; }"
     }
   ],
   "narrative": {
-    "northStar": "L'armoire à clés",
-    "overview": "La page est l'armoire à clés de l'entreprise cliente : acier émaillé, crochets de laiton, une étiquette de plastique coloré par poste de travail. Chaque outil installé est une clé remise au client, et le visiteur compose son trousseau avant d'écrire.",
-    "keyCharacteristics": ["Acier anthracite et laiton", "Huit plastiques, toujours avec leur numéro", "Capitales condensées frappées", "Une seule chose a une ombre : l'étiquette"],
-    "rules": [
-      { "name": "La règle du numéro", "body": "Une couleur ne désigne jamais seule une clé : le numéro frappé l'accompagne toujours.", "section": "colors" },
-      { "name": "La règle du laiton en surface", "body": "Le laiton ne couvre toute une section qu'une fois, là où la page dit ce qui appartient au client.", "section": "colors" },
-      { "name": "Pas de sur-titre", "body": "Aucun libellé au-dessus d'un titre.", "section": "typography" }
+    "northStar": "Vous gardez les clés",
+    "overview": "La page de formation est l'armoire à clés de l'entreprise cliente. Chaque outil installé est une clé remise au client ; chaque poste qui fait perdre du temps est une étiquette de porte-clés pendue à un crochet de laiton, sur une tôle perforée. Le visiteur décroche les étiquettes qui le concernent : elles volent jusqu'à son trousseau, et sa demande part avec.\n\nLa métaphore tient du premier écran au pied de page : on prend les mesures, on taille les clés, on lève les réserves à trente jours, les clés sont à vous. Elle porte la promesse commerciale centrale, que les outils restent chez le client et lui appartiennent.\n\nL'accueil est le registre de l'atelier qui fabrique ces clés. Les activités ouvertes y sont tenues en tête sous un filet de laiton ; les réalisations sont inscrites dessous, une par ligne, à leur date, avec leur poinçon frappé dans un carré, leur phrase et leur lien. Même acier, même laiton, mêmes trois polices ; pas d'étiquette, pas de plastique, pas d'ombre.\n\nLe monde refuse le bandeau sombre à dégradé de l'IA, la grille de cartes, le grand visuel de studio créatif, et l'imprimé administratif abandonné en septembre.",
+    "keyCharacteristics": [
+      "Acier anthracite et laiton, sur les deux pages.",
+      "Huit plastiques, toujours avec leur numéro, et seulement dans l'armoire.",
+      "Capitales condensées frappées pour les titres, pochoir pour les dates et les numéros.",
+      "Une seule chose a une ombre : l'étiquette.",
+      "Des lignes de registre, jamais des cartes."
     ],
-    "dos": ["Accrocher chaque section à la métaphore des clés", "Mesurer le contraste sur les couleurs calculées", "Signaler toute démonstration comme exemple fictif"],
-    "donts": ["Pas de carte ni d'ombre décorative", "Pas de couleur sans numéro", "Pas de chiffre de gain, de témoignage ni de logo client", "Pas de bandeau ni de fenêtre à l'arrivée"]
+    "rules": [
+      {
+        "name": "La règle du numéro",
+        "body": "Une couleur ne dit jamais seule de quelle clé il s'agit : chaque miniature du trousseau et chaque pastille du formulaire porte son numéro frappé.",
+        "section": "colors"
+      },
+      {
+        "name": "La règle du laiton en surface",
+        "body": "Le laiton ne prend toute la surface qu'une fois, dans la section où la page dit ce qui appartient au client.",
+        "section": "colors"
+      },
+      {
+        "name": "La règle des plastiques à l'armoire",
+        "body": "Les huit plastiques n'existent que là où il y a des étiquettes. Ailleurs, l'acier et le laiton suffisent.",
+        "section": "colors"
+      },
+      {
+        "name": "La règle du filet ouvert",
+        "body": "Un filet de laiton de 2 px coiffe ce qui est ouvert, l'activité qu'on peut commander ; un filet d'acier de 1 px sépare ce qui est inscrit, la réalisation achevée. Une réalisation ne prend du laiton que lorsqu'elle est active, et alors sur 1 px, tracé de gauche à droite.",
+        "section": "colors"
+      },
+      {
+        "name": "Pas de sur-titre",
+        "body": "Aucun libellé au-dessus d'un titre. « Exemple fictif » est un tampon dans le coin de la feuille, pas un sur-titre.",
+        "section": "typography"
+      },
+      {
+        "name": "La règle de la virgule",
+        "body": "En capitales serrées, un interligne de 0,86 fait descendre la virgule sur la ligne suivante, où elle se lit comme un accent (« CONSTRÙIRE »). Un grand titre ponctué qui peut passer sur plusieurs lignes prend 1,06.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Accrocher toute nouvelle section à la métaphore des clés ou à celle du registre, ou la laisser neutre.",
+      "Vérifier le contraste sur les couleurs calculées, à chaque plastique et à chaque lavis.",
+      "Signaler toute démonstration comme exemple fictif.",
+      "Inscrire toute nouvelle réalisation comme une ligne du registre : date au pochoir, poinçon dans la grammaire de la planche, phrase, lien ou mention d'accès, et une capture réelle avec sa provenance."
+    ],
+    "donts": [
+      "Pas de carte, pas d'ombre décorative, pas de dégradé de fond.",
+      "Pas de couleur sans numéro pour désigner une clé.",
+      "Pas de chiffre de gain, de témoignage ou de logo client.",
+      "Pas de bandeau ni de fenêtre à l'arrivée : le site n'en a pas besoin, il n'a ni cookie ni traceur.",
+      "Pas de pictogramme pris dans une bibliothèque, pas de maquette ni d'image générée à la place d'une capture."
+    ]
   }
 }

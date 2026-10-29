@@ -1,0 +1,276 @@
+/* ==========================================================================
+   Serious Labs — l'accueil : le registre d'atelier
+
+   Le monde de la formation, sans les plastiques. La maison tient le registre
+   de ce qu'elle fait et de ce qu'elle a fait : deux activités ouvertes en
+   tête, filet de laiton, puis chaque réalisation inscrite à sa date avec son
+   poinçon. Chargée après style.css, dont elle reprend le socle, l'entête et
+   le pied de page.
+   ========================================================================== */
+
+.ico { display: inline-block; width: 1em; height: 1em; flex: none; }
+
+/* ------------------------------------------------------------ le hall -- */
+
+.hall { padding-block: clamp(2.75rem, 6vw, 4.5rem) 0; }
+
+/* Interligne de 1,06 et non .86 : en capitales serrées, la virgule descendait
+   sur la ligne suivante et se lisait comme un accent (« CONSTRÙIRE »). */
+.hall h1 {
+  max-width: 22ch;
+  font-size: clamp(3.4rem, 10.5vw, 6rem);
+  line-height: 1.06;
+}
+/* Sur grand écran, les trois verbes tiennent sur une ligne, pour que le
+   registre affleure en bas du premier écran. */
+@media (min-width: 64rem) {
+  .hall h1 { max-width: none; font-size: clamp(4rem, 6.2vw, 5.4rem); }
+}
+.hall__l {
+  max-width: 54ch;
+  margin-top: 1.5rem;
+  color: var(--ink-2);
+  font-size: 1.125rem;
+}
+
+/* Les deux activités ouvertes. Leur filet est de laiton, celui des
+   réalisations est d'acier : ce qui est ouvert se distingue de ce qui est
+   inscrit. */
+.acts { margin-top: clamp(2.5rem, 5vw, 3.75rem); border-bottom: 1px solid var(--rule); }
+
+.act {
+  position: relative;
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr) 13rem 13.5rem;
+  gap: 1.25rem 2.5rem;
+  align-items: start;
+  padding-block: 1.6rem;
+}
+.act::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--brass);
+  transform-origin: left;
+  animation: trace 1.1s var(--ease) .15s both;
+}
+.act + .act::before { animation-delay: .35s; }
+@keyframes trace { from { transform: scaleX(0); } }
+
+.act__date { color: var(--ink-2); font-size: .8125rem; line-height: 1.3; }
+.sten {
+  display: block;
+  margin-top: .2rem;
+  color: var(--brass);
+  font: 800 2rem/1 var(--sten);
+  letter-spacing: .02em;
+}
+
+.act__name {
+  font: 900 clamp(2.6rem, 6.4vw, 4.6rem)/.88 var(--disp);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+/* Le nom porte le lien ; toute la ligne est la cible. */
+.act__name a { text-decoration: none; transition: color .25s var(--ease); }
+.act__name a::after { content: ''; position: absolute; inset: 0; }
+.act__name a:focus-visible { outline: none; }
+.act:has(a:focus-visible) { outline: 3px solid var(--brass); outline-offset: 4px; }
+.act:hover .act__name a { color: var(--brass-2); }
+
+.act__line { max-width: 54ch; margin-top: .9rem; color: var(--ink-2); }
+
+.act__facts { padding-top: .35rem; font-size: .9375rem; }
+.act__facts li { padding-block: .45rem; border-bottom: 1px solid var(--rule); }
+.act__facts li:first-child { padding-top: 0; }
+
+.act__go { gap: .5rem; align-self: start; justify-self: end; margin-top: .4rem; white-space: nowrap; pointer-events: none; }
+.act:hover .act__go { background: var(--brass-2); }
+
+@media (max-width: 75rem) {
+  .act {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "date date" "body body" "facts go";
+    gap: 1rem 1.5rem;
+  }
+  .act__date { grid-area: date; display: flex; align-items: baseline; gap: .5rem; }
+  .act__date .sten { display: inline; font-size: 1.5rem; }
+  .act__body { grid-area: body; }
+  .act__facts { grid-area: facts; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; padding: 0; }
+  .act__facts li, .act__facts li:first-child { padding: 0; border: 0; }
+  .act__facts li::before { content: ''; display: inline-block; width: .5rem; height: 2px; margin-right: .45rem; vertical-align: middle; background: var(--brass); }
+  .act__go { grid-area: go; align-self: end; margin-top: 0; }
+}
+@media (max-width: 40rem) {
+  .act { grid-template-areas: "date date" "body body" "facts facts" "go go"; }
+  .act__go { justify-self: stretch; }
+}
+
+/* ---------------------------------------------------------- le registre -- */
+
+.reg { padding-top: clamp(2.5rem, 5vw, 3.5rem); }
+.reg__head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+
+.reg__grid { display: grid; gap: 3rem; }
+@media (min-width: 72rem) {
+  .reg__grid { grid-template-columns: minmax(0, 1fr) minmax(20rem, 27rem); align-items: start; }
+}
+
+.entries { border-top: 1px solid var(--rule); }
+
+.entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 6.5rem 2.75rem minmax(0, 1fr) auto;
+  grid-template-areas: "date mark body go" "kind mark body go";
+  grid-template-rows: auto 1fr;
+  gap: .3rem 1.25rem;
+  padding-block: 1.35rem;
+  border-bottom: 1px solid var(--rule);
+}
+/* La ligne active trace son filet de laiton. */
+.entry::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 1px;
+  background: var(--brass);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .6s var(--ease);
+}
+.entry.is-on::after { transform: scaleX(1); }
+
+.entry__date {
+  grid-area: date;
+  color: var(--brass);
+  font: 800 1.3rem/1.1 var(--sten);
+  letter-spacing: .02em;
+  font-variant-numeric: tabular-nums;
+}
+.entry__kind { grid-area: kind; color: var(--ink-2); font-size: .8125rem; line-height: 1.3; }
+
+/* Le poinçon : le pictogramme frappé dans son carré. */
+.entry__mark {
+  grid-area: mark;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: .45rem;
+  border: 1px solid var(--rule);
+  color: var(--brass);
+  transition: border-color .3s var(--ease), background-color .3s var(--ease);
+}
+.entry.is-on .entry__mark { border-color: var(--brass); background: rgb(212 166 74 / .08); }
+
+.entry__body { grid-area: body; }
+.entry__name {
+  font: 900 1.5rem/1.05 var(--disp);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.entry__what { max-width: 62ch; margin-top: .4rem; color: var(--ink-2); font-size: .9375rem; }
+
+.entry__go {
+  grid-area: go;
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2.75rem;
+  align-self: start;
+  font-size: .9375rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--brass);
+  white-space: nowrap;
+}
+a.entry__go::before { content: ''; position: absolute; inset: 0; }
+a.entry__go:hover { color: var(--brass-2); }
+a.entry__go:focus-visible { outline: none; }
+.entry:has(a:focus-visible) { outline: 3px solid var(--brass); outline-offset: 2px; }
+/* Sans :has(), le lien garde son propre anneau de focus. */
+@supports not selector(:has(*)) {
+  .act__name a:focus-visible, a.entry__go:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; }
+}
+.entry__go--off { color: var(--ink-2); font-size: .8125rem; font-weight: 400; text-decoration: none; }
+
+/* La capture dans la ligne, là où l'aperçu n'a pas de place. */
+.entry__shot {
+  width: 100%;
+  max-width: 30rem;
+  height: auto;
+  margin-top: 1rem;
+  border: 1px solid var(--rule);
+  background: var(--steel-0);
+}
+
+@media (max-width: 40rem) {
+  .entry {
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    grid-template-areas: "mark date" "mark body" ". go";
+    grid-template-rows: auto;
+    gap: .35rem 1rem;
+  }
+  .entry__kind { grid-area: date; justify-self: end; align-self: center; text-align: right; }
+  .entry__go { justify-self: start; }
+}
+
+/* ------------------------------------------------------------ l'aperçu -- */
+
+.peek { display: none; }
+
+@media (min-width: 72rem) {
+  .entry__shot { display: none; }
+
+  .peek { display: block; position: sticky; top: 6rem; }
+  .peek__screen {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    background-color: var(--steel-2);
+    /* Pour un outil privé, la tôle perforée remplace la capture. */
+    background-image: radial-gradient(circle, var(--steel-0) 1.6px, transparent 1.7px);
+    background-size: 18px 18px;
+  }
+  .peek__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    clip-path: inset(0);
+    transition: clip-path .7s var(--ease), opacity .3s var(--ease);
+  }
+  /* L'écran suivant se déroule de haut en bas, comme une page qu'on tourne
+     dans le registre. */
+  .peek__img.is-swap { clip-path: inset(0 0 100% 0); transition: none; }
+  .peek.is-private .peek__img { opacity: 0; }
+
+  .peek__mark {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 7rem;
+    height: 7rem;
+    padding: 1.2rem;
+    border: 1px solid var(--brass);
+    background: var(--steel);
+    color: var(--brass);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.92);
+    transition: opacity .3s var(--ease), transform .5s var(--ease);
+  }
+  .peek.is-private .peek__mark { opacity: 1; transform: translate(-50%, -50%); }
+
+  .peek__cap {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: .9rem;
+    color: var(--ink-2);
+    font-size: .875rem;
+  }
+  .peek__cap span:first-child { color: var(--ink); font-weight: 700; }
+  .peek__note { text-align: right; }
+}
