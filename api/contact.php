@@ -252,15 +252,24 @@ if ($smtpPass === '') {
 
 $recu = date('d/m/Y à H:i');
 
+// Le même script sert le site de conseil. SERVER_NAME vient du bloc nginx qui
+// a reçu la requête, pas de l'en-tête Host du visiteur : on peut s'y fier.
+$site = (($_SERVER['SERVER_NAME'] ?? '') === 'seriouslabs-consulting.com')
+    ? 'seriouslabs-consulting.com'
+    : 'seriouslabs.tech';
+$objet = $site === 'seriouslabs.tech'
+    ? ($lang === 'en' ? 'Enquiry — ' : 'Demande — ')
+    : 'Conseil — ';
+
 $interne = <<<TXT
-Nouvelle demande depuis seriouslabs.tech
+Nouvelle demande depuis {$site}
 
 Nom        : {$nom}
 Structure  : {$societe}
 Courriel   : {$email}
 Téléphone  : {$tel}
 Effectif   : {$effectif}
-Secteur    : {$secteur}
+Secteur    : {$secteur}  (marché, pour le conseil)
 
 Besoin exprimé
 --------------
@@ -275,9 +284,9 @@ try {
 
     // La demande d'abord : c'est elle qui ne doit jamais se perdre.
     $smtp->send(
-        from:    [MAILBOX, 'Formulaire seriouslabs.tech'],
+        from:    [MAILBOX, 'Formulaire ' . $site],
         to:      [MAILBOX, 'Serious Labs'],
-        subject: ($lang === 'en' ? 'Enquiry — ' : 'Demande — ') . $societe . ' (' . $nom . ')',
+        subject: $objet . $societe . ' (' . $nom . ')',
         body:    $interne,
         replyTo: [$email, $nom]
     );
