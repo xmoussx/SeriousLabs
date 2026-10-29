@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-29T09:10:00Z",
+  "title": "Design System: Serious Labs",
+  "extensions": {
+    "colorMeta": {
+      "steel": { "role": "neutral", "displayName": "Acier émaillé", "tonalRamp": ["#131518", "#1b1e22", "#23272c", "#353b42"] },
+      "brass": { "role": "primary", "displayName": "Laiton", "tonalRamp": ["#a77f2f", "#d4a64a", "#e7c37a"] },
+      "paper": { "role": "neutral", "displayName": "Papier d'étiquette" },
+      "rouge": { "role": "tertiary", "displayName": "Plastique rouge" },
+      "jaune": { "role": "tertiary", "displayName": "Plastique jaune" },
+      "vert": { "role": "tertiary", "displayName": "Plastique vert" },
+      "bleu": { "role": "tertiary", "displayName": "Plastique bleu" },
+      "orange": { "role": "tertiary", "displayName": "Plastique orange" },
+      "violet": { "role": "tertiary", "displayName": "Plastique violet" },
+      "turquoise": { "role": "tertiary", "displayName": "Plastique turquoise" },
+      "blanc": { "role": "tertiary", "displayName": "Plastique blanc" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Titre frappé", "purpose": "Titre d'ouverture, en capitales condensées." },
+      "heading": { "displayName": "Titre de section", "purpose": "Titres de section, en capitales." },
+      "stamp": { "displayName": "Numéro au pochoir", "purpose": "Numéros des étiquettes et chiffres des faits." },
+      "body": { "displayName": "Corps", "purpose": "Prose, lisible sur téléphone." },
+      "label": { "displayName": "Libellé d'étiquette", "purpose": "Fenêtre de papier des étiquettes." }
+    },
+    "shadows": [
+      { "name": "tag", "value": "0 10px 18px -6px rgb(0 0 0 / .6)", "purpose": "L'étiquette qui pend, seul objet avec une ombre." },
+      { "name": "hook", "value": "0 2px 3px rgb(0 0 0 / .45)", "purpose": "Le crochet de laiton." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Toutes les transitions, sortie exponentielle." },
+      { "name": "vol", "value": "720ms", "purpose": "Le vol de l'étiquette du crochet à l'anneau." },
+      { "name": "balance", "value": "1s", "purpose": "L'étiquette raccrochée qui balance." }
+    ],
+    "breakpoints": [
+      { "name": "phone", "value": "40rem" },
+      { "name": "sheet", "value": "52rem" },
+      { "name": "two-columns", "value": "64rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Bouton d'action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "L'action principale, en aplat de laiton.",
+      "html": "<button class=\"ds-cta\">Demander une journée</button>",
+      "css": ".ds-cta { min-height: 3rem; padding: .75rem 1.4rem; border: 0; background: #d4a64a; color: #1b1e22; font: 700 1rem/1.2 'Atkinson Hyperlegible Next', system-ui, sans-serif; cursor: pointer; transition: background-color .2s cubic-bezier(.16,1,.3,1); } .ds-cta:hover { background: #e7c37a; }"
+    },
+    {
+      "name": "Étiquette de clé",
+      "kind": "custom",
+      "refersTo": "key-tag",
+      "description": "Le composant signature : un poste de travail, à décrocher.",
+      "html": "<button class=\"ds-key\" aria-pressed=\"false\"><span class=\"ds-key__n\">03</span><span class=\"ds-key__l\">Factures et relances</span></button>",
+      "css": ".ds-key { position: relative; display: flex; flex-direction: column; width: 120px; min-height: 8.5rem; padding: 1.6rem .45rem .5rem; border: 0; border-radius: 10px 10px 16px 16px; background: linear-gradient(160deg, rgb(255 255 255 / .22), rgb(255 255 255 / 0) 42%), #26804d; color: #fff; text-align: left; box-shadow: 0 10px 18px -6px rgb(0 0 0 / .6); cursor: pointer; } .ds-key::before { content: ''; position: absolute; top: 6px; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #23272c; } .ds-key__n { font: 800 1.9rem/1 'Big Shoulders Stencil', sans-serif; } .ds-key__l { margin-top: auto; padding: .45rem .4rem; background: #f3f1ec; color: #1b1e22; font: 700 .8125rem/1.2 'Atkinson Hyperlegible Next', sans-serif; } .ds-key:hover { transform: rotate(-5deg); }"
+    },
+    {
+      "name": "Champ",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Champ de formulaire sur acier, bas laiton au focus.",
+      "html": "<input class=\"ds-input\" placeholder=\"Votre structure\">",
+      "css": ".ds-input { width: 100%; min-height: 3rem; padding: .7rem .8rem; border: 1px solid #353b42; border-bottom: 2px solid #59616a; border-radius: 0; background: #1b1e22; color: #eef0f2; font: 400 1.0625rem 'Atkinson Hyperlegible Next', sans-serif; } .ds-input:focus { outline: none; border-bottom-color: #d4a64a; background: #202428; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "L'armoire à clés",
+    "overview": "La page est l'armoire à clés de l'entreprise cliente : acier émaillé, crochets de laiton, une étiquette de plastique coloré par poste de travail. Chaque outil installé est une clé remise au client, et le visiteur compose son trousseau avant d'écrire.",
+    "keyCharacteristics": ["Acier anthracite et laiton", "Huit plastiques, toujours avec leur numéro", "Capitales condensées frappées", "Une seule chose a une ombre : l'étiquette"],
+    "rules": [
+      { "name": "La règle du numéro", "body": "Une couleur ne désigne jamais seule une clé : le numéro frappé l'accompagne toujours.", "section": "colors" },
+      { "name": "La règle du laiton en surface", "body": "Le laiton ne couvre toute une section qu'une fois, là où la page dit ce qui appartient au client.", "section": "colors" },
+      { "name": "Pas de sur-titre", "body": "Aucun libellé au-dessus d'un titre.", "section": "typography" }
+    ],
+    "dos": ["Accrocher chaque section à la métaphore des clés", "Mesurer le contraste sur les couleurs calculées", "Signaler toute démonstration comme exemple fictif"],
+    "donts": ["Pas de carte ni d'ombre décorative", "Pas de couleur sans numéro", "Pas de chiffre de gain, de témoignage ni de logo client", "Pas de bandeau ni de fenêtre à l'arrivée"]
+  }
+}

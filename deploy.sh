@@ -85,9 +85,9 @@ echo "Déployé. Vérification :"
 for chemin in / /en/ /mentions-legales.html /en/legal.html /robots.txt /sitemap.xml \
               /googleb56e9726ff2adfff.html /assets/img/logo.svg \
               /assets/img/favicon.svg /assets/img/og-fr.png /assets/img/og-en.png \
-              /assets/img/atelier-1600.jpg /assets/img/atelier-960.jpg \
-              /assets/img/salle-1200.jpg /assets/img/salle-760.jpg \
-              /assets/video/nuit-salle.mp4 /assets/video/nuit-ecran.mp4; do
+              /assets/video/matin-table.jpg /assets/video/matin-table.mp4 \
+              /assets/fonts/big-shoulders-latin.woff2 /assets/fonts/atkinson-latin.woff2 \
+              /api/contact.php; do
   # En HTTPS : depuis la bascule, HTTP renvoie un 301 et masquerait une page
   # réellement cassée derrière un code de redirection.
   code=$(curl -sk -o /dev/null -w '%{http_code}' \

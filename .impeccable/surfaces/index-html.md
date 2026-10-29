@@ -1,87 +1,63 @@
 ---
-version: 2
+version: 1
 slug: "index-html"
 primary_target: "index.html"
-related_targets: ["en/index.html", "mentions-legales.html", "en/legal.html"]
+related_targets: ["en/index.html","mentions-legales.html","en/legal.html"]
 ---
+
+Mode : Persuade. Le visiteur est le dirigeant d'une structure de 5 à 20
+personnes, qui paie de sa poche. Il doit comprendre l'offre en une vue,
+reconnaître ses propres pertes de temps et écrire.
 
 ## Direction contract
 
-THESIS: La page EST l'emploi du temps de la journée vendue. Le produit est une
-journée ; le site est donc bâti sur du temps, pas sur des arguments. Elle
-refuse trois arrangements : le bandeau sombre à dégradé de l'IA, la grille de
-cartes à ombre portée, et l'imprimé administratif dense de la version
-précédente.
+THESIS: On installe, vous gardez les clés. Chaque outil installé est une clé
+remise au client, et la page est l'armoire où elles pendent. Elle refuse le
+bandeau sombre à dégradé de l'IA, la grille de cartes, et l'imprimé
+administratif abandonné en septembre.
 
-OWN-WORLD: Blanc #FFFFFF. Une colonne de moments descend le long de la page,
-une règle verticale #E6E8EC la longe sans interruption, et chaque chose dite
-est accrochée à un moment. Un seul accent, le vermillon #D92B00, réservé à
-l'action, au repère de temps et au signal — jamais décoratif ; sa variante
-éclaircie #EF5A33 le remplace sur fond d'encre, où le premier tombe sous le
-seuil. Aucune carte, aucune ombre d'élévation, aucun rayon de bordure : la
-profondeur se fait par pleine largeur d'encre #101114. Archivo Black très
-serré pour les titres, Archivo pour la prose, chiffres tabulaires pour toute
-valeur qui doit s'aligner.
+OWN-WORLD: L'intérieur d'une armoire à clés en acier émaillé anthracite
+#1b1e22, des crochets et anneaux en laiton #d4a64a. Les postes de travail
+sont des étiquettes porte-clés en plastique de couleur franche (rouge, jaune,
+vert, bleu, orange), avec une fenêtre de papier blanc où le poste est inscrit
+et un numéro frappé. Big Shoulders très gras et condensé pour les titres et
+les numéros frappés, Big Shoulders Stencil pour les numéros de crochet,
+Atkinson Hyperlegible Next pour la prose. Aucune carte, aucune ombre décorative
+: seule l'étiquette a une matière, parce qu'elle est l'objet manipulé.
 
-STORY: Le visiteur voit d'abord ce qu'il achète — une journée, quatre
-personnes, chez lui, tarif sur devis — puis la journée heure par heure, puis
-ce qui lui coûte des heures, puis la limite de ce que l'outil fait, puis
-comment ça entre dans son budget formation, et il écrit.
+STORY: Le visiteur lit la promesse, choisit les clés qui lui coûtent des
+heures, voit ce qu'une clé fait (l'outil prépare, il signe), suit la journée
+de la remise des clés jusqu'à la levée des réserves à trente jours, apprend
+que tout reste à lui et comment ça entre dans son budget formation, et
+envoie une demande déjà pré-remplie de son trousseau.
 
-FIRST VIEWPORT: Entête collante à filet simple. Sur-titre vermillon en
-capitales, énoncé en Archivo Black à clamp(2.3rem, 6.4vw, 4.75rem) sur trois
-lignes, lede de trois phrases, action vermillon pleine. Sous l'action, les
-cinq faits de l'offre en paires intitulé/valeur séparées par un filet d'un
-pixel, jamais encadrées.
+FIRST VIEWPORT: Entête fine. À gauche, titre « On installe. Vous gardez les
+clés. » en capitales condensées, très grand, puis une phrase et la ligne des
+faits. À droite, ou dessous sur téléphone, la rangée de crochets où pendent
+huit étiquettes. L'action « Demander une journée » reste visible et devient
+« Demander ces N clés » dès qu'une étiquette est choisie.
+
+FORM: armoire à clés et remise des clés, septième de la liste ordonnée ;
+clé de tirage 205fdfb5. Gains nommés : de MasterClass (la question au
+visiteur dès l'ouverture), de Brilliant et Section (l'outil montré au
+travail, signalé comme exemple), du magazine d'Art Paul (une couleur par
+étiquette, tenue comme un système), de l'estampe de Dong Ho (la couche
+humaine, la signature, arrive toujours en dernier).
+
+SIGNATURE INTERACTION: choisir une étiquette la décroche de son crochet et
+l'enfile sur l'anneau du trousseau ; le compteur et l'action suivent ; le
+formulaire reçoit la liste. En mouvement réduit, l'étiquette change d'état
+sans balancement.
+
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
 ## Décisions à ne pas défaire
-
-- **Le carnet à souche est abandonné.** Il avait dérivé de la demande d'origine
-  — ultra moderne, hyper dépouillé — vers un imprimé rétro et dense, et il
-  déguisait en paperasse un service qui vend la sortie de la paperasse. Ne pas
-  le réintroduire.
-- **Deux plans filmés, validés le 18.09.2026.** Ce sont des travellings
-  calculés sur les images fixes, pas du mouvement généré. Le texte vers vidéo
-  local a été écarté sur mesures ; l'image vers vidéo, lui, produit bien du
-  mouvement de scène et n'a pas été essayé sur ces deux plans, qui montrent des
-  personnes. Ne pas remplacer sans décision explicite.
-- **Aucun calculateur.**
-- **Quatre participants au maximum.** Toute formulation du type « toute
-  l'équipe formée en même temps » contredit cette limite.
+- Quatre participants au maximum. Aucune preuve sociale inventée. Aucun
+  calculateur. Tarif sur devis. Qualiopi en cours, dit explicitement.
+- Le formulaire et son traitement serveur (refus des liens) ne changent pas
+  de comportement.
 
 ## Contraintes d'écriture
-
-Titres : proscrire les tournures creuses qui annoncent au lieu de dire — « Ce
-que… », « Pourquoi… », « Comment… », « Notre approche de… ». Un titre nomme son
-objet ou énonce un fait. Phrases déclaratives, pas d'antithèse binaire, pas de
-phrase à chute, pas de formule sentencieuse. Aucune performance non mesurée ne
-peut être annoncée.
-
-## Contrôles chiffrés à repasser après toute modification
-
-| Contrôle | Seuil | Méthode |
-|---|---|---|
-| Débordement horizontal | `scrollWidth <= viewport` de 320 à 1920 px | Playwright, les quatre pages |
-| Contraste du texte | AA : 4,5 / 3,0 en gros | Calcul sur les couleurs effectivement calculées, pas sur les jetons |
-| Cibles tactiles | 44 px de haut | Exemptions : lien d'évitement découpé, liens en ligne dans une phrase, case à cocher dont le libellé entier est cliquable |
-| Erreurs console | zéro | |
-| Formulaire | envoi réel abouti | Attendre plus de 3 s : en deçà le serveur classe l'envoi comme robotique |
-
-## EXCEPTIONS
-
-**La barre de durée est conservée malgré `side-tab`.** Le détecteur signale
-`.dur::after` comme un bandeau décoratif de 3 px. Il ne l'est pas : sa longueur
-est proportionnelle à la durée qu'elle accompagne — 0,214 pour 45 minutes
-contre 1 pour 3 h 30 — et c'est la seule donnée du site qui soit représentée
-plutôt qu'écrite. L'interdit du plancher vise les bordures de flanc colorées
-sur des cartes et des encarts, pas une marque de donnée dans un tableau.
-
-**L'interlignage de l'affichage reste sous 1,3.** Le détecteur applique un
-seuil de lisibilité de corps de texte à des titres de 48 à 76 px, où un
-interlignage serré est au contraire ce qu'il faut.
-
-**Les constats `cramped-padding` et `low-contrast` sont des faux positifs.**
-Vérifiés en navigateur le 16.09.2026 : les six « texte noir sur fond sombre »
-visent `<html>`, `<head>` et `<title>` ; vingt et un des vingt-deux
-« cramped-padding » visent des sections qui portent bien leur `padding-block`.
-Le vingt-deuxième était réel — la moitié sombre du bandeau — et a été corrigé.
+Titres : pas de « Ce que… », « Pourquoi… », « Comment… ». Pas de sur-titre.
+Phrases déclaratives, pas d'antithèse binaire, pas de phrase à chute. Les
+démonstrations sont signalées comme exemples ; aucun chiffre de gain.

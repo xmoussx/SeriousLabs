@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Image de partage</title>
+<!-- Rendu en 1200 × 630 par outils/og.py pour produire assets/img/og-*.png.
+     Non déployé : sert uniquement à fabriquer les images de partage. -->
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<style>
+  body { width: 1200px; height: 630px; overflow: hidden; }
+  .og { display: grid; grid-template-columns: 1fr 430px; gap: 48px; align-items: center; height: 630px; padding: 0 72px; }
+  .og h1 { font-size: 92px; line-height: .86; }
+  .og .mark { margin-bottom: 40px; }
+  .og p { margin-top: 28px; color: var(--ink-2); font-size: 24px; line-height: 1.35; max-width: 30ch; }
+  .og .board { padding: 28px; }
+  .og .hooks { margin-top: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 16px; }
+  .og .key { min-height: 140px; pointer-events: none; }
+  .og .key__l { font-size: 15px; }
+</style>
+</head>
+<body>
+<div class="og">
+  <div>
+    <span class="mark"><img src="/assets/img/logo.svg" alt="" width="20" height="28"><span>Serious Labs</span></span>
+    <h1 data-t></h1>
+    <p data-p></p>
+  </div>
+  <div class="board">
+    <ul class="hooks">
+      <li><span class="key key--rouge"><span class="key__n">01</span><span class="key__l" data-k="0"></span></span></li>
+      <li><span class="key key--jaune" aria-pressed="true"><span class="key__n">02</span><span class="key__l" data-k="1"></span></span></li>
+      <li><span class="key key--vert"><span class="key__n">03</span><span class="key__l" data-k="2"></span></span></li>
+      <li><span class="key key--orange"><span class="key__n">05</span><span class="key__l" data-k="3"></span></span></li>
+      <li><span class="key key--vert"><span class="key__n">06</span><span class="key__l" data-k="4"></span></span></li>
+      <li><span class="key key--bleu" aria-pressed="true"><span class="key__n">08</span><span class="key__l" data-k="5"></span></span></li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

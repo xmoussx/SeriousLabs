@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Serious Labs — une journée d'IA dans vos locaux, vos outils restent chez vous</title>
-<meta name="description" content="Une journée de formation et d'installation dans vos locaux. Quatre personnes au maximum, sur vos vrais dossiers. Les outils restent chez vous et vous en êtes propriétaire.">
+<title>Serious Labs — on installe l'IA chez vous, vous gardez les clés</title>
+<meta name="description" content="Une journée dans vos locaux : le matin, jusqu'à quatre personnes de votre équipe apprennent sur leurs vrais dossiers ; l'après-midi, les outils sont installés sur vos postes. Ils restent à vous.">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://seriouslabs.tech/">
@@ -16,15 +16,17 @@
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://seriouslabs.tech/">
 <meta property="og:site_name" content="Serious Labs">
-<meta property="og:title" content="Une journée chez vous. Les outils restent.">
-<meta property="og:description" content="Quatre personnes au maximum, sur vos vrais dossiers. Les outils sont installés sur vos postes et vous en êtes propriétaire.">
+<meta property="og:title" content="On installe. Vous gardez les clés.">
+<meta property="og:description" content="Une journée dans vos locaux, quatre personnes au plus, sur vos vrais dossiers. Les outils sont installés sur vos postes et restent à vous.">
 <meta property="og:image" content="https://seriouslabs.tech/assets/img/og-fr.png">
-<meta name="theme-color" content="#07090b">
+<meta name="theme-color" content="#1b1e22">
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/big-shoulders-latin.woff2" as="font" type="font/woff2" crossorigin>
 
 <link rel="stylesheet" href="/assets/css/fonts.css">
 <link rel="stylesheet" href="/assets/css/style.css">
+<script src="/assets/js/app.js" defer></script>
 </head>
 
 <body>
@@ -32,168 +34,184 @@
 
 <header class="head">
   <div class="wrap bar">
-    <a class="mark" href="/" aria-label="Serious Labs, accueil"><img src="/assets/img/logo.svg" alt="" width="15" height="21"><span>SERIOUS&nbsp;LABS</span></a>
+    <a class="mark" href="/" aria-label="Serious Labs, accueil"><img src="/assets/img/logo.svg" alt="" width="15" height="21"><span>Serious Labs</span></a>
     <nav class="nav" aria-label="Navigation principale">
-      <a class="sect" href="#programme">Le programme</a>
-      <a class="sect" href="#heures">Vos heures</a>
+      <a class="sect" href="#exemple">Exemple</a>
+      <a class="sect" href="#journee">La journée</a>
       <a class="sect" href="#budget">Budget</a>
       <a class="lang" href="/en/" hreflang="en" lang="en">EN</a>
-      <a class="cta cta--sm" href="#devis">Demander un devis</a>
+      <a class="cta cta--sm" href="#devis">Demander<span class="cta__more">&nbsp;une journée</span></a>
     </nav>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- ================================================ 1. vue d'ouverture -->
-  <section class="open open--film">
-    <video class="open__film" muted loop playsinline preload="none"
-           poster="/assets/video/nuit-salle.jpg"
-           data-film="/assets/video/nuit-salle.mp4"
-           aria-hidden="true"></video>
-    <span class="open__voile" aria-hidden="true"></span>
-    <button type="button" class="open__arret" hidden aria-pressed="false"
-            data-arret data-arret-stop="Arrêter" data-arret-relance="Relancer">Arrêter</button>
-    <div class="wrap">
-      <h1>Une journée chez vous. Les outils restent.</h1>
-      <p class="lede">Personne, dans une structure de dix personnes, ne compte le temps passé à réécrire un courrier, à refaire un devis déjà fait, ou à chercher un document qui existe déjà. Ce temps-là ne se facture jamais.</p>
-      <a class="cta" href="#devis">Demander un devis</a>
-    </div>
-  </section>
+  <!-- ====================================================== l'armoire -->
+  <section class="open" id="cles">
+    <div class="wrap open__grid">
+      <div class="open__text">
+        <h1>On installe.<br>Vous gardez <span class="nobr">les clés.</span></h1>
+        <p class="lede">Une journée dans vos locaux. Le matin, jusqu'à quatre personnes de votre équipe apprennent sur leurs vrais dossiers. L'après-midi, les outils sont installés sur vos postes, et ils restent à vous.</p>
+        <ul class="facts" aria-label="L'offre en bref">
+          <li><b>1</b> journée sur place</li>
+          <li><b>4</b> personnes au plus</li>
+          <li><b>30</b> jours, puis un point</li>
+          <li>Sur devis</li>
+        </ul>
+      </div>
 
-  <section class="recap">
-    <div class="wrap">
-      <div class="summary">
-        <a href="#programme"><b>Le cadrage</b><span>Un appel pour récupérer vos vrais dossiers</span><em>45 min</em></a>
-        <a href="#programme"><b>La journée</b><span>Atelier le matin, installation l'après-midi</span><em>7 h sur place</em></a>
-        <a href="#reste"><b>Le suivi</b><span>On revient voir ce qui sert encore</span><em>à 30 jours</em></a>
+      <div class="board" data-board>
+        <p class="board__q" id="board-q">Qu'est-ce qui vous prend le plus de temps&nbsp;?</p>
+        <p class="board__h">Décrochez les clés qui vous coûtent des heures. On partira de là.</p>
+        <ul class="hooks" aria-labelledby="board-q">
+          <li><button type="button" class="key key--rouge" aria-pressed="false" data-key="01"><span class="key__n">01</span><span class="key__l">Lettres et courriels</span></button></li>
+          <li><button type="button" class="key key--jaune" aria-pressed="false" data-key="02"><span class="key__n">02</span><span class="key__l">Devis et propositions</span></button></li>
+          <li><button type="button" class="key key--vert" aria-pressed="false" data-key="03"><span class="key__n">03</span><span class="key__l">Factures et relances</span></button></li>
+          <li><button type="button" class="key key--bleu" aria-pressed="false" data-key="04"><span class="key__n">04</span><span class="key__l">Recherche et synthèse</span></button></li>
+          <li><button type="button" class="key key--orange" aria-pressed="false" data-key="05"><span class="key__n">05</span><span class="key__l">Contrats et documents types</span></button></li>
+          <li><button type="button" class="key key--violet" aria-pressed="false" data-key="06"><span class="key__n">06</span><span class="key__l">Tableaux de bord</span></button></li>
+          <li><button type="button" class="key key--blanc" aria-pressed="false" data-key="07"><span class="key__n">07</span><span class="key__l">Réponses qui reviennent</span></button></li>
+          <li><button type="button" class="key key--turquoise" aria-pressed="false" data-key="08"><span class="key__n">08</span><span class="key__l">Traduction</span></button></li>
+        </ul>
+        <div class="ring" data-ring>
+          <div class="ring__hang" aria-hidden="true">
+            <svg class="ring__svg" viewBox="0 0 48 48"><circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" stroke-width="3.5"/></svg>
+            <ul class="ring__keys" data-ring-keys></ul>
+          </div>
+          <p class="ring__count" aria-live="polite" data-ring-count>Votre trousseau est vide.</p>
+          <a class="cta" href="#devis" data-ring-cta data-cta-zero="Demander une journée" data-cta-one="Demander cette clé" data-cta-many="Demander ces {n} clés">Demander une journée</a>
+        </div>
       </div>
     </div>
   </section>
 
-
-  <!-- ============================================ 2. le programme, en table -->
-  <section id="programme">
+  <!-- ================================================ ce que fait une clé -->
+  <section class="demo" id="exemple">
     <div class="wrap">
-      <h2 class="sect-h">Le programme de la journée.</h2>
-      <p class="sect-l">C'est le document qu'un organisme de formation doit établir avant toute intervention. Le voici, pour que vous sachiez à quoi vous vous engagez avant d'écrire.</p>
+      <h2 class="sect-h">Rien ne part sans votre relecture.</h2>
+      <p class="sect-l">Chaque clé installée fait le premier jet à partir de vos propres documents. Il arrive qu'elle se trompe : c'est une personne de votre équipe qui corrige et qui valide. Essayez.</p>
 
-      <table class="data">
-        <caption>Action de formation</caption>
-        <thead>
-          <tr><th scope="col">Moment</th><th scope="col">Ce qui se passe</th><th scope="col">Où</th><th scope="col">Durée</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-col="Moment">Avant</td>
-            <td data-col="Ce qui se passe">Cadrage. On repère ce qui vous prend du temps et on récupère vos documents de travail<span class="sub">Sans eux, la journée se passerait sur des exemples.</span></td>
-            <td data-col="Où">À distance</td>
-            <td data-col="Durée"><span class="dur dur--21">45 min</span></td>
-          </tr>
-          <tr>
-            <td data-col="Moment">Matin</td>
-            <td data-col="Ce qui se passe">Atelier. Quatre personnes au maximum, sur les dossiers en cours<span class="sub">Aucun prérequis technique. Au-delà de quatre, on répartit sur plusieurs journées.</span></td>
-            <td data-col="Où">Vos locaux</td>
-            <td data-col="Durée"><span class="dur dur--100">3 h 30</span></td>
-          </tr>
-          <tr>
-            <td data-col="Moment">Après-midi</td>
-            <td data-col="Ce qui se passe">Installation et configuration des outils sur vos postes<span class="sub">Branchés sur vos dossiers, avec vos modèles. Aucun n'envoie quoi que ce soit tout seul.</span></td>
-            <td data-col="Où">Vos locaux</td>
-            <td data-col="Durée"><span class="dur dur--100">3 h 30</span></td>
-          </tr>
-          <tr>
-            <td data-col="Moment">Après</td>
-            <td data-col="Ce qui se passe">Point de contrôle sur ce qui sert encore<span class="sub">Si un outil ne sert à personne, on le reprend, ou on le retire.</span></td>
-            <td data-col="Où">À distance</td>
-            <td data-col="Durée"><span class="dur dur--off">30 jours</span></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr><td colspan="3">Total sur place</td><td>7 h</td></tr>
-        </tfoot>
-      </table>
+      <div class="sheet" data-demo>
+        <div class="sheet__pick" role="tablist" aria-label="Choisir une clé">
+          <button type="button" role="tab" class="pick key--rouge" aria-selected="false" data-demo-key="01">01</button>
+          <button type="button" role="tab" class="pick key--jaune" aria-selected="false" data-demo-key="02">02</button>
+          <button type="button" role="tab" class="pick key--vert" aria-selected="true" data-demo-key="03">03</button>
+          <button type="button" role="tab" class="pick key--bleu" aria-selected="false" data-demo-key="04">04</button>
+          <button type="button" role="tab" class="pick key--orange" aria-selected="false" data-demo-key="05">05</button>
+          <button type="button" role="tab" class="pick key--violet" aria-selected="false" data-demo-key="06">06</button>
+          <button type="button" role="tab" class="pick key--blanc" aria-selected="false" data-demo-key="07">07</button>
+          <button type="button" role="tab" class="pick key--turquoise" aria-selected="false" data-demo-key="08">08</button>
+        </div>
+
+        <div class="sheet__body" role="tabpanel" aria-live="polite">
+          <h3 class="sheet__t" data-demo-title>Factures et relances</h3>
+          <p class="sheet__ex">Exemple fictif</p>
+          <div class="sheet__cols">
+            <div>
+              <p class="sheet__k">Vous donnez</p>
+              <p class="sheet__in" data-demo-in>La liste des factures échues depuis plus de trente jours.</p>
+            </div>
+            <div>
+              <p class="sheet__k">L'outil prépare, vous corrigez</p>
+              <p class="sheet__draft" data-demo-draft>Madame, sauf erreur de notre part, la facture n° 2026-118 du 14 septembre reste impayée. Nous vous remercions d'en effectuer le règlement <del>sous huitaine</del> <ins>avant le 15 novembre</ins>.</p>
+            </div>
+          </div>
+          <div class="sheet__sign">
+            <label class="check"><input type="checkbox" data-demo-check> <span>J'ai relu et corrigé</span></label>
+            <button type="button" class="send" disabled data-demo-send data-sent="Validé par vous : il peut partir." data-fix="Un passage est faux. Touchez-le pour le corriger." data-fixed="Corrigé. Relisez, cochez, puis validez.">Valider</button>
+            <p class="sheet__state" data-demo-state aria-live="polite">En attente de votre relecture.</p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Les huit exemples, lus par le script. Sans lui, l'exemple 03 reste affiché. -->
+    <template data-demo-data>
+      <div data-k="01" data-t="Lettres et courriels" data-in="Le message d'une cliente mécontente et trois mots : on s'excuse, on rembourse le port.">Madame, nous avons bien reçu votre message du 12 et regrettons ce retard de livraison. <del>Nous vous offrons un bon d'achat de 10 %</del> <ins>Nous vous remboursons les frais de port</ins>, qui figureront sur votre prochain relevé.</div>
+      <div data-k="02" data-t="Devis et propositions" data-in="Le devis de mars pour le même client, et la nouvelle surface : 140 m² au lieu de 95.">Reprise du devis de mars, surface portée à 140 m². Délai d'exécution : <del>trois semaines</del> <ins>cinq semaines</ins>, compte tenu de la surface. Les autres conditions sont inchangées.</div>
+      <div data-k="03" data-t="Factures et relances" data-in="La liste des factures échues depuis plus de trente jours.">Madame, sauf erreur de notre part, la facture n° 2026-118 du 14 septembre reste impayée. Nous vous remercions d'en effectuer le règlement <del>sous huitaine</del> <ins>avant le 15 novembre</ins>.</div>
+      <div data-k="04" data-t="Recherche et synthèse" data-in="Quarante pages de comptes rendus de chantier, et une question : qu'est-ce qui bloque ?">Trois points bloquent : la livraison des menuiseries, prévue semaine 46 ; l'avis du bureau de contrôle sur la dalle ; <del>le permis modificatif</del> <ins>la validation de la teinte par le client</ins>.</div>
+      <div data-k="05" data-t="Contrats et documents types" data-in="Votre modèle de lettre de mission et la fiche du nouveau client.">Lettre de mission. Honoraires annuels selon le barème du cabinet, payables par mensualités. Durée : <del>trois ans</del> <ins>un an, renouvelable par tacite reconduction</ins>.</div>
+      <div data-k="06" data-t="Tableaux de bord" data-in="L'export du logiciel de facturation pour octobre.">Octobre : 41 factures émises, dont 6 en retard de plus de trente jours <del>et 2 en litige</del> <ins>et 1 en litige</ins>. Le retard moyen baisse par rapport à septembre.</div>
+      <div data-k="07" data-t="Réponses qui reviennent" data-in="La question posée dix fois par semaine : quelles pièces pour la déclaration ?">Bonjour, pour votre déclaration, il nous faut vos relevés bancaires de l'année, <del>votre avis d'imposition</del> <ins>votre dernier avis d'imposition</ins> et les justificatifs de vos frais.</div>
+      <div data-k="08" data-t="Traduction" data-in="La présentation du cabinet, pour un prospect installé à Londres.">Dear Ms Becker, please find attached <del>our tariffs</del> <ins>our fee schedule</ins> for 2027, together with a short presentation of the firm.</div>
+    </template>
   </section>
 
-  <!-- ====================================== 3. bandeau — ce qui reste chez vous -->
-  <section class="band" id="reste">
-    <div class="band__media">
-      <video class="band__video" muted loop playsinline preload="none"
-             poster="/assets/video/nuit-ecran.jpg"
-             data-film="/assets/video/nuit-ecran.mp4"
+  <!-- ===================================================== la journée -->
+  <section class="day" id="journee">
+    <div class="wrap">
+      <h2 class="sect-h">La remise des clés, en une journée.</h2>
+      <p class="sect-l">C'est le programme qu'un organisme de formation établit avant toute intervention. Le voici, pour que vous sachiez à quoi vous vous engagez avant d'écrire.</p>
+    </div>
+
+    <figure class="day__film">
+      <video class="film" muted loop playsinline preload="none"
+             poster="/assets/video/matin-table.jpg"
+             data-film="/assets/video/matin-table.mp4"
              aria-hidden="true"></video>
-      <p class="band__tag">Sur vos postes</p>
-    </div>
-    <div class="band__body">
-      <h2 class="sect-h">Ce qui reste chez vous.</h2>
-      <p class="sect-l">Ni plateforme à louer, ni abonnement, ni consultant qui revient tous les mardis. Les outils sont installés sur vos machines et vous en êtes propriétaire.</p>
-      <dl class="specs">
-        <div><dt>Durée sur place</dt><dd>7 h</dd></div>
-        <div><dt>Cadrage préalable</dt><dd>45 min</dd></div>
-        <div><dt>Participants</dt><dd>4 au plus</dd></div>
-        <div><dt>Point de contrôle</dt><dd>à 30 jours</dd></div>
-        <div><dt>Propriété des outils</dt><dd>Vous</dd></div>
-        <div><dt>Abonnement</dt><dd>Aucun</dd></div>
-        <div><dt>Données sorties de chez vous</dt><dd>Aucune</dd></div>
-      </dl>
-      <p class="specs__h">Remis à l'issue</p>
-      <dl class="specs">
-        <div><dt>Convention de formation</dt><dd>Avant</dd></div>
-        <div><dt>Programme détaillé</dt><dd>Avant</dd></div>
-        <div><dt>Feuille d'émargement</dt><dd>Le jour J</dd></div>
-        <div><dt>Attestation de fin</dt><dd>À l'issue</dd></div>
-      </dl>
-    </div>
-  </section>
+      <figcaption class="wrap">La formation : quatre participants, une personne qui explique. Scène de synthèse.</figcaption>
+      <button type="button" class="film__stop" hidden aria-pressed="false"
+              data-arret data-arret-stop="Arrêter la vidéo" data-arret-relance="Relancer la vidéo">Arrêter la vidéo</button>
+    </figure>
 
-  <!-- ====================================================== 4. vos heures -->
-  <section id="heures">
-    <div class="wrap two">
-      <div>
-        <h2 class="sect-h">Où passent vos heures.</h2>
-        <p class="sect-l">Ce sont presque toujours les mêmes travaux, et ils ne figurent sur aucune fiche de poste. Voilà ce qu'on regarde en premier.</p>
-      </div>
-      <ul class="jobs">
-        <li>Rédaction et correspondance</li>
-        <li>Devis et propositions</li>
-        <li>Facturation, relances, administratif</li>
-        <li>Recherche, veille et synthèse</li>
-        <li>Contrats et documents types</li>
-        <li>Reporting et tableaux de bord</li>
-        <li>Réponses récurrentes</li>
-        <li>Traduction et communication</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ======================================================== 5. la ligne -->
-  <section class="ink">
     <div class="wrap">
-      <p class="claim">Aucun document ne sort de chez vous sans qu'<em>une personne de votre équipe</em> l'ait relu et signé.</p>
-      <div class="split">
+      <ol class="steps">
+        <li>
+          <p class="steps__when">Avant <span>45 min, à distance</span></p>
+          <h3>On prend les mesures</h3>
+          <p>Un appel pour repérer ce qui vous prend du temps et récupérer vos documents de travail. Sans eux, la journée se passerait sur des exemples.</p>
+        </li>
+        <li>
+          <p class="steps__when">Le matin <span>3 h 30, chez vous</span></p>
+          <h3>On apprend à se servir des outils</h3>
+          <p>Quatre personnes au maximum, sur les dossiers en cours, sans prérequis technique. Au-delà de quatre, on répartit sur plusieurs journées.</p>
+        </li>
+        <li>
+          <p class="steps__when">L'après-midi <span>3 h 30, chez vous</span></p>
+          <h3>On taille vos clés</h3>
+          <p>Les outils sont installés et configurés sur vos postes, branchés sur vos dossiers et vos modèles. Aucun n'envoie quoi que ce soit tout seul.</p>
+        </li>
+        <li>
+          <p class="steps__when">À trente jours <span>à distance</span></p>
+          <h3>On lève les réserves</h3>
+          <p>On regarde ce qui sert encore. Un outil qui ne sert à personne est repris, ou retiré.</p>
+        </li>
+      </ol>
+      <p class="steps__total">Total sur place : <b>7 h</b></p>
+    </div>
+  </section>
+
+  <!-- ===================================================== à vous -->
+  <section class="own" id="a-vous">
+    <div class="wrap">
+      <h2 class="claim">Aucun document ne sort de chez vous sans qu'une personne de votre équipe l'ait relu et signé.</h2>
+      <div class="own__grid">
         <div>
-          <h3>Préparation</h3>
-          <p>L'outil cherche, rassemble, met en forme et propose un premier jet à partir de vos propres documents.</p>
+          <h3 class="own__h">Les clés sont à vous.</h3>
+          <p class="own__p">Les outils restent sur vos postes, branchés sur vos dossiers. Ni plateforme à louer, ni consultant qui revient tous les mardis.</p>
         </div>
         <div>
-          <h3>Décision</h3>
-          <p>Votre expert corrige, tranche et signe. Rien ne part tout seul, y compris une relance de trois lignes.</p>
-        </div>
-        <div>
-          <h3>Propriété</h3>
-          <p>Les outils restent sur vos postes. Pas de plateforme louée, pas de consultant qui revient tous les mardis.</p>
+          <dl class="specs">
+            <div><dt>Propriété des outils</dt><dd>Vous</dd></div>
+            <div><dt>Abonnement chez nous</dt><dd>Aucun</dd></div>
+            <div><dt>Document envoyé sans relecture</dt><dd>Aucun</dd></div>
+            <div><dt>Convention et programme</dt><dd>Avant</dd></div>
+            <div><dt>Feuille d'émargement</dt><dd>Le jour même</dd></div>
+            <div><dt>Attestation de fin</dt><dd>À l'issue</dd></div>
+          </dl>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================== 6. budget -->
+  <!-- ========================================================== budget -->
   <section id="budget">
     <div class="wrap two">
       <div>
         <h2 class="sect-h">Ça entre dans votre budget formation.</h2>
-        <p class="sect-l">L'intervention prend la forme d'une journée de formation professionnelle, dans vos locaux, sur vos dossiers.</p>
+        <p class="sect-l">L'intervention prend la forme d'une journée de formation professionnelle, dans vos locaux, sur vos dossiers. Elle se règle sur votre budget formation interne.</p>
       </div>
       <div>
         <dl class="specs">
@@ -209,17 +227,16 @@
     </div>
   </section>
 
-  <!-- ========================================================= 7. demande -->
-  <section id="devis">
+  <!-- ========================================================= demande -->
+  <section id="devis" class="ask">
     <div class="wrap two">
       <div>
         <h2 class="sect-h">Dites-nous ce qui vous prend du temps.</h2>
         <p class="sect-l">Réponse sous un jour ouvré, par la personne qui viendra. Pas de rendez-vous commercial obligatoire.</p>
-        <div class="price">
-          <p class="price__n">Sur devis</p>
-          <p class="price__c">La journée</p>
-          <p class="price__d">4 participants, cadrage et suivi à 30 jours inclus.</p>
-        </div>
+        <dl class="specs specs--price">
+          <div><dt>La journée</dt><dd>Sur devis</dd></div>
+          <div><dt>Compris</dt><dd>Cadrage et point à 30 jours</dd></div>
+        </dl>
       </div>
 
       <form class="form" data-contact-form action="/api/contact.php" method="post" novalidate>
@@ -236,7 +253,7 @@
           <input type="email" id="f-email" name="email" required autocomplete="email" maxlength="200">
         </div>
         <div class="f">
-          <label for="f-tel">Téléphone — facultatif</label>
+          <label for="f-tel">Téléphone, facultatif</label>
           <input type="tel" id="f-tel" name="telephone" autocomplete="tel" maxlength="40">
         </div>
         <div class="f">
@@ -259,6 +276,7 @@
         </div>
         <div class="f f--wide">
           <label for="f-message">Ce qui vous prend le plus de temps aujourd'hui <span class="req" aria-hidden="true">*</span></label>
+          <p class="f__keys" data-form-keys hidden></p>
           <textarea id="f-message" name="message" required maxlength="4000" placeholder="Par exemple : on relance les impayés au coup par coup, ou il faut deux heures pour sortir un compte rendu de réunion."></textarea>
         </div>
 
@@ -283,27 +301,30 @@
 
 </main>
 
+<div class="dock" data-dock hidden>
+  <p data-dock-count></p>
+  <a class="cta cta--sm" href="#devis" data-dock-cta>Demander</a>
+</div>
+
 <footer class="foot">
   <div class="wrap">
     <div class="foot__top">
       <div>
-        <a class="mark" href="/" aria-label="Serious Labs, accueil"><img src="/assets/img/logo.svg" alt="" width="15" height="21"><span>SERIOUS&nbsp;LABS</span></a>
+        <a class="mark" href="/" aria-label="Serious Labs, accueil"><img src="/assets/img/logo.svg" alt="" width="15" height="21"><span>Serious Labs</span></a>
         <p class="foot__claim">Tout ce qu'on installe reste chez vous.</p>
       </div>
       <nav class="foot__links" aria-label="Liens de pied de page">
-        <a href="#programme">Le programme</a>
-        <a href="#devis">Demander un devis</a>
+        <a href="#journee">La journée</a>
+        <a href="#devis">Demander une journée</a>
         <a href="/mentions-legales.html">Mentions légales</a>
         <a href="/en/" hreflang="en" lang="en">English</a>
       </nav>
     </div>
     <div class="foot__bar">
-      <p>© <span data-year>2026</span> SERIOUS LABS SAS — 12 rue Juliette Dodu, 75010 Paris</p>
-      <p>SIRET <span class="typed">988 917 209 00013</span> — <a href="mailto:contact@seriouslabs.tech">contact@seriouslabs.tech</a></p>
+      <p>© <span data-year>2026</span> SERIOUS LABS SAS, 12 rue Juliette Dodu, 75010 Paris</p>
+      <p>SIRET <span class="typed">988 917 209 00013</span> · <a href="mailto:contact@seriouslabs.tech">contact@seriouslabs.tech</a> · Aucun cookie, aucun traceur.</p>
     </div>
   </div>
 </footer>
-
-<script src="/assets/js/app.js" defer></script>
 </body>
 </html>

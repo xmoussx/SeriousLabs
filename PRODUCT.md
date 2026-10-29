@@ -52,39 +52,35 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
   visuellement la limite des quatre.
 - **Un plan du carnet à souche a été produit puis retiré** à la demande du
   client, avec le monde visuel qui le portait.
-- **Les deux plans en ligne sont générés sur le Mac du client, en local, sans
-  aucun crédit.** Ce sont des plans d'objets à l'heure bleue, sans personne :
-  une salle de réunion vide au crépuscule pour l'accueil, un carnet ouvert et un
-  stylo sous la lueur d'un écran hors champ pour le bandeau.
+- **Le plan en ligne vient de Grok Imagine, depuis le 29 octobre 2026.** Les
+  personnes reviennent à l'image, ce que le client a accepté en demandant de
+  refaire les vidéos avec Grok. C'est un seul plan,
+  `assets/video/matin-table.mp4` : quatre participants de dos ou de
+  trois-quarts autour d'une table, une personne debout qui explique, des écrans
+  flous, une lumière de fin de journée. Il fait 1280 × 720, dure 6 s et boucle
+  sans raccord visible. La boucle est obtenue en donnant la même image en
+  première et en dernière image.
 
-  Le choix du sujet n'est pas esthétique, il est technique **et** éditorial. Ce
-  qui rend antidrones.seriouslabs.tech cinématographique n'est pas sa
-  définition, c'est que ses plans montrent des objets et non des gens.
+  Origine : une image produite par Grok Imagine (une variante sur quatre, la
+  seule qui comptait bien quatre personnes assises et une debout), animée en
+  image vers vidéo. Coût : environ 1 % de la limite hebdomadaire SuperGrok du
+  client. Les prompts sont inscrits dans le poster `matin-table.jpg`.
 
-  **Ce que le modèle local ne sait pas rendre**, établi par échecs successifs et
-  non par principe : les mains et les doigts, les touches d'un clavier vues de
-  près, et **le contenu d'un écran d'ordinateur** — il produit soit des glyphes
-  illisibles, soit un bureau de système saturé. Trois régénérations l'ont
-  confirmé. La règle générale : tout ce qui est petit, structuré et proche de la
-  caméra casse. Un plan large d'objets simples passe.
+  Défaut connu, signalé au client : vers 1,5 s, la participante assise à
+  droite tourne la tête vers la caméra. Son visage, petit et sombre, n'est pas
+  le sujet du cadre.
 
-  Le plan du bandeau porte un clavier fondu au premier plan. **C'est un défaut
-  connu et assumé par le client**, qui l'a validé après qu'on le lui a signalé.
-  Une tentative de correction par recadrage a été faite sans qu'il la demande :
-  elle a supprimé un défaut et en a créé trois, et a été révoquée. Ne pas
-  « améliorer » un plan validé.
+  La légende dit « scène de synthèse » et ne dit pas « le matin » : la lumière
+  est celle du soir.
 
-  Le carnet et le stylo ne décorent pas : ils rendent visible la phrase centrale
-  du site, qu'aucun document ne sort sans qu'une personne de l'équipe l'ait relu
-  et signé.
+  **Ce que le modèle local ne savait pas rendre**, établi en septembre par
+  échecs successifs : les mains, les touches d'un clavier vues de près et le
+  contenu d'un écran. Grok rend les mains crédibles à distance. Il respecte mal
+  les interdits du prompt et compte mal les personnes : les écrans doivent
+  rester flous ou de dos.
 
-  Plafond mesuré : environ 5 300 jetons de latent. En 1280 × 704 cela plafonne à
-  41 images, soit 1,71 s, doublées à 3,42 s par montage inverse. Il faut choisir
-  entre la définition et la durée.
-
-  Les versions précédentes — travellings sur images fixes, puis plans animés
-  avec des personnes — sont dans `assets/video/travellings-ecartes/`, non
-  déployées.
+  Les plans précédents, travellings puis plans de nuit générés en local, sont
+  dans `assets/video/travellings-ecartes/`, non déployés.
 - **Aucun calculateur.** Il a existé puis a été retiré : il demandait au visiteur de régler des curseurs et de lire des hypothèses avant de comprendre l'offre. Ne pas le réintroduire sans décision explicite.
 - Tarifs **non affichés** : devis sur mesure.
 - Certification Qualiopi et déclaration d'activité d'organisme de formation **en cours d'obtention**. Tant qu'elles ne sont pas acquises, aucune prise en charge par un OPCO n'est possible et le site doit le dire explicitement.
@@ -94,13 +90,15 @@ Le premier contact se fait par un formulaire ou par courriel. La promesse de ré
 
 Nom : Serious Labs. Forme juridique : SAS, siège au 12 rue Juliette Dodu, 75010 Paris. Le siège figurant dans les mentions légales doit rester l'adresse réellement immatriculée.
 
-Monde visuel : **« La journée », en sombre** — la page est l'emploi du temps de
-la journée vendue, sur fond presque noir, le plan filmé occupant le premier
-écran. Direction choisie par le client le 18 septembre 2026 parmi trois premiers
-écrans construits, après deux versions claires rejetées. Il remplace « le carnet à souche », abandonné le 16 septembre 2026 :
-celui-ci avait dérivé de la demande d'origine, ultra moderne et hyper dépouillé,
-vers un imprimé rétro et dense, et il déguisait en paperasse un service qui vend
-la sortie de la paperasse. Voir `DESIGN.md`.
+Monde visuel : **« Vous gardez les clés »** — la page est l'armoire à clés de
+l'entreprise cliente : acier anthracite, crochets de laiton, une étiquette de
+porte-clés colorée par poste de travail que le visiteur décroche pour composer
+son trousseau. Direction choisie par le client le 29 octobre 2026 parmi quatre
+directions présentées, après qu'il a demandé de tout reprendre de zéro. Elle
+remplace « La journée, en sombre » (18 septembre 2026), qui avait elle-même
+remplacé « le carnet à souche », abandonné le 16 septembre 2026 parce qu'il
+déguisait en paperasse un service qui vend la sortie de la paperasse. Voir
+`DESIGN.md`.
 
 Symbole : le logo d'origine, vectorisé fidèlement par tracé de son fichier — fiole de laboratoire contenant une croix directionnelle et des boutons de manette. Des redessins ont été proposés et écartés par le client : ce sont ses contours qui font foi, manette comprise. L'original est versionné dans `assets/brand/`, il n'existe nulle part ailleurs.
 

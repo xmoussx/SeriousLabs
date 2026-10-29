@@ -1,130 +1,266 @@
-# Design — Serious Labs
+---
+name: Serious Labs
+description: On installe. Vous gardez les clés.
+colors:
+  steel: "#1b1e22"
+  steel-2: "#23272c"
+  steel-0: "#131518"
+  rule: "#353b42"
+  ink: "#eef0f2"
+  ink-2: "#aab2ba"
+  brass: "#d4a64a"
+  brass-2: "#e7c37a"
+  paper: "#f3f1ec"
+  paper-2: "#5c5a55"
+  rouge: "#c4382a"
+  jaune: "#f0c02c"
+  vert: "#26804d"
+  bleu: "#2e6bd0"
+  orange: "#ee7a24"
+  violet: "#6e46c2"
+  turquoise: "#2aa9be"
+  blanc: "#e4e6e8"
+typography:
+  display:
+    fontFamily: "Big Shoulders, Arial Narrow, sans-serif"
+    fontSize: "clamp(3.4rem, 10.5vw, 6rem)"
+    fontWeight: 900
+    lineHeight: 0.86
+    letterSpacing: "0"
+  heading:
+    fontFamily: "Big Shoulders, Arial Narrow, sans-serif"
+    fontSize: "clamp(2.3rem, 5.4vw, 3.9rem)"
+    fontWeight: 900
+    lineHeight: 0.92
+    letterSpacing: "0"
+  stamp:
+    fontFamily: "Big Shoulders Stencil, Big Shoulders, sans-serif"
+    fontSize: "1.9rem"
+    fontWeight: 800
+    lineHeight: 1
+    letterSpacing: "0.02em"
+  body:
+    fontFamily: "Atkinson Hyperlegible Next, system-ui, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: "normal"
+  label:
+    fontFamily: "Atkinson Hyperlegible Next, system-ui, sans-serif"
+    fontSize: "0.8125rem"
+    fontWeight: 700
+    lineHeight: 1.2
+    letterSpacing: "-0.01em"
+rounded:
+  none: "0"
+  tag: "10px 10px 16px 16px"
+  chip: "3px 3px 6px 6px"
+spacing:
+  gutter: "clamp(1rem, 4vw, 2.5rem)"
+  band: "clamp(4.5rem, 10vw, 8rem)"
+components:
+  button-primary:
+    backgroundColor: "{colors.brass}"
+    textColor: "{colors.steel}"
+    rounded: "{rounded.none}"
+    padding: "0.75rem 1.4rem"
+    height: "3rem"
+  button-primary-hover:
+    backgroundColor: "{colors.brass-2}"
+  key-tag:
+    backgroundColor: "{colors.bleu}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.tag}"
+    typography: "{typography.stamp}"
+    height: "8.5rem"
+  key-tag-label:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.steel}"
+    typography: "{typography.label}"
+  input:
+    backgroundColor: "{colors.steel}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
+    padding: "0.7rem 0.8rem"
+    height: "3rem"
+---
 
-Monde visuel : **« La journée », en sombre**. Cette note remplace celle du
-carnet à souche, abandonné le 16 septembre 2026.
+# Design System: Serious Labs
 
-Le passage au sombre date du 18 septembre 2026. Le client a choisi cette
-direction parmi trois premiers écrans construits et présentés côte à côte, après
-avoir rejeté deux versions claires. Le décalage tenait à ça depuis le début : il
-admirait antidrones.seriouslabs.tech, qui est sombre et cinématographique,
-pendant qu'on lui construisait des pages blanches.
+Monde visuel : **« Vous gardez les clés »**, choisi par le client le 29 octobre
+2026 parmi quatre directions. Il remplace « La journée, en sombre » (18
+septembre 2026), à la demande du client de tout reprendre de zéro.
 
-La structure n'a pas changé — l'emploi du temps de la journée, la colonne de
-moments, la table du programme, les bandeaux à média. Seul le monde a changé.
+## Overview
 
-## Pourquoi ce monde
+La page est l'armoire à clés de l'entreprise cliente. Chaque outil installé
+est une clé remise au client ; chaque poste qui fait perdre du temps est une
+étiquette de porte-clés pendue à un crochet de laiton, sur une tôle perforée.
+Le visiteur décroche les étiquettes qui le concernent : elles volent jusqu'à
+son trousseau, et sa demande part avec.
 
-Le produit vendu est une journée. Le site est donc bâti sur du temps plutôt que
-sur des arguments : une colonne de moments descend le long de la page, une règle
-verticale la longe sans interruption, et chaque chose dite est accrochée à un
-moment.
+La métaphore tient du premier écran au pied de page : on prend les mesures, on
+taille les clés, on lève les réserves à trente jours, les clés sont à vous.
+Elle porte la promesse commerciale centrale, que les outils restent chez le
+client et lui appartiennent.
 
-Il refuse trois arrangements :
+Elle refuse le bandeau sombre à dégradé de l'IA, la grille de cartes, et
+l'imprimé administratif abandonné en septembre.
 
-1. le bandeau sombre à dégradé, signature de la catégorie IA ;
-2. la grille de cartes à ombre portée ;
-3. l'imprimé administratif dense de la version précédente.
+## Colors
 
-Le carnet à souche était une idée forte mais il portait deux défauts. Il avait
-dérivé de la demande d'origine — ultra moderne, hyper dépouillé — vers du rétro
-et du dense. Et il déguisait en paperasse un service qui vend la sortie de la
-paperasse.
+Contrastes mesurés sur les couleurs affichées, pas sur les intentions.
 
-## Couleurs
+### Primary
 
-Chaque valeur est donnée avec son rapport de contraste réel, pas avec une
-intention.
+- **Laiton** `#d4a64a` : action, crochets, anneau, repères de temps. 7,45:1
+  sur l'acier, et l'acier sur lui à 7,45:1, d'où le texte sombre des boutons.
+  Survol `#e7c37a`.
 
-| Jeton | Valeur | Rôle | Contraste |
+### Neutral
+
+- **Acier** `#1b1e22` : le fond, l'émail de l'armoire. Texte `#eef0f2` à
+  14,6:1, texte secondaire `#aab2ba` à 7,8:1.
+- **Tôle** `#23272c` : le tableau perforé et la section de demande. Texte
+  secondaire à 7,0:1.
+- **Ombre** `#131518` : le pied de page. Texte secondaire à 8,5:1.
+- **Filet** `#353b42` : décoratif, ne porte jamais d'information.
+- **Papier** `#f3f1ec` : la fenêtre des étiquettes et la feuille de l'exemple.
+  Acier dessus à 14,8:1, texte secondaire `#5c5a55` à 6,1:1.
+
+### Les plastiques
+
+Une couleur par étiquette, huit en tout, comme les porte-clés de quincaillerie.
+
+| Jeton | Valeur | Texte | Contraste |
 |---|---|---|---|
-| `--page` | `#07090b` | le fond, désormais l'encre | — |
-| `--ink` | `#eef1f4` | texte principal | 17,59:1 sur le fond |
-| `--ink-2` | `#9fa9b3` | texte secondaire | 8,36:1 |
-| `--rule` | `#1b2026` | filets | 1,22:1 — décoratif, ne porte jamais d'information |
-| `--accent` | `#ff5c2b` | action, repère de temps, signal | 6,47:1 sur le fond, et 6,47:1 en noir dessus |
-| `--surface` | `#151c25` | panneaux de texte | 1,16:1 d'écart avec le fond |
-| `--on-ink` | `#7f8b96` | plancher du texte secondaire sur surface | 5,73:1 |
-| `--rule-ink` | `#242c36` | filets sur surface | — |
+| `--rouge` | `#c4382a` | blanc | 5,32:1 ; sur papier 4,71:1 (texte biffé) |
+| `--jaune` | `#f0c02c` | acier | 9,78:1 |
+| `--vert` | `#26804d` | blanc | 4,91:1 |
+| `--bleu` | `#2e6bd0` | blanc | 5,08:1 |
+| `--orange` | `#ee7a24` | acier | 5,93:1 |
+| `--violet` | `#6e46c2` | blanc | 6,33:1 |
+| `--turquoise` | `#2aa9be` | acier | 5,99:1 |
+| `--blanc` | `#e4e6e8` | acier | 13,37:1 |
 
-**L'accent reste le vermillon, pas le cyan de LEVELUM.** C'est déjà la couleur de
-la marque ; lui emprunter le sien ferait de ce site une copie au lieu d'une
-famille. Éclairci de `#D92B00` à `#FF5C2B`, ce qui le fait passer de 4,08:1 à
-6,47:1 sur le fond.
+Le rouge et le vert ont été assombris depuis `#d9402e` et `#2b8c55`, qui
+échouaient à 4,45 et 4,21:1 dans les pastilles du formulaire.
 
-`#6b7680` a été écarté comme plancher de texte secondaire : mesuré à 4,30:1, il
-échoue au seuil de 4,5. Le plancher est `#7f8b96`.
+### Named Rules
 
-L'écart de la surface au fond est tenu à 1,16:1, la même valeur
-qu'antidrones.seriouslabs.tech : assez pour séparer un panneau, trop peu pour le
-découper.
+**La règle du numéro.** Une couleur ne dit jamais seule de quelle clé il
+s'agit : chaque miniature du trousseau et chaque pastille du formulaire porte
+son numéro frappé.
 
-## Typographie
+**La règle du laiton en surface.** Le laiton ne prend toute la surface qu'une
+fois, dans la section où la page dit ce qui appartient au client.
 
-Archivo Black pour les titres, Archivo 400/500/600/700 pour la prose et les
-intitulés. Aucune autre famille. Courier Prime a été retiré avec le carnet :
-les valeurs qui doivent s'aligner passent par `font-variant-numeric:
-tabular-nums`, ce qui donne le même alignement et une police de moins à
-télécharger — 63 Ko économisés.
+## Typography
 
-Archivo Black n'a pas d'italique. Toute emphase dans un titre se fait au trait
-(`box-shadow: inset 0 -.14em 0`), jamais par `font-style: italic`, qui serait
-synthétisée et penchée par le navigateur.
+- **Big Shoulders** (900), en capitales condensées, pour les titres : les
+  numéros frappés au poinçon sur les crochets d'une armoire.
+- **Big Shoulders Stencil** (800) pour les numéros des étiquettes et les
+  chiffres des faits.
+- **Atkinson Hyperlegible Next** pour la prose et les libellés. Elle a été
+  choisie pour la lecture sur téléphone d'un public non technique.
 
-## Règles du système, sans exception
+Les trois sont des polices variables auto-hébergées, latin et latin étendu,
+déclarées dans `assets/css/fonts.css`. Aucun appel à Google.
 
-- Aucune carte, aucune ombre d'élévation, aucun rayon de bordure.
-- Une seule couleur d'accent, jamais décorative.
-- La profondeur se fait par pleine largeur d'encre, pas par empilement.
-- Les valeurs chiffrées sont tabulaires.
+### Hierarchy
 
-## Deux pièges de spécificité, tous deux rencontrés
+- Titre d'ouverture : `clamp(3.4rem, 10.5vw, 6rem)`, interligne 0,86.
+- Titre de section : `clamp(2.3rem, 5.4vw, 3.9rem)`, interligne 0,92.
+- Corps : 1,0625rem sur 1,6 ; chapeau de section 1,125rem, limité à 58ch.
+- Libellé d'étiquette : 0,8125rem, gras.
 
-`.nav a` vaut 0,1,1 et l'emporte sur `.cta` à 0,1,0 : sans `.nav .cta`, le texte
-de l'action dans l'entête prenait le gris de navigation sur son aplat vermillon,
-soit **1,26:1**. Le défaut ne se voit pas à l'œil.
+### Named Rules
 
-`.form label` vaut 0,1,1 et l'emporte sur `.consent` à 0,1,0 : toute la phrase
-de consentement partait en capitales. Corrigé par `.form .consent`.
+**Pas de sur-titre.** Aucun libellé au-dessus d'un titre. « Exemple fictif »
+est un tampon dans le coin de la feuille, pas un sur-titre.
 
-Conclusion pratique : dans cette feuille, une règle qui corrige un héritage doit
-être au moins aussi spécifique que celle qui le cause, et le contraste se
-vérifie sur les couleurs **calculées**, pas sur les jetons.
+## Layout
 
-## Structure de la page
+Largeur utile `min(100% - 2 × gouttière, 78rem)`. Sections séparées par des
+filets et un rythme de `clamp(4.5rem, 10vw, 8rem)`. L'ouverture est en deux
+colonnes à partir de 64rem ; en dessous, la question et le tableau passent
+avant les faits de l'offre. La vidéo est limitée à 64rem de large : sa source
+fait 1280 px et ne doit pas être agrandie.
 
-1. **Ouverture** — sur-titre, énoncé, lede, action, cinq faits de l'offre.
-2. **La journée** — la colonne de moments. Quatre moments : avant, matin,
-   après-midi, trente jours après.
-3. **Où passent vos heures** — huit postes en liste numérotée, pas en cartes :
-   ils sont de même nature et de même poids.
-4. **La ligne** — pleine largeur d'encre. L'affirmation qu'aucun document ne
-   sort sans relecture humaine, puis trois colonnes : préparation, décision,
-   propriété.
-5. **Budget formation** — avec l'aveu que Qualiopi n'est pas obtenue.
-6. **Demande** — le formulaire.
-7. **Pied de page** — pleine largeur d'encre.
+## Elevation & Depth
 
-Les pages de mentions légales partagent l'entête, le pied et `.doc`.
+Une seule chose a une ombre : l'étiquette, parce que c'est un objet qui pend.
+`0 10px 18px -6px rgb(0 0 0 / .6)`, avec un reflet de plastique en dégradé
+blanc de 22 % à 0. Les crochets portent une ombre de 2 px. Rien d'autre ne
+flotte.
 
-## Sécurité, conséquence d'une décision de design
+## Shapes
 
-Plus aucun script ni style en ligne dans les quatre pages : l'horodatage
-anti-robot est posé par `app.js` et non par une balise `<script>` en fin de
-page. La directive `script-src` de la CSP est donc passée de
-`'self' 'unsafe-inline'` à `'self'`.
+Aucun rayon, sauf sur les objets : l'étiquette (`10px 10px 16px 16px`), ses
+miniatures et les pastilles du formulaire, qui en sont la réduction. La tôle
+perforée est un motif de trous de 1,6 px sur une grille de 18 px.
 
+## Components
 
-## Deux défauts que la mesure de contraste ne voit pas
+### Buttons
 
-Le passage au sombre en a produit deux, qu'aucun calcul automatique ne
-signalait, parce qu'ils ne portent pas sur du texte.
+Le bouton d'action est un aplat de laiton, texte acier, hauteur 3rem, sans
+rayon. Le bouton « Valider » de l'exemple est un aplat d'acier sur papier,
+désactivé en `#d9d5cc` avec un texte `#4a4843` à 6,2:1.
 
-**Le logo devenait invisible.** Son tracé porte sa couleur en dur — `#16181a` —
-parce qu'il a été vectorisé depuis le fichier d'origine du client et que ses
-contours ne se retouchent pas. Servi par une balise `<img>`, aucune règle CSS ne
-peut l'atteindre. Il est donc inversé par `filter: invert(1)` : monochrome, il
-devient exactement aussi clair qu'il était sombre, sans que le fichier bouge.
+### L'étiquette (composant signature)
 
-**Le bouton d'arrêt du plan portait du texte noir sur un voile noir.** Sa
-couleur était `var(--page)`, qui désignait le blanc et désigne désormais le
-fond. Tout jeton employé à l'envers d'un monde se retourne avec lui.
+Il s'agit d'un `<button aria-pressed>` qui porte un œillet, un numéro au
+pochoir et une fenêtre de papier.
+
+- **Au survol**, elle penche de 5°.
+- **Choisie**, un double vole jusqu'à l'anneau du trousseau, en 720 ms. Le
+  crochet garde alors la silhouette en pointillé et le numéro, pour qu'on
+  puisse la raccrocher.
+- **Raccrochée**, elle revient en balançant.
+- **En mouvement réduit**, rien ne vole : l'état change seul.
+- **Sur téléphone**, elle pend à l'horizontale, crochet à gauche.
+
+### Le trousseau
+
+C'est un anneau de laiton en SVG, sous lequel les miniatures pendent en
+éventail, jusqu'à 78°, chacune avec son numéro. À côté, le compteur, et
+l'action qui devient « Demander ces N clés ». Sur téléphone, une barre basse
+reprend le compte dès que l'anneau sort de l'écran.
+
+### L'exemple
+
+C'est une feuille de papier, avec un onglet par clé, qui suit la dernière clé
+décrochée. Le passage faux est un bouton souligné en pointillé rouge. Tant
+qu'il n'est pas corrigé, la case « J'ai relu et corrigé » reste fermée, et
+« Valider » reste fermé tant qu'elle n'est pas cochée. Sans script, la
+correction s'affiche d'emblée.
+
+### Inputs / Fields
+
+Les champs ont un fond acier, un filet de 1 px et un bas de 2 px, qui passe au
+laiton au focus et au rouge en erreur. Les clés choisies s'affichent en
+pastilles au-dessus du message, et sont jointes à l'envoi si le message ne les
+cite pas.
+
+### Navigation
+
+L'entête est collante, en acier translucide flouté. Sous 760 px, il ne reste
+que la langue et l'action ; sous 30rem, l'action se raccourcit en « Demander ».
+
+## Do's and Don'ts
+
+### Do:
+
+- Accrocher toute nouvelle section à la métaphore des clés, ou la laisser
+  neutre.
+- Vérifier le contraste sur les couleurs calculées, à chaque plastique.
+- Signaler toute démonstration comme exemple fictif.
+
+### Don't:
+
+- Pas de carte, pas d'ombre décorative, pas de dégradé de fond.
+- Pas de couleur sans numéro pour désigner une clé.
+- Pas de chiffre de gain, de témoignage ou de logo client.
+- Pas de bandeau ni de fenêtre à l'arrivée : la page n'en a pas besoin, elle
+  n'a ni cookie ni traceur.

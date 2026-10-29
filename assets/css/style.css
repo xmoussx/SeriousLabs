@@ -1,1093 +1,748 @@
 /* ==========================================================================
-   SERIOUS LABS — « La journée », monde sombre
+   Serious Labs — « Vous gardez les clés »
 
-   Le client a choisi cette direction le 18.09.2026, après trois essais
-   présentés côte à côte. Le décalage tenait à ça depuis le début : il
-   admirait antidrones.seriouslabs.tech, qui est sombre et cinématographique,
-   pendant qu'on lui construisait des pages blanches.
-
-   La structure ne change pas — l'emploi du temps de la journée, la colonne
-   de moments, la table du programme, les bandeaux à média. Seul le monde
-   change : le plan occupe le premier écran, la typographie s'y pose, et la
-   page descend ensuite dans le noir plutôt que dans le blanc.
-
-   L'accent reste le vermillon, pas le cyan de LEVELUM. C'est déjà la couleur
-   de la marque, et lui emprunter le sien ferait de ce site une copie au lieu
-   d'une famille. Éclairci de #D92B00 à #FF5C2B, qui passe de 4,08:1 à
-   6,47:1 sur le fond.
-
-   Règles du système, inchangées :
-     - aucune carte, aucune ombre d'élévation, aucun rayon de bordure ;
-     - un seul accent, jamais décoratif ;
-     - la profondeur se fait par surface pleine, pas par empilement ;
-     - les valeurs chiffrées sont tabulaires.
+   La page est l'armoire à clés de l'entreprise cliente : acier émaillé
+   anthracite, crochets et anneaux en laiton, et une étiquette de plastique
+   coloré par poste de travail. L'étiquette est la seule chose qui ait une
+   matière, parce que c'est la seule chose qu'on manipule.
    ========================================================================== */
 
 :root {
-  --page:   #07090b;   /* le fond, désormais l'encre */
-  --ink:    #eef1f4;   /* 17,59:1 sur le fond */
-  --ink-2:  #9fa9b3;   /*  8,36:1 */
-  --rule:   #1b2026;   /*  1,22:1 — décoratif, ne porte jamais d'information */
-  --accent: #ff5c2b;   /*  6,47:1 sur le fond, et 6,47:1 en noir dessus */
+  --steel:   #1b1e22;  /* l'émail de l'armoire, le fond */
+  --steel-2: #23272c;  /* la tôle perforée du tableau */
+  --steel-0: #131518;  /* le pied de page, l'ombre de l'armoire */
+  --rule:    #353b42;
+  --ink:     #eef0f2;
+  --ink-2:   #aab2ba;
+  --brass:   #d4a64a;
+  --brass-2: #e7c37a;
+  --paper:   #f3f1ec;
+  --paper-2: #5c5a55;  /* texte secondaire sur papier */
 
-  /* La surface des panneaux : 1,16:1 d'écart avec le fond, comme
-     antidrones.seriouslabs.tech. Assez pour séparer, trop peu pour découper. */
-  --surface: #151c25;
-  --on-ink:   #7f8b96; /*  5,73:1 — plancher du texte secondaire sur surface */
-  --rule-ink: #242c36;
-  --accent-ink: #ff5c2b;
+  /* Les plastiques des étiquettes. Un poste, une couleur. */
+  --rouge:  #c4382a;
+  --jaune:  #f0c02c;
+  --vert:   #26804d;
+  --bleu:   #2e6bd0;
+  --orange: #ee7a24;
+  --violet: #6e46c2;
+  --turquoise: #2aa9be;
+  --blanc:  #e4e6e8;
 
-  --pre:  'Archivo', system-ui, -apple-system, sans-serif;
-  --disp: 'Archivo Black', 'Archivo', system-ui, sans-serif;
+  --disp: 'Big Shoulders', 'Arial Narrow', sans-serif;
+  --sten: 'Big Shoulders Stencil', 'Big Shoulders', sans-serif;
+  --text: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
 
-  --measure: 1180px;
-  --gutter:  clamp(1.15rem, 4vw, 3.5rem);
-  --rail:    clamp(5.5rem, 12vw, 11rem);
-  --head-h:  4.25rem;
-  --band:    clamp(3.5rem, 8vw, 7rem);
+  --gut: clamp(1rem, 4vw, 2.5rem);
+  --band: clamp(4.5rem, 10vw, 8rem);
+  --ease: cubic-bezier(.16, 1, .3, 1);
 }
 
-
-/* --------------------------------------------------------------- socle -- */
+/* ------------------------------------------------------------- socle -- */
 
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--head-h) + 1rem);
-  scrollbar-color: var(--ink-2) var(--page);
-  scrollbar-width: thin;
   -webkit-text-size-adjust: 100%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-  }
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  color-scheme: dark;
+  scrollbar-color: var(--rule) var(--steel-0);
 }
 
 body {
   margin: 0;
-  background: var(--page);
+  background: var(--steel);
   color: var(--ink);
-  font-family: var(--pre);
-  font-size: 1rem;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  font: 400 1.0625rem/1.6 var(--text);
+  text-rendering: optimizeLegibility;
+  caret-color: var(--brass);
 }
 
-h1, h2, h3, h4, p, dl, dd, ol, ul, figure { margin: 0; }
-ol, ul { padding: 0; list-style: none; }
-img, svg { display: block; max-width: 100%; }
-a { color: inherit; }
+::selection { background: var(--brass); color: var(--steel); }
 
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3, p, ul, ol, dl, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img, svg, video { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; }
 
-/* Lien d'évitement. Le sortir du cadre par `left:-9999px` allongerait le
-   document et créerait un défilement horizontal : il est donc découpé sur
-   place, puis ramené au clavier. */
-.skip, .hid, .pot {
+a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: var(--brass); }
+
+:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; }
+
+.wrap { width: min(100% - 2 * var(--gut), 78rem); margin-inline: auto; }
+.nobr { white-space: nowrap; }
+
+.skip, .pot {
   position: absolute;
   width: 1px; height: 1px;
-  padding: 0; margin: 0;
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
 }
 .skip:focus {
-  position: fixed;
-  top: .6rem; left: .6rem;
-  z-index: 100;
   width: auto; height: auto;
   clip-path: none;
-  padding: .85rem 1.2rem;
-  background: var(--ink);
-  color: var(--page);
-  font-weight: 600;
+  top: .75rem; left: .75rem;
+  z-index: 20;
+  padding: .75rem 1rem;
+  background: var(--brass);
+  color: var(--steel);
+  font-weight: 700;
 }
 
-.wrap {
-  width: 100%;
-  max-width: var(--measure);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
+section { padding-block: var(--band); }
+
+/* Titres : capitales condensées très grasses, comme les numéros frappés
+   au poinçon sur les crochets d'une armoire. */
+h1, .sect-h {
+  font-family: var(--disp);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  text-wrap: balance;
 }
+.sect-h { font-size: clamp(2.3rem, 5.4vw, 3.9rem); line-height: .92; max-width: 18ch; }
+.sect-h--sm { font-size: clamp(1.9rem, 3.6vw, 2.6rem); }
+.sect-l { margin-top: 1.25rem; max-width: 58ch; color: var(--ink-2); font-size: 1.125rem; }
+
+h3 { font-size: 1.125rem; font-weight: 700; line-height: 1.3; }
+
+/* --------------------------------------------------------- les actions -- */
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: .75rem 1.4rem;
+  border: 0;
+  background: var(--brass);
+  color: var(--steel);
+  font: 700 1rem/1.2 var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s var(--ease), transform .2s var(--ease);
+}
+.cta:hover { background: var(--brass-2); }
+.cta:active { transform: translateY(1px); }
+.cta--sm { min-height: 2.75rem; padding: .55rem 1rem; font-size: .9375rem; }
+.cta:disabled { opacity: .6; cursor: progress; }
 
 /* ------------------------------------------------------------- entête -- */
 
 .head {
   position: sticky;
   top: 0;
-  z-index: 50;
-  background: rgba(7, 9, 11, .88);
-  backdrop-filter: blur(10px);
+  z-index: 10;
+  background: rgb(27 30 34 / .94);
   border-bottom: 1px solid var(--rule);
 }
-
-.bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: var(--head-h);
+@supports (backdrop-filter: blur(1px)) {
+  .head { background: rgb(27 30 34 / .82); backdrop-filter: blur(10px) saturate(1.2); }
 }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4rem; }
 
-.mark {
-  display: inline-flex;
-  align-items: center;
-  gap: .6rem;
-  /* 44 px de haut : c'est un lien vers l'accueil, pas une image décorative,
-     et il se rate au doigt en dessous. */
-  min-height: 44px;
-  text-decoration: none;
-  font-family: var(--disp);
-  font-size: .9rem;
-}
-.mark img {
-  width: 15px;
-  height: 21px;
-  /* Le tracé est monochrome et sa couleur est dans le fichier, qu'on ne
-     retouche pas : c'est le logo d'origine du client, vectorisé. L'inversion
-     le rend clair sans altérer ses contours. */
-  filter: invert(1);
-}
+.mark { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; }
+/* Le tracé du logo porte sa couleur en dur (#16181a), vectorisé depuis le
+   fichier d'origine : on l'inverse plutôt que de toucher au fichier. */
+.mark img { filter: invert(1); }
+.mark span { font: 900 1.35rem/1 var(--disp); text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
 
-.nav {
-  display: flex;
-  align-items: center;
-  gap: clamp(.45rem, 1.6vw, 1.5rem);
-}
-
-/* 44 px de haut au minimum : en dessous, la cible se rate au doigt. */
-.nav a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding-inline: .2rem;
-  text-decoration: none;
-  font-size: .875rem;
-  font-weight: 500;
+.nav { display: flex; align-items: center; gap: clamp(.5rem, 2vw, 1.75rem); }
+.nav .sect, .nav .lang {
+  display: inline-flex; align-items: center;
+  min-height: 2.75rem;
   color: var(--ink-2);
-}
-.nav a:hover { color: var(--ink); }
-.nav .lang { font-weight: 700; color: var(--ink); letter-spacing: .06em; }
-
-/* `.nav a` est plus spécifique que `.cta` : sans cette ligne, l'action de
-   l'entête prend le gris de navigation sur son aplat vermillon, soit
-   1,26:1. Le défaut ne se voit pas à l'œil, il se mesure. */
-.nav .cta { color: var(--page); }
-.nav .cta:hover { color: var(--page); }
-
-/* Sous 900 px l'entête ne garde que la marque, la langue et l'action : les
-   ancres de section deviennent du bruit dès qu'elles se serrent. */
-@media (max-width: 900px) {
-  .nav .sect { display: none; }
-}
-
-/* ------------------------------------------------------------- action -- */
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 52px;
-  padding: .85rem 1.6rem;
-  background: var(--accent);
-  color: var(--page);
+  font-size: .9375rem;
   text-decoration: none;
-  font-family: inherit;
-  font-weight: 600;
-  font-size: 1rem;
-  border: 0;
-  cursor: pointer;
-  transition: background .15s ease;
 }
-.cta:hover { background: var(--ink); color: var(--page); }
-.cta[disabled] { opacity: .55; cursor: default; }
+.nav .sect:hover, .nav .lang:hover { color: var(--ink); }
+.nav .cta { color: var(--steel); }
+@media (max-width: 760px) { .nav .sect { display: none; } }
+@media (max-width: 30rem) { .cta__more { display: none; } }
 
-.cta--sm { min-height: 44px; padding: .5rem 1rem; font-size: .875rem; }
+/* ============================================================ l'armoire == */
 
-/* Sur l'encre pleine, le vermillon tombe à 3,86:1 : assez pour un aplat, pas
-   pour du texte fin. On inverse donc plutôt que d'y poser du vermillon. */
-.ink .cta { background: var(--accent); color: var(--page); }
-.ink .cta:hover { background: var(--ink); color: var(--page); }
-
-/* ---------------------------------------------------- vue d'ouverture -- */
-
-.open { padding-block: clamp(2.5rem, 6vw, 5rem) var(--band); }
-
-.kicker {
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--accent);
+.open { padding-block: clamp(2rem, 4.5vw, 4rem) var(--band); }
+.open__grid {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: start;
 }
+@media (min-width: 64rem) { .open__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); } }
 
-h1 {
-  margin-top: 1.3rem;
-  font-family: var(--disp);
-  font-size: clamp(2.3rem, 6.4vw, 4.75rem);
-  line-height: 1.03;
-  letter-spacing: -.025em;
-  max-width: 15ch;
-}
+.open h1 { font-size: clamp(3.4rem, 10.5vw, 6rem); line-height: .86; }
+.open .lede { margin-top: 1.75rem; max-width: 46ch; font-size: clamp(1.125rem, 1.6vw, 1.25rem); color: var(--ink-2); }
 
-.lede {
-  margin-top: 1.5rem;
-  max-width: 54ch;
-  font-size: clamp(1.05rem, 1.9vw, 1.25rem);
-  line-height: 1.55;
-  color: var(--ink-2);
-}
-
-.open .cta { margin-top: 2.1rem; }
-
-/* Les faits de l'offre, en ligne sous l'action : des paires intitulé/valeur
-   séparées par un filet, jamais des cartes. */
 .facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
-  gap: 1px;
-  margin-top: clamp(2.5rem, 5vw, 3.75rem);
-  background: var(--rule);
-  border-block: 1px solid var(--rule);
-}
-.facts > div { background: var(--page); padding: 1.05rem 1rem 1.15rem 0; }
-.facts dt {
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  display: flex; flex-wrap: wrap;
+  gap: .5rem 1.4rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
   color: var(--ink-2);
+  font-size: .9375rem;
 }
-.facts dd {
-  margin-top: .3rem;
-  font-family: var(--disp);
-  font-size: clamp(1.05rem, 2.1vw, 1.4rem);
-  letter-spacing: -.02em;
-  font-variant-numeric: tabular-nums;
-}
-
-/* ----------------------------------------------------------- sections -- */
-
-section { padding-block: var(--band); }
-section + section { border-top: 1px solid var(--rule); }
-.ink + section, section + .ink { border-top: 0; }
-
-.sect-h {
-  font-family: var(--disp);
-  font-size: clamp(1.65rem, 3.6vw, 2.7rem);
-  line-height: 1.1;
-  letter-spacing: -.025em;
-  max-width: 20ch;
-}
-.sect-l {
-  margin-top: 1rem;
-  max-width: 58ch;
-  color: var(--ink-2);
-  font-size: 1.0625rem;
+.facts b {
+  margin-right: .3rem;
+  color: var(--brass);
+  font: 800 1.6rem/1 var(--sten);
+  vertical-align: -.12em;
 }
 
-/* --------------------------------------------------------- la journée -- */
-
-/* Le cœur du système. La colonne de gauche porte le moment, la règle
-   verticale fait la continuité du jour, le contenu s'accroche à droite.
-   La règle est une bordure sur la colonne et non un pseudo-élément absolu :
-   elle suit ainsi la hauteur réelle du texte, aussi long soit-il. */
-
-.rail { margin-top: clamp(2.25rem, 5vw, 3.5rem); }
-
-.moment {
-  display: grid;
-  grid-template-columns: var(--rail) 1fr;
-  column-gap: clamp(1.25rem, 3vw, 2.5rem);
-}
-
-.moment__when {
+/* La tôle perforée. Les trous sont la matière du tableau, pas un motif. */
+.board {
   position: relative;
-  padding-top: .15rem;
-  padding-right: clamp(1.25rem, 3vw, 2.5rem);
-  padding-bottom: clamp(2.5rem, 5vw, 3.75rem);
-  border-right: 1px solid var(--rule);
-  text-align: right;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background-color: var(--steel-2);
+  background-image: radial-gradient(circle at center, var(--steel-0) 1.6px, transparent 2.2px);
+  background-size: 18px 18px;
+  background-position: 9px 9px;
+  border: 1px solid var(--rule);
 }
-.moment:last-child .moment__when { padding-bottom: 0; border-right-color: transparent; }
+.board__q { font: 900 clamp(1.6rem, 3vw, 2rem)/1 var(--disp); text-transform: uppercase; }
+.board__h { margin-top: .5rem; color: var(--ink-2); font-size: .9375rem; }
 
-/* Le repère sur la règle : avec l'action, le seul endroit où le vermillon a
-   le droit d'apparaître. */
-.moment__when::after {
+.hooks {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem clamp(.5rem, 1.6vw, 1rem);
+  margin-top: 1.25rem;
+}
+
+/* Le crochet de laiton, d'où l'étiquette pend. */
+.hooks li { position: relative; padding-top: 14px; }
+.hooks li::before {
   content: '';
   position: absolute;
-  top: .5rem;
-  right: -4.5px;
-  width: 9px;
-  height: 9px;
-  background: var(--accent);
+  top: 0; left: 50%;
+  width: 8px; height: 22px;
+  margin-left: -4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #a77f2f, var(--brass-2) 45%, #a77f2f);
+  box-shadow: 0 2px 3px rgb(0 0 0 / .45);
+  z-index: 1;
 }
 
-.moment__h {
+.key {
+  --plastic: var(--bleu);
+  --on: #fff;
+  position: relative;
+  display: flex; flex-direction: column; align-items: stretch;
+  width: 100%;
+  min-height: 8.5rem;
+  padding: 1.6rem .45rem .5rem;
+  border: 0;
+  border-radius: 10px 10px 16px 16px;
+  background:
+    linear-gradient(160deg, rgb(255 255 255 / .22), rgb(255 255 255 / 0) 42%),
+    var(--plastic);
+  color: var(--on);
+  text-align: left;
+  cursor: pointer;
+  transform-origin: 50% 6px;
+  box-shadow: 0 10px 18px -6px rgb(0 0 0 / .6);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+/* L'œillet : le trou par lequel passe le crochet. */
+.key::before {
+  content: '';
+  position: absolute;
+  top: 6px; left: 50%;
+  width: 14px; height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: var(--steel-2);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / .6), 0 0 0 2px rgb(255 255 255 / .25);
+}
+.key__n { font: 800 1.9rem/1 var(--sten); letter-spacing: .02em; }
+.key__l {
   display: block;
-  font-family: var(--disp);
-  font-size: clamp(1rem, 2vw, 1.3rem);
-  line-height: 1.15;
+  margin-top: auto;
+  padding: .45rem .4rem;
+  background: var(--paper);
+  color: var(--steel);
+  font-size: .8125rem;
+  font-weight: 700;
+  line-height: 1.2;
   letter-spacing: -.01em;
-  font-variant-numeric: tabular-nums;
-}
-.moment__d {
-  display: block;
-  margin-top: .35rem;
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--ink-2);
+  hyphens: manual;
+  border-radius: 2px;
 }
 
-.moment__b { padding-bottom: clamp(2.5rem, 5vw, 3.75rem); }
-.moment:last-child .moment__b { padding-bottom: 0; }
+.key--rouge  { --plastic: var(--rouge); }
+.key--jaune  { --plastic: var(--jaune); --on: var(--steel); }
+.key--vert   { --plastic: var(--vert); }
+.key--bleu   { --plastic: var(--bleu); }
+.key--orange { --plastic: var(--orange); --on: var(--steel); }
+.key--violet { --plastic: var(--violet); }
+.key--turquoise { --plastic: var(--turquoise); --on: var(--steel); }
+.key--blanc  { --plastic: var(--blanc); --on: var(--steel); }
 
-.moment__b h3 {
-  font-family: var(--disp);
-  font-size: clamp(1.2rem, 2.6vw, 1.8rem);
-  line-height: 1.15;
-  letter-spacing: -.02em;
-  max-width: 22ch;
-}
-.moment__b p {
-  margin-top: .75rem;
-  max-width: 56ch;
-  color: var(--ink-2);
-  font-size: 1.0625rem;
+@media (hover: hover) {
+  .key:hover { transform: rotate(-5deg); }
 }
 
-/* Sous 720 px la colonne de moments tomberait à deux mots par ligne : elle
-   se replie au-dessus du contenu et la règle devient horizontale. */
-@media (max-width: 720px) {
-  .moment { grid-template-columns: 1fr; row-gap: .85rem; }
-  .moment__when {
-    display: flex;
-    align-items: baseline;
-    gap: .75rem;
-    padding: 0 0 .85rem;
-    border-right: 0;
-    border-bottom: 1px solid var(--rule);
-    text-align: left;
+.key:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+
+/* Décrochée : l'étiquette est partie sur l'anneau. Le crochet garde sa
+   silhouette en pointillé et son numéro frappé, pour qu'on sache ce qui y
+   pendait et qu'on puisse l'y raccrocher. */
+.key[aria-pressed='true'] {
+  background: transparent;
+  color: var(--brass);
+  box-shadow: none;
+  outline: 2px dashed rgb(212 166 74 / .55);
+  outline-offset: -2px;
+}
+.key[aria-pressed='true']:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+.key[aria-pressed='true']::before { background: var(--steel); box-shadow: inset 0 0 0 2px rgb(212 166 74 / .55); }
+.key[aria-pressed='true'] .key__l { background: transparent; color: var(--ink-2); outline: 1px dashed var(--rule); }
+@media (hover: hover) { .key[aria-pressed='true']:hover { transform: none; } }
+
+/* Raccrochée : elle revient en balançant. */
+.key.is-back { animation: balance 1s var(--ease); }
+
+/* Le double qui vole du crochet à l'anneau. */
+.key--vol {
+  position: fixed;
+  z-index: 50;
+  margin: 0;
+  pointer-events: none;
+  transform-origin: 0 0;
+}
+
+@keyframes balance {
+  0%   { transform: rotate(0); }
+  25%  { transform: rotate(9deg); }
+  50%  { transform: rotate(-5deg); }
+  75%  { transform: rotate(2deg); }
+  100% { transform: rotate(0); }
+}
+
+/* Le trousseau : l'anneau de laiton, les étiquettes qui y pendent avec
+   leur numéro, le compte, l'action. */
+.ring {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: .75rem 1.25rem;
+  margin-top: 1.25rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--rule);
+}
+.ring__hang { position: relative; flex: 0 0 auto; width: 8.5rem; height: 5.75rem; }
+.ring__svg {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 3.25rem; height: 3.25rem;
+  margin-left: -1.625rem;
+  color: var(--brass);
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / .5));
+}
+.ring__keys li {
+  --a: 0deg;
+  --x: 0px;
+  position: absolute;
+  top: 1.625rem; left: 50%;
+  width: 1.7rem; height: 2.5rem;
+  margin-left: -.85rem;
+  padding-top: .95rem;
+  border-radius: 4px 4px 7px 7px;
+  background:
+    linear-gradient(160deg, rgb(255 255 255 / .22), rgb(255 255 255 / 0) 45%),
+    var(--plastic, var(--brass));
+  color: var(--on, var(--steel));
+  padding-left: 4px;
+  font: 800 .8rem/1 var(--sten);
+  text-align: left;
+  transform-origin: 50% 0;
+  transform: translateX(var(--x, 0)) rotate(var(--a)) translateY(1.05rem);
+  box-shadow: 0 6px 10px -4px rgb(0 0 0 / .7);
+  transition: transform .5s var(--ease);
+}
+/* L'œillet de la miniature, par où passe l'anneau. */
+.ring__keys li::before {
+  content: '';
+  position: absolute;
+  top: .3rem; left: 50%;
+  width: .4rem; height: .4rem;
+  margin-left: -.2rem;
+  border-radius: 50%;
+  background: var(--steel-2);
+}
+.ring__count { flex: 1 1 6rem; font-weight: 700; line-height: 1.35; }
+.ring .cta { flex: 0 0 auto; }
+
+/* Téléphone : les étiquettes pendent à l'horizontale, crochet à gauche,
+   pour que le tableau et l'anneau tiennent à peu près dans un écran. */
+@media (max-width: 40rem) {
+  .hooks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem .6rem; margin-top: 1.25rem; }
+  .hooks li { padding-top: 0; padding-left: 9px; }
+  .hooks li::before { top: 50%; left: 0; width: 18px; height: 8px; margin: -4px 0 0; border-radius: 4px; }
+  .key {
+    flex-direction: row; align-items: center;
+    min-height: 3.6rem;
+    padding: .4rem .35rem .4rem 1.45rem;
+    border-radius: 9px 14px 14px 9px;
+    transform-origin: 8px 50%;
   }
-  .moment:last-child .moment__when { border-bottom-color: var(--rule); }
-  .moment__when::after { top: auto; bottom: -4.5px; right: auto; left: 0; }
-  .moment__d { margin-top: 0; }
+  .key::before { top: 50%; left: 6px; margin: -6px 0 0; width: 12px; height: 12px; }
+  .key__n { font-size: 1.2rem; }
+  .key__l { flex: 1; margin: 0 0 0 .35rem; font-size: .8125rem; padding: .3rem .35rem; letter-spacing: -.015em; }
+  .ring__hang { width: 8.5rem; }
+  .ring .cta { width: 100%; }
 }
 
-/* --------------------------------------------------------- vos heures -- */
+/* Sur téléphone, les faits passent sous le tableau : la question vient
+   avant le détail de l'offre. */
+@media (max-width: 64rem) {
+  .open__grid { gap: 0; }
+  .open__text { display: contents; }
+  .board { order: 2; margin-top: 1.75rem; }
+  .facts { order: 3; }
+}
 
-/* Ce qui part autour du métier. Une liste, pas une grille de cartes : ces
-   lignes sont de même nature et de même poids, les mettre en blocs leur
-   donnerait une hiérarchie qu'elles n'ont pas. */
-.jobs {
+/* ================================================== ce que fait une clé == */
+
+.demo { border-top: 1px solid var(--rule); }
+
+.sheet {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 0 clamp(1.5rem, 4vw, 3rem);
   margin-top: clamp(2rem, 4vw, 3rem);
+  background: var(--paper);
+  color: var(--steel);
 }
-.jobs li {
-  padding: .9rem 0;
-  border-bottom: 1px solid var(--rule);
-  font-size: 1.0625rem;
+@media (min-width: 52rem) { .sheet { grid-template-columns: 4.75rem minmax(0, 1fr); } }
+
+.sheet__pick {
+  display: flex;
+  gap: 2px;
+  padding: .5rem;
+  background: var(--steel-2);
+  overflow-x: auto;
 }
-/* La numérotation 01–08 a été retirée : l'ordre de cette liste ne porte
-   aucune information, et un numéro qui ne compte rien est un costume. Le
-   filet seul sépare, comme partout ailleurs dans la page. */
-
-/* ----------------------------------------------------------- la ligne -- */
-
-/* L'IA ne produit pas le livrable. C'est la seule affirmation du site qui
-   mérite d'occuper toute la largeur d'encre. */
-.ink { background: var(--surface); color: var(--ink); }
-.ink .sect-l { color: var(--on-ink); }
-
-.claim {
-  font-family: var(--disp);
-  font-size: clamp(1.55rem, 4.2vw, 3rem);
-  line-height: 1.12;
-  letter-spacing: -.025em;
-  max-width: 21ch;
-}
-/* Archivo Black n'a pas d'italique : une italique demandée ici serait
-   synthétisée et penchée par le navigateur. Le relief se fait au trait. */
-.claim em {
-  font-style: normal;
-  box-shadow: inset 0 -.14em 0 var(--accent);
+@media (min-width: 52rem) { .sheet__pick { flex-direction: column; } }
+@media (max-width: 52rem) {
+  .sheet__pick { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 3px; }
+  .pick { min-width: 0; font-size: 1.15rem; }
 }
 
-.split {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 1px;
-  margin-top: clamp(2.25rem, 5vw, 3.25rem);
-  background: var(--rule-ink);
-  border-block: 1px solid var(--rule-ink);
+.pick {
+  --plastic: var(--bleu);
+  --on: #fff;
+  flex: 0 0 auto;
+  min-width: 3rem; min-height: 3rem;
+  border: 0;
+  border-radius: 6px 6px 9px 9px;
+  background: var(--plastic);
+  color: var(--on);
+  font: 800 1.35rem/1 var(--sten);
+  cursor: pointer;
+  opacity: .55;
+  transition: opacity .2s var(--ease), transform .3s var(--ease);
 }
-.split > div { background: var(--surface); padding: 1.4rem 1.5rem 1.5rem 0; }
-.split h3 {
-  font-size: .75rem;
+.pick:hover { opacity: .85; }
+.pick[aria-selected='true'] { opacity: 1; transform: translateX(4px); box-shadow: 0 0 0 3px var(--brass); }
+@media (max-width: 52rem) { .pick[aria-selected='true'] { transform: translateY(2px); } }
+.pick.key--rouge  { --plastic: var(--rouge); }
+.pick.key--jaune  { --plastic: var(--jaune); --on: var(--steel); }
+.pick.key--vert   { --plastic: var(--vert); }
+.pick.key--orange { --plastic: var(--orange); --on: var(--steel); }
+.pick.key--violet { --plastic: var(--violet); }
+.pick.key--turquoise { --plastic: var(--turquoise); --on: var(--steel); }
+.pick.key--blanc  { --plastic: var(--blanc); --on: var(--steel); }
+.key--violet { --plastic: var(--violet); }
+.key--turquoise { --plastic: var(--turquoise); --on: var(--steel); }
+.key--blanc  { --plastic: var(--blanc); --on: var(--steel); }
+
+.sheet__body { position: relative; padding: clamp(1.5rem, 4vw, 3rem); }
+.sheet__ex {
+  position: absolute;
+  top: clamp(1rem, 2.5vw, 1.5rem); right: clamp(1rem, 2.5vw, 1.5rem);
+  padding: .2rem .55rem;
+  transform: rotate(2deg);
+  border: 1px solid var(--paper-2);
+  color: var(--paper-2);
+  font-size: .8125rem;
   font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--accent-ink);
 }
-.split p { margin-top: .65rem; color: var(--on-ink); font-size: 1rem; }
+.sheet__t { margin-right: 8rem; font: 900 clamp(1.6rem, 3vw, 2.2rem)/1 var(--disp); text-transform: uppercase; }
+@media (max-width: 52rem) {
+  .sheet__ex { position: static; display: inline-block; margin-top: .75rem; }
+  .sheet__t { margin-right: 0; }
+}
+.sheet__cols { display: grid; gap: 1.5rem 3rem; margin-top: 1.75rem; }
+@media (min-width: 52rem) { .sheet__cols { grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); } }
+.sheet__k { color: var(--paper-2); font-size: .875rem; font-weight: 700; }
+.sheet__in { margin-top: .4rem; }
+.sheet__draft { margin-top: .4rem; font-size: 1.1875rem; line-height: 1.55; max-width: 52ch; }
 
-/* ------------------------------------------------------------- budget -- */
+/* La correction humaine : la couche qui arrive en dernier, comme le noir
+   d'une estampe qu'on imprime après toutes les couleurs. */
+.sheet del { color: var(--rouge); text-decoration-thickness: 2px; text-decoration-color: var(--rouge); }
+.sheet ins {
+  text-decoration: none;
+  background: linear-gradient(transparent 58%, rgb(212 166 74 / .55) 58%);
+  font-weight: 700;
+  animation: correction .7s var(--ease) .5s both;
+}
+@keyframes correction { from { opacity: 0; filter: blur(3px); } }
 
-.note {
-  margin-top: clamp(2rem, 4vw, 3rem);
+.fix {
+  display: inline;
+  padding: 0 .15em;
+  border: 0;
+  border-bottom: 2px dashed var(--rouge);
+  background: rgb(196 56 42 / .1);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  animation: appel 2.4s var(--ease) 1s 2;
+}
+.fix:hover { background: rgb(196 56 42 / .2); }
+.fix:focus-visible { outline: 3px solid var(--steel); outline-offset: 2px; }
+@keyframes appel { 50% { background: rgb(196 56 42 / .28); } }
+.check input:disabled + span { color: var(--paper-2); font-weight: 400; }
+.check:has(input:disabled) { cursor: not-allowed; }
+
+.sheet__sign {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: .75rem 1.25rem;
+  margin-top: 2rem;
   padding-top: 1.25rem;
-  border-top: 2px solid var(--ink);
-  max-width: 62ch;
-  font-size: .9375rem;
-  color: var(--ink-2);
+  border-top: 1px solid #d6d2c8;
 }
-
-/* ------------------------------------------------------------ demande -- */
-
-.form {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1.4rem clamp(1.5rem, 3vw, 2.5rem);
-  margin-top: clamp(2rem, 4vw, 3rem);
-}
-.f--wide { grid-column: 1 / -1; }
-
-.form label {
-  display: block;
-  margin-bottom: .45rem;
-  font-size: .75rem;
+.check { display: inline-flex; align-items: center; gap: .6rem; min-height: 2.75rem; font-weight: 700; cursor: pointer; }
+.check input { width: 1.25rem; height: 1.25rem; accent-color: var(--steel); }
+.send {
+  min-height: 2.75rem;
+  padding: .55rem 1.2rem;
+  border: 0;
+  background: var(--steel);
+  color: var(--paper);
   font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-2);
+  cursor: pointer;
 }
-.req { color: var(--accent); }
+.send:disabled { background: #d9d5cc; color: #4a4843; cursor: not-allowed; }
+.sheet__state { flex: 1 1 14rem; color: var(--paper-2); font-size: .9375rem; }
+.sheet__state.is-done { color: var(--steel); font-weight: 700; }
+
+/* ======================================================== la journée == */
+
+.day { border-top: 1px solid var(--rule); padding-bottom: var(--band); }
+
+.day__film {
+  position: relative;
+  width: min(100%, 64rem);
+  margin: clamp(2rem, 4vw, 3rem) auto 0;
+}
+.film {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--steel-0);
+}
+@media (min-width: 64rem) { .film { aspect-ratio: 2.1 / 1; } }
+.day__film figcaption { width: auto; margin: .75rem var(--gut) 0; color: var(--ink-2); font-size: .875rem; }
+.film__stop {
+  position: absolute;
+  top: .75rem; right: .75rem;
+  min-height: 2.75rem;
+  padding: .5rem .9rem;
+  border: 1px solid rgb(238 240 242 / .35);
+  background: rgb(19 21 24 / .7);
+  color: var(--ink);
+  font-size: .875rem;
+  cursor: pointer;
+}
+.film__stop:hover { background: rgb(19 21 24 / .9); }
+
+/* Le rail : un filet de laiton, un crochet par moment. */
+.steps {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+@media (min-width: 52rem) {
+  .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; border-top: 2px solid var(--brass); }
+}
+.steps li { position: relative; }
+@media (min-width: 52rem) {
+  .steps li { padding-top: 1.75rem; }
+  .steps li::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: 0;
+    width: 8px; height: 18px;
+    border-radius: 0 0 4px 4px;
+    background: var(--brass);
+  }
+}
+@media (max-width: 52rem) {
+  .steps { border-left: 2px solid var(--brass); padding-left: 1.25rem; }
+}
+.steps__when { font: 900 1.6rem/1 var(--disp); text-transform: uppercase; color: var(--brass); }
+.steps__when span { display: block; margin-top: .35rem; color: var(--ink-2); font: 400 .875rem/1.4 var(--text); text-transform: none; font-variant-numeric: tabular-nums; }
+.steps h3 { margin-top: 1rem; }
+.steps p:not(.steps__when) { margin-top: .5rem; color: var(--ink-2); }
+.steps__total { margin-top: 2.5rem; color: var(--ink-2); }
+.steps__total b { color: var(--ink); font: 800 1.6rem/1 var(--sten); margin-left: .25rem; }
+
+/* ========================================================== à vous == */
+
+/* La seule section où le laiton prend toute la surface : c'est là que la
+   page dit ce qui appartient au client. */
+.own { background: var(--brass); color: var(--steel); }
+.own .claim {
+  max-width: 21ch;
+  font: 900 clamp(2.3rem, 6vw, 4.5rem)/.92 var(--disp);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.own__grid { display: grid; gap: 2rem; margin-top: clamp(2.5rem, 5vw, 4rem); }
+@media (min-width: 56rem) { .own__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 5rem; } }
+.own__h { font: 900 clamp(1.9rem, 3.6vw, 2.6rem)/.95 var(--disp); text-transform: uppercase; }
+.own__p { margin-top: 1rem; max-width: 40ch; font-size: 1.125rem; }
+.own .specs { margin-top: 0; }
+.own .specs div { border-color: rgb(27 30 34 / .3); }
+.own .specs dt { color: #3d3420; }
+
+/* ------------------------------------------------- listes de valeurs -- */
+
+.specs { margin-top: 1.5rem; }
+.specs div {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 1rem;
+  padding-block: .8rem;
+  border-bottom: 1px solid var(--rule);
+}
+.specs dt { color: var(--ink-2); }
+.specs dd { margin: 0; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+.specs--price { margin-top: 2rem; }
+.specs--price div:first-child dd { font: 900 1.9rem/1 var(--disp); text-transform: uppercase; color: var(--brass); }
+
+.note { margin-top: 1.25rem; color: var(--ink-2); font-size: .9375rem; max-width: 52ch; }
+
+.two { display: grid; gap: 2.5rem; }
+@media (min-width: 56rem) { .two { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 5rem; } }
+
+#budget { border-top: 1px solid var(--rule); }
+
+/* ======================================================== la demande == */
+
+.ask { background: var(--steel-2); border-top: 1px solid var(--rule); }
+
+.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 1rem; }
+.f--wide { grid-column: 1 / -1; }
+@media (max-width: 30rem) { .f { grid-column: 1 / -1; } }
+
+.form label { display: block; font-size: .9375rem; font-weight: 700; }
+.req { color: var(--brass); }
 
 .form input,
 .form select,
 .form textarea {
   width: 100%;
-  min-height: 52px;
-  padding: .75rem 0;
-  background: transparent;
-  color: var(--ink);
-  font-family: inherit;
-  font-size: 1.0625rem;
-  border: 0;
-  border-bottom: 2px solid var(--ink);
+  min-height: 3rem;
+  margin-top: .4rem;
+  padding: .7rem .8rem;
+  border: 1px solid var(--rule);
+  border-bottom: 2px solid #59616a;
   border-radius: 0;
+  background: var(--steel);
+  color: var(--ink);
+  font: inherit;
 }
-.form textarea { min-height: 8rem; resize: vertical; line-height: 1.55; }
+.form textarea { min-height: 9rem; resize: vertical; line-height: 1.55; }
+.form ::placeholder { color: #8d959d; }
 .form input:focus-visible,
 .form select:focus-visible,
-.form textarea:focus-visible {
-  outline: 0;
-  border-bottom-color: var(--accent);
-  box-shadow: 0 2px 0 var(--accent);
-}
-.form [aria-invalid='true'] { border-bottom-color: var(--accent); }
+.form textarea:focus-visible { outline: none; border-bottom-color: var(--brass); background: #202428; }
+.form [aria-invalid='true'] { border-bottom-color: var(--rouge); }
 
-.form .consent {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: .9rem;
-  align-items: start;
-  /* Réinitialisation nécessaire : `.consent` est un `label`, il prenait donc
-     les capitales et l'interlettrage réservés aux intitulés de champ. */
-  margin-bottom: 0;
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: normal;
-  text-transform: none;
+.f__keys { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
+.f__keys span {
+  padding: .25rem .5rem;
+  border-radius: 3px 3px 6px 6px;
+  background: var(--plastic, var(--brass));
+  color: var(--on, var(--steel));
+  font-size: .8125rem;
+  font-weight: 700;
 }
-.form .consent input {
-  width: 24px; height: 24px; min-height: 24px;
-  margin: .25rem 0 0;
-  accent-color: var(--accent);
-}
-.form .consent span { font-size: .9375rem; color: var(--ink-2); }
 
-.reply {
-  margin-top: 1.4rem;
-  padding: 1rem 1.2rem;
-  font-size: .9375rem;
-  border-left: 4px solid var(--accent);
-  background: #fbf3f1;
-}
-.reply--ok { border-left-color: var(--ink); background: #f3f4f6; }
+.form .consent { display: flex; gap: .75rem; align-items: flex-start; cursor: pointer; }
+.form .consent input { width: 1.25rem; height: 1.25rem; min-height: 0; margin-top: .2rem; flex: 0 0 auto; accent-color: var(--brass); }
+.form .consent span { font-weight: 400; font-size: .9375rem; color: var(--ink-2); }
+
+.reply { padding: .9rem 1rem; border-top: 2px solid var(--rouge); background: var(--steel); }
+.reply--ok { border-top-color: var(--brass); }
 .reply[hidden] { display: none; }
 
-/* -------------------------------------------------------- pied de page -- */
+/* La barre basse du téléphone : le trousseau reste à portée de pouce. */
+.dock {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 9;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .6rem var(--gut) calc(.6rem + env(safe-area-inset-bottom));
+  background: var(--steel-0);
+  border-top: 1px solid var(--rule);
+  font-weight: 700;
+  transform: translateY(0);
+  transition: transform .4s var(--ease);
+}
+.dock[hidden] { display: flex; transform: translateY(110%); visibility: hidden; }
+@media (min-width: 64rem) { .dock { display: none !important; } }
 
-.foot {
-  background: var(--surface);
-  color: var(--on-ink);
-  padding-block: clamp(2.5rem, 5vw, 4rem);
-  font-size: .875rem;
-}
-.foot .mark, .foot a { color: var(--ink); }
-.foot__top {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-between;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--rule-ink);
-}
-.foot__claim { margin-top: .8rem; max-width: 30ch; }
-.foot__links { display: flex; flex-wrap: wrap; gap: 1.4rem; }
-.foot__links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  text-decoration: none;
-}
-.foot__links a:hover { text-decoration: underline; }
-.foot__bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem 2rem;
-  justify-content: space-between;
-  padding-top: 1.35rem;
-}
+/* ======================================================= pied de page == */
 
-/* ------------------------------------------------- pages de mentions -- */
+.foot { padding-block: 3.5rem 2rem; background: var(--steel-0); color: var(--ink-2); font-size: .9375rem; }
+.foot .mark { color: var(--ink); }
+.foot__top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; }
+.foot__claim { margin-top: .75rem; }
+.foot__links { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; }
+.foot__links a { display: inline-flex; align-items: center; min-height: 2.75rem; text-decoration: none; }
+.foot__links a:hover { color: var(--ink); }
+.foot__bar { display: grid; gap: .4rem; margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); font-size: .875rem; }
+.foot__bar a { display: inline-block; padding-block: .6rem; }
+
+/* ================================================ mentions légales == */
 
 .doc { padding-block: clamp(2.5rem, 5vw, 4rem) var(--band); }
-.doc h1 { margin-top: 0; font-size: clamp(1.8rem, 4vw, 2.7rem); max-width: 24ch; }
+.doc h1 { font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: .92; max-width: 18ch; }
 .doc__body { margin-top: clamp(2rem, 4vw, 3rem); max-width: 68ch; }
 .doc__body h2 {
-  margin-top: 2.5rem;
+  margin-top: 2.75rem;
   padding-top: 1rem;
-  border-top: 2px solid var(--ink);
-  font-family: var(--disp);
-  font-size: 1.15rem;
-  letter-spacing: -.015em;
+  border-top: 2px solid var(--brass);
+  font: 900 1.5rem/1 var(--disp);
+  text-transform: uppercase;
 }
 .doc__body h2:first-child { margin-top: 0; }
 .doc__body p { margin-top: .9rem; color: var(--ink-2); }
-.doc__body a { color: var(--ink); text-underline-offset: .2em; text-decoration-color: var(--accent); }
+.doc__body a { color: var(--ink); text-decoration-color: var(--brass); }
 .doc__body dl { margin-top: 1rem; }
 /* Pas de capitales ici : certains intitulés juridiques dépassent trente
-   caractères, et la casse haute supprime la silhouette des mots au-delà
-   d'une étiquette courte. Le poids et la teinte suffisent à les distinguer. */
-.doc__body dt {
-  margin-top: 1.1rem;
-  font-size: .8125rem;
-  font-weight: 700;
-  letter-spacing: .01em;
-  color: var(--ink-2);
-}
+   caractères, et la casse haute supprime la silhouette des mots. */
+.doc__body dt { margin-top: 1.1rem; font-size: .875rem; font-weight: 700; color: var(--ink-2); }
 .doc__body dd { margin: .25rem 0 0; }
 
-/* Les valeurs qui doivent s'aligner — SIREN, TVA, codes. Le chiffre
-   tabulaire d'Archivo remplace le monospace : une police de moins à
-   télécharger, et le même alignement. */
 .typed { font-variant-numeric: tabular-nums; letter-spacing: .02em; }
 
 .tag {
   display: inline-block;
   padding: .3rem .7rem;
-  background: var(--accent);
-  color: var(--page);
-  font-size: .75rem;
+  border-radius: 3px 3px 6px 6px;
+  background: var(--brass);
+  color: var(--steel);
+  font-size: .8125rem;
   font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
 }
 
-/* --------------------------------------------------------- impression -- */
+/* ================================================== mouvement réduit == */
 
-@media print {
-  .head, .cta, .form, .skip { display: none; }
-  /* Le monde est sombre à l'écran ; sur papier il redevient noir sur blanc,
-     sans quoi l'impression viderait une cartouche entière. */
-  body { color: #000; background: #fff; }
-  .ink, .foot, .surface, .split > div, .band__media { background: #fff; color: #000; }
-  .ink .sect-l, .split p, .split h3, .foot, .foot a, .sect-l, .lede, .jobs li,
-  .specs dt, .specs dd, .data td, .data th, .note { color: #000; }
-  .data th, .data td, .specs > div { border-color: #999; }
-  section { padding-block: 1.5rem; border-top: 1px solid #000; }
-  .moment { break-inside: avoid; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
 }
-
-/* ======================================================================
-   DENSITÉ
-
-   Ajouts du 16.09.2026, après comparaison chiffrée avec LEVELUM : 43 % de
-   son cadre est de l'image contre 0 % ici, 22 valeurs chiffrées contre 4,
-   34 lignes de donnée alignées contre 5. Et ses trois bandeaux produit ont
-   trois structures différentes, délibérément — le même gabarit répété était
-   sa première cause de « moche ». Ce site en avait six identiques.
-
-   Ces blocs donnent au site ce qu'il n'avait pas : de la donnée alignée, et
-   trois formes de section au lieu d'une.
-   ====================================================================== */
-
-/* ------------------------------------------------- le sommaire d'ouverture -- */
-
-/* Le bandeau d'accueil de LEVELUM porte un sommaire de trois lignes : nom,
-   bénéfice, prix. Il donne l'offre entière avant tout défilement. */
-.summary { margin-top: clamp(2.5rem, 5vw, 3.75rem); border-top: 2px solid var(--ink); }
-
-.summary a,
-.summary > div {
-  display: grid;
-  grid-template-columns: minmax(8rem, 13rem) 1fr auto;
-  gap: .4rem 1.5rem;
-  align-items: baseline;
-  padding: 1.05rem 0;
-  border-bottom: 1px solid var(--rule);
-  text-decoration: none;
-}
-.summary b {
-  font-family: var(--disp);
-  font-size: 1.0625rem;
-  letter-spacing: -.01em;
-}
-.summary span { color: var(--ink-2); font-size: .9375rem; }
-.summary em {
-  font-style: normal;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-
-@media (max-width: 680px) {
-  .summary a, .summary > div { grid-template-columns: 1fr auto; }
-  .summary span { grid-column: 1 / -1; }
-}
-
-/* ------------------------------------------------------- tableau de donnée -- */
-
-/* L'équivalent du journal horodaté de LEVELUM : une vraie table, pleine
-   largeur, en chiffres tabulaires. C'est elle qui porte le programme de la
-   journée, qu'un organisme de formation doit de toute façon établir. */
-.data {
-  width: 100%;
-  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
-  border-collapse: collapse;
-  font-variant-numeric: tabular-nums;
-}
-.data caption {
-  text-align: left;
-  padding-bottom: .9rem;
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-.data th, .data td {
-  padding: .85rem 1rem .85rem 0;
-  border-bottom: 1px solid var(--rule);
-  text-align: left;
-  vertical-align: baseline;
-}
-.data thead th {
-  border-bottom: 2px solid var(--ink);
-  font-size: .6875rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-.data td:first-child, .data thead th:first-child { width: 8.5rem; font-weight: 600; }
-.data td:last-child, .data thead th:last-child { text-align: right; padding-right: 0; white-space: nowrap; }
-.data tbody tr:last-child td { border-bottom: 2px solid var(--ink); }
-.data tfoot td {
-  border-bottom: 0;
-  padding-top: 1rem;
-  font-family: var(--disp);
-  font-size: 1.0625rem;
-  letter-spacing: -.01em;
-}
-.data .sub { display: block; margin-top: .3rem; color: var(--ink-2); font-size: .9375rem; font-weight: 400; }
-
-/* Sous 640 px une table de quatre colonnes ne tient pas. Les lignes passent
-   en blocs et chaque cellule porte son intitulé, repris de `data-col`. */
-@media (max-width: 640px) {
-  .data, .data tbody, .data tfoot, .data tr, .data td { display: block; width: auto; }
-  .data thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-  .data tbody tr { padding: .9rem 0; border-bottom: 1px solid var(--rule); }
-  .data tbody tr:last-child { border-bottom: 2px solid var(--ink); }
-  .data td { padding: .2rem 0; border: 0; }
-  .data td:last-child { text-align: left; }
-  .data td[data-col]::before {
-    content: attr(data-col) ' ';
-    display: block;
-    font-size: .6875rem;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-  }
-  .data td:first-child { width: auto; }
-}
-
-/* -------------------------------------------------------- bandeau à média -- */
-
-/* La forme des bandeaux produit de LEVELUM : le média occupe la moitié du
-   cadre, bord à bord, la donnée occupe l'autre. Une section sur deux
-   s'inverse pour que le gabarit ne se répète pas à l'identique. */
-.band {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* Aligné en haut, pas étiré. La moitié média prenait sinon toute la hauteur
-     du texte, et un plan 16:9 dans une boîte haute se recadre jusqu'à ne plus
-     montrer qu'un aplat : le sujet sort du cadre par le haut et par le bas. */
-  align-items: start;
-  border-top: 1px solid var(--rule);
-}
-.band__media {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  background: var(--surface);
-  overflow: hidden;
-  /* Le plan reste en vue pendant qu'on lit les cotes à côté. Sans cela il
-     disparaîtrait dès la troisième ligne du tableau. */
-  position: sticky;
-  top: var(--head-h);
-}
-.band__media img { width: 100%; height: 100%; object-fit: cover; }
-.band__tag {
-  position: absolute;
-  left: 0; top: 0;
-  margin: 0;
-  padding: .4rem .7rem;
-  background: var(--ink);
-  color: var(--page);
-  font-size: .6875rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-.band__body { padding: var(--band) clamp(1.15rem, 4vw, 3.5rem); }
-.band--flip .band__media { order: 2; }
-
-/* En attendant les captures : le cadre porte la donnée plutôt que du vide.
-   Un cadre vide serait pire qu'une section en moins. */
-.band__hold {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 2rem;
-  color: var(--on-ink);
-  font-size: .9375rem;
-  text-align: center;
-}
-
-@media (max-width: 900px) {
-  .band { grid-template-columns: 1fr; }
-  .band--flip .band__media { order: 0; }
-  /* Collant sur une colonne unique, le plan resterait devant le texte. */
-  .band__media { position: relative; top: auto; }
-  .band__body { padding-inline: var(--gutter); }
-}
-
-/* --------------------------------------------------------- lignes de cote -- */
-
-/* Les cotes de LEVELUM : intitulé à gauche, valeur alignée à droite, filet
-   entre les deux. C'est ce qui fait qu'une fiche produit se lit comme une
-   fiche produit. */
-.specs { margin-top: clamp(1.5rem, 3vw, 2.25rem); border-top: 2px solid var(--ink); }
-.specs > div {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1.5rem;
-  align-items: baseline;
-  padding: .7rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-.specs dt {
-  font-size: .6875rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-.specs dd {
-  margin: 0;
-  text-align: right;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Sur fond d'encre, les mêmes cotes. */
-.ink .specs { border-top-color: var(--rule-ink); }
-.ink .specs > div { border-bottom-color: var(--rule-ink); }
-.ink .specs dt { color: var(--on-ink); }
-
-/* ----------------------------------------------------------- section deux -- */
-
-/* Troisième forme : énoncé à gauche, contenu à droite. Elle empêche « Où
-   passent vos heures » d'avoir la même silhouette que les autres. */
-.two {
-  display: grid;
-  grid-template-columns: minmax(0, 24rem) minmax(0, 1fr);
-  gap: clamp(1.75rem, 5vw, 4.5rem);
-  align-items: start;
-}
-.two .jobs { margin-top: 0; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); }
-@media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
-
-/* ------------------------------------------------------------ le montant -- */
-
-.price { margin-top: clamp(2rem, 4vw, 3rem); padding-top: 1.25rem; border-top: 2px solid var(--ink); }
-.price__n {
-  font-family: var(--disp);
-  font-size: clamp(2rem, 5vw, 3.25rem);
-  letter-spacing: -.03em;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-.price__c {
-  margin-top: .6rem;
-  font-size: .6875rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-}
-
-.band__specs { width: 100%; }
-
-/* Les cotes posées dans la moitié sombre d'un bandeau : sans cette reprise,
-   leurs filets sont tracés à l'encre sur l'encre, donc invisibles. */
-.band__media .specs { border-top-color: var(--rule-ink); }
-.band__media .specs > div { border-bottom-color: var(--rule-ink); }
-.band__media .specs dt { color: var(--on-ink); }
-.band__media .specs dd { color: var(--ink); }
-
-/* ======================================================================
-   PLANCHER DE QUALITÉ
-
-   Passe du 16.09.2026. Le site avait été refait sans elle, et le client le
-   trouvait « toujours pas joli ». Ce qui suit corrige ce qu'aucune mesure de
-   contraste ou de débordement n'attrape.
-   ====================================================================== */
-
-/* ------------------------------------------- les surfaces du navigateur -- */
-
-/* Sélection, curseur, soulignement, ancres : ces surfaces-là arrivent avec
-   les valeurs par défaut du navigateur, qui n'appartiennent à aucun système.
-   Les habiller est le signal le moins cher qu'une page a été dessinée plutôt
-   qu'assemblée, et c'est celui qu'on saute le plus souvent. */
-
-::selection { background: var(--accent); color: var(--page); }
-.ink ::selection, .foot ::selection, .band__media ::selection {
-  background: var(--ink);
-  color: var(--page);
-}
-
-input, textarea, select { caret-color: var(--accent); }
-
-a { text-decoration-thickness: 1px; text-underline-offset: .22em; }
-a:hover { text-decoration-color: var(--accent); }
-
-/* Le marqueur de puce et la marge d'ancre sur un titre ciblé par une ancre :
-   sans `scroll-margin`, l'entête collante mange la première ligne. */
-:target { scroll-margin-top: calc(var(--head-h) + 2rem); }
-
-/* --------------------------------------------------- la durée, en barre -- */
-
-/* La journée est le sujet du site. Ses proportions doivent donc se voir :
-   45 minutes contre 3 h 30, c'est un rapport de 1 à 4,7 qu'un chiffre seul
-   ne donne pas à sentir. C'est la seule donnée du site qui soit représentée
-   plutôt qu'écrite, et le seul endroit où quelque chose bouge. */
-
-.dur { display: block; position: relative; padding-bottom: .55rem; }
-.dur::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 3px;
-  background: var(--accent);
-  transform-origin: left;
-  transform: scaleX(var(--p, 0));
-}
-.dur--21  { --p: .214; }   /* 45 min sur 3 h 30 */
-.dur--100 { --p: 1; }
-.dur--off::after { display: none; }  /* 30 jours n'est pas dans la même unité */
-
-/* L'unique moment de mouvement du site : les barres se remplissent quand la
-   ligne entre dans le cadre. Détente exponentielle, depuis un état déjà
-   lisible — sans animation, la barre est simplement à sa longueur. */
-@media (prefers-reduced-motion: no-preference) {
-  .dur::after {
-    animation: dur-remplit 1100ms cubic-bezier(.16, 1, .3, 1) both;
-    animation-timeline: view();
-    animation-range: entry 15% cover 35%;
-  }
-}
-@keyframes dur-remplit {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(var(--p, 0)); }
-}
-
-/* La colonne de durée cesse d'être alignée à droite : une barre qui part de
-   la droite se lirait à l'envers du sens de lecture. */
-.data td:last-child { text-align: left; padding-right: 0; min-width: 6.5rem; }
-.data thead th:last-child { text-align: left; }
-.data tfoot td:last-child { min-width: 0; }
-
-/* ------------------------------------------------------- l'énoncé, plein -- */
-
-/* Le titre était tenu à 4,75rem et -0,025em. Le plancher autorise 6rem et
-   descend jusqu'à -0,04em : le retenir en deçà, c'était de la timidité. */
-h1 {
-  font-size: clamp(2.5rem, 7.2vw, 5.75rem);
-  letter-spacing: -.042em;
-  line-height: .98;
-  text-wrap: balance;
-  max-width: 14ch;
-}
-.sect-h { letter-spacing: -.035em; text-wrap: balance; }
-.claim  { letter-spacing: -.038em; text-wrap: balance; }
-
-/* Plus d'air au-dessus d'un titre qu'en dessous : c'est ce qui rattache le
-   chapô à son titre plutôt qu'à la section précédente. */
-.sect-l { margin-top: .85rem; }
-.two > div > .sect-h + .sect-l { margin-top: .85rem; }
-
-/* ------------------------------------------------- correctifs du détecteur -- */
-
-/* Une bordure de couleur de plus d'un pixel sur le flanc d'un bloc est le
-   costume d'un système qui n'en a pas. Ici la réponse du formulaire se
-   distingue par son aplat et son filet d'encre, comme le reste de la page. */
-.reply {
-  border-left: 0;
-  border-top: 2px solid var(--accent);
-  background: rgba(255, 92, 43, .10);
-  padding: 1rem 1.2rem;
-}
-.reply--ok { border-top-color: var(--ink); background: var(--surface); }
-
-/* La moitié sombre du bandeau n'avait aucune respiration : son étiquette
-   était collée dans l'angle, à même la coupe. */
-.band__media { padding: clamp(1.15rem, 3vw, 2rem); }
-.band__tag { left: clamp(1.15rem, 3vw, 2rem); top: clamp(1.15rem, 3vw, 2rem); }
-.band__hold { padding: 3.5rem 0 0; }
-
-/* ======================================================================
-   L'ACCUEIL PLEIN CADRE
-
-   Le geste d'antidrones.seriouslabs.tech : le plan occupe tout le premier
-   écran et le titre se pose dessus, plutôt qu'une vignette posée à côté du
-   texte. C'est ce qui fait passer la surface d'image de 0 à ~40 %.
-   ====================================================================== */
-
-.open--film {
-  position: relative;
-  min-height: min(84vh, 46rem);
-  display: flex;
-  align-items: flex-end;
-  padding-block: clamp(3rem, 8vw, 6rem);
-  background: var(--page);
-  color: var(--ink);
-  overflow: hidden;
-}
-
-.open__film {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* La scène est de la lumière de bureau ordinaire ; on la calme pour que la
-     typographie reste le sujet, sans la vider comme LEVELUM vide la sienne —
-     sa source sortait bleue, celle-ci est déjà neutre. */
-  filter: saturate(.38) contrast(1.06) brightness(.62);
-}
-
-/* Le voile. Sans lui, le contraste du titre dépend de ce que le modèle a
-   rendu dans ce coin de l'image, ce qui n'est pas un réglage mais un pari.
-   Dégradé vertical : l'image reste lisible en haut, le texte est garanti en
-   bas. */
-.open__voile {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom,
-              rgba(7, 9, 11, .30) 0%,
-              rgba(7, 9, 11, .68) 46%,
-              rgba(7, 9, 11, 1) 100%);
-}
-
-.open--film .wrap { position: relative; }
-.open--film h1 { color: var(--ink); }
-.open--film .lede { color: #b7c0c9; }        /* 11,2:1 sur l'encre */
-
-/* Sur l'image, l'action s'inverse : le vermillon sur une photo assombrie
-   perd sa fonction de signal, le blanc plein la garde. */
-.open--film .cta { background: var(--accent); color: var(--page); }
-.open--film .cta:hover { background: var(--ink); color: var(--page); }
-
-/* Le sommaire quitte l'accueil et devient la première bande de la page
-   blanche : posé sur l'image, il exigerait un second voile et la photo
-   ne servirait plus à rien. */
-.recap { padding-block: clamp(2rem, 4vw, 3rem); border-bottom: 1px solid var(--rule); }
-.recap .summary { margin-top: 0; }
-
-/* La commande d'arrêt. WCAG 2.2.2 : un mouvement automatique de plus de cinq
-   secondes doit pouvoir être arrêté, et la boucle tourne indéfiniment. */
-.open__arret {
-  position: absolute;
-  right: clamp(1.15rem, 4vw, 3.5rem);
-  top: clamp(1.15rem, 4vw, 2.5rem);
-  min-height: 44px;
-  padding: .5rem 1rem;
-  background: rgba(7, 9, 11, .62);
-  border: 1px solid rgba(238, 241, 244, .38);
-  color: var(--ink);
-  font-family: inherit;
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  backdrop-filter: blur(6px);
-}
-.open__arret:hover { background: var(--accent); border-color: var(--accent); color: var(--page); }
-
-@media (prefers-reduced-motion: reduce) { .open__arret { display: none; } }
-
-@media (max-width: 720px) {
-  .open--film { min-height: min(78vh, 36rem); }
-}
-
-@media print {
-  .open--film { min-height: 0; background: #fff; color: #000; }
-  .open__film, .open__voile, .open__arret { display: none; }
-  .open--film h1, .open--film .lede { color: #000; }
-}
-
-/* Le bandeau porte maintenant une photo : les réglages qui compensaient
-   l'absence d'image ne servent plus, et la seconde liste de cotes a besoin
-   d'un intitulé pour ne pas se confondre avec la première. */
-.band__media { padding: 0; }
-.band__media img { width: 100%; height: 100%; object-fit: cover; }
-
-.specs__h {
-  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
-  font-size: .6875rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-.specs__h + .specs { margin-top: .75rem; }
-
-/* Le bandeau porte un plan filmé plutôt qu'une image fixe : même boîte,
-   même recouvrement. */
-.band__video { width: 100%; height: 100%; object-fit: cover; display: block; }
