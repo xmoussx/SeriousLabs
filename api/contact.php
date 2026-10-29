@@ -63,6 +63,8 @@ function say(string $key): string
                        'en' => 'That email address does not look valid.'],
         'consent'  => ['fr' => 'Merci de cocher la case de consentement.',
                        'en' => 'Please tick the consent box.'],
+        'link'     => ['fr' => "Merci de retirer le lien et de décrire votre besoin en quelques phrases. S'il faut un document, nous vous le demanderons en répondant.",
+                       'en' => 'Please remove the link and describe your need in a few sentences. If we need a document, we will ask for it in our reply.'],
         'flood'    => ['fr' => 'Trop de messages envoyés depuis cette connexion. Réessayez dans une heure ou écrivez directement à ' . MAILBOX . '.',
                        'en' => 'Too many messages sent from this connection. Try again in an hour, or write directly to ' . MAILBOX . '.'],
         'unset'    => ['fr' => "Le formulaire n'est pas encore configuré. Écrivez-nous à " . MAILBOX . '.',
@@ -144,6 +146,40 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 if (($_POST['consentement'] ?? '') === '') {
     fail(say('consent'));
 }
+
+/* ------------------------------------------------------------ les liens -- */
+
+// Le formulaire sert à l'hameçonnage. Le message reçu le 29.10.2026 venait
+// d'un Chrome piloté depuis AWS : il chargeait la page, exécutait le script,
+// attendait 13 secondes et passait donc tous les pièges ci-dessus. Son texte
+// paraphrasait le site, et sa charge tenait dans un lien vers une fausse page
+// de partage nominative. Sans le lien, il n'y a plus d'attaque.
+//
+// Un lien, c'est un protocole, un « www. », ou un domaine suivi d'un chemin.
+// Un domaine nu (« notre site acme.fr ») reste permis : un prospect peut le
+// citer, et il est neutralisé plus bas avant de partir.
+const LINK = '~(?:[a-z][a-z0-9+.-]*://|\bwww\.|\b[a-z0-9-]{2,}(?:\.[a-z0-9-]{2,})*\.[a-z]{2,24}/\S)~i';
+
+// Personne ne met d'adresse web dans son nom : c'est un robot, on le laisse
+// croire que c'est passé.
+foreach ([$nom, $societe, $tel, $secteur, $effectif] as $v) {
+    if (preg_match(LINK, $v) === 1) {
+        reply(200, ['ok' => true]);
+    }
+}
+
+// Dans le message, un humain peut en avoir collé un de bonne foi : on le lui
+// dit. Un robot qui retire son lien n'a plus rien à livrer.
+if (preg_match(LINK, $message) === 1) {
+    fail(say('link'));
+}
+
+// Ce qui reste d'un domaine ne doit pas être cliquable dans la boîte : Gmail
+// transforme en lien tout « acme.fr », même en texte brut.
+$defang = static fn(string $s): string =>
+    preg_replace('~\b([a-z0-9-]+)\.(?=[a-z]{2,24}\b)~i', '$1[.]', $s) ?? $s;
+
+[$nom, $societe, $secteur, $message] = array_map($defang, [$nom, $societe, $secteur, $message]);
 
 /* ------------------------------------------------- limitation par adresse -- */
 
